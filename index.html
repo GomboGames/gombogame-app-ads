@@ -5,831 +5,647 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MOGBO | Mimari, Yazılım ve 3D Tasarım Stüdyosu</title>
 
-  <!-- TÜM TASARIM BURADA -->
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    }
+    body{
+      background:#f4f5fb;
+      color:#111827;
+    }
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+    .container{
+      width:90%;
+      max-width:1040px;
+      margin:0 auto;
     }
 
-    body {
-      background: #f4f5fb;
-      color: #111827;
+    /* TOPBAR */
+    .topbar{
+      background:#fff;
+      border-bottom:1px solid #e5e7eb;
+      position:sticky;
+      top:0;
+      z-index:10;
     }
-
-    a {
-      color: inherit;
-      text-decoration: none;
+    .topbar-inner{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:0.9rem 0;
     }
-
-    .container {
-      width: 90%;
-      max-width: 1040px;
-      margin: 0 auto;
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:0.5rem;
     }
-
-    /* ÜST MENÜ */
-    .topbar {
-      background: #ffffff;
-      border-bottom: 1px solid #e5e7eb;
-      position: sticky;
-      top: 0;
-      z-index: 10;
+    .brand-mark{
+      width:18px;
+      height:18px;
+      border-radius:6px;
+      background:linear-gradient(135deg,#2563eb,#7c3aed);
     }
-
-    .topbar-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.9rem 0;
+    .brand-name{
+      font-weight:700;
+      letter-spacing:0.15em;
+      font-size:0.85rem;
+      text-transform:uppercase;
     }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+    .nav{
+      display:flex;
+      gap:1.2rem;
+      font-size:0.9rem;
     }
-
-    .brand-mark {
-      width: 18px;
-      height: 18px;
-      border-radius: 6px;
-      background: linear-gradient(135deg, #2563eb, #7c3aed);
+    .nav a{
+      color:#4b5563;
     }
-
-    .brand-name {
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-    }
-
-    .nav {
-      display: flex;
-      gap: 1.2rem;
-      font-size: 0.9rem;
-    }
-
-    .nav a {
-      color: #4b5563;
-    }
-
-    .nav a:hover {
-      color: #111827;
+    .nav a:hover{
+      color:#111827;
     }
 
     /* HERO */
-    .hero {
-      padding: 56px 0 40px;
-      background: #f9fafb;
-      border-bottom: 1px solid #e5e7eb;
+    .hero{
+      padding:56px 0 40px;
+      background:#f9fafb;
+      border-bottom:1px solid #e5e7eb;
+    }
+    .hero-inner{
+      display:grid;
+      gap:2.4rem;
+    }
+    .hero-tag{
+      font-size:0.78rem;
+      letter-spacing:0.16em;
+      text-transform:uppercase;
+      color:#6b7280;
+      margin-bottom:0.7rem;
+    }
+    .hero h1{
+      font-size:2.3rem;
+      line-height:1.15;
+      margin-bottom:0.8rem;
+    }
+    .hero p{
+      max-width:540px;
+      font-size:0.96rem;
+      color:#4b5563;
+    }
+    .hero-actions{
+      margin-top:1.3rem;
+      display:flex;
+      flex-wrap:wrap;
+      gap:0.8rem;
+    }
+    .hero-note{
+      margin-top:0.7rem;
+      font-size:0.82rem;
+      color:#6b7280;
     }
 
-    .hero-inner {
-      display: grid;
-      gap: 2.4rem;
-    }
-
-    .hero-tag {
-      font-size: 0.78rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: #6b7280;
-      margin-bottom: 0.7rem;
-    }
-
-    .hero h1 {
-      font-size: 2.3rem;
-      line-height: 1.15;
-      margin-bottom: 0.8rem;
-    }
-
-    .hero p {
-      max-width: 540px;
-      font-size: 0.96rem;
-      color: #4b5563;
-    }
-
-    .hero-actions {
-      margin-top: 1.3rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-    }
-
-    .hero-note {
-      margin-top: 0.7rem;
-      font-size: 0.82rem;
-      color: #6b7280;
-    }
-
-    /* BUTONLAR */
+    /* BUTTONS */
     .btn-primary,
-    .btn-ghost {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.6rem 1.5rem;
-      border-radius: 999px;
-      font-size: 0.9rem;
-      border: 1px solid transparent;
-      cursor: pointer;
-      white-space: nowrap;
+    .btn-ghost{
+      padding:0.6rem 1.5rem;
+      border-radius:999px;
+      font-size:0.9rem;
+      border:1px solid transparent;
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      white-space:nowrap;
+    }
+    .btn-primary{
+      background:#2563eb;
+      color:#fff;
+    }
+    .btn-ghost{
+      background:#fff;
+      border-color:#d1d5db;
+      color:#111827;
     }
 
-    .btn-primary {
-      background: #2563eb;
-      color: #ffffff;
+    /* HERO VISUAL */
+    .hero-visual{
+      border-radius:20px;
+      border:1px solid #e5e7eb;
+      background:radial-gradient(circle at top left,#2563eb 0,#7c3aed 32%,#111827 92%);
+      min-height:230px;
+      position:relative;
+      overflow:hidden;
     }
-
-    .btn-ghost {
-      background: #ffffff;
-      border-color: #d1d5db;
-      color: #111827;
-    }
-
-    /* HERO GÖRSEL BLOK */
-    .hero-visual {
-      border-radius: 20px;
-      border: 1px solid #e5e7eb;
-      background: radial-gradient(circle at top left, #2563eb 0, #7c3aed 32%, #111827 92%);
-      min-height: 230px;
-      position: relative;
-      overflow: hidden;
-    }
-
     .hero-visual::before,
-    .hero-visual::after {
-      content: "";
-      position: absolute;
-      border-radius: 999px;
-      border: 1px solid rgba(248, 250, 252, 0.35);
-      backdrop-filter: blur(6px);
+    .hero-visual::after{
+      content:"";
+      position:absolute;
+      border-radius:999px;
+      border:1px solid rgba(248,250,252,.35);
+      backdrop-filter:blur(6px);
+    }
+    .hero-visual::before{
+      width:150px;
+      height:150px;
+      top:18%;
+      left:10%;
+    }
+    .hero-visual::after{
+      width:210px;
+      height:210px;
+      bottom:-30px;
+      right:6%;
+    }
+    .hero-visual-inner{
+      position:absolute;
+      inset:0;
+      padding:1rem 1.3rem;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      color:#e5e7eb;
+      font-size:0.82rem;
+    }
+    .hero-visual-title{
+      font-size:0.9rem;
+      font-weight:600;
+    }
+    .hero-visual-tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:0.35rem;
+      margin-top:0.4rem;
+    }
+    .hero-tag-pill{
+      padding:0.2rem 0.6rem;
+      border-radius:999px;
+      border:1px solid rgba(243,244,246,.6);
+      font-size:0.72rem;
     }
 
-    .hero-visual::before {
-      width: 150px;
-      height: 150px;
-      top: 18%;
-      left: 10%;
+    /* SECTIONS */
+    .section{
+      padding:40px 0 46px;
+    }
+    .section-alt{
+      background:#f9fafb;
+      border-top:1px solid #e5e7eb;
+      border-bottom:1px solid #e5e7eb;
+    }
+    .section-header{
+      margin-bottom:1.6rem;
+    }
+    .section-header h2{
+      font-size:1.6rem;
+      margin-bottom:0.3rem;
+    }
+    .section-header p{
+      font-size:0.95rem;
+      color:#6b7280;
+      max-width:640px;
     }
 
-    .hero-visual::after {
-      width: 210px;
-      height: 210px;
-      bottom: -30px;
-      right: 6%;
+    /* CARDS / GRID */
+    .grid-3{
+      display:grid;
+      gap:1.4rem;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    }
+    .card{
+      background:#fff;
+      border-radius:14px;
+      border:1px solid #e5e7eb;
+      padding:1.1rem 1.2rem;
+    }
+    .card h3{
+      font-size:1rem;
+      margin-bottom:0.5rem;
+    }
+    .card p{
+      font-size:0.9rem;
+      color:#4b5563;
+      line-height:1.5;
     }
 
-    .hero-visual-inner {
-      position: absolute;
-      inset: 0;
-      padding: 1rem 1.3rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      color: #e5e7eb;
-      font-size: 0.82rem;
+    /* SERVICE LAYOUT */
+    .service-layout{
+      display:grid;
+      gap:1.6rem;
+      grid-template-columns:minmax(0,1.6fr) minmax(0,1.1fr);
+    }
+    .service-main p{
+      font-size:0.95rem;
+      color:#4b5563;
+      line-height:1.6;
+      margin-bottom:0.7rem;
+    }
+    .service-main ul{
+      padding-left:1.1rem;
+      font-size:0.9rem;
+      color:#4b5563;
+      line-height:1.6;
+      list-style:disc;
+    }
+    .service-side{
+      display:flex;
+      flex-direction:column;
+      gap:0.9rem;
+    }
+    .pill-title{
+      font-size:0.82rem;
+      text-transform:uppercase;
+      letter-spacing:0.16em;
+      color:#6b7280;
+      margin-bottom:0.4rem;
+    }
+    .tag-list{
+      display:flex;
+      flex-wrap:wrap;
+      gap:0.35rem;
+      font-size:0.8rem;
+      color:#4b5563;
+    }
+    .tag{
+      padding:0.2rem 0.55rem;
+      border-radius:999px;
+      border:1px solid #e5e7eb;
+      background:#f9fafb;
+    }
+    .mini-note{
+      font-size:0.8rem;
+      color:#6b7280;
+      margin-top:0.2rem;
     }
 
-    .hero-visual-title {
-      font-size: 0.9rem;
-      font-weight: 600;
-      margin-bottom: 0.2rem;
+    /* FORM */
+    .quote-form{
+      margin-top:1.2rem;
+      background:#fff;
+      border-radius:14px;
+      border:1px solid #e5e7eb;
+      padding:1.2rem 1.3rem;
+      display:flex;
+      flex-direction:column;
+      gap:0.9rem;
     }
-
-    .hero-visual-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
-      margin-top: 0.4rem;
+    .quote-form label{
+      font-size:0.85rem;
+      color:#374151;
+      margin-bottom:0.25rem;
+      display:block;
     }
-
-    .hero-tag-pill {
-      padding: 0.2rem 0.6rem;
-      border-radius: 999px;
-      border: 1px solid rgba(243, 244, 246, 0.6);
-      font-size: 0.72rem;
-    }
-
-    /* GENEL BÖLÜMLER */
-    .section {
-      padding: 40px 0 46px;
-    }
-
-    .section-alt {
-      background: #f9fafb;
-      border-top: 1px solid #e5e7eb;
-      border-bottom: 1px solid #e5e7eb;
-    }
-
-    .section-header {
-      margin-bottom: 1.6rem;
-    }
-
-    .section-header h2 {
-      font-size: 1.6rem;
-      margin-bottom: 0.3rem;
-    }
-
-    .section-header p {
-      font-size: 0.95rem;
-      color: #6b7280;
-      max-width: 640px;
-    }
-
-    /* GENEL KART */
-    .card {
-      background: #ffffff;
-      border-radius: 14px;
-      border: 1px solid #e5e7eb;
-      padding: 1.1rem 1.2rem;
-    }
-
-    /* ÖZET GRID */
-    .grid-3 {
-      display: grid;
-      gap: 1.4rem;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    }
-
-    .grid-3 .card h3 {
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .grid-3 .card p {
-      font-size: 0.9rem;
-      color: #4b5563;
-      line-height: 1.5;
-    }
-
-    /* HİZMET BLOKLARI (MİMARİ/YAZILIM/3D) */
-    .service-layout {
-      display: grid;
-      gap: 1.6rem;
-      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.1fr);
-      align-items: flex-start;
-    }
-
-    .service-main p {
-      font-size: 0.95rem;
-      color: #4b5563;
-      line-height: 1.6;
-      margin-bottom: 0.7rem;
-    }
-
-    .service-main ul {
-      padding-left: 1.1rem;
-      font-size: 0.9rem;
-      color: #4b5563;
-      line-height: 1.6;
-      list-style: disc;
-    }
-
-    .service-main li + li {
-      margin-top: 0.3rem;
-    }
-
-    .service-side {
-      display: flex;
-      flex-direction: column;
-      gap: 0.9rem;
-    }
-
-    .pill-title {
-      font-size: 0.82rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: #6b7280;
-      margin-bottom: 0.4rem;
-    }
-
-    .tag-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
-      font-size: 0.8rem;
-      color: #4b5563;
-    }
-
-    .tag {
-      padding: 0.2rem 0.55rem;
-      border-radius: 999px;
-      border: 1px solid #e5e7eb;
-      background: #f9fafb;
-    }
-
-    .mini-note {
-      font-size: 0.8rem;
-      color: #6b7280;
-      margin-top: 0.2rem;
-    }
-
-    /* TEKLİF FORMU */
-    .quote-form {
-      margin-top: 1.2rem;
-      background: #ffffff;
-      border-radius: 14px;
-      border: 1px solid #e5e7eb;
-      padding: 1.2rem 1.3rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.9rem;
-    }
-
-    .form-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .form-row > div {
-      flex: 1 1 220px;
-    }
-
-    .quote-form label {
-      font-size: 0.85rem;
-      color: #374151;
-      display: block;
-      margin-bottom: 0.25rem;
-    }
-
     .quote-form input,
     .quote-form select,
-    .quote-form textarea {
-      width: 100%;
-      padding: 0.55rem 0.6rem;
-      border-radius: 8px;
-      border: 1px solid #d1d5db;
-      font-size: 0.9rem;
+    .quote-form textarea{
+      width:100%;
+      padding:0.55rem 0.6rem;
+      border-radius:8px;
+      border:1px solid #d1d5db;
+      font-size:0.9rem;
+    }
+    .quote-form textarea{
+      min-height:110px;
+      resize:vertical;
+    }
+    .form-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:1rem;
+    }
+    .form-row>div{
+      flex:1 1 220px;
     }
 
-    .quote-form textarea {
-      min-height: 110px;
-      resize: vertical;
+    /* CONTACT */
+    .contact-card p{
+      font-size:0.9rem;
+      color:#4b5563;
+      line-height:1.6;
     }
-
-    /* SLIDER */
-    .slider-row {
-      margin-top: 0.3rem;
-    }
-
-    .slider-label {
-      font-size: 0.82rem;
-      color: #4b5563;
-      margin-top: 0.25rem;
-    }
-
-    .slider-label span {
-      font-weight: 600;
-      color: #111827;
-    }
-
-    input[type="range"] {
-      width: 100%;
-      accent-color: #2563eb;
-    }
-
-    /* İLETİŞİM KARTI */
-    .contact-card p {
-      font-size: 0.9rem;
-      color: #4b5563;
-      line-height: 1.6;
-    }
-
-    .contact-card a {
-      color: #2563eb;
-    }
-
-    .contact-card a:hover {
-      text-decoration: underline;
+    .contact-card a{
+      color:#2563eb;
     }
 
     /* FOOTER */
-    .footer {
-      border-top: 1px solid #e5e7eb;
-      background: #ffffff;
-      padding: 16px 0;
-      font-size: 0.8rem;
-      color: #6b7280;
-      text-align: center;
+    .footer{
+      text-align:center;
+      background:#fff;
+      border-top:1px solid #e5e7eb;
+      padding:16px 0;
+      font-size:0.8rem;
+      color:#6b7280;
     }
 
-    @media (min-width: 860px) {
-      .hero-inner {
-        grid-template-columns: minmax(0, 2fr) minmax(0, 1.3fr);
-        align-items: center;
+    @media(max-width:720px){
+      .topbar-inner{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:0.4rem;
+      }
+      .nav{
+        flex-wrap:wrap;
+      }
+      .form-row{
+        flex-direction:column;
+      }
+      .service-layout{
+        grid-template-columns:1fr;
       }
     }
-
-    @media (max-width: 720px) {
-      .topbar-inner {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.4rem;
-      }
-
-      .nav {
-        flex-wrap: wrap;
-      }
-
-      .form-row {
-        flex-direction: column;
-      }
-
-      .service-layout {
-        grid-template-columns: minmax(0, 1fr);
+    @media(min-width:860px){
+      .hero-inner{
+        grid-template-columns:minmax(0,2fr) minmax(0,1.3fr);
       }
     }
   </style>
 </head>
 <body>
-  <!-- ÜST MENÜ -->
-  <header class="topbar">
-    <div class="container topbar-inner">
-      <div class="brand">
-        <span class="brand-mark"></span>
-        <span class="brand-name">MOGBO</span>
-      </div>
-      <nav class="nav">
-        <a href="#top">Ana Sayfa</a>
-        <a href="#architecture">Mimari</a>
-        <a href="#software">Yazılım</a>
-        <a href="#design3d">3D & Ar-Ge</a>
-        <a href="#quote">Teklif Al</a>
-        <a href="#contact">İletişim</a>
-      </nav>
+
+<header class="topbar">
+  <div class="container topbar-inner">
+    <div class="brand">
+      <span class="brand-mark"></span>
+      <span class="brand-name">MOGBO</span>
     </div>
-  </header>
+    <nav class="nav">
+      <a href="#top">Ana Sayfa</a>
+      <a href="#architecture">Mimari</a>
+      <a href="#software">Yazılım</a>
+      <a href="#design3d">3D & Ar-Ge</a>
+      <a href="#quote">Teklif Al</a>
+      <a href="#contact">İletişim</a>
+    </nav>
+  </div>
+</header>
 
-  <main id="top">
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container hero-inner">
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div>
+        <p class="hero-tag">Mimari • Yazılım • 3D Tasarım • Ar-Ge</p>
+        <h1>Mekân, yazılım ve prototip geliştiren<br>çok disiplinli bir stüdyo.</h1>
+        <p>
+          MOGBO; mimari proje, yazılım & simülasyon, 3D modelleme ve elektronik Ar-Ge
+          alanlarında çalışan, proje odaklı bir tasarım stüdyosudur.
+        </p>
+        <div class="hero-actions">
+          <a href="#architecture" class="btn-primary">Mimari hizmetler</a>
+          <a href="#quote" class="btn-ghost">Projeniz için teklif alın</a>
+        </div>
+        <p class="hero-note">
+          Tek bir yerden: plan çizimi, 3D görselleştirme, oyun/simülasyon ve donanım destekli prototip geliştirme.
+        </p>
+      </div>
+
+      <!-- HERO VISUAL -->
+      <div class="hero-visual">
+        <div class="hero-visual-inner">
+          <div class="hero-visual-title">Mimari proje + yazılım + 3D modelleme.</div>
+          <p>Aynı projede hem çizim, hem simülasyon, hem de fiziksel prototip geliştirebilirsiniz.</p>
+          <div class="hero-visual-tags">
+            <span class="hero-tag-pill">Mimari proje</span>
+            <span class="hero-tag-pill">Unity simülasyon</span>
+            <span class="hero-tag-pill">3D model & render</span>
+            <span class="hero-tag-pill">Arduino & PCB</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ÖZET -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Ne yapıyoruz?</h2>
+        <p>Temelde üç alanda çalışıyoruz: mimari, yazılım ve 3D / Ar-Ge.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>Mimari Tasarım</h3>
+          <p>Konseptten uygulama projesine kadar çizim ve mekân tasarımı.</p>
+        </div>
+        <div class="card">
+          <h3>Yazılım & Simülasyon</h3>
+          <p>Unity oyun/simülasyon ve Flutter mobil uygulamalar.</p>
+        </div>
+        <div class="card">
+          <h3>3D & Ar-Ge</h3>
+          <p>3D modelleme, render, PCB ve elektronik prototipleme.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MİMARİ -->
+  <section id="architecture" class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <h2>Mimari & Mekân Tasarımı</h2>
+        <p>Kapsamlı mimari proje + 3D modelleme + sunum desteği.</p>
+      </div>
+
+      <div class="service-layout">
+        <div class="service-main">
+          <p>Mimari süreçler:</p>
+          <ul>
+            <li>Konsept tasarım, plan, kesit, görünüş</li>
+            <li>Uygulama projesi ve detay çizimleri</li>
+            <li>İç mekân tasarımı</li>
+            <li>3D modelleme ve dış/iç render</li>
+            <li>Renovasyon, tadilat ve yeniden işlevlendirme projeleri</li>
+          </ul>
+        </div>
+
+        <div class="service-side">
+          <div class="card">
+            <div class="pill-title">Araçlar</div>
+            <div class="tag-list">
+              <span class="tag">AutoCAD</span>
+              <span class="tag">Blender</span>
+              <span class="tag">Unity Walkthrough</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="pill-title">Teslim</div>
+            <ul style="padding-left:1.1rem;font-size:0.88rem;color:#4b5563;line-height:1.6;list-style:disc;">
+              <li>DWG / PDF çizim seti</li>
+              <li>Render görselleri</li>
+              <li>Kısa konsept raporu</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- YAZILIM -->
+  <section id="software" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Yazılım, Oyun & Simülasyon</h2>
+        <p>Unity ve Flutter ile hızlı prototip + üretim odaklı yazılım geliştirme.</p>
+      </div>
+
+      <div class="service-layout">
+        <div class="service-main">
+          <p>Yazılım hizmetleri:</p>
+          <ul>
+            <li>Unity 2D / 3D oyunları</li>
+            <li>Medikal & eğitim simülasyonları</li>
+            <li>Flutter iOS & Android uygulamaları</li>
+            <li>Küçük web arayüzleri</li>
+            <li>Veritabanı işlemleri</li>
+          </ul>
+        </div>
+
+        <div class="service-side">
+          <div class="card">
+            <div class="pill-title">Teknolojiler</div>
+            <div class="tag-list">
+              <span class="tag">Unity</span>
+              <span class="tag">C#</span>
+              <span class="tag">Flutter</span>
+              <span class="tag">Dart</span>
+              <span class="tag">Firebase</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="pill-title">Örnek çıktılar</div>
+            <ul style="padding-left:1.1rem;font-size:0.88rem;color:#4b5563;line-height:1.6;list-style:disc;">
+              <li>Mini simülasyon</li>
+              <li>Şirket içi mobil uygulama</li>
+              <li>AR/VR demo</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3D & AR-GE -->
+  <section id="design3d" class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <h2>3D Modelleme, Ürün Tasarımı & Ar-Ge</h2>
+        <p>Oyun modellerinden elektronik prototiplere kadar üretim desteği.</p>
+      </div>
+
+      <div class="service-layout">
+        <div class="service-main">
+          <p>3D & Ar-Ge hizmetleri:</p>
+          <ul>
+            <li>Optimize 3D modelleme (oyun & simülasyon)</li>
+            <li>Medikal 3D modeller (kemik, menisküs vb.)</li>
+            <li>Ürün tasarımı + render</li>
+            <li>Arduino tabanlı prototipler</li>
+            <li>PCB tasarımı & donanım geliştirme</li>
+            <li>Robotik kodlama & sensör entegrasyonu</li>
+          </ul>
+        </div>
+
+        <div class="service-side">
+          <div class="card">
+            <div class="pill-title">Araçlar</div>
+            <div class="tag-list">
+              <span class="tag">Blender</span>
+              <span class="tag">Fusion 360</span>
+              <span class="tag">Arduino</span>
+              <span class="tag">Eagle / KiCad</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="pill-title">Yaklaşım</div>
+            <p style="font-size:0.9rem;color:#4b5563;line-height:1.6;">
+              Önce küçük bir prototip → sonra iyileştirilmiş tasarım → en son stabil elektronik & yazılım.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEKLİF FORMU -->
+  <section id="quote" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Teklif Al</h2>
+        <p>Projenizin kısa bir açıklaması yeterli.</p>
+      </div>
+
+      <form class="quote-form" action="mailto:info@mogbo.studio" method="post" enctype="text/plain">
+
+        <div class="form-row">
+          <div>
+            <label for="name">Ad Soyad</label>
+            <input type="text" id="name" name="Ad Soyad" required>
+          </div>
+          <div>
+            <label for="email">E-posta</label>
+            <input type="email" id="email" name="E-posta" required>
+          </div>
+        </div>
+
         <div>
-          <p class="hero-tag">Mimari • Yazılım • 3D Tasarım • Ar-Ge</p>
-          <h1>Mekân, yazılım ve prototip geliştiren<br>çok disiplinli bir stüdyo.</h1>
-          <p>
-            MOGBO; mimari proje, yazılım & simülasyon, 3D modelleme ve elektronik Ar-Ge
-            alanlarında çalışan, proje odaklı bir tasarım ve geliştirme stüdyosudur.
-          </p>
-          <div class="hero-actions">
-            <a href="#architecture" class="btn-primary">Mimari hizmetler</a>
-            <a href="#quote" class="btn-ghost">Projeniz için teklif alın</a>
-          </div>
-          <p class="hero-note">
-            Tek bir yerden: plan çizimi, 3D görselleştirme, oyun/simülasyon ve donanım destekli projeler.
-          </p>
+          <label for="serviceSelect">Hangi ana alan için teklif istiyorsunuz?</label>
+          <select id="serviceSelect" name="Alan">
+            <option value="Mimari tasarım / proje">Mimari tasarım / proje</option>
+            <option value="Yazılım, oyun & simülasyon">Yazılım, oyun & simülasyon</option>
+            <option value="3D modelleme & mimari/ürün">3D modelleme & mimari/ürün</option>
+            <option value="Elektronik, Arduino & PCB">Elektronik, Arduino & PCB</option>
+            <option value="Danışmanlık / fikir geliştirme">Danışmanlık / fikir geliştirme</option>
+          </select>
         </div>
 
-        <!-- Görsel blok (soyut ama kurumsal) -->
-        <div class="hero-visual">
-          <div class="hero-visual-inner">
-            <div class="hero-visual-title">Mimari proje + yazılım + 3D modelleme.</div>
-            <p>
-              Aynı projede hem çizim, hem simülasyon, hem de fiziksel prototip geliştirebilen yapı.
-            </p>
-            <div class="hero-visual-tags">
-              <span class="hero-tag-pill">Mimari proje</span>
-              <span class="hero-tag-pill">Unity simülasyon</span>
-              <span class="hero-tag-pill">3D model & render</span>
-              <span class="hero-tag-pill">Arduino & PCB</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- KISA ÖZET -->
-    <section class="section">
-      <div class="container">
-        <div class="section-header">
-          <h2>Ne yapıyoruz?</h2>
-          <p>
-            Temelde üç alanda çalışıyoruz: mimari, yazılım & simülasyon ve 3D / Ar-Ge.
-            Her alan için üretim, modelleme ve geliştirme süreçlerini üstleniyoruz.
-          </p>
-        </div>
-
-        <div class="grid-3">
-          <div class="card">
-            <h3>Mimari Tasarım</h3>
-            <p>
-              Konseptten uygulama projesine, iç mekândan renovasyona kadar
-              mimari tasarım ve çizim işleri.
-            </p>
-          </div>
-          <div class="card">
-            <h3>Yazılım & Simülasyon</h3>
-            <p>
-              Unity ile oyun ve eğitim simülasyonları, Flutter ile mobil uygulamalar,
-              web arayüzleri.
-            </p>
-          </div>
-          <div class="card">
-            <h3>3D & Ar-Ge</h3>
-            <p>
-              3D modelleme, ürün tasarımı, render, Arduino ve PCB tabanlı
-              prototip & Ar-Ge çalışmaları.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- MİMARİ BÖLÜMÜ -->
-    <section id="architecture" class="section section-alt">
-      <div class="container">
-        <div class="section-header">
-          <h2>Mimari & Mekân Tasarımı</h2>
-          <p>
-            Bir mimarın üstlenebileceği tasarım ve çizim işlerinin büyük kısmını,
-            dijital üretim ve görselleştirme desteği ile birlikte yapıyoruz.
-          </p>
-        </div>
-
-        <div class="service-layout">
-          <div class="service-main">
-            <p>
-              Çalışma şeklimiz; önce ihtiyacı netleştirmek, sonra fonksiyon şemasını
-              ve plan kararlarını oluşturmak, en son aşamada ise 3D görselleştirme
-              ve detaylarla projeyi tamamlamak şeklinde ilerler.
-            </p>
-            <p>Üstlendiğimiz mimari işler özetle şunları içerir:</p>
-            <ul>
-              <li>Konsept tasarım, vaziyet planı ve kütle çalışması</li>
-              <li>Plan, kesit, görünüş ve çatı planı çizimleri</li>
-              <li>Uygulama projesi ve temel detay çözümleri</li>
-              <li>İç mekân düzeni, malzeme seçim önerileri</li>
-              <li>3D modelleme ve mimari render (dış/iç mekân)</li>
-              <li>Mevcut yapılar için renovasyon / tadilat projeleri</li>
-            </ul>
-          </div>
-
-          <div class="service-side">
-            <div class="card">
-              <div class="pill-title">Araçlar</div>
-              <div class="tag-list">
-                <span class="tag">AutoCAD</span>
-                <span class="tag">3ds Max / Blender</span>
-                <span class="tag">Unity (mimari walkthrough)</span>
-                <span class="tag">Photoshop</span>
-              </div>
-              <p class="mini-note">
-                İhtiyaca göre hızlı eskiz veya sunuma hazır çıktı üretebiliyoruz.
-              </p>
-            </div>
-            <div class="card">
-              <div class="pill-title">Teslim formatları</div>
-              <ul style="padding-left:1.1rem; font-size:0.88rem; color:#4b5563; line-height:1.5; list-style:disc;">
-                <li>DWG / PDF çizim dosyaları</li>
-                <li>Yüksek çözünürlüklü render görselleri</li>
-                <li>Kısa proje açıklaması ve notlar</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- YAZILIM BÖLÜMÜ -->
-    <section id="software" class="section">
-      <div class="container">
-        <div class="section-header">
-          <h2>Yazılım, Oyun & Simülasyon</h2>
-          <p>
-            Unity, Flutter ve temel web teknolojileriyle; eğitim, simülasyon ve
-            ürün odaklı projeler geliştiriyoruz.
-          </p>
-        </div>
-
-        <div class="service-layout">
-          <div class="service-main">
-            <p>
-              Teknik tercihlerde karmaşık yollara girmek yerine, bakımı yapılabilir
-              ve uzun vadede geliştirilebilir çözümler üretmeye odaklanıyoruz.
-            </p>
-            <p>Yazılım tarafında yaptığımız işler:</p>
-            <ul>
-              <li>Unity ile 2D / 3D oyun geliştirme</li>
-              <li>Eğitim ve medikal amaçlı simülasyon projeleri</li>
-              <li>Basit VR / masaüstü deneyimleri</li>
-              <li>Flutter ile iOS & Android mobil uygulamalar</li>
-              <li>Web arayüzleri ve küçük web uygulamaları</li>
-              <li>Veritabanı tasarımı ve temel CRUD işlemleri</li>
-            </ul>
-          </div>
-
-          <div class="service-side">
-            <div class="card">
-              <div class="pill-title">Teknolojiler</div>
-              <div class="tag-list">
-                <span class="tag">Unity</span>
-                <span class="tag">C#</span>
-                <span class="tag">Flutter</span>
-                <span class="tag">Dart</span>
-                <span class="tag">Firebase</span>
-                <span class="tag">REST API</span>
-              </div>
-              <p class="mini-note">
-                Gerekirse mevcut sistemlere entegrasyon veya prototip amaçlı bağımsız çözümler üretebiliriz.
-              </p>
-            </div>
-            <div class="card">
-              <div class="pill-title">Örnek çıktılar</div>
-              <ul style="padding-left:1.1rem; font-size:0.88rem; color:#4b5563; line-height:1.5; list-style:disc;">
-                <li>Eğitim amaçlı mini simülasyon</li>
-                <li>İç süreçler için basit mobil uygulama</li>
-                <li>Ürün tanıtımı için interaktif demo</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 3D & AR-GE BÖLÜMÜ -->
-    <section id="design3d" class="section section-alt">
-      <div class="container">
-        <div class="section-header">
-          <h2>3D Modelleme, Ürün Tasarımı & Ar-Ge</h2>
-          <p>
-            Dijital 3D modellerden fiziksel prototiplere kadar; ürün, medikal ve
-            teknik projeler için tasarım ve Ar-Ge desteği sağlıyoruz.
-          </p>
-        </div>
-
-        <div class="service-layout">
-          <div class="service-main">
-            <p>
-              Özellikle simülasyon ve eğitim projelerinde; 3D geometri, malzeme
-              davranışı, elektronik ve mekanik kısımları aynı çatı altında düşünmeye alışığız.
-            </p>
-            <p>Bu bölümde yaptığımız çalışmalar:</p>
-            <ul>
-              <li>Oyun ve simülasyon için optimize 3D modelleme</li>
-              <li>Medikal modeller (kemik, doku, menisküs vb.)</li>
-              <li>Ürün tasarımı ve basit ergonomi çalışmaları</li>
-              <li>Mimari ve ürün için render üretimi</li>
-              <li>Arduino tabanlı prototipler ve sensör entegrasyonu</li>
-              <li>PCB tasarımı ve küçük seri prototip geliştirme</li>
-              <li>Robotik kodlama ve mini otomasyon projeleri</li>
-            </ul>
-          </div>
-
-          <div class="service-side">
-            <div class="card">
-              <div class="pill-title">Araçlar & Alanlar</div>
-              <div class="tag-list">
-                <span class="tag">Blender</span>
-                <span class="tag">Fusion 360 / CAD</span>
-                <span class="tag">Substance / Texture</span>
-                <span class="tag">Arduino</span>
-                <span class="tag">PCB tasarım</span>
-                <span class="tag">Sensör & encoder</span>
-              </div>
-              <p class="mini-note">
-                Hem ekran üzerinde çalışan projeler, hem de fiziksel test modelleri
-                için destek verebiliyoruz.
-              </p>
-            </div>
-            <div class="card">
-              <div class="pill-title">Ar-Ge yaklaşımı</div>
-              <p style="font-size:0.9rem; color:#4b5563; line-height:1.6;">
-                Önce problemi küçük bir prototiple test ediyoruz. Çalıştığı görüldüğünde
-                ikinci aşamada tasarımı iyileştirip gerekli ise elektronik ve yazılımı
-                stabilize ediyoruz.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TEKLİF AL -->
-    <section id="quote" class="section">
-      <div class="container">
-        <div class="section-header">
-          <h2>Teklif Al</h2>
-          <p>
-            Kısa bir özetle hangi alanda destek istediğinizi belirtin; teknik detayları
-            birlikte netleştirebiliriz.
-          </p>
-        </div>
-
-        <form class="quote-form" action="mailto:info@mogbo.studio" method="post" enctype="text/plain">
-          <div class="form-row">
-            <div>
-              <label for="name">Ad Soyad</label>
-              <input type="text" id="name" name="Ad Soyad" required />
-            </div>
-            <div>
-              <label for="email">E-posta</label>
-              <input type="email" id="email" name="E-posta" required />
-            </div>
-          </div>
-
-          <!-- HİZMET SLIDER -->
+        <div class="form-row">
           <div>
-            <label for="serviceRange">Hangi ana alan için teklif istiyorsunuz?</label>
-            <div class="slider-row">
-              <input type="range" id="serviceRange" min="1" max="5" step="1" />
-              <div class="slider-label">
-                Seçili alan: <span id="serviceLabel"></span>
-              </div>
-              <!-- Mailde okunması için gerçek metin -->
-              <input type="hidden" id="serviceValue" name="Alan" />
-            </div>
+            <label for="budget">Tahmini bütçe (opsiyonel)</label>
+            <select id="budget" name="Bütçe">
+              <option value="">Seçmek istemiyorum</option>
+              <option value="Düşük">Düşük bütçe</option>
+              <option value="Orta">Orta seviye</option>
+              <option value="Yüksek">Yüksek bütçe</option>
+            </select>
           </div>
-
-          <div class="form-row">
-            <div>
-              <label for="budget">Tahmini bütçe (opsiyonel)</label>
-              <select id="budget" name="Bütçe">
-                <option value="">Seçmek istemiyorum</option>
-                <option value="Düşük">Daha çok uygun fiyat önemli</option>
-                <option value="Orta">Orta seviye bütçe</option>
-                <option value="Yüksek">Kalite öncelikli, esnek bütçe</option>
-              </select>
-              <p class="mini-note">
-                Bütçe aralığı sadece yaklaşık fikir vermek içindir, farklı seçenekler üretilebilir.
-              </p>
-            </div>
-          </div>
-
-          <div>
-            <label for="message">Kısaca projenizi anlatın</label>
-            <textarea
-              id="message"
-              name="Proje Açıklaması"
-              placeholder="Örn: 3 katlı karma kullanım yapısı için uygulama projesi ve dış cephe renderları istiyoruz..."
-              required
-            ></textarea>
-          </div>
-
-          <button type="submit" class="btn-primary quote-submit">Teklif iste</button>
-        </form>
-      </div>
-    </section>
-
-    <!-- İLETİŞİM -->
-    <section id="contact" class="section section-alt">
-      <div class="container">
-        <div class="section-header">
-          <h2>İletişim</h2>
-          <p>
-            Projenizle ilgili net bir briefe ihtiyacınız yoksa endişe etmeyin; birkaç
-            cümlelik özetle de başlayabiliriz.
-          </p>
         </div>
 
-        <div class="card contact-card">
-          <p>
-            E-posta:
-            <a href="mailto:info@mogbo.studio">info@mogbo.studio</a><br /><br />
-            Örnek mesaj:<br />
-            “Unity ile medikal eğitim için basit bir simülasyon düşünüyoruz.
-            Diz eklemi modelimiz hazır, arayüz ve senaryo kurgusu için destek istiyoruz.
-            Yaklaşık süre ve maliyet öğrenebilir miyiz?”
-          </p>
+        <div>
+          <label for="message">Projenizi Kısaca Anlatın</label>
+          <textarea id="message" name="Proje Açıklaması" placeholder="Kısa bir özet yazın..." required></textarea>
         </div>
+
+        <button type="submit" class="btn-primary">Teklif iste</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <h2>İletişim</h2>
+        <p>Her türlü proje için e-posta gönderebilirsiniz.</p>
       </div>
-    </section>
-  </main>
 
-  <footer class="footer">
-    © 2025 MOGBO – Mimari, yazılım, 3D tasarım ve Ar-Ge stüdyosu.
-  </footer>
+      <div class="card contact-card">
+        <p>E-posta: <a href="mailto:info@mogbo.studio">info@mogbo.studio</a></p>
+        <p>Örnek mesaj: “Unity ile eğitim amaçlı mini simülasyon için teklif alabilir miyiz?”</p>
+      </div>
+    </div>
+  </section>
 
-  <!-- SLIDER İÇİN KÜÇÜK JS -->
-  <script>
-    (function () {
-      const areas = [
-        "Mimari tasarım / proje",
-        "Yazılım, oyun & simülasyon",
-        "3D modelleme & mimari/ürün",
-        "Elektronik, Arduino & PCB",
-        "Sadece danışmanlık / fikir geliştirme"
-      ];
+</main>
 
-      const range = document.getElementById("serviceRange");
-      const label = document.getElementById("serviceLabel");
-      const valueInput = document.getElementById("serviceValue");
+<footer class="footer">
+  © 2025 MOGBO – Mimari, Yazılım, 3D Tasarım ve Ar-Ge Stüdyosu.
+</footer>
 
-      function updateArea() {
-        const index = parseInt(range.value, 10) - 1;
-        const text = areas[index] || areas[0];
-        label.textContent = text;
-        valueInput.value = text;
-      }
-
-      range.addEventListener("input", updateArea);
-      // Sayfa açıldığında varsayılanı ayarla
-      updateArea();
-    })();
-  </script>
 </body>
 </html>
