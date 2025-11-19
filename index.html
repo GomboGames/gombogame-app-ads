@@ -151,20 +151,68 @@
       padding: 1.1rem 1.2rem;
     }
 
-    /* HERO KARTI */
-    .hero-card {
-      margin-top: 0;
+    /* HERO GÖRSEL BLOK */
+    .hero-visual {
+      border-radius: 18px;
+      border: 1px solid #e5e7eb;
+      background: radial-gradient(circle at top left, #2563eb 0, #7c3aed 35%, #111827 90%);
+      min-height: 220px;
+      position: relative;
+      overflow: hidden;
     }
 
-    .hero-card h3 {
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
+    .hero-visual::before,
+    .hero-visual::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      border: 1px solid rgba(248, 250, 252, 0.35);
+      backdrop-filter: blur(6px);
     }
 
-    .hero-card p {
+    .hero-visual::before {
+      width: 140px;
+      height: 140px;
+      top: 18%;
+      left: 14%;
+    }
+
+    .hero-visual::after {
+      width: 190px;
+      height: 190px;
+      bottom: -20px;
+      right: 5%;
+    }
+
+    .hero-visual-inner {
+      position: absolute;
+      inset: 0;
+      padding: 1rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      color: #e5e7eb;
+      font-size: 0.82rem;
+    }
+
+    .hero-visual-title {
       font-size: 0.9rem;
-      color: #4b5563;
-      line-height: 1.5;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+
+    .hero-visual-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.4rem;
+    }
+
+    .hero-tag-pill {
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(243, 244, 246, 0.6);
+      font-size: 0.72rem;
     }
 
     /* BÖLÜMLER */
@@ -245,24 +293,25 @@
       resize: vertical;
     }
 
-    .service-options {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem 1.2rem;
-      font-size: 0.85rem;
+    /* SLIDER */
+    .slider-row {
+      margin-top: 0.3rem;
+    }
+
+    .slider-label {
+      font-size: 0.82rem;
       color: #4b5563;
-      margin-top: 0.3rem;
+      margin-top: 0.25rem;
     }
 
-    .service-options label {
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
+    .slider-label span {
+      font-weight: 600;
+      color: #111827;
     }
 
-    .quote-submit {
-      margin-top: 0.3rem;
-      align-self: flex-start;
+    input[type="range"] {
+      width: 100%;
+      accent-color: #2563eb;
     }
 
     /* İLETİŞİM KARTI */
@@ -348,14 +397,18 @@
           </div>
         </div>
 
-        <div class="card hero-card">
-          <h3>Öne çıkan alanlar</h3>
-          <p>
-            Unity ile 2D/3D oyun & simülasyon,<br>
-            Flutter mobil uygulamalar,<br>
-            mimari & 3D tasarım,<br>
-            Arduino, PCB ve robotik projeler.
-          </p>
+        <!-- ÖNE ÇIKANLAR KARTI YOK, YERİNE GÖRSEL BLOK -->
+        <div class="hero-visual">
+          <div class="hero-visual-inner">
+            <div class="hero-visual-title">Simülasyon, mimarlık ve donanım tek yerde.</div>
+            <p>Unity, Flutter, mimari tasarım, 3D modelleme ve elektronik projeler için tek stüdyo.</p>
+            <div class="hero-visual-tags">
+              <span class="hero-tag-pill">Unity simülasyon</span>
+              <span class="hero-tag-pill">Mimari proje</span>
+              <span class="hero-tag-pill">3D & render</span>
+              <span class="hero-tag-pill">Arduino & PCB</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -418,16 +471,16 @@
             </div>
           </div>
 
+          <!-- HİZMET SLIDER -->
           <div>
-            <label>Hangi hizmet(ler) için teklif istiyorsunuz?</label>
-            <div class="service-options">
-              <label><input type="checkbox" name="Hizmet" value="Mimari Tasarım / Proje" /> Mimari tasarım / proje</label>
-              <label><input type="checkbox" name="Hizmet" value="3D & Render" /> 3D model / render</label>
-              <label><input type="checkbox" name="Hizmet" value="Unity Oyun / Simülasyon" /> Unity oyun / simülasyon</label>
-              <label><input type="checkbox" name="Hizmet" value="Flutter Mobil Uygulama" /> Flutter mobil uygulama</label>
-              <label><input type="checkbox" name="Hizmet" value="Web Sitesi" /> Web sitesi</label>
-              <label><input type="checkbox" name="Hizmet" value="Arduino / PCB / Robotik" /> Arduino / PCB / robotik</label>
-              <label><input type="checkbox" name="Hizmet" value="Diğer" /> Diğer</label>
+            <label for="serviceRange">Hangi hizmet için teklif istiyorsunuz?</label>
+            <div class="slider-row">
+              <input type="range" id="serviceRange" min="1" max="7" step="1" />
+              <div class="slider-label">
+                Seçili hizmet: <span id="serviceLabel"></span>
+              </div>
+              <!-- Mailde okunması için gerçek metin -->
+              <input type="hidden" id="serviceValue" name="Hizmet" />
             </div>
           </div>
 
@@ -475,5 +528,35 @@
   <footer class="footer">
     © 2025 MOGBO – Yazılım, oyun, tasarım ve donanım stüdyosu.
   </footer>
+
+  <!-- SLIDER İÇİN KÜÇÜK JS -->
+  <script>
+    (function () {
+      const services = [
+        "Mimari tasarım / proje",
+        "3D model / render",
+        "Unity oyun / simülasyon",
+        "Flutter mobil uygulama",
+        "Web sitesi",
+        "Arduino / PCB / robotik",
+        "Diğer"
+      ];
+
+      const range = document.getElementById("serviceRange");
+      const label = document.getElementById("serviceLabel");
+      const valueInput = document.getElementById("serviceValue");
+
+      function updateService() {
+        const index = parseInt(range.value, 10) - 1;
+        const text = services[index] || services[0];
+        label.textContent = text;
+        valueInput.value = text;
+      }
+
+      range.addEventListener("input", updateService);
+      // Sayfa açıldığında varsayılanı ayarla
+      updateService();
+    })();
+  </script>
 </body>
 </html>
