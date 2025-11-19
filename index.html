@@ -3,289 +3,93 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MOGBO | Yazılım, Ar-Ge ve Tasarım Stüdyosu</title>
+    <title>MOGBO | Yazılım & Tasarım Stüdyosu</title>
     <link rel="stylesheet" href="styles/style.css" />
 </head>
 <body>
-    <!-- HERO / ÜST KISIM -->
-    <header class="hero">
-        <div class="container hero-inner">
-            <div class="hero-text">
-                <div class="logo">MOGBO</div>
-                <h1>Yazılım, Ar-Ge ve Tasarım Stüdyosu</h1>
-                <p>
-                    MOGBO; oyun & simülasyon, mobil uygulama, web geliştirme, mimari tasarım,
-                    3D artistlik, elektronik ve endüstriyel tasarım alanlarında firmalara
-                    özel çözümler üreten çok disiplinli bir stüdyodur.
-                </p>
-                <div class="hero-actions">
-                    <a href="#services" class="btn-primary">Hizmetlerimizi Gör</a>
-                    <a href="#contact" class="btn-secondary">Projenizden Bahsedin</a>
-                </div>
+    <header class="topbar">
+        <div class="container topbar-inner">
+            <div class="brand">
+                <span class="brand-mark"></span>
+                <span class="brand-name">MOGBO</span>
             </div>
-            <div class="hero-tag">
-                <span>Studio</span>
-                <strong>Software • Simulation • Design</strong>
-            </div>
+            <nav class="nav">
+                <a href="index.html" class="active">Ana Sayfa</a>
+                <a href="services.html">Hizmetler</a>
+                <a href="about.html">Hakkımızda</a>
+                <a href="contact.html">İletişim</a>
+            </nav>
         </div>
     </header>
 
-    <!-- NAVBAR -->
-    <nav class="navbar">
-        <div class="container navbar-inner">
-            <div class="nav-left">
-                <span class="nav-logo">MOGBO</span>
-            </div>
-            <div class="nav-right">
-                <a href="#services">Hizmetler</a>
-                <a href="#process">Süreç</a>
-                <a href="#about">Hakkımızda</a>
-                <a href="#contact">İletişim</a>
-            </div>
-        </div>
-    </nav>
-
     <main>
-        <!-- HİZMETLER -->
-        <section id="services" class="section">
-            <div class="container">
-                <h2>Hizmetlerimiz</h2>
-                <p class="section-subtitle">
-                    Yazılım, tasarım ve Ar-Ge süreçleriniz için uçtan uca çözüm sunuyoruz.
-                </p>
-
-                <div class="grid">
-                    <!-- 1 -->
-                    <div class="card">
-                        <h3>Unity ile 2D / 3D Oyun Geliştirme</h3>
-                        <p>
-                            Mobil, PC ve simülasyon hedefli 2D / 3D oyun projeleri. Eğitim,
-                            sağlık, savunma ve eğlence odaklı interaktif deneyimler.
-                        </p>
+        <!-- HERO -->
+        <section class="hero-light">
+            <div class="container hero-grid">
+                <div>
+                    <p class="hero-tag">Yazılım • Oyun • Tasarım • Donanım</p>
+                    <h1>Modern projeler için<br>çok disiplinli stüdyo.</h1>
+                    <p class="hero-text">
+                        MOGBO; oyun & simülasyon, mobil uygulama, web, mimari tasarım,
+                        3D ve elektronik projeler için firmalara sade ve uygulanabilir çözümler sunar.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="services.html" class="btn-primary">Hizmetlerimizi Gör</a>
+                        <a href="contact.html" class="btn-ghost">Projenizi Anlatın</a>
                     </div>
-
-                    <!-- 2 -->
-                    <div class="card">
-                        <h3>Flutter ile Uygulama Geliştirme</h3>
-                        <p>
-                            iOS ve Android için tek kod tabanıyla modern, hızlı ve ölçeklenebilir
-                            mobil uygulamalar geliştiriyoruz.
-                        </p>
-                    </div>
-
-                    <!-- 3 -->
-                    <div class="card">
-                        <h3>Web Sitesi Tasarımı & Geliştirme</h3>
-                        <p>
-                            Kurumsal siteler, tanıtım sayfaları ve proje odaklı web arayüzleri.
-                            Hem tasarım hem frontend geliştirme tek elden.
-                        </p>
-                    </div>
-
-                    <!-- 4 -->
-                    <div class="card">
-                        <h3>Veri Tabanı Tasarımı & İşlemleri</h3>
-                        <p>
-                            Uygulama ve web projeleriniz için ölçeklenebilir veritabanı
-                            kurgusu, şema tasarımı ve CRUD işlemleri.
-                        </p>
-                    </div>
-
-                    <!-- 5 -->
-                    <div class="card">
-                        <h3>AutoCAD ile Mimari Tasarım</h3>
-                        <p>
-                            Mimari plan, kesit, görünüş ve uygulama projeleri. Fonksiyonel
-                            ve uygulanabilir mimari çözümler.
-                        </p>
-                    </div>
-
-                    <!-- 6 -->
-                    <div class="card">
-                        <h3>3D Artistlik & Dijital Modelleme</h3>
-                        <p>
-                            Oyun, simülasyon, VR ve mimari projeler için optimize 3D modeller,
-                            prop’lar, organik ve mekanik modeller.
-                        </p>
-                    </div>
-
-                    <!-- 7 -->
-                    <div class="card">
-                        <h3>Arduino İşleri & Elektronik Prototipleme</h3>
-                        <p>
-                            Arduino tabanlı kontrol sistemleri, sensör entegrasyonları ve
-                            hızlı prototip elektronik çözümleri.
-                        </p>
-                    </div>
-
-                    <!-- 8 -->
-                    <div class="card">
-                        <h3>Endüstriyel Tasarım Çözümleri</h3>
-                        <p>
-                            Ürün form geliştirme, ergonomi, 3D prototip ve üretime yönelik
-                            endüstriyel tasarım desteği.
-                        </p>
-                    </div>
-
-                    <!-- 9 -->
-                    <div class="card">
-                        <h3>Render & Görselleştirme Hizmeti</h3>
-                        <p>
-                            Mimari, ürün ve teknik projeler için yüksek kaliteli static ve
-                            animasyonlu render üretimi.
-                        </p>
-                    </div>
-
-                    <!-- 10 -->
-                    <div class="card">
-                        <h3>PCB Tasarlama & Ar-Ge Geliştirme</h3>
-                        <p>
-                            Özel donanım projeleri için PCB tasarımı, prototipleme ve Ar-Ge
-                            desteği. Sensör, encoder ve gömülü sistem entegrasyonları.
-                        </p>
-                    </div>
-
-                    <!-- 11 -->
-                    <div class="card">
-                        <h3>Robotik Kodlama & Otomasyon</h3>
-                        <p>
-                            Eğitim setleri, küçük robotik sistemler ve otomasyon odaklı
-                            çözümler için yazılım ve donanım desteği.
-                        </p>
-                    </div>
+                </div>
+                <div class="hero-card">
+                    <h2>Odak alanlarımız</h2>
+                    <ul>
+                        <li>Unity ile 2D/3D oyun & simülasyon</li>
+                        <li>Flutter mobil uygulama ve web arayüzleri</li>
+                        <li>3D & mimari tasarım, render</li>
+                        <li>Arduino, PCB ve robotik projeler</li>
+                    </ul>
                 </div>
             </div>
         </section>
 
-        <!-- SÜREÇ -->
-        <section id="process" class="section section-alt">
+        <!-- KISA ÖZET KARTLAR -->
+        <section class="section">
             <div class="container">
-                <h2>Nasıl Çalışıyoruz?</h2>
-                <p class="section-subtitle">
-                    İhtiyaç analizi ile başlayıp teslim sonrası destekle devam eden şeffaf bir süreç.
-                </p>
+                <div class="section-header">
+                    <h2>Ne yapıyoruz?</h2>
+                    <p>Karmaşık anlatmak yerine üç ana başlıkta topluyoruz.</p>
+                </div>
 
-                <div class="process-steps">
-                    <div class="step">
-                        <span class="step-number">01</span>
-                        <h3>Analiz & Planlama</h3>
+                <div class="grid-3">
+                    <div class="mini-card">
+                        <h3>Yazılım & Uygulama</h3>
                         <p>
-                            Projenizin hedeflerini, teknik gereksinimlerini ve kullanım
-                            senaryolarını birlikte netleştiriyoruz.
+                            Unity ve Flutter ile mobil, web ve masaüstü çözümler.
+                            Hafif, bakımı kolay ve modern arayüzler.
                         </p>
                     </div>
-                    <div class="step">
-                        <span class="step-number">02</span>
-                        <h3>Tasarım & Prototip</h3>
+                    <div class="mini-card">
+                        <h3>Oyun & Simülasyon</h3>
                         <p>
-                            UI/UX, 3D modelleme, mimari veya elektronik tasarım adımlarını
-                            prototipler üzerinden değerlendiriyoruz.
+                            Eğitim, sağlık ve endüstriyel alanlara yönelik gerçek
+                            zamanlı 3D deneyimler.
                         </p>
                     </div>
-                    <div class="step">
-                        <span class="step-number">03</span>
-                        <h3>Geliştirme & Entegrasyon</h3>
+                    <div class="mini-card">
+                        <h3>Tasarım & Donanım</h3>
                         <p>
-                            Yazılım geliştirme, simülasyon, donanım entegrasyonu ve testleri
-                            tamamlayarak çalışan sistemi ortaya çıkarıyoruz.
-                        </p>
-                    </div>
-                    <div class="step">
-                        <span class="step-number">04</span>
-                        <h3>Test & Destek</h3>
-                        <p>
-                            Gerçek kullanım senaryolarında test ediyor, gerekli iyileştirmeleri
-                            yapıyor ve teknik destek sağlıyoruz.
+                            3D modeller, mimari tasarım, PCB ve Arduino projeleriyle
+                            dijital ve fiziksel dünyayı birleştiriyoruz.
                         </p>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- HAKKIMIZDA -->
-        <section id="about" class="section">
-            <div class="container">
-                <h2>Hakkımızda</h2>
-                <p class="section-subtitle">
-                    Kod, tasarım ve mühendisliği aynı masada buluşturan çok disiplinli bir stüdyoyuz.
-                </p>
-
-                <div class="about-layout">
-                    <div class="about-text">
-                        <p>
-                            MOGBO; oyun teknolojileri, mobil uygulamalar, web arayüzleri, mimari
-                            tasarım, 3D modelleme, elektronik ve endüstriyel tasarım alanlarında
-                            firmalara özel çözümler üreten bir yazılım ve Ar-Ge stüdyosudur.
-                        </p>
-                        <p>
-                            Eğitim, sağlık, savunma, üretim, mimarlık ve endüstriyel tasarım
-                            sektörlerinde kullanılabilecek interaktif simülasyonlar, dijital
-                            ürünler ve prototipler geliştiriyoruz.
-                        </p>
-                        <p>
-                            Amacımız; sadece “çalışan” projeler değil, aynı zamanda
-                            <strong>bakımı yapılabilir, geliştirilebilir ve gerçekten işe yarayan</strong>
-                            çözümler üretmek.
-                        </p>
-                    </div>
-                    <div class="about-tagbox">
-                        <h3>Öne Çıkan Alanlar</h3>
-                        <ul>
-                            <li>Unity ile simülasyon & oyun geliştirme</li>
-                            <li>VR / mobil eğitim çözümleri</li>
-                            <li>Mimari ve ürün görselleştirme</li>
-                            <li>PCB, sensör ve Arduino projeleri</li>
-                            <li>Robotik ve otomasyon projeleri</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- İLETİŞİM -->
-        <section id="contact" class="section section-alt">
-            <div class="container">
-                <h2>İletişim</h2>
-                <p class="section-subtitle">
-                    Projeniz hakkında konuşmak veya iş birliği yapmak isterseniz bizimle iletişime geçin.
-                </p>
-
-                <div class="contact-grid">
-                    <div>
-                        <h3>İletişim Kanalları</h3>
-                        <ul class="contact-list">
-                            <li>E-posta: <a href="mailto:info@mogbo.studio">info@mogbo.studio</a></li>
-                            <li>GitHub: <a href="https://github.com/" target="_blank">github.com/</a></li>
-                            <li>LinkedIn: <a href="#" target="_blank">LinkedIn profiliniz</a></li>
-                        </ul>
-                        <p class="contact-note">
-                            İhtiyacınızı kısaca anlattığınız bir e-posta ile başlayabiliriz. Teknik
-                            detayları beraber netleştiririz.
-                        </p>
-                    </div>
-                    <div>
-                        <h3>Kısa Proje Özeti Örneği</h3>
-                        <div class="contact-box">
-                            <p>
-                                “Unity ile medikal eğitim için bir diz artroskopi simülasyonu
-                                geliştirmek istiyoruz. VR desteği, gerçekçi fizik ve basit bir
-                                eğitim senaryosu içermeli. Yaklaşık bütçe ve süre hakkında bilgi
-                                alabilir miyiz?”
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </section>
     </main>
 
-    <footer class="footer">
-        <div class="container">
-            <small>© 2025 MOGBO. Tüm hakları saklıdır.</small>
+    <footer class="footer-light">
+        <div class="container footer-inner">
+            <span>© 2025 MOGBO</span>
+            <span class="footer-sub">Yazılım, oyun, tasarım ve donanım stüdyosu.</span>
         </div>
     </footer>
-
-    <script src="scripts/main.js"></script>
 </body>
 </html>
