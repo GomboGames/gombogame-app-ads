@@ -1,95 +1,282 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MOGBO | Yazılım & Tasarım Stüdyosu</title>
-    <link rel="stylesheet" href="styles/style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MOGBO | Yazılım & Tasarım Stüdyosu</title>
+
+  <!-- TÜM TASARIM BURADA -->
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: #f4f5fb;
+      color: #111827;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: 90%;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    /* ÜST MENÜ */
+    .topbar {
+      background: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .topbar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.9rem 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .brand-mark {
+      width: 18px;
+      height: 18px;
+      border-radius: 6px;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+    }
+
+    .brand-name {
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+    }
+
+    .nav {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    .nav a { color: #4b5563; }
+    .nav a:hover { color: #111827; }
+
+    /* HERO */
+    .hero {
+      padding: 60px 0 40px;
+      background: #f9fafb;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .hero-inner {
+      display: grid;
+      gap: 2rem;
+    }
+
+    .hero-tag {
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #6b7280;
+      margin-bottom: 0.7rem;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      line-height: 1.15;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero p {
+      max-width: 520px;
+      font-size: 0.96rem;
+      color: #4b5563;
+    }
+
+    .hero-actions {
+      margin-top: 1.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.6rem 1.4rem;
+      border-radius: 999px;
+      background: #2563eb;
+      color: #ffffff;
+      font-size: 0.9rem;
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.6rem 1.4rem;
+      border-radius: 999px;
+      border: 1px solid #d1d5db;
+      font-size: 0.9rem;
+      color: #111827;
+      background: #ffffff;
+    }
+
+    /* KISA HİZMET KARTLARI */
+    .section {
+      padding: 40px 0 50px;
+    }
+
+    .section h2 {
+      font-size: 1.4rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .section > .container > p {
+      font-size: 0.95rem;
+      color: #6b7280;
+      margin-bottom: 1.6rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      gap: 1.4rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 14px;
+      border: 1px solid #e5e7eb;
+      padding: 1.1rem 1.2rem;
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: #4b5563;
+      line-height: 1.5;
+    }
+
+    /* FOOTER */
+    .footer {
+      border-top: 1px solid #e5e7eb;
+      background: #ffffff;
+      padding: 14px 0;
+      font-size: 0.8rem;
+      color: #6b7280;
+      text-align: center;
+    }
+
+    @media (min-width: 800px) {
+      .hero-inner {
+        grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
+        align-items: center;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header class="topbar">
-        <div class="container topbar-inner">
-            <div class="brand">
-                <span class="brand-mark"></span>
-                <span class="brand-name">MOGBO</span>
-            </div>
-            <nav class="nav">
-                <a href="index.html" class="active">Ana Sayfa</a>
-                <a href="services.html">Hizmetler</a>
-                <a href="about.html">Hakkımızda</a>
-                <a href="contact.html">İletişim</a>
-            </nav>
+  <!-- ÜST MENÜ -->
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <span class="brand-mark"></span>
+        <span class="brand-name">MOGBO</span>
+      </div>
+      <nav class="nav">
+        <a href="#top">Ana Sayfa</a>
+        <a href="#services">Hizmetler</a>
+        <a href="#contact">İletişim</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div>
+          <p class="hero-tag">Yazılım • Oyun • Tasarım • Donanım</p>
+          <h1>Modern projeler için<br>çok disiplinli stüdyo.</h1>
+          <p>
+            MOGBO; oyun & simülasyon, mobil uygulama, web, 3D ve elektronik projeler için
+            sade ve uygulanabilir çözümler sunar.
+          </p>
+          <div class="hero-actions">
+            <a href="#services" class="btn-primary">Hizmetlerimizi Gör</a>
+            <a href="#contact" class="btn-ghost">Projenizi Anlatın</a>
+          </div>
         </div>
-    </header>
 
-    <main>
-        <!-- HERO -->
-        <section class="hero-light">
-            <div class="container hero-grid">
-                <div>
-                    <p class="hero-tag">Yazılım • Oyun • Tasarım • Donanım</p>
-                    <h1>Modern projeler için<br>çok disiplinli stüdyo.</h1>
-                    <p class="hero-text">
-                        MOGBO; oyun & simülasyon, mobil uygulama, web, mimari tasarım,
-                        3D ve elektronik projeler için firmalara sade ve uygulanabilir çözümler sunar.
-                    </p>
-                    <div class="hero-actions">
-                        <a href="services.html" class="btn-primary">Hizmetlerimizi Gör</a>
-                        <a href="contact.html" class="btn-ghost">Projenizi Anlatın</a>
-                    </div>
-                </div>
-                <div class="hero-card">
-                    <h2>Odak alanlarımız</h2>
-                    <ul>
-                        <li>Unity ile 2D/3D oyun & simülasyon</li>
-                        <li>Flutter mobil uygulama ve web arayüzleri</li>
-                        <li>3D & mimari tasarım, render</li>
-                        <li>Arduino, PCB ve robotik projeler</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- KISA ÖZET KARTLAR -->
-        <section class="section">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Ne yapıyoruz?</h2>
-                    <p>Karmaşık anlatmak yerine üç ana başlıkta topluyoruz.</p>
-                </div>
-
-                <div class="grid-3">
-                    <div class="mini-card">
-                        <h3>Yazılım & Uygulama</h3>
-                        <p>
-                            Unity ve Flutter ile mobil, web ve masaüstü çözümler.
-                            Hafif, bakımı kolay ve modern arayüzler.
-                        </p>
-                    </div>
-                    <div class="mini-card">
-                        <h3>Oyun & Simülasyon</h3>
-                        <p>
-                            Eğitim, sağlık ve endüstriyel alanlara yönelik gerçek
-                            zamanlı 3D deneyimler.
-                        </p>
-                    </div>
-                    <div class="mini-card">
-                        <h3>Tasarım & Donanım</h3>
-                        <p>
-                            3D modeller, mimari tasarım, PCB ve Arduino projeleriyle
-                            dijital ve fiziksel dünyayı birleştiriyoruz.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer-light">
-        <div class="container footer-inner">
-            <span>© 2025 MOGBO</span>
-            <span class="footer-sub">Yazılım, oyun, tasarım ve donanım stüdyosu.</span>
+        <div class="card">
+          <h3>Öne çıkan alanlar</h3>
+          <p>
+            Unity ile 2D/3D oyun & simülasyon,<br>
+            Flutter mobil uygulamalar,<br>
+            mimari & 3D tasarım,<br>
+            Arduino, PCB ve robotik projeler.
+          </p>
         </div>
-    </footer>
+      </div>
+    </section>
+
+    <!-- HİZMETLER KISA -->
+    <section id="services" class="section">
+      <div class="container">
+        <h2>Ne yapıyoruz?</h2>
+        <p>Karmaşık liste yerine üç net başlık.</p>
+
+        <div class="grid-3">
+          <div class="card">
+            <h3>Yazılım & Uygulama</h3>
+            <p>Unity ve Flutter ile mobil, web ve masaüstü projeler. Hafif, bakımı kolay arayüzler.</p>
+          </div>
+          <div class="card">
+            <h3>Oyun & Simülasyon</h3>
+            <p>Eğitim, sağlık ve endüstriyel alanlara yönelik gerçek zamanlı 3D deneyimler.</p>
+          </div>
+          <div class="card">
+            <h3>Tasarım & Donanım</h3>
+            <p>3D modelleme, mimari tasarım, PCB ve Arduino projeleriyle fiziksel ve dijitali birleştiriyoruz.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- İLETİŞİM KISA -->
+    <section id="contact" class="section">
+      <div class="container">
+        <h2>İletişim</h2>
+        <p>Kısaca projenizi yazmanız yeterli.</p>
+
+        <div class="card">
+          <p style="font-size:0.9rem; line-height:1.6; color:#4b5563;">
+            E-posta: <a href="mailto:info@mogbo.studio" style="color:#2563eb;">info@mogbo.studio</a><br><br>
+            Örnek mesaj:<br>
+            “Unity ile eğitim amaçlı küçük bir simülasyon projesi düşünüyoruz.
+            Yaklaşık süre ve maliyet hakkında bilgi alabilir miyiz?”
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    © 2025 MOGBO – Yazılım, oyun, tasarım ve donanım stüdyosu.
+  </footer>
 </body>
 </html>
