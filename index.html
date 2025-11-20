@@ -8,11 +8,12 @@
   <style>
     /* GENEL */
     :root {
-      --bg: #ffffff;
+      --bg: #f5f5f5;
+      --card-bg: #ffffff;
       --text: #111111;
       --muted: #666666;
       --border: #e5e5e5;
-      --accent: #111111;
+      --accent: #2962ff;
     }
 
     * {
@@ -35,7 +36,7 @@
 
     /* KAPSAYICI */
     .page {
-      max-width: 960px;
+      max-width: 1080px;
       margin: 0 auto;
       padding: 24px 16px 64px;
     }
@@ -76,9 +77,10 @@
       align-items: center;
       text-align: center;
       padding: 40px 16px 32px;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      margin-bottom: 40px;
+      border-radius: 20px;
+      margin-bottom: 48px;
+      background: #ffffff;
+      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.06);
     }
 
     .hero-photo {
@@ -109,9 +111,9 @@
     }
 
     .hero-title {
-      font-size: 15px;
+      font-size: 13px;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.16em;
       margin-bottom: 16px;
       opacity: 0.8;
     }
@@ -137,12 +139,13 @@
       border: 1px solid var(--border);
       background: #fff;
       cursor: pointer;
-      transition: background 0.15s ease, transform 0.1s ease;
+      transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.1s ease;
     }
 
     .btn:hover {
       background: #f5f5f5;
       transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
     }
 
     .btn-primary {
@@ -152,17 +155,17 @@
     }
 
     .btn-primary:hover {
-      background: #000000;
+      background: #1744c5;
     }
 
     /* BÖLÜMLER */
     section {
-      margin-bottom: 40px;
+      margin-bottom: 48px;
     }
 
     section h2 {
       font-size: 18px;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
 
     section p {
@@ -175,7 +178,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin: 12px 0 18px;
+      margin: 12px 0 20px;
     }
 
     .filter-btn {
@@ -186,13 +189,14 @@
       background: #fff;
       cursor: pointer;
       opacity: 0.8;
-      transition: background 0.15s ease, opacity 0.1s ease, transform 0.1s ease;
+      transition: background 0.15s ease, opacity 0.1s ease, transform 0.1s ease, box-shadow 0.1s ease;
     }
 
     .filter-btn:hover {
       background: #f5f5f5;
       opacity: 1;
       transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgba(15, 23, 42, 0.08);
     }
 
     .filter-btn.active {
@@ -200,35 +204,57 @@
       background: var(--accent);
       color: #fff;
       opacity: 1;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
     }
 
-    /* PROJELER GRID */
+    /* PROJE GRIDİ – 2’Lİ */
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
-      margin-top: 4px;
+      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+      gap: 24px;
+      margin-top: 6px;
     }
 
+    /* PROJE KARTI – SENİN EKRAN GÖRSELİNE BENZER */
     .project-card {
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 16px;
-      display: block; /* JS ile gizleyip göstereceğiz */
+      position: relative;
+      display: flex;
+      background: var(--card-bg);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.06);
+      min-height: 220px;
+    }
+
+    .project-text {
+      flex: 1;
+      padding: 24px 28px 24px 32px;
+      position: relative;
+      background: #ffffff;
+    }
+
+    .project-text::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 24px;
+      bottom: 24px;
+      width: 6px;
+      border-radius: 999px;
+      background: var(--accent);
     }
 
     .project-title {
-      font-size: 15px;
-      font-weight: 500;
-      margin-bottom: 6px;
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 4px;
     }
 
-    .project-tag {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      opacity: 0.6;
-      margin-bottom: 8px;
+    .project-role {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      margin-bottom: 12px;
     }
 
     .project-desc {
@@ -237,10 +263,39 @@
       margin-bottom: 10px;
     }
 
+    .project-tagline {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      opacity: 0.6;
+      margin-bottom: 8px;
+    }
+
     .project-link {
       font-size: 13px;
       text-decoration: underline;
       text-underline-offset: 2px;
+    }
+
+    .project-image {
+      flex: 0 0 40%;
+      background: #f3f3f3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .project-image span {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     /* ALT BİLGİ */
@@ -257,6 +312,12 @@
     }
 
     /* MOBİL */
+    @media (max-width: 820px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     @media (max-width: 640px) {
       header {
         flex-direction: column;
@@ -266,6 +327,24 @@
 
       .hero {
         padding: 28px 16px;
+      }
+
+      .project-card {
+        flex-direction: column;
+      }
+
+      .project-image {
+        flex: 0 0 auto;
+        min-height: 180px;
+      }
+
+      .project-text {
+        padding: 20px 20px 20px 26px;
+      }
+
+      .project-text::before {
+        top: 18px;
+        bottom: 18px;
       }
     }
   </style>
@@ -323,47 +402,77 @@
         <button class="filter-btn" data-filter="donanim">Donanım</button>
       </div>
 
-      <!-- Proje Kartları -->
+      <!-- Proje Kartları (2’li grid, her biri solda yazı sağda görsel) -->
       <div class="projects-grid">
-        <!-- ÖRNEK 1 -->
+        <!-- PROJE 1 -->
         <article class="project-card" data-tags="yazilim,simulasyon,tasarim">
-          <div class="project-tag">VR • Medical Simulation • Yazılım & Tasarım</div>
-          <div class="project-title">Diz Artroskopisi Simülasyonu</div>
-          <p class="project-desc">
-            Diz eklemi için gerçekçi kamera kontrolü, eklem içi navigasyon ve
-            cerrahi adımları içeren VR tabanlı bir eğitim simülasyonu.
-          </p>
-          <!-- <a href="#" class="project-link">Detaylar</a> -->
+          <div class="project-text">
+            <div class="project-tagline">VR • Medical Simulation</div>
+            <div class="project-title">Diz Artroskopisi Simülasyonu</div>
+            <div class="project-role">Rol: Simulation Developer & Technical Designer</div>
+            <p class="project-desc">
+              Diz eklemi içinde kamera hareketi, eklem içi navigasyon ve
+              cerrahi adımları içeren VR tabanlı bir eğitim simülasyonu.
+              Unity üzerinde gerçek zamanlı etkileşimler ve eğitim senaryoları ile geliştirildi.
+            </p>
+          </div>
+          <div class="project-image">
+            <!-- Buraya proje görseli koyabilirsin -->
+            <!-- <img src="proj1.jpg" alt="Diz Artroskopisi Simülasyonu"> -->
+            <span>Proje görseli</span>
+          </div>
         </article>
 
-        <!-- ÖRNEK 2 -->
+        <!-- PROJE 2 -->
         <article class="project-card" data-tags="donanim,tasarim">
-          <div class="project-tag">Hardware • Prototipleme • Donanım</div>
-          <div class="project-title">Cerrahi Alet Prototipleri</div>
-          <p class="project-desc">
-            Simülasyon cihazı ile entegre çalışan, sensör destekli cerrahi
-            alet gövdeleri ve mekanik bileşenlerin tasarımı ve üretimi.
-          </p>
+          <div class="project-text">
+            <div class="project-tagline">Hardware • Prototipleme</div>
+            <div class="project-title">Cerrahi Alet Prototipleri</div>
+            <div class="project-role">Rol: Mechanical & Device Designer</div>
+            <p class="project-desc">
+              Simülasyon cihazı ile entegre çalışan, sensör destekli cerrahi
+              alet gövdeleri ve mekanik bileşenlerin tasarımı ve prototip üretimi.
+            </p>
+          </div>
+          <div class="project-image">
+            <!-- <img src="proj2.jpg" alt="Cerrahi Alet Prototipleri"> -->
+            <span>Proje görseli</span>
+          </div>
         </article>
 
-        <!-- ÖRNEK 3 -->
+        <!-- PROJE 3 -->
         <article class="project-card" data-tags="yazilim,simulasyon">
-          <div class="project-tag">Unity • Real-Time • Yazılım</div>
-          <div class="project-title">Simülasyon Altyapı Motoru</div>
-          <p class="project-desc">
-            Farklı tıbbi ve teknik senaryolara uyarlanabilen, modüler yapıda
-            bir gerçek zamanlı simülasyon yazılım altyapısı.
-          </p>
+          <div class="project-text">
+            <div class="project-tagline">Unity • Real-Time</div>
+            <div class="project-title">Simülasyon Altyapı Motoru</div>
+            <div class="project-role">Rol: Software Developer</div>
+            <p class="project-desc">
+              Farklı tıbbi ve teknik senaryolara uyarlanabilen modüler bir
+              simülasyon altyapısı. Zamanlayıcılar, görev adımları, veri
+              takibi ve geri bildirim sistemleri içerir.
+            </p>
+          </div>
+          <div class="project-image">
+            <!-- <img src="proj3.jpg" alt="Simülasyon Altyapı Motoru"> -->
+            <span>Proje görseli</span>
+          </div>
         </article>
 
-        <!-- ÖRNEK 4 -->
+        <!-- PROJE 4 -->
         <article class="project-card" data-tags="tasarim">
-          <div class="project-tag">3D • Visualization • Tasarım</div>
-          <div class="project-title">Kemik ve Eklem 3D Modelleri</div>
-          <p class="project-desc">
-            Tıbbi simülasyonlarda kullanılmak üzere hazırlanmış, doku
-            detayları ve topolojiye dikkat edilerek oluşturulmuş 3D modeller.
-          </p>
+          <div class="project-text">
+            <div class="project-tagline">3D • Visualization</div>
+            <div class="project-title">Kemik & Eklem 3D Modelleri</div>
+            <div class="project-role">Rol: 3D Technical Artist</div>
+            <p class="project-desc">
+              Tıbbi simülasyonlarda kullanılmak üzere kemik ve eklem yapılarının
+              anatomik doğruluğa dikkat edilerek modellenmesi ve görselleştirilmesi.
+            </p>
+          </div>
+          <div class="project-image">
+            <!-- <img src="proj4.jpg" alt="Kemik ve Eklem 3D Modelleri"> -->
+            <span>Proje görseli</span>
+          </div>
         </article>
       </div>
     </section>
@@ -389,7 +498,7 @@
       <p style="margin-top:8px; font-size:14px;">
         E-posta: <a href="mailto:ornek@mail.com">ornek@mail.com</a>
       </p>
-      <!-- İstersen buraya LinkedIn / GitHub linkleri de koyabilirsin -->
+      <!-- Buraya LinkedIn / GitHub linklerini ekleyebilirsin -->
       <!-- <p style="margin-top:4px; font-size:14px;">GitHub: <a href="#">github.com/kullanici</a></p> -->
     </section>
   </main>
@@ -422,10 +531,10 @@
         const tags = (card.dataset.tags || '').split(',').map(t => t.trim());
 
         if (filter === 'hepsi') {
-          card.style.display = 'block';
+          card.style.display = 'flex';
         } else {
           if (tags.includes(filter)) {
-            card.style.display = 'block';
+            card.style.display = 'flex';
           } else {
             card.style.display = 'none';
           }
