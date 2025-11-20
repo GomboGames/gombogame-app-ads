@@ -45,35 +45,36 @@
       position: sticky;
       top: 24px;
       align-self: flex-start;
-      background: linear-gradient(160deg, #111827, #020617);
-      border-radius: 20px;
-      padding: 22px 20px 20px;
+      background: #111827;
+      border-radius: 24px;
+      padding: 26px 22px 22px;
       box-shadow: 0 26px 60px rgba(15, 23, 42, 0.45);
       display: flex;
       flex-direction: column;
-      gap: 22px;
+      gap: 18px;
       color: #f9fafb;
-    }
-
-    .profile-top {
-      display: flex;
-      gap: 14px;
       align-items: center;
     }
 
+    .profile-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
     .profile-photo {
-      width: 86px;
-      height: 86px;
-      border-radius: 22px;
+      width: 140px;
+      height: 140px;
+      border-radius: 32px;
       background: #020617;
       border: 1px solid rgba(148, 163, 184, 0.6);
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 11px;
+      font-size: 12px;
       color: #9ca3af;
-      flex-shrink: 0;
     }
 
     .profile-photo img {
@@ -83,31 +84,28 @@
       display: block;
     }
 
-    .profile-info {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
     .profile-name {
-      font-size: 20px;
+      font-size: 22px;
       font-weight: 600;
-      letter-spacing: 0.01em;
+      letter-spacing: 0.02em;
     }
 
-    /* YENİ ROLE SATIRI (KUTUSUZ) */
-    .profile-role {
+    .profile-role-pill {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 6px;
+      padding: 6px 18px;
+      background: #27272f;
+      border-radius: 999px;
       font-size: 12px;
-      color: #cbd5f5;
+      color: #e5e7eb;
       letter-spacing: 0.06em;
-      text-transform: uppercase;
-      opacity: 0.9;
+      text-transform: none;
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.7);
     }
 
-    .profile-role-dot {
+    .profile-role-pill-dot {
       width: 6px;
       height: 6px;
       border-radius: 999px;
@@ -117,21 +115,17 @@
     .profile-bio {
       font-size: 13px;
       color: #e5e7eb;
+      text-align: left;
+      align-self: stretch;
     }
 
-    .profile-section-title {
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: #9ca3af;
-      margin-bottom: 6px;
-    }
-
+    /* SOSYAL BUTONLAR */
     .profile-social {
       display: flex;
       gap: 8px;
       flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 2px;
     }
 
     .social-btn {
@@ -158,26 +152,30 @@
       box-shadow: 0 10px 20px rgba(15,23,42,0.4);
     }
 
-    .profile-list {
-      list-style: none;
+    /* İLETİŞİM BİLGİLERİ */
+    .contact-list {
+      align-self: stretch;
+      text-align: left;
+      font-size: 13px;
       display: flex;
       flex-direction: column;
-      gap: 6px;
-      font-size: 13px;
-    }
-
-    .profile-list strong {
+      gap: 4px;
       color: #e5e7eb;
-      font-weight: 500;
+      margin-top: 6px;
     }
 
-    .profile-list a {
-      color: #9ca3af;
+    .contact-list a {
+      color: #e5e7eb;
       text-decoration: none;
     }
 
-    .profile-list a:hover {
-      color: #e5e7eb;
+    .contact-list a:hover {
+      text-decoration: underline;
+    }
+
+    .contact-label {
+      font-weight: 500;
+      opacity: 0.9;
     }
 
     /* SAĞ ANA KART */
@@ -605,17 +603,15 @@
   <div class="layout">
     <!-- SOL PROFİL -->
     <aside class="sidebar">
-      <div class="profile-top">
+      <div class="profile-header">
         <div class="profile-photo">
           <!-- <img src="profile.jpg" alt="Bahadır Kuş"> -->
           Fotoğraf
         </div>
-        <div class="profile-info">
-          <div class="profile-name">Bahadır Kuş</div>
-          <div class="profile-role">
-            <span class="profile-role-dot"></span>
-            <span>Simulation Developer &amp; Technical Designer</span>
-          </div>
+        <div class="profile-name">Bahadır Kuş</div>
+        <div class="profile-role-pill">
+          <span class="profile-role-pill-dot"></span>
+          <span>Simulation Developer &amp; Technical Designer</span>
         </div>
       </div>
 
@@ -625,24 +621,21 @@
         birleştirerek tıbbi eğitim için gerçekçi simülasyon sistemleri üretiyorum.
       </p>
 
-      <div>
-        <div class="profile-section-title">Social</div>
-        <div class="profile-social">
-          <a class="social-btn" href="#" target="_blank" title="Instagram">IG</a>
-          <a class="social-btn" href="#" target="_blank" title="GitHub">GH</a>
-          <a class="social-btn" href="#" target="_blank" title="X / Twitter">X</a>
-          <a class="social-btn" href="#" target="_blank" title="LinkedIn">in</a>
-        </div>
+      <!-- Sosyal ikonlar (GitHub yok) -->
+      <div class="profile-social">
+        <a class="social-btn" href="#" target="_blank" title="Instagram">IG</a>
+        <a class="social-btn" href="#" target="_blank" title="X / Twitter">X</a>
+        <a class="social-btn" href="#" target="_blank" title="LinkedIn">in</a>
       </div>
 
-      <div>
-        <div class="profile-section-title">Contact</div>
-        <ul class="profile-list">
-          <li>
-            <strong>Email</strong>
-            <a href="mailto:ornek@mail.com">ornek@mail.com</a>
-          </li>
-        </ul>
+      <!-- İletişim bilgileri -->
+      <div class="contact-list">
+        <a href="#" target="_blank">
+          <span class="contact-label">Game Demo (GitHub)</span>
+        </a>
+        <a href="mailto:ornek@mail.com">ornek@mail.com</a>
+        <span>Toronto, Canada</span>
+        <a href="#" target="_blank">YouTube Channel</a>
       </div>
     </aside>
 
@@ -679,23 +672,21 @@
       <!-- RESUME -->
       <section id="resume-section" class="tab-section">
         <h2>Resume</h2>
-        <p>Kısa özgeçmiş ve yetenek özetim. İstersen burayı sonra detaylı CV bilgisiyle doldururuz.</p>
+        <p>Bu bölümde becerilerimi, kendimi ve profesyonel deneyimlerimi özetleyeceğim.</p>
 
         <div class="resume-block" style="margin-top:10px;">
-          <h3>Experience</h3>
-          <p>
-            • VR/AR tabanlı tıbbi simülasyon geliştirme<br>
-            • Unity ile gerçek zamanlı eğitim senaryoları ve etkileşimli sistemler<br>
-            • Donanım entegrasyonu, sensörlü cerrahi alet ve simülasyon cihazı tasarımı
-          </p>
+          <h3>My Skills</h3>
+          <p><!-- Burayı sonra doldurabilirsin. --></p>
         </div>
 
         <div class="resume-block">
-          <h3>Skills</h3>
-          <p>
-            Unity · C# · VR/AR · 3D Technical Art · Prototipleme · Arduino / gömülü donanım<br>
-            + Bu alanı ileride daha detaylı şekilde güncelleyebilirsin.
-          </p>
+          <h3>About Me</h3>
+          <p><!-- Burayı sonra doldurabilirsin. --></p>
+        </div>
+
+        <div class="resume-block">
+          <h3>Professional Experience</h3>
+          <p><!-- Burayı sonra doldurabilirsin. --></p>
         </div>
       </section>
     </main>
