@@ -524,7 +524,39 @@
      ÖRNEK:
      const projects = [ { ... }, { ... } ];
   */
-  const projects = []; // İlk başta boş, editor.html’den gelecek.
+const projects = [
+  {
+    "id": "yazilim",
+    "name": "Yazılım",
+    "role": "",
+    "tagline": "Vr, Similation",
+    "date": "2012-03-22",
+    "types": [
+      "yazilim",
+      "simulasyon"
+    ],
+    "shortDesc": "burası açıklam yapturyb sadam",
+    "longDesc": "dasdadsdad",
+    "coverImage": "",
+    "gallery": []
+  },
+  {
+    "id": "arthroskobi-kamera-donanimi",
+    "name": "Arthroskobi kamera donanımı",
+    "role": "",
+    "tagline": "Vr, Unity, Arunio, Fusion",
+    "date": "2002-02-20",
+    "types": [
+      "tasarim",
+      "donanim"
+    ],
+    "shortDesc": "Bu cihaz ucundaki kısımdan açısını alır. vs vs",
+    "longDesc": "Bu cihaz ucundaki kısımdan açısını alır. vs vs",
+    "coverImage": "images/knee-cover.jpg",
+    "gallery": []
+  }
+];
+
 
   const projectsGrid = document.querySelector('.projects-grid');
   const filterButtons = document.querySelectorAll('.filter-btn');
