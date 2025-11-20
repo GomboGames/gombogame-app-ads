@@ -2,426 +2,679 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
-  <title>Portfolyo - Projelerim</title>
+  <title>Bahadır Kuş – Simulation Developer & Technical Designer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <style>
-    /* Genel */
+    :root {
+      --bg: #f5f5f5;
+      --card-bg: #ffffff;
+      --text: #111111;
+      --muted: #666666;
+      --border: #e5e5e5;
+      --accent: #2962ff;
+    }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #f5f5f5;
-      color: #111;
-      padding: 24px;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
     }
 
-    header {
-      max-width: 960px;
-      margin: 0 auto 24px auto;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    header h1 {
-      font-size: 28px;
-      font-weight: 600;
-    }
-    header p {
-      font-size: 14px;
-      color: #555;
-    }
+    a { color: inherit; text-decoration: none; }
 
-    /* Filtre butonları */
-    .filters {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-top: 8px;
-    }
-    .filter-btn {
-      border: 1px solid #ddd;
-      background: #fff;
-      padding: 6px 12px;
-      border-radius: 999px;
-      font-size: 13px;
-      cursor: pointer;
-      transition: background 0.15s, border-color 0.15s;
-    }
-    .filter-btn.active {
-      background: #111;
-      color: #fff;
-      border-color: #111;
-    }
-
-    /* Proje grid */
-    .projects {
-      max-width: 960px;
+    .page {
+      max-width: 1080px;
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
+      padding: 24px 16px 64px;
     }
-    .project-card {
-      background: #fff;
-      border-radius: 14px;
-      padding: 12px;
-      border: 1px solid #e5e5e5;
-      cursor: pointer;
+
+    /* HERO */
+    .hero {
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      transition: box-shadow 0.15s, transform 0.15s;
+      align-items: center;
+      text-align: center;
+      padding: 40px 16px 32px;
+      border-radius: 20px;
+      margin-bottom: 48px;
+      background: #ffffff;
+      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.06);
     }
-    .project-card:hover {
-      box-shadow: 0 10px 24px rgba(0,0,0,0.06);
-      transform: translateY(-2px);
+
+    .hero-photo {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: #f5f5f5;
+      border: 1px solid var(--border);
+      margin-bottom: 20px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: var(--muted);
     }
-    .project-cover {
+
+    .hero-photo img {
       width: 100%;
-      aspect-ratio: 16 / 9;
-      border-radius: 10px;
+      height: 100%;
       object-fit: cover;
-      background: #eee;
     }
-    .project-title {
-      font-size: 16px;
-      font-weight: 600;
+
+    .hero-name { font-size: 26px; font-weight: 600; margin-bottom: 6px; }
+
+    .hero-title {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 16px;
+      opacity: 0.8;
     }
-    .project-type {
+
+    .hero-bio {
+      max-width: 620px;
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 9px 18px;
+      font-size: 14px;
+      border: 1px solid var(--border);
+      background: #fff;
+      cursor: pointer;
+      transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.1s ease;
+    }
+
+    .btn:hover {
+      background: #f5f5f5;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+    }
+
+    .btn-primary {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover { background: #1744c5; }
+
+    section { margin-bottom: 48px; }
+
+    section h2 { font-size: 18px; margin-bottom: 8px; }
+
+    section p { font-size: 14px; color: var(--muted); }
+
+    /* FİLTRELER */
+    .project-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0 20px;
+    }
+
+    .filter-btn {
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: 13px;
+      border: 1px solid var(--border);
+      background: #fff;
+      cursor: pointer;
+      opacity: 0.8;
+      transition: background 0.15s ease, opacity 0.1s ease,
+                  transform 0.1s ease, box-shadow 0.1s ease;
+    }
+
+    .filter-btn:hover {
+      background: #f5f5f5;
+      opacity: 1;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgba(15, 23, 42, 0.08);
+    }
+
+    .filter-btn.active {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #fff;
+      opacity: 1;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
+    }
+
+    /* PROJE GRID – 2’Lİ */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+      gap: 24px;
+      margin-top: 6px;
+    }
+
+    .project-card {
+      position: relative;
+      display: flex;
+      background: var(--card-bg);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.06);
+      min-height: 220px;
+      cursor: pointer;
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 26px 55px rgba(15, 23, 42, 0.12);
+    }
+
+    .project-text {
+      flex: 1;
+      padding: 24px 28px 24px 32px;
+      position: relative;
+      background: #ffffff;
+    }
+
+    .project-text::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 24px;
+      bottom: 24px;
+      width: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .project-tagline {
       font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #777;
-    }
-    .project-short {
-      font-size: 13px;
-      color: #555;
+      letter-spacing: 0.16em;
+      opacity: 0.6;
+      margin-bottom: 4px;
     }
 
-    /* Modal */
-    .modal-backdrop {
+    .project-title { font-size: 18px; font-weight: 600; margin-bottom: 2px; }
+
+    .project-role {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .project-date {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .project-desc {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .project-more {
+      font-size: 12px;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      color: var(--accent);
+      margin-top: 6px;
+      display: inline-block;
+    }
+
+    .project-image {
+      flex: 0 0 40%;
+      background: #f3f3f3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .project-image span {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* İLETİŞİM */
+    #contact p { max-width: 480px; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
+      margin-top: 32px;
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /* MODAL / PANEL */
+    .project-modal {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.4);
+      background: rgba(15, 23, 42, 0.55);
       display: none;
       align-items: center;
       justify-content: center;
       padding: 16px;
-      z-index: 100;
+      z-index: 50;
     }
-    .modal-backdrop.show {
-      display: flex;
-    }
-    .modal {
-      max-width: 960px;
+
+    .project-modal.open { display: flex; }
+
+    .project-modal-content {
+      background: #ffffff;
+      max-width: 980px;
       width: 100%;
-      max-height: 90vh;
-      background: #fff;
-      border-radius: 16px;
-      padding: 16px;
-      overflow: auto;
-      display: grid;
-      grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
-      gap: 16px;
+      border-radius: 20px;
+      box-shadow: 0 30px 70px rgba(15, 23, 42, 0.4);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
     }
-    @media (max-width: 768px) {
-      .modal {
-        grid-template-columns: 1fr;
-      }
-    }
-    .modal-header {
+
+    .project-modal-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 8px;
+      padding: 18px 24px 10px;
+      border-bottom: 1px solid var(--border);
     }
-    .modal-title {
-      font-size: 20px;
+
+    .project-modal-title {
+      font-size: 18px;
       font-weight: 600;
     }
-    .modal-close {
+
+    .project-modal-sub {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .project-modal-close {
       border: none;
       background: transparent;
-      font-size: 20px;
+      font-size: 22px;
       cursor: pointer;
-    }
-    .modal-type {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #777;
-      margin-bottom: 8px;
-    }
-    .modal-description {
-      font-size: 14px;
-      color: #444;
-      line-height: 1.5;
-      white-space: pre-wrap;
+      line-height: 1;
+      padding: 4px 8px;
     }
 
-    /* Galeri */
-    .gallery {
+    .project-modal-body {
       display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .gallery-main {
-      width: 100%;
-      aspect-ratio: 16/9;
-      border-radius: 10px;
-      object-fit: cover;
-      background: #eee;
-    }
-    .thumbs {
-      display: flex;
-      gap: 6px;
-      margin-top: 4px;
+      gap: 24px;
+      padding: 20px 24px 22px;
       flex-wrap: wrap;
     }
-    .thumbs img {
-      width: 72px;
-      height: 48px;
-      border-radius: 8px;
-      object-fit: cover;
-      cursor: pointer;
-      border: 1px solid transparent;
-    }
-    .thumbs img.active {
-      border-color: #111;
-    }
 
-    /* Video */
-    .video-wrapper {
-      margin-top: 16px;
-    }
-    .video-wrapper h3 {
+    .modal-text {
+      flex: 1 1 280px;
       font-size: 14px;
-      margin-bottom: 8px;
-    }
-    .video-wrapper iframe {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      border-radius: 10px;
-      border: none;
+      color: var(--muted);
     }
 
-    /* Küçük not */
-    .small-note {
+    .modal-text h4 {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 6px;
+      opacity: 0.7;
+    }
+
+    .modal-gallery {
+      flex: 1 1 320px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .modal-main-media {
+      width: 100%;
+      background: #f3f3f3;
+      border-radius: 14px;
+      min-height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .modal-main-media img,
+    .modal-main-media video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .modal-main-media span {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .modal-thumbs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .modal-thumb {
+      width: 70px;
+      height: 70px;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #e5e5e5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: 2px solid transparent;
       font-size: 11px;
-      color: #777;
-      margin-top: 4px;
+      color: var(--muted);
+    }
+
+    .modal-thumb img,
+    .modal-thumb video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .modal-thumb.active {
+      border-color: var(--accent);
+    }
+
+    @media (max-width: 820px) {
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .hero { padding: 28px 16px; }
+
+      .project-card { flex-direction: column; }
+
+      .project-image { flex: 0 0 auto; min-height: 180px; }
+
+      .project-text { padding: 20px 20px 20px 26px; }
+
+      .project-text::before { top: 18px; bottom: 18px; }
+
+      .project-modal-body { flex-direction: column; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Projelerim</h1>
-    <p>Sade portfolyo. Projeleri klasörlerden otomatik okuyorum. Yeni proje eklemek için sadece GitHub’da klasör + meta dosyası oluşturman yeterli.</p>
-    <div class="filters">
-      <button class="filter-btn active" data-filter="hepsi">Hepsi</button>
-      <button class="filter-btn" data-filter="yazilim">Yazılım</button>
-      <button class="filter-btn" data-filter="tasarim">Tasarım</button>
-    </div>
-    <p class="small-note">Not: Projeler <code>/projects/&lt;proje-adi&gt;/meta.json</code> dosyalarından okunur.</p>
-  </header>
 
-  <main class="projects" id="projectsContainer">
-    <!-- JS ile doldurulacak -->
+<div class="page">
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-photo">
+        <!-- <img src="profile.jpg" alt="Bahadır Kuş"> -->
+        Fotoğraf
+      </div>
+
+      <div class="hero-name">Bahadır Kuş</div>
+      <div class="hero-title">Simulation Developer & Technical Designer</div>
+
+      <p class="hero-bio">
+        Lisede Bilişim Teknolojileri eğitimiyle yazılıma başladım ve zamanla
+        gerçek zamanlı uygulamalar ile simülasyon geliştirmeye odaklandım.
+        2021’den beri VR/AR tabanlı tıbbi simülasyonlar üzerinde çalışıyor;
+        kendi tasarladığım mekanik parçalar, sensörler ve yazılım altyapısını
+        bir araya getirerek gerçekçi cerrahi eğitim sistemleri geliştiriyorum.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">Projelerim</a>
+        <a href="#contact" class="btn">İletişime Geç</a>
+      </div>
+    </section>
+
+    <!-- PROJELER -->
+    <section id="projects">
+      <h2>Seçili Projeler</h2>
+      <p>Simülasyon, yazılım ve tasarım alanında üzerinde çalıştığım projeler.</p>
+
+      <div class="project-filters">
+        <button class="filter-btn active" data-filter="hepsi">Hepsi</button>
+        <button class="filter-btn" data-filter="yazilim">Yazılım</button>
+        <button class="filter-btn" data-filter="tasarim">Tasarım</button>
+        <button class="filter-btn" data-filter="donanim">Donanım</button>
+      </div>
+
+      <div class="projects-grid">
+        <!-- Kartlar JS’ten gelecek -->
+      </div>
+    </section>
+
+    <!-- İLETİŞİM -->
+    <section id="contact">
+      <h2>İletişim</h2>
+      <p>
+        İşbirliği, proje veya teklif için benimle e-posta üzerinden iletişime geçebilirsiniz.
+      </p>
+      <p style="margin-top:8px; font-size:14px;">
+        E-posta: <a href="mailto:ornek@mail.com">ornek@mail.com</a>
+      </p>
+    </section>
   </main>
 
-  <!-- Modal -->
-  <div class="modal-backdrop" id="projectModalBackdrop">
-    <div class="modal">
-      <div class="gallery">
-        <img id="modalMainImage" class="gallery-main" alt="" />
-        <div class="thumbs" id="modalThumbs"></div>
-      </div>
+  <footer>
+    <span>© <span id="year"></span> Bahadır Kuş</span>
+    <span>Simulation Developer & Technical Designer</span>
+  </footer>
+</div>
+
+<!-- PROJE PANELİ -->
+<div class="project-modal" id="project-modal">
+  <div class="project-modal-content">
+    <div class="project-modal-header">
       <div>
-        <div class="modal-header">
-          <div>
-            <div class="modal-type" id="modalType"></div>
-            <div class="modal-title" id="modalTitle"></div>
-          </div>
-          <button class="modal-close" id="modalCloseBtn">&times;</button>
+        <div class="project-modal-title" id="modal-title"></div>
+        <div class="project-modal-sub" id="modal-sub"></div>
+      </div>
+      <button class="project-modal-close" id="modal-close" aria-label="Kapat">×</button>
+    </div>
+    <div class="project-modal-body">
+      <div class="modal-text">
+        <h4>Proje Açıklaması</h4>
+        <p id="modal-desc"></p>
+      </div>
+      <div class="modal-gallery">
+        <div class="modal-main-media" id="modal-main-media">
+          <span>Görsel / video henüz eklenmedi.</span>
         </div>
-        <div class="modal-description" id="modalDescription"></div>
-        <div class="video-wrapper" id="modalVideoWrapper" style="display:none;">
-          <h3>Video</h3>
-          <iframe id="modalVideoIframe" allowfullscreen></iframe>
-        </div>
+        <div class="modal-thumbs" id="modal-thumbs"></div>
       </div>
     </div>
   </div>
+</div>
 
-  <script>
-    // 🔧 Burayı KENDİ bilgilerinle doldur:
-    const GITHUB_USER = "GITHUB_KULLANICI_ADIN";      // örn: "bahadirkus"
-    const GITHUB_REPO  = "REPO_ADI";                  // örn: "portfolio-site"
-    const BRANCH       = "main";
-    const PROJECTS_PATH = "projects";
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-    const projectsContainer = document.getElementById("projectsContainer");
-    const modalBackdrop = document.getElementById("projectModalBackdrop");
-    const modalTitle = document.getElementById("modalTitle");
-    const modalType = document.getElementById("modalType");
-    const modalDescription = document.getElementById("modalDescription");
-    const modalMainImage = document.getElementById("modalMainImage");
-    const modalThumbs = document.getElementById("modalThumbs");
-    const modalVideoWrapper = document.getElementById("modalVideoWrapper");
-    const modalVideoIframe = document.getElementById("modalVideoIframe");
-    const modalCloseBtn = document.getElementById("modalCloseBtn");
+  /* BURAYA EDITOR.HTML’DEN ÜRETTİĞİN KODU YAPIŞTIRACAKSIN
+     ÖRNEK:
+     const projects = [ { ... }, { ... } ];
+  */
+  const projects = []; // İlk başta boş, editor.html’den gelecek.
 
-    let allProjects = [];
+  const projectsGrid = document.querySelector('.projects-grid');
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  let activeFilter = 'hepsi';
 
-    async function fetchProjects() {
-      const apiUrl = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${PROJECTS_PATH}?ref=${BRANCH}`;
+  function createProjectCard(project) {
+    const card = document.createElement('article');
+    card.className = 'project-card';
+    card.dataset.id = project.id;
+    card.dataset.types = project.types.join(',');
 
-      const res = await fetch(apiUrl);
-      const items = await res.json();
+    const hasCover = project.coverImage && project.coverImage.trim() !== '';
+    const dateText = project.date ? `Tarih: ${project.date}` : '';
 
-      const folders = items.filter(i => i.type === "dir");
-      const projects = [];
-
-      for (const folder of folders) {
-        try {
-          const folderApi = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${folder.path}?ref=${BRANCH}`;
-          const folderRes = await fetch(folderApi);
-          const folderItems = await folderRes.json();
-
-          const metaFile = folderItems.find(f => f.name === "meta.json");
-          if (!metaFile || !metaFile.download_url) continue;
-
-          const metaRes = await fetch(metaFile.download_url);
-          const meta = await metaRes.json();
-
-          projects.push({
-            slug: folder.name,
-            path: folder.path,
-            ...meta
-          });
-        } catch (e) {
-          console.error("Proje okunurken hata:", folder.name, e);
+    card.innerHTML = `
+      <div class="project-text">
+        <div class="project-tagline">${project.tagline || ''}</div>
+        <div class="project-title">${project.name}</div>
+        <div class="project-role">${project.role}</div>
+        <div class="project-date">${dateText}</div>
+        <p class="project-desc">${project.shortDesc || ''}</p>
+        <span class="project-more">Detayları gör</span>
+      </div>
+      <div class="project-image">
+        ${
+          hasCover
+            ? `<img src="${project.coverImage}" alt="${project.name} görseli" />`
+            : `<span>Proje görseli</span>`
         }
-      }
+      </div>
+    `;
+    return card;
+  }
 
-      allProjects = projects;
-      renderProjects("hepsi");
+  function renderProjects() {
+    projectsGrid.innerHTML = '';
+    projects.forEach(project => {
+      if (activeFilter !== 'hepsi' && !project.types.includes(activeFilter)) return;
+      const card = createProjectCard(project);
+      projectsGrid.appendChild(card);
+    });
+    attachCardEvents();
+  }
+
+  // MODAL ELEMENTLERİ
+  const modal = document.getElementById('project-modal');
+  const modalTitle = document.getElementById('modal-title');
+  const modalSub = document.getElementById('modal-sub');
+  const modalDesc = document.getElementById('modal-desc');
+  const modalMainMedia = document.getElementById('modal-main-media');
+  const modalThumbs = document.getElementById('modal-thumbs');
+  const modalCloseBtn = document.getElementById('modal-close');
+
+  function setMainMedia(item) {
+    modalMainMedia.innerHTML = '';
+    if (!item) {
+      modalMainMedia.innerHTML = '<span>Görsel / video henüz eklenmedi.</span>';
+      return;
     }
-
-    function renderProjects(filterType) {
-      projectsContainer.innerHTML = "";
-
-      const filtered = allProjects.filter(p => {
-        if (filterType === "hepsi") return true;
-        return (p.type || "").toLowerCase() === filterType;
-      });
-
-      if (filtered.length === 0) {
-        projectsContainer.innerHTML = "<p>Bu filtreye uygun proje bulunamadı.</p>";
-        return;
-      }
-
-      for (const project of filtered) {
-        const card = document.createElement("article");
-        card.className = "project-card";
-        card.dataset.slug = project.slug;
-
-        const img = document.createElement("img");
-        img.className = "project-cover";
-        img.alt = project.title || "";
-        img.src = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/${BRANCH}/${PROJECTS_PATH}/${project.slug}/${project.coverImage}`;
-
-        const typeEl = document.createElement("div");
-        typeEl.className = "project-type";
-        typeEl.textContent = (project.type || "").toUpperCase();
-
-        const titleEl = document.createElement("div");
-        titleEl.className = "project-title";
-        titleEl.textContent = project.title || "Başlıksız Proje";
-
-        const shortEl = document.createElement("div");
-        shortEl.className = "project-short";
-        shortEl.textContent = project.shortDescription || "";
-
-        card.appendChild(img);
-        card.appendChild(typeEl);
-        card.appendChild(titleEl);
-        card.appendChild(shortEl);
-
-        card.addEventListener("click", () => openModal(project));
-        projectsContainer.appendChild(card);
-      }
+    if (item.type === 'image') {
+      const img = document.createElement('img');
+      img.src = item.src;
+      img.alt = item.alt || '';
+      modalMainMedia.appendChild(img);
+    } else if (item.type === 'video') {
+      const vid = document.createElement('video');
+      vid.src = item.src;
+      vid.controls = true;
+      modalMainMedia.appendChild(vid);
+    } else {
+      modalMainMedia.innerHTML = '<span>Desteklenmeyen medya türü.</span>';
     }
+  }
 
-    function openModal(project) {
-      modalTitle.textContent = project.title || "";
-      modalType.textContent = (project.type || "").toUpperCase();
-      modalDescription.textContent = project.description || project.shortDescription || "";
+  function openModal(projectId) {
+    const project = projects.find(p => p.id === projectId);
+    if (!project) return;
 
-      const galleryImages = [];
-      if (project.coverImage) galleryImages.push(project.coverImage);
-      if (Array.isArray(project.gallery)) {
-        for (const g of project.gallery) {
-          if (g && !galleryImages.includes(g)) galleryImages.push(g);
+    modalTitle.textContent = project.name;
+    const subParts = [];
+    if (project.role) subParts.push(project.role);
+    if (project.tagline) subParts.push(project.tagline);
+    if (project.date) subParts.push(project.date);
+    modalSub.textContent = subParts.join(' • ');
+    modalDesc.textContent = project.longDesc || project.shortDesc || '';
+
+    modalMainMedia.innerHTML = '';
+    modalThumbs.innerHTML = '';
+
+    if (project.gallery && project.gallery.length > 0) {
+      const first = project.gallery[0];
+      setMainMedia(first);
+
+      project.gallery.forEach((item, index) => {
+        const thumb = document.createElement('div');
+        thumb.className = 'modal-thumb' + (index === 0 ? ' active' : '');
+        thumb.dataset.index = index;
+
+        if (item.type === 'image') {
+          thumb.innerHTML = `<img src="${item.src}" alt="${item.alt || ''}">`;
+        } else if (item.type === 'video') {
+          thumb.innerHTML = `<span>Video</span>`;
+        } else {
+          thumb.textContent = 'Medya';
         }
-      }
 
-      modalThumbs.innerHTML = "";
-      let mainSrc = "";
-
-      if (galleryImages.length > 0) {
-        mainSrc = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/${BRANCH}/${PROJECTS_PATH}/${project.slug}/${galleryImages[0]}`;
-        galleryImages.forEach((filename, index) => {
-          const src = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/${BRANCH}/${PROJECTS_PATH}/${project.slug}/${filename}`;
-          const thumb = document.createElement("img");
-          thumb.src = src;
-          thumb.alt = project.title || "";
-          if (index === 0) thumb.classList.add("active");
-          thumb.addEventListener("click", () => {
-            modalMainImage.src = src;
-            document.querySelectorAll(".thumbs img").forEach(img => img.classList.remove("active"));
-            thumb.classList.add("active");
-          });
-          modalThumbs.appendChild(thumb);
+        thumb.addEventListener('click', () => {
+          document.querySelectorAll('.modal-thumb').forEach(t => t.classList.remove('active'));
+          thumb.classList.add('active');
+          setMainMedia(item);
         });
-      } else {
-        mainSrc = "";
-      }
 
-      modalMainImage.src = mainSrc;
-
-      if (project.video && project.video.trim() !== "") {
-        modalVideoWrapper.style.display = "block";
-        modalVideoIframe.src = project.video;
-      } else {
-        modalVideoWrapper.style.display = "none";
-        modalVideoIframe.src = "";
-      }
-
-      modalBackdrop.classList.add("show");
+        modalThumbs.appendChild(thumb);
+      });
+    } else {
+      modalMainMedia.innerHTML = '<span>Görsel / video henüz eklenmedi.</span>';
     }
 
-    function closeModal() {
-      modalBackdrop.classList.remove("show");
-      modalVideoIframe.src = "";
-    }
+    modal.classList.add('open');
+  }
 
-    modalCloseBtn.addEventListener("click", closeModal);
-    modalBackdrop.addEventListener("click", (e) => {
-      if (e.target === modalBackdrop) closeModal();
-    });
+  function closeModal() {
+    modal.classList.remove('open');
+  }
 
-    // Filtre butonları
-    document.querySelectorAll(".filter-btn").forEach(btn => {
-      btn.addEventListener("click", () => {
-        document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        const type = btn.dataset.filter;
-        renderProjects(type);
+  function attachCardEvents() {
+    document.querySelectorAll('.project-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const id = card.dataset.id;
+        openModal(id);
       });
     });
+  }
 
-    // Sayfa açılınca projeleri yükle
-    fetchProjects().catch(e => console.error(e));
-  </script>
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      activeFilter = btn.dataset.filter;
+      filterButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderProjects();
+    });
+  });
+
+  modalCloseBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  // İlk render (başta boş; sen kod ekleyince dolacak)
+  renderProjects();
+</script>
+
 </body>
 </html>
