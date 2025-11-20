@@ -33,7 +33,6 @@
       padding: 32px 16px 64px;
     }
 
-    /* ANA YERLEŞİM: SOL PROFİL – SAĞ İÇERİK */
     .layout {
       display: grid;
       grid-template-columns: 290px minmax(0, 1fr);
@@ -93,18 +92,18 @@
 
     .profile-role-pill {
       font-size: 11px;
-      padding: 3px 9px;
+      padding: 3px 10px;
       border-radius: 999px;
       border: 1px solid rgba(148, 163, 184, 0.8);
-      background: rgba(15, 23, 42, 0.75);
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
+      background: rgba(255, 255, 255, 0.07);
+      text-transform: none;
+      letter-spacing: 0.04em;
       display: inline-flex;
       align-items: center;
       gap: 6px;
     }
 
-    .profile-role-pill span.dot {
+    .profile-role-pill .dot {
       width: 6px;
       height: 6px;
       border-radius: 999px;
@@ -125,18 +124,42 @@
       margin-bottom: 6px;
     }
 
+    .profile-social {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .social-btn {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.6);
+      background: rgba(255,255,255,0.08);
+      color: #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: .2s;
+    }
+
+    .social-btn:hover {
+      background: #fff;
+      color: #111;
+      border-color: var(--accent);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 20px rgba(15,23,42,0.4);
+    }
+
     .profile-list {
       list-style: none;
-      font-size: 13px;
       display: flex;
       flex-direction: column;
       gap: 6px;
-    }
-
-    .profile-list li {
-      display: flex;
-      flex-direction: column;
-      gap: 1px;
+      font-size: 13px;
     }
 
     .profile-list strong {
@@ -153,9 +176,9 @@
       color: #e5e7eb;
     }
 
-    /* SAĞ ANA KART (PORTFOLIO / RESUME) */
+    /* SAĞ ANA KART */
     .main-card {
-      background: var(--card-bg);
+      background: #fff;
       border-radius: 24px;
       box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18);
       padding: 18px 20px 22px;
@@ -168,48 +191,48 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 10px;
       border-bottom: 1px solid var(--border);
       padding-bottom: 8px;
+      gap: 12px;
     }
 
-    .main-title-block h1 {
+    .main-header h1 {
       font-size: 19px;
       font-weight: 600;
       letter-spacing: 0.02em;
     }
 
-    .main-title-block p {
+    .main-header p {
       font-size: 13px;
       color: var(--muted);
       margin-top: 2px;
     }
 
     .top-tabs {
-      display: inline-flex;
+      display: flex;
       background: #f3f4f6;
-      border-radius: 999px;
       padding: 3px;
+      border-radius: 999px;
       gap: 3px;
     }
 
     .tab-btn {
-      border: none;
-      background: transparent;
       padding: 6px 16px;
-      font-size: 13px;
       border-radius: 999px;
+      font-size: 13px;
+      border: none;
+      background: none;
       cursor: pointer;
       color: var(--muted);
-      transition: background 0.15s ease, color 0.1s ease;
       white-space: nowrap;
+      transition: 0.15s;
     }
 
     .tab-btn.active {
-      background: #ffffff;
+      background: #fff;
       color: var(--text);
       font-weight: 500;
-      box-shadow: 0 6px 18px rgba(148, 163, 184, 0.5);
+      box-shadow: 0 6px 18px rgba(148,163,184,0.5);
     }
 
     .tab-section { display: none; }
@@ -225,7 +248,7 @@
       color: var(--muted);
     }
 
-    /* PROJE FİLTRELERİ */
+    /* FİLTRELER */
     .project-filters {
       display: flex;
       flex-wrap: wrap;
@@ -260,45 +283,43 @@
       box-shadow: 0 8px 20px rgba(129, 140, 248, 0.4);
     }
 
-    /* PROJE GRID – 2’Lİ */
+    /* PROJE GRIDİ */
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
       gap: 18px;
       margin-top: 4px;
     }
 
     .project-card {
-      position: relative;
       display: flex;
       background: #f9fafb;
       border-radius: 18px;
+      box-shadow: 0 12px 30px rgba(15,23,42,0.12);
       overflow: hidden;
-      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
-      min-height: 185px;
       cursor: pointer;
-      transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
+      transition: .15s;
+      min-height: 190px;
     }
 
     .project-card:hover {
       transform: translateY(-3px);
-      box-shadow: 0 22px 45px rgba(15, 23, 42, 0.22);
+      box-shadow: 0 22px 45px rgba(15,23,42,0.22);
       background: #ffffff;
     }
 
     .project-text {
+      padding: 18px 20px 18px 22px;
       flex: 1;
-      padding: 16px 18px 16px 22px;
       position: relative;
-      background: transparent;
     }
 
     .project-text::before {
       content: "";
       position: absolute;
       left: 0;
-      top: 14px;
-      bottom: 14px;
+      top: 16px;
+      bottom: 16px;
       width: 4px;
       border-radius: 999px;
       background: var(--accent);
@@ -348,17 +369,12 @@
     }
 
     .project-image {
-      flex: 0 0 37%;
+      width: 38%;
       background: #e5e7eb;
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
-    }
-
-    .project-image span {
-      font-size: 12px;
-      color: var(--muted);
     }
 
     .project-image img {
@@ -368,7 +384,12 @@
       display: block;
     }
 
-    /* RESUME SEKMESİ */
+    .project-image span {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* RESUME BLOKLARI */
     .resume-block {
       background: #f9fafb;
       border-radius: 16px;
@@ -396,29 +417,29 @@
       opacity: 0.85;
     }
 
-    /* PROJE MODAL / PANEL */
+    /* MODAL */
     .project-modal {
       position: fixed;
       inset: 0;
-      background: rgba(15, 23, 42, 0.55);
+      background: rgba(0,0,0,0.55);
       display: none;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       padding: 16px;
-      z-index: 50;
+      z-index: 100;
     }
 
     .project-modal.open { display: flex; }
 
     .project-modal-content {
-      background: #ffffff;
+      background: #fff;
+      border-radius: 20px;
       max-width: 980px;
       width: 100%;
-      border-radius: 20px;
-      box-shadow: 0 30px 70px rgba(15, 23, 42, 0.4);
       overflow: hidden;
       display: flex;
       flex-direction: column;
+      box-shadow: 0 30px 70px rgba(15,23,42,0.4);
     }
 
     .project-modal-header {
@@ -555,7 +576,7 @@
       }
 
       .project-image {
-        flex: 0 0 auto;
+        width: 100%;
         min-height: 150px;
       }
 
@@ -579,7 +600,7 @@
 <div class="page">
 
   <div class="layout">
-    <!-- SOL PROFİL KARTI -->
+    <!-- SOL PROFİL -->
     <aside class="sidebar">
       <div class="profile-top">
         <div class="profile-photo">
@@ -589,7 +610,7 @@
         <div>
           <div class="profile-name">Bahadır Kuş</div>
           <div class="profile-role-pill">
-            <span class="dot"></span>
+            <div class="dot"></div>
             Simulation Developer &amp; Technical Designer
           </div>
         </div>
@@ -597,9 +618,19 @@
 
       <p class="profile-bio">
         Unity, VR/AR ve gerçek zamanlı simülasyon alanında çalışan bir geliştiriciyim.
-        Kendi tasarladığım mekanik parçalar, sensörler ve yazılım altyapısını birleştirerek
-        tıbbi eğitim için gerçekçi simülasyon sistemleri üretiyorum.
+        Kendi tasarladığım mekanik parçalar, sensörler ve yazılım altyapısını
+        birleştirerek tıbbi eğitim için gerçekçi simülasyon sistemleri üretiyorum.
       </p>
+
+      <div>
+        <div class="profile-section-title">Social</div>
+        <div class="profile-social">
+          <a class="social-btn" href="#" target="_blank" title="Instagram">IG</a>
+          <a class="social-btn" href="#" target="_blank" title="GitHub">GH</a>
+          <a class="social-btn" href="#" target="_blank" title="X / Twitter">X</a>
+          <a class="social-btn" href="#" target="_blank" title="LinkedIn">in</a>
+        </div>
+      </div>
 
       <div>
         <div class="profile-section-title">Contact</div>
@@ -608,13 +639,6 @@
             <strong>Email</strong>
             <a href="mailto:ornek@mail.com">ornek@mail.com</a>
           </li>
-          <!-- İstersen buraya LinkedIn / GitHub / Konum ekleyebilirsin -->
-          <!--
-          <li>
-            <strong>LinkedIn</strong>
-            <a href="#">linkedin.com/in/...</a>
-          </li>
-          -->
         </ul>
       </div>
     </aside>
@@ -622,9 +646,9 @@
     <!-- SAĞ ANA KART -->
     <main class="main-card">
       <div class="main-header">
-        <div class="main-title-block">
+        <div>
           <h1>Portfolio &amp; Resume</h1>
-          <p>Simülasyon, yazılım ve tasarım çalışmalarımın derli toplu özeti.</p>
+          <p>Simülasyon, yazılım ve tasarım çalışmalarım.</p>
         </div>
         <div class="top-tabs">
           <button class="tab-btn active" data-tab="portfolio">Portfolio</button>
@@ -632,10 +656,10 @@
         </div>
       </div>
 
-      <!-- PORTFOLIO SEKME İÇERİĞİ -->
+      <!-- PORTFOLIO -->
       <section id="portfolio-section" class="tab-section active">
         <h2>Portfolio</h2>
-        <p>Üzerinde çalıştığım projelerden seçtiklerim. Filtreler ile kategoriye göre ayırabilirsin.</p>
+        <p>Üzerinde çalıştığım projelerden seçtiklerim. Filtrelerle kategoriye göre ayırabilirsin.</p>
 
         <div class="project-filters">
           <button class="filter-btn active" data-filter="hepsi">All</button>
@@ -645,14 +669,14 @@
         </div>
 
         <div class="projects-grid">
-          <!-- Kartlar JS ile doldurulacak -->
+          <!-- Kartlar JS ile geliyor -->
         </div>
       </section>
 
-      <!-- RESUME SEKME İÇERİĞİ -->
+      <!-- RESUME -->
       <section id="resume-section" class="tab-section">
         <h2>Resume</h2>
-        <p>Kısa özgeçmiş ve yetenek özetimi burada tutuyorum. İstediğin zaman metinleri değiştirebilirsin.</p>
+        <p>Kısa özgeçmiş ve yetenek özetim. İstersen burayı sonra detaylı CV bilgisiyle doldururuz.</p>
 
         <div class="resume-block" style="margin-top:10px;">
           <h3>Experience</h3>
@@ -667,7 +691,7 @@
           <h3>Skills</h3>
           <p>
             Unity · C# · VR/AR · 3D Technical Art · Prototipleme · Arduino / gömülü donanım<br>
-            + Bu alanı ileride daha detaylı CV bilgisiyle güncelleyebilirsin.
+            + Bu alanı ileride daha detaylı şekilde güncelleyebilirsin.
           </p>
         </div>
       </section>
@@ -680,7 +704,7 @@
   </footer>
 </div>
 
-<!-- PROJE PANELİ -->
+<!-- PROJE MODAL -->
 <div class="project-modal" id="project-modal">
   <div class="project-modal-content">
     <div class="project-modal-header">
@@ -708,7 +732,7 @@
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // SEKME GEÇİŞLERİ (Portfolio / Resume)
+  // TAB GEÇİŞLERİ
   const tabButtons = document.querySelectorAll('.tab-btn');
   const tabSections = document.querySelectorAll('.tab-section');
 
@@ -729,7 +753,7 @@
 
   /* ========= BURAYA editor.html'den aldığın const projects = [...] KODUNU YAPIŞTIR ========= */
 
-  const projects = []; // <-- BUNU SİLİP, editor.html'deki "const projects = [...];" kodunu buraya koy.
+  const projects = []; // <-- BUNU SİL, yerine editor.html'in ürettiği "const projects = [...]" kodunu koy.
 
   /* ============================================================================= */
 
@@ -826,7 +850,7 @@
 
     let gallery = Array.isArray(project.gallery) ? [...project.gallery] : [];
 
-    // Eğer galeri boş ama coverImage varsa → onu 1. foto yap
+    // Galeri boş ama coverImage varsa -> onu ana foto yap
     if (gallery.length === 0 && project.coverImage) {
       gallery = [{
         type: 'image',
