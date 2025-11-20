@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <style>
-    /* GENEL */
     :root {
       --bg: #f5f5f5;
       --card-bg: #ffffff;
@@ -16,11 +15,7 @@
       --accent: #2962ff;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -29,48 +24,15 @@
       line-height: 1.6;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    a { color: inherit; text-decoration: none; }
 
-    /* KAPSAYICI */
     .page {
       max-width: 1080px;
       margin: 0 auto;
       padding: 24px 16px 64px;
     }
 
-    /* ÜST MENÜ */
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 32px;
-    }
-
-    .logo {
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      font-size: 13px;
-    }
-
-    nav {
-      display: flex;
-      gap: 16px;
-      font-size: 14px;
-    }
-
-    nav a {
-      opacity: 0.7;
-    }
-
-    nav a:hover {
-      opacity: 1;
-    }
-
-    /* HERO / GİRİŞ */
+    /* HERO */
     .hero {
       display: flex;
       flex-direction: column;
@@ -104,11 +66,7 @@
       object-fit: cover;
     }
 
-    .hero-name {
-      font-size: 26px;
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
+    .hero-name { font-size: 26px; font-weight: 600; margin-bottom: 6px; }
 
     .hero-title {
       font-size: 13px;
@@ -154,26 +112,15 @@
       color: #ffffff;
     }
 
-    .btn-primary:hover {
-      background: #1744c5;
-    }
+    .btn-primary:hover { background: #1744c5; }
 
-    /* BÖLÜMLER */
-    section {
-      margin-bottom: 48px;
-    }
+    section { margin-bottom: 48px; }
 
-    section h2 {
-      font-size: 18px;
-      margin-bottom: 8px;
-    }
+    section h2 { font-size: 18px; margin-bottom: 8px; }
 
-    section p {
-      font-size: 14px;
-      color: var(--muted);
-    }
+    section p { font-size: 14px; color: var(--muted); }
 
-    /* PROJE FİLTRELERİ */
+    /* FİLTRELER */
     .project-filters {
       display: flex;
       flex-wrap: wrap;
@@ -189,7 +136,8 @@
       background: #fff;
       cursor: pointer;
       opacity: 0.8;
-      transition: background 0.15s ease, opacity 0.1s ease, transform 0.1s ease, box-shadow 0.1s ease;
+      transition: background 0.15s ease, opacity 0.1s ease,
+                  transform 0.1s ease, box-shadow 0.1s ease;
     }
 
     .filter-btn:hover {
@@ -207,7 +155,7 @@
       box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
     }
 
-    /* PROJE GRIDİ – 2’Lİ */
+    /* PROJE GRID – 2’Lİ */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
@@ -215,7 +163,6 @@
       margin-top: 6px;
     }
 
-    /* PROJE KARTI – SENİN EKRAN GÖRSELİNE BENZER */
     .project-card {
       position: relative;
       display: flex;
@@ -224,6 +171,13 @@
       overflow: hidden;
       box-shadow: 0 20px 45px rgba(15, 23, 42, 0.06);
       min-height: 220px;
+      cursor: pointer;
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 26px 55px rgba(15, 23, 42, 0.12);
     }
 
     .project-text {
@@ -244,11 +198,15 @@
       background: var(--accent);
     }
 
-    .project-title {
-      font-size: 18px;
-      font-weight: 600;
-      margin-bottom: 4px;
+    .project-tagline {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      opacity: 0.6;
+      margin-bottom: 6px;
     }
+
+    .project-title { font-size: 18px; font-weight: 600; margin-bottom: 4px; }
 
     .project-role {
       font-size: 13px;
@@ -260,21 +218,16 @@
     .project-desc {
       font-size: 13px;
       color: var(--muted);
-      margin-bottom: 10px;
+      margin-bottom: 6px;
     }
 
-    .project-tagline {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      opacity: 0.6;
-      margin-bottom: 8px;
-    }
-
-    .project-link {
-      font-size: 13px;
+    .project-more {
+      font-size: 12px;
       text-decoration: underline;
       text-underline-offset: 2px;
+      color: var(--accent);
+      margin-top: 6px;
+      display: inline-block;
     }
 
     .project-image {
@@ -298,7 +251,9 @@
       display: block;
     }
 
-    /* ALT BİLGİ */
+    /* İLETİŞİM */
+    #contact p { max-width: 480px; }
+
     footer {
       border-top: 1px solid var(--border);
       padding-top: 16px;
@@ -311,41 +266,160 @@
       gap: 8px;
     }
 
-    /* MOBİL */
+    /* MODAL / PANEL */
+    .project-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.55);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      z-index: 50;
+    }
+
+    .project-modal.open { display: flex; }
+
+    .project-modal-content {
+      background: #ffffff;
+      max-width: 980px;
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 30px 70px rgba(15, 23, 42, 0.4);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 24px 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project-modal-title {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .project-modal-sub {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .project-modal-close {
+      border: none;
+      background: transparent;
+      font-size: 22px;
+      cursor: pointer;
+      line-height: 1;
+      padding: 4px 8px;
+    }
+
+    .project-modal-body {
+      display: flex;
+      gap: 24px;
+      padding: 20px 24px 22px;
+      flex-wrap: wrap;
+    }
+
+    .modal-text {
+      flex: 1 1 280px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .modal-text h4 {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 6px;
+      opacity: 0.7;
+    }
+
+    .modal-gallery {
+      flex: 1 1 320px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .modal-main-media {
+      width: 100%;
+      background: #f3f3f3;
+      border-radius: 14px;
+      min-height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .modal-main-media img,
+    .modal-main-media video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .modal-main-media span {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .modal-thumbs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .modal-thumb {
+      width: 70px;
+      height: 70px;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #e5e5e5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: 2px solid transparent;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .modal-thumb img,
+    .modal-thumb video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .modal-thumb.active {
+      border-color: var(--accent);
+    }
+
     @media (max-width: 820px) {
-      .projects-grid {
-        grid-template-columns: 1fr;
-      }
+      .projects-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 640px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-      }
+      .hero { padding: 28px 16px; }
 
-      .hero {
-        padding: 28px 16px;
-      }
+      .project-card { flex-direction: column; }
 
-      .project-card {
-        flex-direction: column;
-      }
+      .project-image { flex: 0 0 auto; min-height: 180px; }
 
-      .project-image {
-        flex: 0 0 auto;
-        min-height: 180px;
-      }
+      .project-text { padding: 20px 20px 20px 26px; }
 
-      .project-text {
-        padding: 20px 20px 20px 26px;
-      }
+      .project-text::before { top: 18px; bottom: 18px; }
 
-      .project-text::before {
-        top: 18px;
-        bottom: 18px;
-      }
+      .project-modal-body { flex-direction: column; }
     }
   </style>
 </head>
@@ -353,22 +427,12 @@
 
 <div class="page">
 
-  <!-- ÜST MENÜ -->
-  <header>
-    <div class="logo">Bahadır Kuş</div>
-    <nav>
-      <a href="#projects">Projeler</a>
-      <a href="#about">Hakkımda</a>
-      <a href="#contact">İletişim</a>
-    </nav>
-  </header>
-
-  <!-- GİRİŞ / HERO -->
   <main>
+    <!-- HERO -->
     <section class="hero">
       <div class="hero-photo">
-        <!-- Buraya kendi fotoğrafını koyabilirsin -->
-        <!-- Örnek: <img src="profile.jpg" alt="Bahadır Kuş"> -->
+        <!-- Profil fotoğrafın: -->
+        <!-- <img src="profile.jpg" alt="Bahadır Kuş"> -->
         Fotoğraf
       </div>
 
@@ -394,7 +458,6 @@
       <h2>Seçili Projeler</h2>
       <p>Simülasyon, yazılım ve tasarım alanında üzerinde çalıştığım bazı projeler.</p>
 
-      <!-- Filtre Butonları -->
       <div class="project-filters">
         <button class="filter-btn active" data-filter="hepsi">Hepsi</button>
         <button class="filter-btn" data-filter="yazilim">Yazılım</button>
@@ -402,147 +465,285 @@
         <button class="filter-btn" data-filter="donanim">Donanım</button>
       </div>
 
-      <!-- Proje Kartları (2’li grid, her biri solda yazı sağda görsel) -->
       <div class="projects-grid">
-        <!-- PROJE 1 -->
-        <article class="project-card" data-tags="yazilim,simulasyon,tasarim">
-          <div class="project-text">
-            <div class="project-tagline">VR • Medical Simulation</div>
-            <div class="project-title">Diz Artroskopisi Simülasyonu</div>
-            <div class="project-role">Rol: Simulation Developer & Technical Designer</div>
-            <p class="project-desc">
-              Diz eklemi içinde kamera hareketi, eklem içi navigasyon ve
-              cerrahi adımları içeren VR tabanlı bir eğitim simülasyonu.
-              Unity üzerinde gerçek zamanlı etkileşimler ve eğitim senaryoları ile geliştirildi.
-            </p>
-          </div>
-          <div class="project-image">
-            <!-- Buraya proje görseli koyabilirsin -->
-            <!-- <img src="proj1.jpg" alt="Diz Artroskopisi Simülasyonu"> -->
-            <span>Proje görseli</span>
-          </div>
-        </article>
-
-        <!-- PROJE 2 -->
-        <article class="project-card" data-tags="donanim,tasarim">
-          <div class="project-text">
-            <div class="project-tagline">Hardware • Prototipleme</div>
-            <div class="project-title">Cerrahi Alet Prototipleri</div>
-            <div class="project-role">Rol: Mechanical & Device Designer</div>
-            <p class="project-desc">
-              Simülasyon cihazı ile entegre çalışan, sensör destekli cerrahi
-              alet gövdeleri ve mekanik bileşenlerin tasarımı ve prototip üretimi.
-            </p>
-          </div>
-          <div class="project-image">
-            <!-- <img src="proj2.jpg" alt="Cerrahi Alet Prototipleri"> -->
-            <span>Proje görseli</span>
-          </div>
-        </article>
-
-        <!-- PROJE 3 -->
-        <article class="project-card" data-tags="yazilim,simulasyon">
-          <div class="project-text">
-            <div class="project-tagline">Unity • Real-Time</div>
-            <div class="project-title">Simülasyon Altyapı Motoru</div>
-            <div class="project-role">Rol: Software Developer</div>
-            <p class="project-desc">
-              Farklı tıbbi ve teknik senaryolara uyarlanabilen modüler bir
-              simülasyon altyapısı. Zamanlayıcılar, görev adımları, veri
-              takibi ve geri bildirim sistemleri içerir.
-            </p>
-          </div>
-          <div class="project-image">
-            <!-- <img src="proj3.jpg" alt="Simülasyon Altyapı Motoru"> -->
-            <span>Proje görseli</span>
-          </div>
-        </article>
-
-        <!-- PROJE 4 -->
-        <article class="project-card" data-tags="tasarim">
-          <div class="project-text">
-            <div class="project-tagline">3D • Visualization</div>
-            <div class="project-title">Kemik & Eklem 3D Modelleri</div>
-            <div class="project-role">Rol: 3D Technical Artist</div>
-            <p class="project-desc">
-              Tıbbi simülasyonlarda kullanılmak üzere kemik ve eklem yapılarının
-              anatomik doğruluğa dikkat edilerek modellenmesi ve görselleştirilmesi.
-            </p>
-          </div>
-          <div class="project-image">
-            <!-- <img src="proj4.jpg" alt="Kemik ve Eklem 3D Modelleri"> -->
-            <span>Proje görseli</span>
-          </div>
-        </article>
+        <!-- Kartlar JS ile doldurulacak -->
       </div>
-    </section>
-
-    <!-- HAKKIMDA -->
-    <section id="about">
-      <h2>Hakkımda</h2>
-      <p>
-        Simülasyon, yazılım geliştirme, 3D tasarım ve donanım entegrasyonu
-        alanlarında çalışan çok disiplinli bir geliştiriciyim. Amacım,
-        tıp ve eğitim dünyasında kullanılan simülasyon sistemlerini daha
-        erişilebilir, gerçekçi ve etkili hale getirmek.
-      </p>
     </section>
 
     <!-- İLETİŞİM -->
     <section id="contact">
       <h2>İletişim</h2>
       <p>
-        İşbirliği, proje veya teklif için benimle e-posta üzerinden iletişime
-        geçebilirsiniz.
+        İşbirliği, proje veya teklif için benimle e-posta üzerinden iletişime geçebilirsiniz.
       </p>
       <p style="margin-top:8px; font-size:14px;">
         E-posta: <a href="mailto:ornek@mail.com">ornek@mail.com</a>
       </p>
-      <!-- Buraya LinkedIn / GitHub linklerini ekleyebilirsin -->
       <!-- <p style="margin-top:4px; font-size:14px;">GitHub: <a href="#">github.com/kullanici</a></p> -->
     </section>
   </main>
 
-  <!-- ALT BİLGİ -->
   <footer>
     <span>© <span id="year"></span> Bahadır Kuş</span>
     <span>Simulation Developer & Technical Designer</span>
   </footer>
 </div>
 
+<!-- PROJE DETAY PANELİ -->
+<div class="project-modal" id="project-modal">
+  <div class="project-modal-content">
+    <div class="project-modal-header">
+      <div>
+        <div class="project-modal-title" id="modal-title"></div>
+        <div class="project-modal-sub" id="modal-sub"></div>
+      </div>
+      <button class="project-modal-close" id="modal-close" aria-label="Kapat">×</button>
+    </div>
+    <div class="project-modal-body">
+      <div class="modal-text">
+        <h4>Proje Açıklaması</h4>
+        <p id="modal-desc"></p>
+      </div>
+      <div class="modal-gallery">
+        <div class="modal-main-media" id="modal-main-media">
+          <span>Görsel / video için içerik eklenmedi.</span>
+        </div>
+        <div class="modal-thumbs" id="modal-thumbs">
+          <!-- Küçük albüm burada -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
-  // Footer’da yılı otomatik güncelle
+  // Footer yılı
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // PROJE FİLTRELEME
-  const filterButtons = document.querySelectorAll('.filter-btn');
-  const projectCards = document.querySelectorAll('.project-card');
+  // --- PROJE SİSTEMİ ---
+  // Buraya proje ekliyorsun: türler, isim, açıklamalar, görseller vb.
+  const projects = [
+    {
+      id: 'knee-sim',
+      name: 'Diz Artroskopisi Simülasyonu',
+      role: 'Simulation Developer & Technical Designer',
+      tagline: 'VR • Medical Simulation',
+      types: ['yazilim', 'tasarim', 'simulasyon'],
+      shortDesc:
+        'Diz eklemi içinde kamera hareketi, eklem içi navigasyon ve cerrahi adımları içeren VR tabanlı eğitim simülasyonu.',
+      longDesc:
+        'Diz eklemi anatomisi, eklem içi yüzeyler ve cerrahi portaller üzerinden gerçekçi bir artroskopi deneyimi sunar. ' +
+        'Unity üzerinde geliştirilen bu simülasyon; kamera kontrolü, hedef bölgelere yönlendirme, görev tabanlı eğitim adımları ve ' +
+        'görsel geri bildirimler ile cerrahi pratiği desteklemek üzere tasarlanmıştır.',
+      coverImage: '', // örnek: 'images/knee-cover.jpg'
+      gallery: [
+        // ÖRNEK: { type: 'image', src: 'images/knee-1.jpg', alt: 'Diz eklemi görünümü' },
+        // ÖRNEK: { type: 'video', src: 'videos/knee-demo.mp4', alt: 'Simülasyon demo videosu' }
+      ]
+    },
+    {
+      id: 'surgical-tools',
+      name: 'Cerrahi Alet Prototipleri',
+      role: 'Mechanical & Device Designer',
+      tagline: 'Hardware • Prototipleme',
+      types: ['donanim', 'tasarim'],
+      shortDesc:
+        'Simülasyon cihazı ile entegre çalışan, sensör destekli cerrahi alet gövdeleri ve mekanik bileşenler.',
+      longDesc:
+        'Gerçek cerrahi hissi taklit edebilmek için farklı sertlik ve geometriye sahip tutucular, gövdeler ve uç parçalar tasarlandı. ' +
+        'Enkoderler ve sensörler için montaj noktaları düşünülerek, hem ergonomi hem de veri doğruluğu gözetildi.',
+      coverImage: '',
+      gallery: []
+    },
+    {
+      id: 'sim-engine',
+      name: 'Simülasyon Altyapı Motoru',
+      role: 'Software Developer',
+      tagline: 'Unity • Real-Time',
+      types: ['yazilim', 'simulasyon'],
+      shortDesc:
+        'Farklı senaryolara uyarlanabilen, modüler yapıda gerçek zamanlı simülasyon yazılım altyapısı.',
+      longDesc:
+        'Görev adımları, hata takibi, kullanıcı performans puanlama ve modüler sahne yapısı içeren bir temel motor. ' +
+        'Yeni tıbbi veya teknik senaryolar minimum kod değişikliği ile bu altyapı üzerine eklenebiliyor.',
+      coverImage: '',
+      gallery: []
+    },
+    {
+      id: 'bone-models',
+      name: 'Kemik & Eklem 3D Modelleri',
+      role: '3D Technical Artist',
+      tagline: '3D • Visualization',
+      types: ['tasarim'],
+      shortDesc:
+        'Tıbbi simülasyonlarda kullanılmak üzere kemik ve eklem yapılarının anatomik olarak doğru 3D modelleri.',
+      longDesc:
+        'Görüntüleme verileri ve anatomik referanslar üzerinden, eklem yüzeyleri ve kemik yapıları yüksek detayda modellendi. ' +
+        'Bu modeller, VR/AR simülasyonlarda hem eğitim hem de demonstrasyon amaçlı kullanılıyor.',
+      coverImage: '',
+      gallery: []
+    }
+  ];
 
+  const projectsGrid = document.querySelector('.projects-grid');
+  const filterButtons = document.querySelectorAll('.filter-btn');
+
+  let activeFilter = 'hepsi';
+
+  function createProjectCard(project) {
+    const card = document.createElement('article');
+    card.className = 'project-card';
+    card.dataset.id = project.id;
+    card.dataset.types = project.types.join(',');
+
+    const hasCover = project.coverImage && project.coverImage.trim() !== '';
+
+    card.innerHTML = `
+      <div class="project-text">
+        <div class="project-tagline">${project.tagline || ''}</div>
+        <div class="project-title">${project.name}</div>
+        <div class="project-role">Rol: ${project.role}</div>
+        <p class="project-desc">${project.shortDesc}</p>
+        <span class="project-more">Detayları gör</span>
+      </div>
+      <div class="project-image">
+        ${
+          hasCover
+            ? `<img src="${project.coverImage}" alt="${project.name} görseli">`
+            : `<span>Proje görseli</span>`
+        }
+      </div>
+    `;
+    return card;
+  }
+
+  function renderProjects() {
+    projectsGrid.innerHTML = '';
+    projects.forEach(project => {
+      if (activeFilter !== 'hepsi' && !project.types.includes(activeFilter)) return;
+      const card = createProjectCard(project);
+      projectsGrid.appendChild(card);
+    });
+    attachCardEvents();
+  }
+
+  // MODAL ELEMENTLERİ
+  const modal = document.getElementById('project-modal');
+  const modalTitle = document.getElementById('modal-title');
+  const modalSub = document.getElementById('modal-sub');
+  const modalDesc = document.getElementById('modal-desc');
+  const modalMainMedia = document.getElementById('modal-main-media');
+  const modalThumbs = document.getElementById('modal-thumbs');
+  const modalCloseBtn = document.getElementById('modal-close');
+
+  function openModal(projectId) {
+    const project = projects.find(p => p.id === projectId);
+    if (!project) return;
+
+    modalTitle.textContent = project.name;
+    modalSub.textContent = project.role + (project.tagline ? ' • ' + project.tagline : '');
+    modalDesc.textContent = project.longDesc || project.shortDesc || '';
+
+    modalMainMedia.innerHTML = '';
+    modalThumbs.innerHTML = '';
+
+    if (project.gallery && project.gallery.length > 0) {
+      // Ana medya
+      const first = project.gallery[0];
+      setMainMedia(first);
+
+      // Thumbs
+      project.gallery.forEach((item, index) => {
+        const thumb = document.createElement('div');
+        thumb.className = 'modal-thumb' + (index === 0 ? ' active' : '');
+        thumb.dataset.index = index;
+
+        if (item.type === 'image') {
+          thumb.innerHTML = `<img src="${item.src}" alt="${item.alt || ''}">`;
+        } else if (item.type === 'video') {
+          thumb.innerHTML = `<span>Video</span>`;
+        } else {
+          thumb.textContent = 'Medya';
+        }
+
+        thumb.addEventListener('click', () => {
+          document.querySelectorAll('.modal-thumb').forEach(t => t.classList.remove('active'));
+          thumb.classList.add('active');
+          setMainMedia(item);
+        });
+
+        modalThumbs.appendChild(thumb);
+      });
+    } else {
+      modalMainMedia.innerHTML = '<span>Görsel / video henüz eklenmedi.</span>';
+    }
+
+    modal.classList.add('open');
+  }
+
+  function setMainMedia(item) {
+    modalMainMedia.innerHTML = '';
+    if (!item) {
+      modalMainMedia.innerHTML = '<span>Görsel / video henüz eklenmedi.</span>';
+      return;
+    }
+
+    if (item.type === 'image') {
+      const img = document.createElement('img');
+      img.src = item.src;
+      img.alt = item.alt || '';
+      modalMainMedia.appendChild(img);
+    } else if (item.type === 'video') {
+      const vid = document.createElement('video');
+      vid.src = item.src;
+      vid.controls = true;
+      modalMainMedia.appendChild(vid);
+    } else {
+      modalMainMedia.innerHTML = '<span>Desteklenmeyen medya türü.</span>';
+    }
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+  }
+
+  function attachCardEvents() {
+    document.querySelectorAll('.project-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const id = card.dataset.id;
+        openModal(id);
+      });
+    });
+  }
+
+  // Filtre butonları
   filterButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       const filter = btn.dataset.filter;
+      activeFilter = filter;
 
-      // aktif butonu değiştir
       filterButtons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
-      // projeleri filtrele
-      projectCards.forEach(card => {
-        const tags = (card.dataset.tags || '').split(',').map(t => t.trim());
-
-        if (filter === 'hepsi') {
-          card.style.display = 'flex';
-        } else {
-          if (tags.includes(filter)) {
-            card.style.display = 'flex';
-          } else {
-            card.style.display = 'none';
-          }
-        }
-      });
+      renderProjects();
     });
   });
+
+  // Modal kapatma
+  modalCloseBtn.addEventListener('click', closeModal);
+
+  modal.addEventListener('click', e => {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  // İlk render
+  renderProjects();
 </script>
 
 </body>
 </html>
+
