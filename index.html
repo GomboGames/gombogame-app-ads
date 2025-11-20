@@ -129,53 +129,99 @@
     }
 
     .social-btn {
-      width: 30px;
-      height: 30px;
+      width: 32px;
+      height: 32px;
       border-radius: 999px;
       border: 1px solid rgba(148,163,184,0.6);
-      background: rgba(255,255,255,0.08);
-      color: #e5e7eb;
+      background: rgba(255,255,255,0.06);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 12px;
-      font-weight: 600;
       text-decoration: none;
       transition: .2s;
     }
 
+    .social-btn img {
+      width: 16px;
+      height: 16px;
+      display: block;
+    }
+
     .social-btn:hover {
       background: #fff;
-      color: #111;
       border-color: var(--accent);
       transform: translateY(-1px);
       box-shadow: 0 10px 20px rgba(15,23,42,0.4);
     }
 
-    /* İLETİŞİM BİLGİLERİ */
+    /* İLETİŞİM KARTLARI */
     .contact-list {
       align-self: stretch;
-      text-align: left;
-      font-size: 13px;
       display: flex;
       flex-direction: column;
-      gap: 4px;
-      color: #e5e7eb;
-      margin-top: 6px;
+      gap: 8px;
+      margin-top: 8px;
+      font-size: 13px;
     }
 
-    .contact-list a {
-      color: #e5e7eb;
+    .contact-card,
+    .contact-card-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 11px;
+      border-radius: 16px;
+      background: #15151f;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.45);
+    }
+
+    .contact-card-link {
       text-decoration: none;
+      color: #e5e7eb;
+      transition: .15s;
     }
 
-    .contact-list a:hover {
-      text-decoration: underline;
+    .contact-card-link:hover {
+      background: #1e1e29;
+      transform: translateY(-1px);
+      box-shadow: 0 16px 30px rgba(0,0,0,0.6);
+    }
+
+    .contact-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 14px;
+      background: #0f172a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.7);
+      flex-shrink: 0;
+    }
+
+    .contact-icon img {
+      width: 18px;
+      height: 18px;
+      display: block;
+    }
+
+    .contact-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
     }
 
     .contact-label {
-      font-weight: 500;
-      opacity: 0.9;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #9ca3af;
+    }
+
+    .contact-value {
+      font-size: 13px;
+      color: #e5e7eb;
+      word-break: break-all;
     }
 
     /* SAĞ ANA KART */
@@ -605,8 +651,8 @@
     <aside class="sidebar">
       <div class="profile-header">
         <div class="profile-photo">
-          <!-- <img src="profile.jpg" alt="Bahadır Kuş"> -->
-          Fotoğraf
+          <!-- Profil fotoğrafın: images/profile.jpg -->
+          <img src="images/profile.jpg" alt="Bahadır Kuş">
         </div>
         <div class="profile-name">Bahadır Kuş</div>
         <div class="profile-role-pill">
@@ -621,21 +667,60 @@
         birleştirerek tıbbi eğitim için gerçekçi simülasyon sistemleri üretiyorum.
       </p>
 
-      <!-- Sosyal ikonlar (GitHub yok) -->
+      <!-- Sosyal ikonlar (hepsi images klasöründen) -->
       <div class="profile-social">
-        <a class="social-btn" href="#" target="_blank" title="Instagram">IG</a>
-        <a class="social-btn" href="#" target="_blank" title="X / Twitter">X</a>
-        <a class="social-btn" href="#" target="_blank" title="LinkedIn">in</a>
+        <a class="social-btn" href="#" target="_blank" title="Instagram">
+          <img src="images/icon-instagram.svg" alt="Instagram">
+        </a>
+        <a class="social-btn" href="#" target="_blank" title="X / Twitter">
+          <img src="images/icon-x.svg" alt="X">
+        </a>
+        <a class="social-btn" href="#" target="_blank" title="LinkedIn">
+          <img src="images/icon-linkedin.svg" alt="LinkedIn">
+        </a>
       </div>
 
-      <!-- İletişim bilgileri -->
+      <!-- İletişim kartları -->
       <div class="contact-list">
-        <a href="#" target="_blank">
-          <span class="contact-label">Game Demo (GitHub)</span>
+        <a class="contact-card-link" href="#" target="_blank">
+          <div class="contact-icon">
+            <img src="images/icon-game.svg" alt="Game demo icon">
+          </div>
+          <div class="contact-text">
+            <span class="contact-label">Game Demo</span>
+            <span class="contact-value">GitHub Link</span>
+          </div>
         </a>
-        <a href="mailto:ornek@mail.com">ornek@mail.com</a>
-        <span>Toronto, Canada</span>
-        <a href="#" target="_blank">YouTube Channel</a>
+
+        <a class="contact-card-link" href="mailto:ornek@mail.com">
+          <div class="contact-icon">
+            <img src="images/icon-email.svg" alt="Email icon">
+          </div>
+          <div class="contact-text">
+            <span class="contact-label">Email</span>
+            <span class="contact-value">ornek@mail.com</span>
+          </div>
+        </a>
+
+        <div class="contact-card">
+          <div class="contact-icon">
+            <img src="images/icon-location.svg" alt="Location icon">
+          </div>
+          <div class="contact-text">
+            <span class="contact-label">Location</span>
+            <span class="contact-value">Toronto, Canada</span>
+          </div>
+        </div>
+
+        <a class="contact-card-link" href="#" target="_blank">
+          <div class="contact-icon">
+            <img src="images/icon-youtube.svg" alt="YouTube icon">
+          </div>
+          <div class="contact-text">
+            <span class="contact-label">YouTube</span>
+            <span class="contact-value">YouTube Channel</span>
+          </div>
+        </a>
       </div>
     </aside>
 
