@@ -7,19 +7,20 @@
 
   <style>
     :root {
-      --bg: #f5f5f5;
+      --bg: #f3f4f6;
       --card-bg: #ffffff;
-      --text: #111111;
-      --muted: #666666;
-      --border: #e5e5e5;
-      --accent: #2962ff;
+      --text: #111827;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --accent: #2563eb;
+      --accent-soft: #eff6ff;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
+      background: radial-gradient(circle at top, #e5f0ff 0, #f3f4f6 40%, #f3f4f6 100%);
       color: var(--text);
       line-height: 1.6;
     }
@@ -29,13 +30,13 @@
     .page {
       max-width: 1180px;
       margin: 0 auto;
-      padding: 24px 16px 64px;
+      padding: 32px 16px 64px;
     }
 
     /* ANA YERLEŞİM: SOL PROFİL – SAĞ İÇERİK */
     .layout {
       display: grid;
-      grid-template-columns: 300px minmax(0, 1fr);
+      grid-template-columns: 290px minmax(0, 1fr);
       gap: 24px;
       align-items: flex-start;
     }
@@ -45,28 +46,35 @@
       position: sticky;
       top: 24px;
       align-self: flex-start;
-      background: var(--card-bg);
+      background: linear-gradient(160deg, #111827, #020617);
       border-radius: 20px;
-      padding: 24px 20px 22px;
-      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.06);
+      padding: 22px 20px 20px;
+      box-shadow: 0 26px 60px rgba(15, 23, 42, 0.45);
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 22px;
+      color: #f9fafb;
+    }
+
+    .profile-top {
+      display: flex;
+      gap: 14px;
+      align-items: center;
     }
 
     .profile-photo {
-      width: 120px;
-      height: 120px;
-      border-radius: 24px;
-      background: #f5f5f5;
-      border: 1px solid var(--border);
+      width: 86px;
+      height: 86px;
+      border-radius: 22px;
+      background: #020617;
+      border: 1px solid rgba(148, 163, 184, 0.6);
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 12px;
-      color: var(--muted);
-      margin-bottom: 6px;
+      font-size: 11px;
+      color: #9ca3af;
+      flex-shrink: 0;
     }
 
     .profile-photo img {
@@ -76,129 +84,140 @@
       display: block;
     }
 
-    .profile-header {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
     .profile-name {
       font-size: 20px;
       font-weight: 600;
       margin-bottom: 4px;
+      letter-spacing: 0.01em;
     }
 
     .profile-role-pill {
       font-size: 11px;
-      padding: 4px 10px;
+      padding: 3px 9px;
       border-radius: 999px;
-      border: 1px solid var(--border);
-      background: #f9fafb;
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      background: rgba(15, 23, 42, 0.75);
       text-transform: uppercase;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.16em;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .profile-role-pill span.dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
     }
 
     .profile-bio {
       font-size: 13px;
-      color: var(--muted);
-    }
-
-    .profile-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-top: 4px;
-    }
-
-    .btn {
-      border-radius: 999px;
-      padding: 8px 14px;
-      font-size: 13px;
-      border: 1px solid var(--border);
-      background: #fff;
-      cursor: pointer;
-      transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.1s ease;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-    }
-
-    .btn:hover {
-      background: #f5f5f5;
-      transform: translateY(-1px);
-      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
-    }
-
-    .btn-primary {
-      border-color: var(--accent);
-      background: var(--accent);
-      color: #ffffff;
-    }
-
-    .btn-primary:hover {
-      background: #1744c5;
+      color: #e5e7eb;
     }
 
     .profile-section-title {
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--muted);
-      margin-bottom: 4px;
+      letter-spacing: 0.2em;
+      color: #9ca3af;
+      margin-bottom: 6px;
     }
 
     .profile-list {
       list-style: none;
       font-size: 13px;
-      color: var(--muted);
       display: flex;
       flex-direction: column;
       gap: 6px;
     }
 
+    .profile-list li {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
     .profile-list strong {
-      color: var(--text);
+      color: #e5e7eb;
       font-weight: 500;
     }
 
-    /* SAĞ ANA İÇERİK */
-    .main {
-      background: transparent;
+    .profile-list a {
+      color: #9ca3af;
+      text-decoration: none;
+    }
+
+    .profile-list a:hover {
+      color: #e5e7eb;
+    }
+
+    /* SAĞ ANA KART (PORTFOLIO / RESUME) */
+    .main-card {
+      background: var(--card-bg);
+      border-radius: 24px;
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18);
+      padding: 18px 20px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .main-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+    }
+
+    .main-title-block h1 {
+      font-size: 19px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .main-title-block p {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 2px;
     }
 
     .top-tabs {
-      display: flex;
-      justify-content: flex-start;
-      gap: 12px;
-      margin-bottom: 18px;
+      display: inline-flex;
+      background: #f3f4f6;
+      border-radius: 999px;
+      padding: 3px;
+      gap: 3px;
     }
 
     .tab-btn {
       border: none;
       background: transparent;
-      padding: 8px 14px;
+      padding: 6px 16px;
       font-size: 13px;
       border-radius: 999px;
       cursor: pointer;
       color: var(--muted);
       transition: background 0.15s ease, color 0.1s ease;
+      white-space: nowrap;
     }
 
     .tab-btn.active {
-      background: var(--card-bg);
+      background: #ffffff;
       color: var(--text);
       font-weight: 500;
-      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      box-shadow: 0 6px 18px rgba(148, 163, 184, 0.5);
     }
 
     .tab-section { display: none; }
     .tab-section.active { display: block; }
 
     section h2 {
-      font-size: 18px;
-      margin-bottom: 6px;
+      font-size: 16px;
+      margin-bottom: 4px;
     }
 
     section p {
@@ -211,75 +230,76 @@
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin: 12px 0 20px;
+      margin: 12px 0 16px;
     }
 
     .filter-btn {
       border-radius: 999px;
-      padding: 6px 14px;
-      font-size: 13px;
+      padding: 6px 13px;
+      font-size: 12px;
       border: 1px solid var(--border);
-      background: #fff;
+      background: #f9fafb;
       cursor: pointer;
-      opacity: 0.8;
+      opacity: 0.9;
       transition: background 0.15s ease, opacity 0.1s ease,
-                  transform 0.1s ease, box-shadow 0.1s ease;
+                  transform 0.1s ease, box-shadow 0.1s ease, border-color 0.1s ease;
     }
 
     .filter-btn:hover {
-      background: #f5f5f5;
+      background: #e5e7eb;
       opacity: 1;
       transform: translateY(-1px);
-      box-shadow: 0 6px 14px rgba(15, 23, 42, 0.08);
+      box-shadow: 0 6px 16px rgba(148, 163, 184, 0.6);
     }
 
     .filter-btn.active {
       border-color: var(--accent);
-      background: var(--accent);
-      color: #fff;
+      background: var(--accent-soft);
+      color: #1d4ed8;
       opacity: 1;
-      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
+      box-shadow: 0 8px 20px rgba(129, 140, 248, 0.4);
     }
 
     /* PROJE GRID – 2’Lİ */
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-      gap: 20px;
-      margin-top: 8px;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 18px;
+      margin-top: 4px;
     }
 
     .project-card {
       position: relative;
       display: flex;
-      background: var(--card-bg);
-      border-radius: 20px;
+      background: #f9fafb;
+      border-radius: 18px;
       overflow: hidden;
-      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.06);
-      min-height: 200px;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+      min-height: 185px;
       cursor: pointer;
-      transition: transform 0.1s ease, box-shadow 0.1s ease;
+      transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
     }
 
     .project-card:hover {
       transform: translateY(-3px);
-      box-shadow: 0 26px 55px rgba(15, 23, 42, 0.12);
+      box-shadow: 0 22px 45px rgba(15, 23, 42, 0.22);
+      background: #ffffff;
     }
 
     .project-text {
       flex: 1;
-      padding: 20px 24px 20px 28px;
+      padding: 16px 18px 16px 22px;
       position: relative;
-      background: #ffffff;
+      background: transparent;
     }
 
     .project-text::before {
       content: "";
       position: absolute;
       left: 0;
-      top: 20px;
-      bottom: 20px;
-      width: 5px;
+      top: 14px;
+      bottom: 14px;
+      width: 4px;
       border-radius: 999px;
       background: var(--accent);
     }
@@ -287,48 +307,49 @@
     .project-tagline {
       font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.18em;
       opacity: 0.6;
       margin-bottom: 3px;
+      color: #4b5563;
     }
 
     .project-title {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 600;
-      margin-bottom: 2px;
+      margin-bottom: 1px;
     }
 
     .project-role {
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 500;
       color: var(--muted);
-      margin-bottom: 4px;
+      margin-bottom: 2px;
     }
 
     .project-date {
-      font-size: 12px;
+      font-size: 11px;
       color: var(--muted);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .project-desc {
       font-size: 13px;
       color: var(--muted);
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
 
     .project-more {
       font-size: 12px;
       text-decoration: underline;
       text-underline-offset: 2px;
-      color: var(--accent);
+      color: #1d4ed8;
       margin-top: 4px;
       display: inline-block;
     }
 
     .project-image {
-      flex: 0 0 38%;
-      background: #f3f3f3;
+      flex: 0 0 37%;
+      background: #e5e7eb;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -347,33 +368,32 @@
       display: block;
     }
 
-    /* RESUME SEKMESİ (BASİT PLACEHOLDER) */
+    /* RESUME SEKMESİ */
     .resume-block {
-      background: var(--card-bg);
-      border-radius: 18px;
-      padding: 18px 20px 18px;
-      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.05);
-      margin-top: 14px;
+      background: #f9fafb;
+      border-radius: 16px;
+      padding: 14px 16px 14px;
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.12);
+      margin-top: 12px;
       font-size: 14px;
       color: var(--muted);
     }
 
     .resume-block h3 {
       font-size: 15px;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
       color: var(--text);
     }
 
     footer {
-      margin-top: 32px;
-      border-top: 1px solid var(--border);
-      padding-top: 14px;
+      margin-top: 28px;
       font-size: 12px;
       color: var(--muted);
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 8px;
+      opacity: 0.85;
     }
 
     /* PROJE MODAL / PANEL */
@@ -459,7 +479,7 @@
 
     .modal-main-media {
       width: 100%;
-      background: #f3f3f3;
+      background: #f3f4f6;
       border-radius: 14px;
       min-height: 220px;
       display: flex;
@@ -492,7 +512,7 @@
       height: 70px;
       border-radius: 10px;
       overflow: hidden;
-      background: #e5e5e5;
+      background: #e5e7eb;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -536,16 +556,16 @@
 
       .project-image {
         flex: 0 0 auto;
-        min-height: 160px;
+        min-height: 150px;
       }
 
       .project-text {
-        padding: 18px 18px 18px 24px;
+        padding: 14px 16px 14px 20px;
       }
 
       .project-text::before {
-        top: 16px;
-        bottom: 16px;
+        top: 12px;
+        bottom: 12px;
       }
 
       .project-modal-body {
@@ -561,13 +581,18 @@
   <div class="layout">
     <!-- SOL PROFİL KARTI -->
     <aside class="sidebar">
-      <div class="profile-header">
+      <div class="profile-top">
         <div class="profile-photo">
           <!-- <img src="profile.jpg" alt="Bahadır Kuş"> -->
           Fotoğraf
         </div>
-        <div class="profile-name">Bahadır Kuş</div>
-        <div class="profile-role-pill">Simulation Developer & Technical Designer</div>
+        <div>
+          <div class="profile-name">Bahadır Kuş</div>
+          <div class="profile-role-pill">
+            <span class="dot"></span>
+            Simulation Developer &amp; Technical Designer
+          </div>
+        </div>
       </div>
 
       <p class="profile-bio">
@@ -576,38 +601,41 @@
         tıbbi eğitim için gerçekçi simülasyon sistemleri üretiyorum.
       </p>
 
-      <div class="profile-actions">
-        <button class="btn btn-primary" onclick="document.getElementById('portfolio-section').scrollIntoView({behavior:'smooth'})">
-          View Portfolio
-        </button>
-        <!-- CV linkini sonra doldurursun -->
-        <!-- <a href="cv.pdf" class="btn" download>Download CV</a> -->
-      </div>
-
       <div>
         <div class="profile-section-title">Contact</div>
         <ul class="profile-list">
-          <li><strong>Email:</strong> <a href="mailto:ornek@mail.com">ornek@mail.com</a></li>
-          <!-- İstersen bunları doldur -->
-          <!-- <li><strong>LinkedIn:</strong> linkedin.com/in/...</li> -->
-          <!-- <li><strong>GitHub:</strong> github.com/...</li> -->
-          <!-- <li><strong>Location:</strong> Ankara / İstanbul</li> -->
+          <li>
+            <strong>Email</strong>
+            <a href="mailto:ornek@mail.com">ornek@mail.com</a>
+          </li>
+          <!-- İstersen buraya LinkedIn / GitHub / Konum ekleyebilirsin -->
+          <!--
+          <li>
+            <strong>LinkedIn</strong>
+            <a href="#">linkedin.com/in/...</a>
+          </li>
+          -->
         </ul>
       </div>
     </aside>
 
-    <!-- SAĞ ANA İÇERİK -->
-    <main class="main">
-      <!-- ÜST SEKME BUTONLARI -->
-      <div class="top-tabs">
-        <button class="tab-btn active" data-tab="portfolio">Portfolio</button>
-        <button class="tab-btn" data-tab="resume">Resume</button>
+    <!-- SAĞ ANA KART -->
+    <main class="main-card">
+      <div class="main-header">
+        <div class="main-title-block">
+          <h1>Portfolio &amp; Resume</h1>
+          <p>Simülasyon, yazılım ve tasarım çalışmalarımın derli toplu özeti.</p>
+        </div>
+        <div class="top-tabs">
+          <button class="tab-btn active" data-tab="portfolio">Portfolio</button>
+          <button class="tab-btn" data-tab="resume">Resume</button>
+        </div>
       </div>
 
       <!-- PORTFOLIO SEKME İÇERİĞİ -->
       <section id="portfolio-section" class="tab-section active">
         <h2>Portfolio</h2>
-        <p>Simülasyon, yazılım ve tasarım alanında geliştirdiğim projelerin bir kısmı.</p>
+        <p>Üzerinde çalıştığım projelerden seçtiklerim. Filtreler ile kategoriye göre ayırabilirsin.</p>
 
         <div class="project-filters">
           <button class="filter-btn active" data-filter="hepsi">All</button>
@@ -621,17 +649,17 @@
         </div>
       </section>
 
-      <!-- RESUME SEKME İÇERİĞİ (Şimdilik basit) -->
+      <!-- RESUME SEKME İÇERİĞİ -->
       <section id="resume-section" class="tab-section">
         <h2>Resume</h2>
-        <p>Kısa özgeçmiş ve deneyim özetini burada tutabilirsin. Şimdilik örnek bloklar ekledim.</p>
+        <p>Kısa özgeçmiş ve yetenek özetimi burada tutuyorum. İstediğin zaman metinleri değiştirebilirsin.</p>
 
         <div class="resume-block" style="margin-top:10px;">
           <h3>Experience</h3>
           <p>
             • VR/AR tabanlı tıbbi simülasyon geliştirme<br>
-            • Unity ile gerçek zamanlı etkileşimler ve eğitim senaryoları<br>
-            • Donanım entegrasyonu, sensörlü cerrahi alet tasarımı
+            • Unity ile gerçek zamanlı eğitim senaryoları ve etkileşimli sistemler<br>
+            • Donanım entegrasyonu, sensörlü cerrahi alet ve simülasyon cihazı tasarımı
           </p>
         </div>
 
@@ -639,7 +667,7 @@
           <h3>Skills</h3>
           <p>
             Unity · C# · VR/AR · 3D Technical Art · Prototipleme · Arduino / gömülü donanım<br>
-            + İstediğin gibi burayı sonra güncellersin.
+            + Bu alanı ileride daha detaylı CV bilgisiyle güncelleyebilirsin.
           </p>
         </div>
       </section>
@@ -648,7 +676,7 @@
 
   <footer>
     <span>© <span id="year"></span> Bahadır Kuş</span>
-    <span>Simulation Developer & Technical Designer</span>
+    <span>Simulation Developer &amp; Technical Designer</span>
   </footer>
 </div>
 
@@ -701,7 +729,7 @@
 
   /* ========= BURAYA editor.html'den aldığın const projects = [...] KODUNU YAPIŞTIR ========= */
 
-  const projects = []; // <-- BUNU SİL, editor.html'deki "const projects = [...]" kodu buraya gelecek.
+  const projects = []; // <-- BUNU SİLİP, editor.html'deki "const projects = [...];" kodunu buraya koy.
 
   /* ============================================================================= */
 
