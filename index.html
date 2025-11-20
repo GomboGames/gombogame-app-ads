@@ -170,18 +170,51 @@
       color: var(--muted);
     }
 
-    /* PROJELER */
+    /* PROJE FİLTRELERİ */
+    .project-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0 18px;
+    }
+
+    .filter-btn {
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: 13px;
+      border: 1px solid var(--border);
+      background: #fff;
+      cursor: pointer;
+      opacity: 0.8;
+      transition: background 0.15s ease, opacity 0.1s ease, transform 0.1s ease;
+    }
+
+    .filter-btn:hover {
+      background: #f5f5f5;
+      opacity: 1;
+      transform: translateY(-1px);
+    }
+
+    .filter-btn.active {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #fff;
+      opacity: 1;
+    }
+
+    /* PROJELER GRID */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 16px;
-      margin-top: 16px;
+      margin-top: 4px;
     }
 
     .project-card {
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 16px;
+      display: block; /* JS ile gizleyip göstereceğiz */
     }
 
     .project-title {
@@ -280,35 +313,56 @@
     <!-- PROJELER -->
     <section id="projects">
       <h2>Seçili Projeler</h2>
-      <p>Simülasyon, VR/AR ve tıbbi eğitim alanında üzerinde çalıştığım bazı projeler.</p>
+      <p>Simülasyon, yazılım ve tasarım alanında üzerinde çalıştığım bazı projeler.</p>
 
+      <!-- Filtre Butonları -->
+      <div class="project-filters">
+        <button class="filter-btn active" data-filter="hepsi">Hepsi</button>
+        <button class="filter-btn" data-filter="yazilim">Yazılım</button>
+        <button class="filter-btn" data-filter="tasarim">Tasarım</button>
+        <button class="filter-btn" data-filter="donanim">Donanım</button>
+      </div>
+
+      <!-- Proje Kartları -->
       <div class="projects-grid">
-        <article class="project-card">
-          <div class="project-tag">VR • Medical Simulation</div>
+        <!-- ÖRNEK 1 -->
+        <article class="project-card" data-tags="yazilim,simulasyon,tasarim">
+          <div class="project-tag">VR • Medical Simulation • Yazılım & Tasarım</div>
           <div class="project-title">Diz Artroskopisi Simülasyonu</div>
           <p class="project-desc">
             Diz eklemi için gerçekçi kamera kontrolü, eklem içi navigasyon ve
-            cerrahi senaryolar içeren VR tabanlı bir eğitim simülasyonu.
+            cerrahi adımları içeren VR tabanlı bir eğitim simülasyonu.
           </p>
-          <!-- Buraya istersen proje linki koyarsın -->
           <!-- <a href="#" class="project-link">Detaylar</a> -->
         </article>
 
-        <article class="project-card">
-          <div class="project-tag">Hardware • R&amp;D</div>
-          <div class="project-title">Özel Cerrahi Alet Prototipleri</div>
+        <!-- ÖRNEK 2 -->
+        <article class="project-card" data-tags="donanim,tasarim">
+          <div class="project-tag">Hardware • Prototipleme • Donanım</div>
+          <div class="project-title">Cerrahi Alet Prototipleri</div>
           <p class="project-desc">
-            Simülasyon cihazı için tasarlanan, sensör entegrasyonlu cerrahi
-            alet gövdeleri ve mekanik bileşenler.
+            Simülasyon cihazı ile entegre çalışan, sensör destekli cerrahi
+            alet gövdeleri ve mekanik bileşenlerin tasarımı ve üretimi.
           </p>
         </article>
 
-        <article class="project-card">
-          <div class="project-tag">Unity • Real-Time</div>
-          <div class="project-title">Gerçek Zamanlı Simülasyon Altyapısı</div>
+        <!-- ÖRNEK 3 -->
+        <article class="project-card" data-tags="yazilim,simulasyon">
+          <div class="project-tag">Unity • Real-Time • Yazılım</div>
+          <div class="project-title">Simülasyon Altyapı Motoru</div>
           <p class="project-desc">
-            Unity tabanlı, fizik etkileşimleri ve eğitim adımlarını yöneten
-            modüler simülasyon yazılım iskeleti.
+            Farklı tıbbi ve teknik senaryolara uyarlanabilen, modüler yapıda
+            bir gerçek zamanlı simülasyon yazılım altyapısı.
+          </p>
+        </article>
+
+        <!-- ÖRNEK 4 -->
+        <article class="project-card" data-tags="tasarim">
+          <div class="project-tag">3D • Visualization • Tasarım</div>
+          <div class="project-title">Kemik ve Eklem 3D Modelleri</div>
+          <p class="project-desc">
+            Tıbbi simülasyonlarda kullanılmak üzere hazırlanmış, doku
+            detayları ve topolojiye dikkat edilerek oluşturulmuş 3D modeller.
           </p>
         </article>
       </div>
@@ -350,6 +404,35 @@
 <script>
   // Footer’da yılı otomatik güncelle
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // PROJE FİLTRELEME
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const projectCards = document.querySelectorAll('.project-card');
+
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter;
+
+      // aktif butonu değiştir
+      filterButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      // projeleri filtrele
+      projectCards.forEach(card => {
+        const tags = (card.dataset.tags || '').split(',').map(t => t.trim());
+
+        if (filter === 'hepsi') {
+          card.style.display = 'block';
+        } else {
+          if (tags.includes(filter)) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        }
+      });
+    });
+  });
 </script>
 
 </body>
