@@ -18,11 +18,16 @@
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
+    html, body {
+      height: 100%;
+    }
+
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: radial-gradient(circle at top, #e5f0ff 0, #f3f4f6 40%, #f3f4f6 100%);
       color: var(--text);
       line-height: 1.6;
+      min-height: 100vh;
     }
 
     a { color: inherit; text-decoration: none; }
@@ -31,20 +36,23 @@
       max-width: 1180px;
       margin: 0 auto;
       padding: 32px 16px 64px;
+      min-height: 100vh;
     }
 
     .layout {
       display: grid;
       grid-template-columns: 290px minmax(0, 1fr);
       gap: 24px;
-      align-items: flex-start;
+      align-items: stretch;
+      min-height: calc(100vh - 64px);
     }
 
     /* SOL PROFİL KARTI */
     .sidebar {
       position: sticky;
-      top: 24px;
-      align-self: flex-start;
+      top: 16px;
+      height: calc(100vh - 32px);
+      align-self: stretch;
       background: #111827;
       border-radius: 24px;
       padding: 26px 22px 22px;
@@ -607,10 +615,12 @@
     @media (max-width: 900px) {
       .layout {
         grid-template-columns: 1fr;
+        min-height: auto;
       }
 
       .sidebar {
         position: static;
+        height: auto;
       }
     }
 
@@ -662,12 +672,12 @@
       </div>
 
       <p class="profile-bio">
-        Unity, VR/AR ve gerçek zamanlı simülasyon alanında çalışan bir geliştiriciyim.
-        Kendi tasarladığım mekanik parçalar, sensörler ve yazılım altyapısını
-        birleştirerek tıbbi eğitim için gerçekçi simülasyon sistemleri üretiyorum.
+        Merhaba, ben Bahadır.<br>
+        Lisede Bilişim Teknolojileri eğitimiyle yazılım yolculuğuma başladım ve yıllar içinde gerçek zamanlı uygulamalar ile simülasyon geliştirmeye odaklandım. 2021’den itibaren VR/AR tabanlı tıbbi simülasyonlar üzerine çalışıyor; kendi tasarladığım mekanik parçaları, sensörleri ve yazılım altyapısını bir araya getirerek gerçekçi cerrahi eğitim sistemleri geliştiriyorum.<br><br>
+        Üretmek, yeni teknolojiler denemek ve karmaşık süreçleri işlevsel çözümlere dönüştürmek benim için bir tutku.
       </p>
 
-      <!-- Sosyal ikonlar (hepsi images klasöründen) -->
+      <!-- Sosyal ikonlar -->
       <div class="profile-social">
         <a class="social-btn" href="#" target="_blank" title="Instagram">
           <img src="images/icon-instagram.svg" alt="Instagram">
