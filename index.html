@@ -556,9 +556,7 @@ const projects = [
     "gallery": []
   }
 ];
-
-
-  const projectsGrid = document.querySelector('.projects-grid');
+const projectsGrid = document.querySelector('.projects-grid');
   const filterButtons = document.querySelectorAll('.filter-btn');
   let activeFilter = 'hepsi';
 
@@ -575,7 +573,7 @@ const projects = [
       <div class="project-text">
         <div class="project-tagline">${project.tagline || ''}</div>
         <div class="project-title">${project.name}</div>
-        <div class="project-role">${project.role}</div>
+        <div class="project-role">${project.role || ''}</div>
         <div class="project-date">${dateText}</div>
         <p class="project-desc">${project.shortDesc || ''}</p>
         <span class="project-more">Detayları gör</span>
@@ -636,21 +634,38 @@ const projects = [
     if (!project) return;
 
     modalTitle.textContent = project.name;
+
     const subParts = [];
     if (project.role) subParts.push(project.role);
     if (project.tagline) subParts.push(project.tagline);
     if (project.date) subParts.push(project.date);
     modalSub.textContent = subParts.join(' • ');
+
     modalDesc.textContent = project.longDesc || project.shortDesc || '';
 
     modalMainMedia.innerHTML = '';
     modalThumbs.innerHTML = '';
 
-    if (project.gallery && project.gallery.length > 0) {
-      const first = project.gallery[0];
-      setMainMedia(first);
+    // 🔹 PANEL İÇİN GALERİ VERİSİ:
+    // 1) Eğer gallery doluysa → onu kullan
+    // 2) Eğer gallery boş ama coverImage varsa → onu ilk fotoğraf olarak kullan
+    let gallery = Array.isArray(project.gallery) ? [...project.gallery] : [];
 
-      project.gallery.forEach((item, index) => {
+    if (gallery.length === 0 && project.coverImage) {
+      gallery = [
+        {
+          type: 'image',
+          src: project.coverImage,
+          alt: project.name + ' görseli'
+        }
+      ];
+    }
+
+    if (gallery.length > 0) {
+      // İlk öğe ana fotoğraf
+      setMainMedia(gallery[0]);
+
+      gallery.forEach((item, index) => {
         const thumb = document.createElement('div');
         thumb.className = 'modal-thumb' + (index === 0 ? ' active' : '');
         thumb.dataset.index = index;
@@ -704,7 +719,6 @@ const projects = [
   modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-  // İlk render (başta boş; sen kod ekleyince dolacak)
   renderProjects();
 </script>
 
