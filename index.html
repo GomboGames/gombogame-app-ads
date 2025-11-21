@@ -661,13 +661,12 @@
         </div>
       </div>
 
+      <!-- KISA BİO (uzun yazı kaldırıldı) -->
       <p class="profile-bio">
-        Merhaba, ben Bahadır.
-          Bilişim Teknolojileri eğitimiyle yazılıma başladım ve yıllar içinde gerçek zamanlı uygulamalar ile simülasyon geliştirmeye yoğunlaştım. 2021’den beri VR/AR tabanlı tıbbi simülasyonlar üzerine çalışıyor; kendi tasarladığım mekanik parçalar, sensörler ve yazılım altyapısını bir araya getirerek gerçekçi cerrahi eğitim sistemleri geliştiriyorum.
-          Üretmek, keşfetmek ve karmaşık süreçleri işlevsel çözümlere dönüştürmek benim için bir tutku. Amacım, hem dijital hem de fiziksel bileşenleri bir araya getirerek yenilikçi ve güvenilir simülasyon deneyimleri oluşturmak.
+        Unity, VR/AR ve gerçek zamanlı simülasyon alanında çalışan bir geliştiriciyim.
       </p>
 
-      <!-- Sosyal ikonlar (hepsi images klasöründen) -->
+      <!-- Sosyal ikonlar -->
       <div class="profile-social">
         <a class="social-btn" href="#" target="_blank" title="Instagram">
           <img src="images/icon-instagram.svg" alt="Instagram">
@@ -681,11 +680,8 @@
       </div>
 
       <!-- İletişim kartları -->
-    
-      
       <div class="contact-list">
-        
-                <a class="contact-card-link" href="mailto:ornek@mail.com">
+        <a class="contact-card-link" href="mailto:ornek@mail.com">
           <div class="contact-icon">
             <img src="images/icon-email.svg" alt="Email icon">
           </div>
@@ -695,7 +691,6 @@
           </div>
         </a>
 
-        
         <a class="contact-card-link" href="#" target="_blank">
           <div class="contact-icon">
             <img src="images/icon-game.svg" alt="Game demo icon">
@@ -705,7 +700,6 @@
             <span class="contact-value">GitHub Link</span>
           </div>
         </a>
-
 
         <div class="contact-card">
           <div class="contact-icon">
@@ -771,7 +765,16 @@
 
         <div class="resume-block">
           <h3>About Me</h3>
-          <p><!-- Burayı sonra doldurabilirsin. --></p>
+          <p>
+            Merhaba, ben Bahadır. Bilişim Teknolojileri eğitimiyle yazılıma başladım ve yıllar içinde
+            gerçek zamanlı uygulamalar ile simülasyon geliştirmeye yoğunlaştım. 2021’den beri
+            VR/AR tabanlı tıbbi simülasyonlar üzerine çalışıyor; kendi tasarladığım mekanik parçalar,
+            sensörler ve yazılım altyapısını bir araya getirerek gerçekçi cerrahi eğitim sistemleri
+            geliştiriyorum.<br><br>
+            Üretmek, keşfetmek ve karmaşık süreçleri işlevsel çözümlere dönüştürmek benim için bir tutku.
+            Amacım, hem dijital hem de fiziksel bileşenleri bir araya getirerek yenilikçi ve güvenilir
+            simülasyon deneyimleri oluşturmak.
+          </p>
         </div>
 
         <div class="resume-block">
@@ -852,7 +855,7 @@
     card.dataset.types = (project.types || []).join(',');
 
     const hasCover = project.coverImage && project.coverImage.trim() !== '';
-    const dateText = project.date ? `Tarih: ${project.date}` : '';
+       const dateText = project.date ? `Tarih: ${project.date}` : '';
 
     card.innerHTML = `
       <div class="project-text">
