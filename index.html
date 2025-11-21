@@ -828,6 +828,9 @@
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
+  const projects = (window.projects || []);
+
+
   // Tabs
   const tabButtons = document.querySelectorAll('.tab-btn');
   const tabSections = document.querySelectorAll('.tab-section');
