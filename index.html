@@ -40,7 +40,7 @@
       align-items: flex-start;
     }
 
-    /* LEFT SIDEBAR */
+    /* SIDEBAR */
     .sidebar {
       position: sticky;
       top: 24px;
@@ -667,6 +667,7 @@
     <aside class="sidebar">
       <div class="profile-header">
         <div class="profile-photo">
+          <!-- profile photo: images/profile.jpg -->
           <img src="images/profile.jpg" alt="Bahadır Kuş">
         </div>
         <div class="profile-name">Bahadır Kuş</div>
@@ -708,8 +709,8 @@
             <img src="images/icon-game.svg" alt="Game demo icon">
           </div>
           <div class="contact-text">
-            <span class="contact-label">GitHub</span>
-            <span class="contact-value">Game / demo link</span>
+            <span class="contact-label">Game Demo</span>
+            <span class="contact-value">GitHub / Itch.io link</span>
           </div>
         </a>
 
@@ -748,9 +749,10 @@
         </div>
       </div>
 
+      <!-- PORTFOLIO TAB -->
       <section id="portfolio-section" class="tab-section active">
         <h2>Portfolio</h2>
-        <p>Filter projects by category and click for detailed view.</p>
+        <p>Filter projects by category and click on a card to see detailed info, media and links.</p>
 
         <div class="project-filters">
           <button class="filter-btn active" data-filter="all">All</button>
@@ -760,12 +762,13 @@
           <button class="filter-btn" data-filter="simulation">Simulation</button>
         </div>
 
-        <div class="projects-grid"></div>
+        <div class="projects-grid"><!-- cards from JS --></div>
       </section>
 
+      <!-- RESUME TAB -->
       <section id="resume-section" class="tab-section">
         <h2>Resume</h2>
-        <p>This section will summarize my skills and experience.</p>
+        <p>This section will summarize my skills and professional background.</p>
 
         <div class="resume-block" style="margin-top:10px;">
           <h3>My Skills</h3>
@@ -778,7 +781,8 @@
             Hi, I'm Bahadır. I started with IT education and over the years focused on
             real-time applications and simulation. Since 2021 I have been working on VR/AR-based
             medical simulations, combining custom-designed mechanical parts, sensors and software
-            infrastructure to build realistic surgical training systems.
+            infrastructure to build realistic surgical training systems. I enjoy turning complex
+            technical problems into functional, hands-on solutions.
           </p>
         </div>
 
@@ -796,7 +800,7 @@
   </footer>
 </div>
 
-<!-- MODAL -->
+<!-- PROJECT MODAL -->
 <div class="project-modal" id="project-modal">
   <div class="project-modal-content">
     <div class="project-modal-header">
@@ -822,14 +826,12 @@
   </div>
 </div>
 
-<!-- IMPORTANT: projects.js MUST be loaded BEFORE the script below -->
+<!-- LOAD PROJECT DATA FROM projects.js -->
 <script src="projects.js"></script>
 
 <script>
+  // Year
   document.getElementById('year').textContent = new Date().getFullYear();
-
-  const projects = (window.projects || []);
-
 
   // Tabs
   const tabButtons = document.querySelectorAll('.tab-btn');
@@ -848,7 +850,7 @@
     });
   });
 
-  // ==== PROJECTS FROM projects.js ====
+  // Projects data from global
   const projects = (window.projects || []);
 
   const projectsGrid = document.querySelector('.projects-grid');
@@ -876,7 +878,7 @@
       <div class="project-image">
         ${
           hasCover
-            ? `<img src="${project.coverImage}" alt="${project.name} cover" />`
+            ? `<img src="${project.coverImage}" alt="${project.name} cover">`
             : `<span>No image</span>`
         }
       </div>
@@ -895,7 +897,7 @@
     attachCardEvents();
   }
 
-  // MODAL
+  // Modal elements
   const modal = document.getElementById('project-modal');
   const modalTitle = document.getElementById('modal-title');
   const modalSub = document.getElementById('modal-sub');
@@ -972,6 +974,7 @@
       });
     }
 
+    // Media
     modalMainMedia.innerHTML = '';
     modalThumbs.innerHTML = '';
 
@@ -1050,6 +1053,7 @@
   modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
+  // Initial render
   renderProjects();
 </script>
 
