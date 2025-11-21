@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <title>Bahadır Kuş – Simulation Developer & Technical Designer</title>
@@ -40,7 +40,7 @@
       align-items: flex-start;
     }
 
-    /* SOL PROFİL KARTI */
+    /* LEFT PROFILE CARD */
     .sidebar {
       position: sticky;
       top: 24px;
@@ -119,7 +119,7 @@
       align-self: stretch;
     }
 
-    /* SOSYAL BUTONLAR */
+    /* SOCIAL BUTTONS */
     .profile-social {
       display: flex;
       gap: 8px;
@@ -154,7 +154,7 @@
       box-shadow: 0 10px 20px rgba(15,23,42,0.4);
     }
 
-    /* İLETİŞİM KARTLARI */
+    /* CONTACT CARDS */
     .contact-list {
       align-self: stretch;
       display: flex;
@@ -224,7 +224,7 @@
       word-break: break-all;
     }
 
-    /* SAĞ ANA KART */
+    /* MAIN CARD (RIGHT) */
     .main-card {
       background: #fff;
       border-radius: 24px;
@@ -296,7 +296,7 @@
       color: var(--muted);
     }
 
-    /* FİLTRELER */
+    /* FILTERS */
     .project-filters {
       display: flex;
       flex-wrap: wrap;
@@ -331,7 +331,7 @@
       box-shadow: 0 8px 20px rgba(129, 140, 248, 0.4);
     }
 
-    /* PROJE GRIDİ */
+    /* PROJECT GRID */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
@@ -437,7 +437,7 @@
       color: var(--muted);
     }
 
-    /* RESUME BLOKLARI */
+    /* RESUME BLOCKS */
     .resume-block {
       background: #f9fafb;
       border-radius: 16px;
@@ -539,6 +539,40 @@
       opacity: 0.7;
     }
 
+    .modal-desc {
+      margin-bottom: 10px;
+    }
+
+    .modal-links {
+      margin-top: 6px;
+    }
+
+    .modal-links-title {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 4px;
+      color: #4b5563;
+    }
+
+    .modal-link {
+      margin-bottom: 6px;
+    }
+
+    .modal-link-label {
+      font-size: 13px;
+      font-weight: 500;
+      color: #111827;
+    }
+
+    .modal-link a {
+      font-size: 13px;
+      color: #2563eb;
+      word-break: break-all;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
     .modal-gallery {
       flex: 1 1 320px;
       display: flex;
@@ -610,7 +644,7 @@
       border-color: var(--accent);
     }
 
-    /* MOBİL */
+    /* MOBILE */
     @media (max-width: 900px) {
       .layout {
         grid-template-columns: 1fr;
@@ -654,11 +688,11 @@
 
 <div class="page">
   <div class="layout">
-    <!-- SOL PROFİL -->
+    <!-- LEFT PROFILE -->
     <aside class="sidebar">
       <div class="profile-header">
         <div class="profile-photo">
-          <!-- Profil fotoğrafın: images/profile.jpg -->
+          <!-- Your profile photo: images/profile.jpg -->
           <img src="images/profile.jpg" alt="Bahadır Kuş">
         </div>
         <div class="profile-name">Bahadır Kuş</div>
@@ -668,12 +702,12 @@
         </div>
       </div>
 
-      <!-- KISA BİO -->
+      <!-- SHORT BIO -->
       <p class="profile-bio">
-        Unity, VR/AR ve gerçek zamanlı simülasyon alanında çalışan bir geliştiriciyim.
+        Developer focused on real-time simulation, Unity and VR/AR.
       </p>
 
-      <!-- Sosyal ikonlar -->
+      <!-- Social icons -->
       <div class="profile-social">
         <a class="social-btn" href="#" target="_blank" title="Instagram">
           <img src="images/icon-instagram.svg" alt="Instagram">
@@ -686,15 +720,15 @@
         </a>
       </div>
 
-      <!-- İletişim kartları -->
+      <!-- Contact cards -->
       <div class="contact-list">
-        <a class="contact-card-link" href="mailto:ornek@mail.com">
+        <a class="contact-card-link" href="mailto:example@mail.com">
           <div class="contact-icon">
             <img src="images/icon-email.svg" alt="Email icon">
           </div>
           <div class="contact-text">
             <span class="contact-label">Email</span>
-            <span class="contact-value">ornek@mail.com</span>
+            <span class="contact-value">example@mail.com</span>
           </div>
         </a>
 
@@ -703,8 +737,8 @@
             <img src="images/icon-game.svg" alt="Game demo icon">
           </div>
           <div class="contact-text">
-            <span class="contact-label">GitHub</span>
-            <span class="contact-value">GitHub Link</span>
+            <span class="contact-label">Demo / GitHub</span>
+            <span class="contact-value">Project link</span>
           </div>
         </a>
 
@@ -724,18 +758,18 @@
           </div>
           <div class="contact-text">
             <span class="contact-label">YouTube</span>
-            <span class="contact-value">YouTube Channel</span>
+            <span class="contact-value">YouTube channel</span>
           </div>
         </a>
       </div>
     </aside>
 
-    <!-- SAĞ ANA KART -->
+    <!-- MAIN CARD -->
     <main class="main-card">
       <div class="main-header">
         <div>
           <h1>Portfolio &amp; Resume</h1>
-          <p>Simülasyon, yazılım ve tasarım çalışmalarım.</p>
+          <p>Selected work in simulation, software and design.</p>
         </div>
         <div class="top-tabs">
           <button class="tab-btn active" data-tab="portfolio">Portfolio</button>
@@ -746,47 +780,46 @@
       <!-- PORTFOLIO -->
       <section id="portfolio-section" class="tab-section active">
         <h2>Portfolio</h2>
-        <p>Üzerinde çalıştığım projelerden seçtiklerim. Filtrelerle kategoriye göre ayırabilirsin.</p>
+        <p>Some of the projects I’ve worked on. Use the filters to switch categories.</p>
 
         <div class="project-filters">
-          <button class="filter-btn active" data-filter="hepsi">All</button>
-          <button class="filter-btn" data-filter="yazilim">Software</button>
-          <button class="filter-btn" data-filter="tasarim">Design</button>
-          <button class="filter-btn" data-filter="donanim">Hardware</button>
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="software">Software</button>
+          <button class="filter-btn" data-filter="design">Design</button>
+          <button class="filter-btn" data-filter="hardware">Hardware</button>
         </div>
 
         <div class="projects-grid">
-          <!-- Kartlar JS ile geliyor -->
+          <!-- Cards will be injected by JS -->
         </div>
       </section>
 
       <!-- RESUME -->
       <section id="resume-section" class="tab-section">
         <h2>Resume</h2>
-        <p>Bu bölümde becerilerimi, kendimi ve profesyonel deneyimlerimi özetleyeceğim.</p>
+        <p>An overview of my skills, background and professional experience.</p>
 
         <div class="resume-block" style="margin-top:10px;">
           <h3>My Skills</h3>
-          <p><!-- Burayı sonra doldurabilirsin. --></p>
+          <p><!-- Fill later --></p>
         </div>
 
         <div class="resume-block">
           <h3>About Me</h3>
           <p>
-            Merhaba, ben Bahadır. Bilişim Teknolojileri eğitimiyle yazılıma başladım ve yıllar içinde
-            gerçek zamanlı uygulamalar ile simülasyon geliştirmeye yoğunlaştım. 2021’den beri
-            VR/AR tabanlı tıbbi simülasyonlar üzerine çalışıyor; kendi tasarladığım mekanik parçalar,
-            sensörler ve yazılım altyapısını bir araya getirerek gerçekçi cerrahi eğitim sistemleri
-            geliştiriyorum.<br><br>
-            Üretmek, keşfetmek ve karmaşık süreçleri işlevsel çözümlere dönüştürmek benim için bir tutku.
-            Amacım, hem dijital hem de fiziksel bileşenleri bir araya getirerek yenilikçi ve güvenilir
-            simülasyon deneyimleri oluşturmak.
+            I’m Bahadır. I started with IT and web technologies and gradually focused on
+            real-time applications and simulation development. Since 2021 I’ve been working
+            on VR/AR-based medical simulations, combining my own mechanical designs,
+            sensors and software infrastructure to build realistic surgical training systems.<br><br>
+            Turning complex processes into functional tools is what motivates me. My goal is
+            to create reliable, innovative simulation experiences that blend digital and
+            physical components.
           </p>
         </div>
 
         <div class="resume-block">
           <h3>Professional Experience</h3>
-          <p><!-- Burayı sonra doldurabilirsin. --></p>
+          <p><!-- Fill later --></p>
         </div>
       </section>
     </main>
@@ -798,7 +831,7 @@
   </footer>
 </div>
 
-<!-- PROJE MODAL -->
+<!-- PROJECT MODAL -->
 <div class="project-modal" id="project-modal">
   <div class="project-modal-content">
     <div class="project-modal-header">
@@ -806,16 +839,17 @@
         <div class="project-modal-title" id="modal-title"></div>
         <div class="project-modal-sub" id="modal-sub"></div>
       </div>
-      <button class="project-modal-close" id="modal-close" aria-label="Kapat">×</button>
+      <button class="project-modal-close" id="modal-close" aria-label="Close">×</button>
     </div>
     <div class="project-modal-body">
       <div class="modal-text">
-        <h4>Proje Açıklaması</h4>
-        <p id="modal-desc"></p>
+        <h4>Project Details</h4>
+        <p class="modal-desc" id="modal-desc"></p>
+        <div class="modal-links" id="modal-links"></div>
       </div>
       <div class="modal-gallery">
         <div class="modal-main-media" id="modal-main-media">
-          <span>Görsel / video henüz eklenmedi.</span>
+          <span>No media has been added yet.</span>
         </div>
         <div class="modal-thumbs" id="modal-thumbs"></div>
       </div>
@@ -826,7 +860,7 @@
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // TAB GEÇİŞLERİ
+  // TAB SWITCHING
   const tabButtons = document.querySelectorAll('.tab-btn');
   const tabSections = document.querySelectorAll('.tab-section');
 
@@ -845,47 +879,13 @@
     });
   });
 
-  /* ========= BURAYA editor.html'den aldığın const projects = [...] KODUNU YAPIŞTIR ========= */
-
- const projects = [
-  {
-    id: "redline-engine-sounds",
-    name: "Redline Engine Sounds",
-    role: "Unity Developer (Contract)",
-    tagline: "Real car engine sound & gauge simulation",
-    date: "2025-01-22",
-    types: ["yazilim", "simulasyon"],
-    shortDesc: "Android engine sound simulation app featuring real car dashboards, manual gear shifting, throttle control and a built-in chrono for time trials.",
-    longDesc: "Redline Engine Sounds is a mobile simulation app where players experience the authentic engine, exhaust and car sounds of iconic models like Mustang, Supra 2JZ and GTR R35. The app simulates real gauges, pedals (gas, brake) and manual gear shifting so users can push each car to the redline and chase their best time with the integrated stopwatch. I contributed as a Unity developer, focusing on gameplay logic, UI integration and performance optimization for Android devices. Available on Google Play: https://play.google.com/store/apps/details?id=com.Okkagames.RedlineEngineSounds  |  YouTube gameplay: https://www.youtube.com/watch?v=rNcVie-SXYI",
-    coverImage: "images/redline-engine-sounds-cover.jpg",
-    gallery: [
-      {
-        type: "youtube",
-        src: "https://www.youtube.com/watch?v=rNcVie-SXYI",
-        alt: "Redline Engine Sounds – gameplay trailer"
-      },
-      {
-        type: "image",
-        src: "images/redline-engine-sounds-01.jpg",
-        alt: "In-game cockpit view with tachometer and speedometer"
-      },
-      {
-        type: "image",
-        src: "images/redline-engine-sounds-02.jpg",
-        alt: "Car selection screen with classic and super cars"
-      }
-    ]
-  }
-];
-
-
-  /* ============================================================================= */
+  // --- PROJECTS ---
+  // projects array is defined in projects.js and loaded before this script.
 
   const projectsGrid = document.querySelector('.projects-grid');
   const filterButtons = document.querySelectorAll('.filter-btn');
-  let activeFilter = 'hepsi';
+  let activeFilter = 'all';
 
-  // YouTube ID alma helper
   function getYouTubeId(url) {
     if (!url) return null;
     const vMatch = url.match(/[?&]v=([^&]+)/);
@@ -902,19 +902,19 @@
     card.dataset.types = (project.types || []).join(',');
 
     const hasCover = project.coverImage && project.coverImage.trim() !== '';
-    const dateText = project.date ? `Tarih: ${project.date}` : '';
+    const dateText = project.date ? `Date: ${project.date}` : '';
     const firstGalleryItem = (project.gallery && project.gallery[0]) ? project.gallery[0] : null;
 
-    let mediaHtml = '<span>Proje görseli</span>';
+    let mediaHtml = '<span>No image</span>';
 
     if (hasCover) {
-      mediaHtml = `<img src="${project.coverImage}" alt="${project.name} görseli" />`;
+      mediaHtml = `<img src="${project.coverImage}" alt="${project.name} cover" />`;
     } else if (firstGalleryItem && firstGalleryItem.type === 'image') {
-      mediaHtml = `<img src="${firstGalleryItem.src}" alt="${firstGalleryItem.alt || (project.name + ' görseli')}" />`;
+      mediaHtml = `<img src="${firstGalleryItem.src}" alt="${firstGalleryItem.alt || (project.name + ' image')}" />`;
     } else if (firstGalleryItem && firstGalleryItem.type === 'youtube') {
       const ytId = getYouTubeId(firstGalleryItem.src);
       if (ytId) {
-        mediaHtml = `<img src="https://img.youtube.com/vi/${ytId}/hqdefault.jpg" alt="${project.name} YouTube önizleme" />`;
+        mediaHtml = `<img src="https://img.youtube.com/vi/${ytId}/hqdefault.jpg" alt="${project.name} YouTube thumbnail" />`;
       }
     }
 
@@ -925,7 +925,7 @@
         <div class="project-role">${project.role || ''}</div>
         <div class="project-date">${dateText}</div>
         <p class="project-desc">${project.shortDesc || ''}</p>
-        <span class="project-more">Detayları gör</span>
+        <span class="project-more">View details</span>
       </div>
       <div class="project-image">
         ${mediaHtml}
@@ -936,20 +936,21 @@
 
   function renderProjects() {
     projectsGrid.innerHTML = '';
-    projects.forEach(project => {
+    (projects || []).forEach(project => {
       const types = project.types || [];
-      if (activeFilter !== 'hepsi' && !types.includes(activeFilter)) return;
+      if (activeFilter !== 'all' && !types.includes(activeFilter)) return;
       const card = createProjectCard(project);
       projectsGrid.appendChild(card);
     });
     attachCardEvents();
   }
 
-  // MODAL ELEMENTLERİ
+  // MODAL ELEMENTS
   const modal = document.getElementById('project-modal');
   const modalTitle = document.getElementById('modal-title');
   const modalSub = document.getElementById('modal-sub');
   const modalDesc = document.getElementById('modal-desc');
+  const modalLinks = document.getElementById('modal-links');
   const modalMainMedia = document.getElementById('modal-main-media');
   const modalThumbs = document.getElementById('modal-thumbs');
   const modalCloseBtn = document.getElementById('modal-close');
@@ -957,7 +958,7 @@
   function setMainMedia(item) {
     modalMainMedia.innerHTML = '';
     if (!item) {
-      modalMainMedia.innerHTML = '<span>Görsel / video henüz eklenmedi.</span>';
+      modalMainMedia.innerHTML = '<span>No media has been added yet.</span>';
       return;
     }
 
@@ -980,7 +981,7 @@
     if (item.type === 'youtube') {
       const ytId = getYouTubeId(item.src);
       if (!ytId) {
-        modalMainMedia.innerHTML = '<span>Geçersiz YouTube linki.</span>';
+        modalMainMedia.innerHTML = '<span>Invalid YouTube URL.</span>';
         return;
       }
       modalMainMedia.innerHTML = `
@@ -994,11 +995,11 @@
       return;
     }
 
-    modalMainMedia.innerHTML = '<span>Desteklenmeyen medya türü.</span>';
+    modalMainMedia.innerHTML = '<span>Unsupported media type.</span>';
   }
 
   function openModal(projectId) {
-    const project = projects.find(p => p.id === projectId);
+    const project = (projects || []).find(p => p.id === projectId);
     if (!project) return;
 
     modalTitle.textContent = project.name;
@@ -1011,17 +1012,47 @@
 
     modalDesc.textContent = project.longDesc || project.shortDesc || '';
 
+    // Links
+    modalLinks.innerHTML = '';
+    if (project.links && project.links.length > 0) {
+      const titleEl = document.createElement('div');
+      titleEl.className = 'modal-links-title';
+      titleEl.textContent = 'Links';
+      modalLinks.appendChild(titleEl);
+
+      project.links.forEach(link => {
+        if (!link || !link.url) return;
+        const wrap = document.createElement('div');
+        wrap.className = 'modal-link';
+
+        const label = document.createElement('div');
+        label.className = 'modal-link-label';
+        label.textContent = link.label || 'Link';
+
+        const a = document.createElement('a');
+        a.href = link.url;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.textContent = link.url;
+
+        wrap.appendChild(label);
+        wrap.appendChild(a);
+        modalLinks.appendChild(wrap);
+      });
+    }
+
+    // Media
     modalMainMedia.innerHTML = '';
     modalThumbs.innerHTML = '';
 
     let gallery = Array.isArray(project.gallery) ? [...project.gallery] : [];
 
-    // Galeri boş ama coverImage varsa -> onu ana foto yap
+    // If gallery is empty but coverImage exists -> use it
     if (gallery.length === 0 && project.coverImage) {
       gallery = [{
         type: 'image',
         src: project.coverImage,
-        alt: project.name + ' görseli'
+        alt: project.name + ' image'
       }];
     }
 
@@ -1046,7 +1077,7 @@
             thumb.textContent = 'YouTube';
           }
         } else {
-          thumb.textContent = 'Medya';
+          thumb.textContent = 'Media';
         }
 
         thumb.addEventListener('click', () => {
@@ -1058,7 +1089,7 @@
         modalThumbs.appendChild(thumb);
       });
     } else {
-      modalMainMedia.innerHTML = '<span>Görsel / video henüz eklenmedi.</span>';
+      modalMainMedia.innerHTML = '<span>No media has been added yet.</span>';
     }
 
     modal.classList.add('open');
@@ -1092,6 +1123,13 @@
 
   renderProjects();
 </script>
+
+<!-- IMPORTANT: this must be loaded BEFORE the script above in reality,
+     but since everything is inline here, in your real files put this line
+     BEFORE the main script, or keep this tag and move the big script into
+     a separate file. For now easiest is: create 'projects.js' next to index.html
+     and keep this line below. -->
+<script src="projects.js"></script>
 
 </body>
 </html>
