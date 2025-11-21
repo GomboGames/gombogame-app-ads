@@ -1,8 +1,4 @@
 window.projects = [
-
-  /* ----------------------------------------------------------
-     1) REDLINE ENGINE SOUNDS
-  ---------------------------------------------------------- */
   {
     "id": "redline-engine-sounds",
     "name": "Redline Engine Sounds",
@@ -13,7 +9,6 @@ window.projects = [
     "shortDesc": "Android simulation game that recreates classic and supercar engine sounds with manual gear, pedals and a built-in stopwatch.",
     "longDesc": "Redline Engine Sounds is a mobile car engine simulator developed for Android devices. The game lets players experience realistic engine, exhaust and car sounds from both classic and high-performance cars, including legendary models like the M5, Corvette, Mustang, Supra and GT-R. I developed manual throttle, brake, gear logic, UI, optimization and Google Play build pipeline.",
     "coverImage": "images/redline-engine-sounds-cover.jpg",
-
     "gallery": [
       {
         "type": "image",
@@ -31,7 +26,6 @@ window.projects = [
         "alt": "Redline Engine Sounds gameplay demo"
       }
     ],
-
     "links": [
       {
         "label": "Google Play",
@@ -43,10 +37,6 @@ window.projects = [
       }
     ]
   },
-
-  /* ----------------------------------------------------------
-     2) REDLINE MOTORCYCLE SOUNDS
-  ---------------------------------------------------------- */
   {
     "id": "redline-motorcycle-sounds",
     "name": "Redline Motorcycle Sounds",
@@ -65,10 +55,6 @@ window.projects = [
       }
     ]
   },
-
-  /* ----------------------------------------------------------
-     3) REDLINE DRAG RACING
-  ---------------------------------------------------------- */
   {
     "id": "redline-drag-racing",
     "name": "Redline Drag Racing",
@@ -87,10 +73,6 @@ window.projects = [
       }
     ]
   },
-
-  /* ----------------------------------------------------------
-     4) HYPER FAST DRAG
-  ---------------------------------------------------------- */
   {
     "id": "hyper-fast-drag",
     "name": "Hyper Fast Drag",
@@ -109,10 +91,6 @@ window.projects = [
       }
     ]
   },
-
-  /* ----------------------------------------------------------
-     5) DRAGON FAYA
-  ---------------------------------------------------------- */
   {
     "id": "dragon-faya",
     "name": "Dragon Faya",
@@ -131,10 +109,6 @@ window.projects = [
       }
     ]
   },
-
-  /* ----------------------------------------------------------
-     6) DOLMUŞÇU DAYI
-  ---------------------------------------------------------- */
   {
     "id": "dolmuscudayi",
     "name": "Dolmuşçu Dayı",
@@ -143,7 +117,7 @@ window.projects = [
     "date": "",
     "types": ["software", "simulation"],
     "shortDesc": "A humorous mobile driving game inspired by Turkish dolmuş culture.",
-    "longDesc": "Dolmuşçu Dayı is a fun mobile driving game available on the App Store. I developed the vehicle control logic, UI system, interactions and gameplay refinement. The game offers a comedic experience inspired by real dolmuş culture.",
+    "longDesc": "Dolmuşçu Dayı is a fun mobile driving game available on the App Store. I developed the vehicle control logic, UI system, interactions and gameplay refinement. The game offers an entertaining experience inspired by real dolmuş culture.",
     "coverImage": "images/dolmuscudayi-cover.jpg",
     "gallery": [],
     "links": [
@@ -153,5 +127,4 @@ window.projects = [
       }
     ]
   }
-
 ];
