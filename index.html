@@ -373,14 +373,19 @@
       background: var(--accent);
     }
 
-    .project-tagline {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      opacity: 0.6;
-      margin-bottom: 3px;
-      color: #4b5563;
-    }
+   .project-tagline {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: #e0edff;
+  color: #1d4ed8;
+  font-size: 11px;
+  letter-spacing: 0.03em;
+  text-transform: none;
+  margin-bottom: 8px;
+}
+
 
     .project-title {
       font-size: 15px;
@@ -405,15 +410,6 @@
       font-size: 13px;
       color: var(--muted);
       margin-bottom: 4px;
-    }
-
-    .project-more {
-      font-size: 12px;
-      text-decoration: underline;
-      text-underline-offset: 2px;
-      color: #1d4ed8;
-      margin-top: 4px;
-      display: inline-block;
     }
 
     .project-image {
@@ -857,34 +853,34 @@
   const filterButtons = document.querySelectorAll('.filter-btn');
   let activeFilter = 'all';
 
-  function createProjectCard(project) {
-    const card = document.createElement('article');
-    card.className = 'project-card';
-    card.dataset.id = project.id;
-    card.dataset.types = (project.types || []).join(',');
+function createProjectCard(project) {
+  const card = document.createElement('article');
+  card.className = 'project-card';
+  card.dataset.id = project.id;
+  card.dataset.types = (project.types || []).join(',');
 
-    const hasCover = project.coverImage && project.coverImage.trim() !== '';
-    const dateText = project.date ? `Date: ${project.date}` : '';
+  const hasCover = project.coverImage && project.coverImage.trim() !== '';
+  const dateText = project.date ? `Date: ${project.date}` : '';
 
-    card.innerHTML = `
-      <div class="project-text">
-        <div class="project-tagline">${project.tagline || ''}</div>
-        <div class="project-title">${project.name}</div>
-        <div class="project-role">${project.role || ''}</div>
-        <div class="project-date">${dateText}</div>
-        <p class="project-desc">${project.shortDesc || ''}</p>
-        <span class="project-more">View details</span>
-      </div>
-      <div class="project-image">
-        ${
-          hasCover
-            ? `<img src="${project.coverImage}" alt="${project.name} cover">`
-            : `<span>No image</span>`
-        }
-      </div>
-    `;
-    return card;
-  }
+  card.innerHTML = `
+    <div class="project-text">
+      ${project.tagline ? `<div class="project-tagline">${project.tagline}</div>` : ''}
+      <div class="project-title">${project.name}</div>
+      <div class="project-role">${project.role || ''}</div>
+      <div class="project-date">${dateText}</div>
+      <p class="project-desc">${project.shortDesc || ''}</p>
+    </div>
+    <div class="project-image">
+      ${
+        hasCover
+          ? `<img src="${project.coverImage}" alt="${project.name} cover">`
+          : `<span>No image</span>`
+      }
+    </div>
+  `;
+  return card;
+}
+
 
   function renderProjects() {
     projectsGrid.innerHTML = '';
