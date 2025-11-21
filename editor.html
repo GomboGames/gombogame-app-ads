@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Proje Editörü – Bahadır</title>
+  <title>Project Editor – Bahadır</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     body {
@@ -188,95 +188,120 @@
       color: #666;
       margin-top: 6px;
     }
-
-    .row-inline {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-    }
-
-    .row-inline .field { flex: 1; }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Proje Editörü</h1>
+    <h1>Project Editor</h1>
     <div class="sub">
-      Bu sayfayı sadece sen kullanacaksın. Formu doldur → projeyi ekle → alttaki
-      kodu kopyalayıp <strong>index.html</strong> içindeki <code>const projects = [];</code>
-      kısmının yerine yapıştır.
+      This page is only for you. Fill the form → add project → copy the code below
+      into <strong>projects.js</strong> (same folder as <strong>index.html</strong>).
     </div>
 
     <form id="project-form">
       <div class="field">
-        <label>Başlık (name)</label>
+        <label>Title (name)</label>
         <input type="text" id="name" required />
       </div>
 
       <div class="field">
-        <label>Rol (role)</label>
+        <label>Role (role)</label>
         <input type="text" id="role" placeholder="Simulation Developer & Technical Designer" />
       </div>
 
       <div class="field">
-        <label>Kısa Etiket (tagline)</label>
+        <label>Tagline</label>
         <input type="text" id="tagline" placeholder="VR • Medical Simulation" />
       </div>
 
       <div class="field">
-        <label>Tarih</label>
+        <label>Date</label>
         <input type="date" id="date" />
       </div>
 
       <div class="field">
-        <label>Türler (filtreler için)</label>
+        <label>Types (for filters)</label>
         <div class="chips">
-          <label><input type="checkbox" value="yazilim" /> Yazılım</label>
-          <label><input type="checkbox" value="tasarim" /> Tasarım</label>
-          <label><input type="checkbox" value="donanim" /> Donanım</label>
-          <label><input type="checkbox" value="simulasyon" /> Simülasyon</label>
+          <label><input type="checkbox" value="software" /> Software</label>
+          <label><input type="checkbox" value="design" /> Design</label>
+          <label><input type="checkbox" value="hardware" /> Hardware</label>
+          <label><input type="checkbox" value="simulation" /> Simulation</label>
         </div>
       </div>
 
       <div class="field">
-        <label>Kısa Açıklama (shortDesc)</label>
-        <textarea id="shortDesc" placeholder="Kart üzerinde gözükecek özet açıklama"></textarea>
+        <label>Short Description (shortDesc)</label>
+        <textarea id="shortDesc" placeholder="Shown on the card"></textarea>
       </div>
 
       <div class="field">
-        <label>Detaylı Açıklama (longDesc)</label>
-        <textarea id="longDesc" placeholder="Panel açıldığında gözükecek detaylı açıklama"></textarea>
+        <label>Long Description (longDesc)</label>
+        <textarea id="longDesc" placeholder="Shown in the detail panel"></textarea>
       </div>
 
       <div class="field">
-        <label>Kart Kapak Görseli (coverImage URL)</label>
-        <input type="text" id="coverImage" placeholder="ör: images/knee-cover.jpg" />
-        <div class="hint">Dosyayı repo'ya <code>images/...</code> olarak ekleyip buraya yolunu yaz.</div>
+        <label>Card Cover Image (coverImage URL)</label>
+        <input type="text" id="coverImage" placeholder="e.g. images/knee-cover.jpg" />
+        <div class="hint">
+          Add the file to your repo under <code>images/...</code> and write the path here.
+          If empty, the first gallery item or YouTube thumbnail will be used.
+        </div>
       </div>
 
       <div class="field">
-        <label>Galeri (panelde küçük albüm – görsel / video)</label>
+        <label>Gallery (media for the detail panel)</label>
         <div class="gallery-items" id="gallery-items"></div>
-        <button type="button" class="btn btn-small" id="add-gallery-item">+ Görsel / Video satırı ekle</button>
-        <div class="hint">Her satır: tür + kaynak yolu + açıklama. Videosu varsa <code>videos/...</code> yolunu yaz.</div>
+        <button type="button" class="btn btn-small" id="add-gallery-item">
+          + Add image / video / YouTube
+        </button>
+        <div class="hint">
+          Each row: type + source + alt text.<br>
+          Image: <code>images/...jpg</code> – Video: <code>videos/...mp4</code><br>
+          YouTube: choose <strong>YouTube</strong> and paste the full link
+          (<code>https://www.youtube.com/watch?v=XXXX</code>).
+        </div>
       </div>
 
-      <button type="submit" class="btn btn-primary">Projeyi ekle</button>
-      <button type="button" class="btn" id="clear-form">Formu temizle</button>
+      <div class="field">
+        <label>Links (optional)</label>
+        <div class="hint">
+          These links will be shown under the description in the detail panel.
+        </div>
+        <div style="margin-top:6px;">
+          <div class="field">
+            <label>Link 1 Label</label>
+            <input type="text" id="link1Label" placeholder="e.g. Google Play" />
+          </div>
+          <div class="field">
+            <label>Link 1 URL</label>
+            <input type="text" id="link1Url" placeholder="https://..." />
+          </div>
+          <div class="field">
+            <label>Link 2 Label</label>
+            <input type="text" id="link2Label" placeholder="e.g. Demo Website" />
+          </div>
+          <div class="field">
+            <label>Link 2 URL</label>
+            <input type="text" id="link2Url" placeholder="https://..." />
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Add project</button>
+      <button type="button" class="btn" id="clear-form">Clear form</button>
     </form>
 
     <div class="projects-list">
-      <h2>Eklenen Projeler</h2>
+      <h2>Projects in this session</h2>
       <ul id="projects-list"></ul>
-      <div class="hint">Sıralama: en üstte eklediğin ilk proje.</div>
+      <div class="hint">Order: from top to bottom as you add them.</div>
     </div>
 
     <div class="code-export">
-      <h2>index.html için kod</h2>
+      <h2>Code for <code>projects.js</code></h2>
       <textarea id="export-code" readonly></textarea>
       <div class="hint">
-        Tüm kodu kopyala → <strong>index.html</strong> içinde
-        <code>const projects = [];</code> satırını bu kodla değiştir.
+        Copy everything → paste into <strong>projects.js</strong> file.
       </div>
     </div>
   </div>
@@ -312,12 +337,13 @@
 
       row.innerHTML = `
         <select class="gallery-type">
-          <option value="image"${type === 'image' ? ' selected' : ''}>Görsel</option>
+          <option value="image"${type === 'image' ? ' selected' : ''}>Image</option>
           <option value="video"${type === 'video' ? ' selected' : ''}>Video</option>
+          <option value="youtube"${type === 'youtube' ? ' selected' : ''}>YouTube</option>
         </select>
-        <input type="text" class="gallery-src" placeholder="images/..., videos/..." value="${src}" />
-        <input type="text" class="gallery-alt" placeholder="Açıklama (alt)" value="${alt}" />
-        <button type="button" class="btn btn-small gallery-remove">Sil</button>
+        <input type="text" class="gallery-src" placeholder="images/..., videos/..., YouTube link" value="${src}" />
+        <input type="text" class="gallery-alt" placeholder="Alt text / description" value="${alt}" />
+        <button type="button" class="btn btn-small gallery-remove">Remove</button>
       `;
 
       row.querySelector('.gallery-remove').addEventListener('click', () => {
@@ -379,6 +405,19 @@
         galleryItems.push({ type, src, alt });
       });
 
+      const link1Label = document.getElementById('link1Label').value.trim();
+      const link1Url = document.getElementById('link1Url').value.trim();
+      const link2Label = document.getElementById('link2Label').value.trim();
+      const link2Url = document.getElementById('link2Url').value.trim();
+
+      const links = [];
+      if (link1Url) {
+        links.push({ label: link1Label || 'Link 1', url: link1Url });
+      }
+      if (link2Url) {
+        links.push({ label: link2Label || 'Link 2', url: link2Url });
+      }
+
       const idBase = slugify(name);
       let id = idBase || 'project';
       let counter = 1;
@@ -396,7 +435,8 @@
         shortDesc,
         longDesc,
         coverImage,
-        gallery: galleryItems
+        gallery: galleryItems,
+        links
       };
 
       projects.push(project);
