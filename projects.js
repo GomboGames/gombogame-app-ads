@@ -1,4 +1,5 @@
-const projects = [
+// Global değişken olarak tanımlıyoruz ki index.html tarafından görülsün
+window.projects = [
   {
     "id": "redline-engine-sounds",
     "name": "Redline Engine Sounds",
@@ -8,7 +9,9 @@ const projects = [
     "types": ["software", "simulation"],
     "shortDesc": "A mobile engine sound simulation app featuring realistic car exhaust and acceleration audio.",
     "longDesc": "Redline Engine Sounds is a realistic mobile engine sound simulator developed for Android. It features high-quality audio recordings of iconic car engines, manual rev control, acceleration simulation, and smooth UI/UX design. The app provides an immersive automotive audio experience and achieves highly optimized performance for low-end devices.",
+    
     "coverImage": "images/redline-cover.jpg",
+
     "gallery": [
       {
         "type": "image",
@@ -26,6 +29,7 @@ const projects = [
         "alt": "Demo gameplay video"
       }
     ],
+
     "links": [
       {
         "label": "Google Play",
