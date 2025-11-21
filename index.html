@@ -565,6 +565,13 @@
       display: block;
     }
 
+    .modal-main-media iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
     .modal-main-media span {
       font-size: 12px;
       color: var(--muted);
@@ -661,7 +668,7 @@
         </div>
       </div>
 
-      <!-- KISA BİO (uzun yazı kaldırıldı) -->
+      <!-- KISA BİO -->
       <p class="profile-bio">
         Unity, VR/AR ve gerçek zamanlı simülasyon alanında çalışan bir geliştiriciyim.
       </p>
@@ -840,30 +847,53 @@
 
   /* ========= BURAYA editor.html'den aldığın const projects = [...] KODUNU YAPIŞTIR ========= */
 
-
-    const projects = [
+ const projects = [
   {
-    "id": "artroskopg",
-    "name": "Artroskopğ",
-    "role": "Fusion, blender",
-    "tagline": "Vr, Similation",
-    "date": "",
-    "types": [
-      "tasarim",
-      "donanim"
-    ],
-    "shortDesc": "açıklam yesnewıjoejnw",
-    "longDesc": "ndnsjıdsnjkınjdsnds knsdndskldjnsldns njsdjlnd sjıd sıojdsjnlkds ıj dsnlkdslkjdklsn kljdskld\nbnbdbsdbıosldns",
-    "coverImage": "images/knee-cover.jpg",
-    "gallery": []
+    id: "redline-engine-sounds",
+    name: "Redline Engine Sounds",
+    role: "Unity Developer (Contract)",
+    tagline: "Real car engine sound & gauge simulation",
+    date: "2025-01-22",
+    types: ["yazilim", "simulasyon"],
+    shortDesc: "Android engine sound simulation app featuring real car dashboards, manual gear shifting, throttle control and a built-in chrono for time trials.",
+    longDesc: "Redline Engine Sounds is a mobile simulation app where players experience the authentic engine, exhaust and car sounds of iconic models like Mustang, Supra 2JZ and GTR R35. The app simulates real gauges, pedals (gas, brake) and manual gear shifting so users can push each car to the redline and chase their best time with the integrated stopwatch. I contributed as a Unity developer, focusing on gameplay logic, UI integration and performance optimization for Android devices. Available on Google Play: https://play.google.com/store/apps/details?id=com.Okkagames.RedlineEngineSounds  |  YouTube gameplay: https://www.youtube.com/watch?v=rNcVie-SXYI",
+    coverImage: "images/redline-engine-sounds-cover.jpg",
+    gallery: [
+      {
+        type: "youtube",
+        src: "https://www.youtube.com/watch?v=rNcVie-SXYI",
+        alt: "Redline Engine Sounds – gameplay trailer"
+      },
+      {
+        type: "image",
+        src: "images/redline-engine-sounds-01.jpg",
+        alt: "In-game cockpit view with tachometer and speedometer"
+      },
+      {
+        type: "image",
+        src: "images/redline-engine-sounds-02.jpg",
+        alt: "Car selection screen with classic and super cars"
+      }
+    ]
   }
 ];
+
 
   /* ============================================================================= */
 
   const projectsGrid = document.querySelector('.projects-grid');
   const filterButtons = document.querySelectorAll('.filter-btn');
   let activeFilter = 'hepsi';
+
+  // YouTube ID alma helper
+  function getYouTubeId(url) {
+    if (!url) return null;
+    const vMatch = url.match(/[?&]v=([^&]+)/);
+    if (vMatch && vMatch[1]) return vMatch[1];
+    const beMatch = url.match(/youtu\.be\/([^?&]+)/);
+    if (beMatch && beMatch[1]) return beMatch[1];
+    return null;
+  }
 
   function createProjectCard(project) {
     const card = document.createElement('article');
@@ -872,7 +902,21 @@
     card.dataset.types = (project.types || []).join(',');
 
     const hasCover = project.coverImage && project.coverImage.trim() !== '';
-       const dateText = project.date ? `Tarih: ${project.date}` : '';
+    const dateText = project.date ? `Tarih: ${project.date}` : '';
+    const firstGalleryItem = (project.gallery && project.gallery[0]) ? project.gallery[0] : null;
+
+    let mediaHtml = '<span>Proje görseli</span>';
+
+    if (hasCover) {
+      mediaHtml = `<img src="${project.coverImage}" alt="${project.name} görseli" />`;
+    } else if (firstGalleryItem && firstGalleryItem.type === 'image') {
+      mediaHtml = `<img src="${firstGalleryItem.src}" alt="${firstGalleryItem.alt || (project.name + ' görseli')}" />`;
+    } else if (firstGalleryItem && firstGalleryItem.type === 'youtube') {
+      const ytId = getYouTubeId(firstGalleryItem.src);
+      if (ytId) {
+        mediaHtml = `<img src="https://img.youtube.com/vi/${ytId}/hqdefault.jpg" alt="${project.name} YouTube önizleme" />`;
+      }
+    }
 
     card.innerHTML = `
       <div class="project-text">
@@ -884,11 +928,7 @@
         <span class="project-more">Detayları gör</span>
       </div>
       <div class="project-image">
-        ${
-          hasCover
-            ? `<img src="${project.coverImage}" alt="${project.name} görseli" />`
-            : `<span>Proje görseli</span>`
-        }
+        ${mediaHtml}
       </div>
     `;
     return card;
@@ -920,19 +960,41 @@
       modalMainMedia.innerHTML = '<span>Görsel / video henüz eklenmedi.</span>';
       return;
     }
+
     if (item.type === 'image') {
       const img = document.createElement('img');
       img.src = item.src;
       img.alt = item.alt || '';
       modalMainMedia.appendChild(img);
-    } else if (item.type === 'video') {
+      return;
+    }
+
+    if (item.type === 'video') {
       const vid = document.createElement('video');
       vid.src = item.src;
       vid.controls = true;
       modalMainMedia.appendChild(vid);
-    } else {
-      modalMainMedia.innerHTML = '<span>Desteklenmeyen medya türü.</span>';
+      return;
     }
+
+    if (item.type === 'youtube') {
+      const ytId = getYouTubeId(item.src);
+      if (!ytId) {
+        modalMainMedia.innerHTML = '<span>Geçersiz YouTube linki.</span>';
+        return;
+      }
+      modalMainMedia.innerHTML = `
+        <iframe
+          src="https://www.youtube.com/embed/${ytId}"
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      `;
+      return;
+    }
+
+    modalMainMedia.innerHTML = '<span>Desteklenmeyen medya türü.</span>';
   }
 
   function openModal(projectId) {
@@ -975,6 +1037,14 @@
           thumb.innerHTML = `<img src="${item.src}" alt="${item.alt || ''}">`;
         } else if (item.type === 'video') {
           thumb.innerHTML = `<span>Video</span>`;
+        } else if (item.type === 'youtube') {
+          const ytId = getYouTubeId(item.src);
+          if (ytId) {
+            const thumbUrl = `https://img.youtube.com/vi/${ytId}/hqdefault.jpg`;
+            thumb.innerHTML = `<img src="${thumbUrl}" alt="YouTube video thumbnail">`;
+          } else {
+            thumb.textContent = 'YouTube';
+          }
         } else {
           thumb.textContent = 'Medya';
         }
