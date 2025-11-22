@@ -63,19 +63,20 @@ window.projects = [
     gallery: [
       {
         type: "image",
-        src: "images/prosthetic-worlds-cover.jpg",
+        src: "images/Prosthetic_1.png",
         alt: "Prosthetic Worlds VR total knee arthroplasty training"
       },
       {
         type: "image",
-        src: "images/prosthetic-worlds-detail-1.jpg",
+        src: "images/Prosthetic_1.png",
         alt: "In-simulation view of the knee arthroplasty procedure"
-      }
+      },
+      { type: "youtube", src: "https://www.youtube.com/watch?v=sWOdGYnegjY", alt: "Motorcycle sound demo" }
     ],
     links: [
       {
-        label: "YouTube Channel",
-        url: "https://www.youtube.com/@prostheticworlds1689"
+        label: "Instagram",
+        url: "https://www.instagram.com/prostheticworlds?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
       }
     ]
   },
