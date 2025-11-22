@@ -398,7 +398,7 @@
       margin-bottom: 4px;
     }
 
-    /* Technologies line (uses project.tagline) */
+    /* technologies line (uses project.tagline) */
     .project-tech {
       font-size: 11px;
       color: #6b7280;
@@ -443,54 +443,33 @@
       color: var(--text);
     }
 
-    /* SKILLS SECTION */
-    .skills-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin: 6px 0 10px;
-    }
-
-    .skill-tag {
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: #e5e7eb;
-      font-size: 12px;
-      color: #374151;
-    }
-
+    /* simple skill pills */
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 10px 20px;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
       margin-top: 6px;
     }
 
-    .skill-item {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
+    .skill-group-title {
       font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #374151;
     }
 
-    .skill-label {
+    .skill-pills {
       display: flex;
-      justify-content: space-between;
-      color: #4b5563;
+      flex-wrap: wrap;
+      gap: 6px;
     }
 
-    .skill-bar {
-      width: 100%;
-      height: 6px;
+    .skill-pill {
+      font-size: 11px;
+      padding: 4px 10px;
       border-radius: 999px;
       background: #e5e7eb;
-      overflow: hidden;
-    }
-
-    .skill-bar-fill {
-      height: 100%;
-      border-radius: 999px;
-      background: linear-gradient(90deg, #2563eb, #4f46e5);
+      color: #374151;
     }
 
     footer {
@@ -716,7 +695,6 @@
     <aside class="sidebar">
       <div class="profile-header">
         <div class="profile-photo">
-          <!-- Profile photo -->
           <img src="images/bahadir.png" alt="Bahadır Kuş">
         </div>
         <div class="profile-name">Bahadır Kuş</div>
@@ -726,7 +704,7 @@
         </div>
       </div>
 
-      <!-- Eğer kısa bio istersen burayı açabilirsin
+      <!-- (İstersen tekrar açarsın)
       <p class="profile-bio">
         Unity, VR/AR and real-time simulation developer combining mechanical design,
         sensors and software to build training systems.
@@ -825,71 +803,26 @@
         <h2>Resume</h2>
         <p>A brief overview of my skills, background and experience.</p>
 
-        <!-- SKILLS BLOCK -->
         <div class="resume-block" style="margin-top:10px;">
           <h3>My Skills</h3>
-
-          <p style="margin-bottom:4px;">Tools &amp; Software</p>
-          <div class="skills-tags">
-            <!-- Bunlar örnek, sonra birlikte düzenleriz -->
-            <span class="skill-tag">Unity</span>
-            <span class="skill-tag">Blender</span>
-            <span class="skill-tag">Fusion 360</span>
-            <span class="skill-tag">Arduino</span>
-            <span class="skill-tag">Photoshop</span>
-            <span class="skill-tag">VR / AR</span>
-          </div>
-
-          <p style="margin:8px 0 4px;">Languages &amp; Technologies</p>
           <div class="skills-grid">
-            <!-- Örnek veri, yüzde değerleri sonra değiştirebiliriz -->
-            <div class="skill-item">
-              <div class="skill-label">
-                <span>C# / Unity</span>
-                <span>90%</span>
-              </div>
-              <div class="skill-bar">
-                <div class="skill-bar-fill" style="width:90%;"></div>
-              </div>
-            </div>
-
-            <div class="skill-item">
-              <div class="skill-label">
-                <span>Python</span>
-                <span>70%</span>
-              </div>
-              <div class="skill-bar">
-                <div class="skill-bar-fill" style="width:70%;"></div>
+            <div>
+              <div class="skill-group-title">Tools & Engines</div>
+              <div class="skill-pills">
+                <span class="skill-pill">Unity</span>
+                <span class="skill-pill">Unreal (basic)</span>
+                <span class="skill-pill">Blender</span>
+                <span class="skill-pill">Fusion 360</span>
+                <span class="skill-pill">FMOD</span>
               </div>
             </div>
-
-            <div class="skill-item">
-              <div class="skill-label">
-                <span>Embedded / Arduino</span>
-                <span>75%</span>
-              </div>
-              <div class="skill-bar">
-                <div class="skill-bar-fill" style="width:75%;"></div>
-              </div>
-            </div>
-
-            <div class="skill-item">
-              <div class="skill-label">
-                <span>English</span>
-                <span>60%</span>
-              </div>
-              <div class="skill-bar">
-                <div class="skill-bar-fill" style="width:60%;"></div>
-              </div>
-            </div>
-
-            <div class="skill-item">
-              <div class="skill-label">
-                <span>Turkish</span>
-                <span>100%</span>
-              </div>
-              <div class="skill-bar">
-                <div class="skill-bar-fill" style="width:100%;"></div>
+            <div>
+              <div class="skill-group-title">Languages</div>
+              <div class="skill-pills">
+                <span class="skill-pill">C#</span>
+                <span class="skill-pill">C++ (basic)</span>
+                <span class="skill-pill">Python</span>
+                <span class="skill-pill">JavaScript</span>
               </div>
             </div>
           </div>
@@ -898,10 +831,10 @@
         <div class="resume-block">
           <h3>About Me</h3>
           <p>
-            I started with IT &amp; software in high school and over the years focused on
-            real-time applications and simulations. Since 2021 I have been working on
-            VR/AR-based medical simulations, combining custom mechanical parts, sensors and
-            software infrastructure to create realistic surgical training systems.
+            I started with IT & software in high school and over the years focused on real-time
+            applications and simulations. Since 2021 I have been working on VR/AR-based medical
+            simulations, combining custom mechanical parts, sensors and software infrastructure
+            to create realistic surgical training systems.
           </p>
         </div>
 
@@ -945,7 +878,7 @@
   </div>
 </div>
 
-<!-- projects.js MUST be loaded before our own script -->
+<!-- projects.js MUST be loaded before main script -->
 <script src="projects.js"></script>
 
 <script>
@@ -958,18 +891,19 @@
   tabButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       const tab = btn.dataset.tab;
-
       tabButtons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
       tabSections.forEach(sec => {
         sec.classList.remove('active');
-        if (sec.id === tab + '-section') sec.classList.add('active');
+        if (sec.id === tab + '-section') {
+          sec.classList.add('active');
+        }
       });
     });
   });
 
-  // Projects from projects.js
+  // projects from projects.js
   const projects = window.projects || [];
 
   const projectsGrid = document.querySelector('.projects-grid');
@@ -1043,25 +977,23 @@
       img.src = item.src;
       img.alt = item.alt || '';
       modalMainMedia.appendChild(img);
-
     } else if (item.type === 'video') {
       const vid = document.createElement('video');
       vid.src = item.src;
       vid.controls = true;
       modalMainMedia.appendChild(vid);
-
     } else if (item.type === 'youtube') {
       const id = youtubeIdFromUrl(item.src);
       if (id) {
         const iframe = document.createElement('iframe');
         iframe.src = `https://www.youtube.com/embed/${id}`;
-        iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+        iframe.allow =
+          "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
         iframe.allowFullscreen = true;
         modalMainMedia.appendChild(iframe);
       } else {
         modalMainMedia.innerHTML = '<span>Invalid YouTube link.</span>';
       }
-
     } else {
       modalMainMedia.innerHTML = '<span>Unsupported media type.</span>';
     }
@@ -1080,7 +1012,7 @@
 
     modalDesc.textContent = project.longDesc || project.shortDesc || '';
 
-    // Links
+    // links
     modalLinks.innerHTML = '';
     if (Array.isArray(project.links) && project.links.length > 0) {
       project.links.forEach(link => {
@@ -1095,13 +1027,12 @@
       });
     }
 
-    // Gallery
+    // gallery
     modalMainMedia.innerHTML = '';
     modalThumbs.innerHTML = '';
 
     let gallery = Array.isArray(project.gallery) ? [...project.gallery] : [];
 
-    // If gallery empty but coverImage exists, use it
     if (gallery.length === 0 && project.coverImage) {
       gallery = [{
         type: 'image',
@@ -1177,7 +1108,6 @@
   modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-  // Initial render
   renderProjects();
 </script>
 
