@@ -854,7 +854,12 @@
   });
 
   // Use projects from projects.js
-  const projects = (window.projects || []);
+<script src="projects.js"></script>
+<script>
+  // burada portfolio / modal kodların başlıyor
+  const projects = window.projects || [];
+  …
+</script>
 
   const projectsGrid = document.querySelector('.projects-grid');
   const filterButtons = document.querySelectorAll('.filter-btn');
