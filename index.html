@@ -713,8 +713,25 @@
         bottom: 12px;
       }
 
+      /* modal mobile: first gallery then text, and shorter media height */
+      .project-modal-content {
+        max-height: 100vh;
+      }
+
       .project-modal-body {
         flex-direction: column;
+      }
+
+      .modal-gallery {
+        order: 1;
+      }
+
+      .modal-text {
+        order: 2;
+      }
+
+      .modal-main-media {
+        height: 260px;
       }
     }
   </style>
@@ -736,7 +753,7 @@
         </div>
       </div>
 
-      <!-- İstersen tekrar açarsın
+      <!--
       <p class="profile-bio">
         Unity, VR/AR and real-time simulation developer combining mechanical design,
         sensors and software to build training systems.
@@ -935,8 +952,7 @@
     btn.addEventListener('click', () => {
       const tab = btn.dataset.tab;
       tabButtons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
+      btn.addEventListener
       tabSections.forEach(sec => {
         sec.classList.remove('active');
         if (sec.id === tab + '-section') {
@@ -946,10 +962,37 @@
     });
   });
 
+  // -------- DATE FORMATTER --------
+  function formatDate(dateStr) {
+    if (!dateStr) return "";
+    const months = [
+      "January","February","March","April","May","June",
+      "July","August","September","October","November","December"
+    ];
+    const parts = dateStr.split("-");
+    let year = parts[0];
+    let month = parts[1];
+    let day = parts[2];
+
+    if (month) {
+      const mIndex = parseInt(month, 10);
+      if (mIndex >= 1 && mIndex <= 12) {
+        const name = months[mIndex - 1];
+        if (day) {
+          const d = parseInt(day, 10);
+          return `${name} ${d}, ${year}`;
+        }
+        return `${name} ${year}`;
+      }
+    }
+    // fallback – aynen yaz
+    return dateStr;
+  }
+
   // Use projects from projects.js
   const projects = (window.projects || []).slice();
 
-  // Sort projects by date descending (newest first) if date exists
+  // Sort by date desc if exists
   projects.sort((a, b) => {
     if (!a.date && !b.date) return 0;
     if (!a.date) return 1;
@@ -977,7 +1020,7 @@
     card.dataset.id = project.id;
     card.dataset.types = (project.types || []).join(',');
 
-    const dateText = project.date ? `Date: ${project.date}` : '';
+    const dateText = project.date ? `Date: ${formatDate(project.date)}` : '';
 
     const textDiv = document.createElement('div');
     textDiv.className = 'project-text';
@@ -1084,7 +1127,7 @@
 
     const subParts = [];
     if (project.role) subParts.push(project.role);
-    if (project.date) subParts.push(project.date);
+    if (project.date) subParts.push(formatDate(project.date));
     modalSub.textContent = subParts.join(' • ');
 
     modalDesc.textContent = project.longDesc || project.shortDesc || '';
@@ -1110,7 +1153,6 @@
 
     let gallery = Array.isArray(project.gallery) ? [...project.gallery] : [];
 
-    // If gallery empty but coverImage exists, use it
     if (gallery.length === 0 && project.coverImage) {
       gallery = [{
         type: 'image',
