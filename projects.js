@@ -104,7 +104,7 @@ window.projects = [
     name: "Redline Drag Racing",
     role: "Unity Developer (Freelance)",
     tagline: "Unity • C# • Drag Racing Physics • Android",
-    date: "2022-6",
+    date: "2022-5",
     types: ["software"],
     shortDesc: "Drag racing simulator with manual shifting, reaction time and acceleration behavior.",
     longDesc:
