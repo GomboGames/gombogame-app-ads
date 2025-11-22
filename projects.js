@@ -92,7 +92,7 @@ window.projects = [
     gallery: [
       {
         type: "image",
-        src: "images/redline-motorcycle-cover.jpg",
+        src: "images/Fireimage.png",
         alt: "Redline Motorcycle Sounds main screen"
       },
       {
