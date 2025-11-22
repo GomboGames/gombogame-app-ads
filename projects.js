@@ -50,7 +50,7 @@ window.projects = [
     name: "Prosthetic Worlds – VR Surgical Training",
     role: "Simulation Developer (Freelance)",
     tagline: "VR • Surgical Training • Total Knee Arthroplasty",
-    date: "2022-07",
+    date: "2022-11",
     types: ["software", "simulation"],
     shortDesc:
       "VR-based total knee arthroplasty training simulation that lets surgeons practice the full procedure in a safe, repeatable environment.",
@@ -104,7 +104,7 @@ window.projects = [
     name: "Redline Drag Racing",
     role: "Unity Developer (Freelance)",
     tagline: "Unity • C# • Drag Racing Physics • Android",
-    date: "2022-11",
+    date: "2022-6",
     types: ["software"],
     shortDesc: "Drag racing simulator with manual shifting, reaction time and acceleration behavior.",
     longDesc:
