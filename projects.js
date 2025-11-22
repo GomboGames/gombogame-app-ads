@@ -7,7 +7,7 @@ window.projects = [
     name: "Redline Engine Sounds",
     role: "Unity Developer (Freelance)",
     tagline: "Unity • C# • FMOD • Sound Engineering • Android",
-    date: "2021-Oct",
+    date: "2021-10",
     types: ["software"],
     shortDesc:
       "Android engine sound simulator that recreates classic and supercar exhaust audio with manual gear and real-time chrono.",
@@ -28,7 +28,7 @@ window.projects = [
     name: "Fire Evacuation Training Simulation",
     role: "Simulation Developer",
     tagline: "Unity • C# • Environment Scanning • Fire Safety",
-    date: "",
+    date: "2022-11",
     types: ["software", "simulation"],
     shortDesc:
       "Custom fire evacuation simulation where the real environment is scanned and recreated. The goal is to trigger the alarm and follow arrows to reach the safe zone.",
@@ -104,7 +104,7 @@ window.projects = [
     name: "Redline Drag Racing",
     role: "Unity Developer (Freelance)",
     tagline: "Unity • C# • Drag Racing Physics • Android",
-    date: "2022-11-15",
+    date: "2022-11",
     types: ["software"],
     shortDesc: "Drag racing simulator with manual shifting, reaction time and acceleration behavior.",
     longDesc:
@@ -123,7 +123,7 @@ window.projects = [
     name: "Dragon Faya",
     role: "Unity Developer",
     tagline: "Unity • Mobile Game • iOS",
-    date: "2021-10-01",
+    date: "2021-10",
     types: ["software", "design"],
     shortDesc: "Casual mobile game featuring a fire-breathing dragon and arcade-style gameplay.",
     longDesc:
@@ -145,7 +145,7 @@ window.projects = [
     name: "Dolmuşçu Dayı",
     role: "Unity Developer",
     tagline: "Unity • C# • 2D Mobile Game • iOS",
-    date: "2022-07-20",
+    date: "2022-07",
     types: ["software", "design"],
     shortDesc: "Humorous mobile game about driving a Turkish dolmuş and managing passengers.",
     longDesc:
