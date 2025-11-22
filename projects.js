@@ -57,11 +57,12 @@ window.projects = [
     longDesc:
       "This project is a fire evacuation training simulation built for a specific real-world space. The environment is scanned and modeled to create a location-specific experience. In the simulation, the user must locate and trigger the fire alarm, then follow dynamic guidance arrows and route indicators to reach the designated safe zone. The experience is designed to help people learn how to react under emergency conditions, understand escape paths, and practice quick decision-making in a realistic but controlled scenario.",
     coverImage: "images/fire-evac-sim-cover.jpg",
-    gallery: [
-      // Elinde görsel olduğunda burayı güncelleyebilirsin
-      // Örnek:
-       { type: "image", src: "images/Fireimage.png", alt: "Main hall view of the fire evacuation simulation" },
-      // { type: "image", src: "images/fire-evac-sim-2.jpg", alt: "Guidance arrows leading to the safe zone" },
+     gallery: [
+      {
+        type: "image",
+        src: "images/redlineengine_1.jpg",
+        alt: "Redline Engine Sounds main dashboard"
+      },
       {
         type: "youtube",
         src: "https://youtu.be/pptgV_zM5ts",
