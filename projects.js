@@ -7,7 +7,7 @@ window.projects = [
     name: "Redline Engine Sounds",
     role: "Unity Developer (Freelance)",
     tagline: "Unity • C# • FMOD • Sound Engineering • Android",
-    date: "2023-09-10",
+    date: "2021-Oct",
     types: ["software"],
     shortDesc:
       "Android engine sound simulator that recreates classic and supercar exhaust audio with manual gear and real-time chrono.",
@@ -50,7 +50,7 @@ window.projects = [
     name: "Prosthetic Worlds – VR Surgical Training",
     role: "Simulation Developer (Freelance)",
     tagline: "VR • Surgical Training • Total Knee Arthroplasty",
-    date: "",
+    date: "2022-07",
     types: ["software", "simulation"],
     shortDesc:
       "VR-based total knee arthroplasty training simulation that lets surgeons practice the full procedure in a safe, repeatable environment.",
@@ -85,7 +85,7 @@ window.projects = [
     name: "Redline Motorcycle Sounds",
     role: "Unity Developer (Freelance)",
     tagline: "Unity • C# • Motorcycle Exhaust Simulation • Android",
-    date: "2023-06-01",
+    date: "2021-10",
     types: ["software"],
     shortDesc: "Mobile simulator featuring realistic motorcycle exhaust and engine sounds.",
     longDesc:
