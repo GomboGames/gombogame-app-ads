@@ -28,7 +28,7 @@ window.projects = [
     name: "Fire Evacuation Training Simulation",
     role: "Simulation Developer",
     tagline: "Unity • C# • Environment Scanning • Fire Safety",
-    date: "2022-11",
+    date: "2022-10",
     types: ["software", "simulation"],
     shortDesc:
       "Custom fire evacuation simulation where the real environment is scanned and recreated. The goal is to trigger the alarm and follow arrows to reach the safe zone.",
