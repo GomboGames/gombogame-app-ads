@@ -76,6 +76,38 @@ window.projects = [
       }
     ]
   },
+  {
+  id: "prosthetic-worlds-vr-training",
+  name: "Prosthetic Worlds – VR Surgical Training",
+  role: "Simulation Developer",
+  tagline: "VR • Surgical Training • Total Knee Arthroplasty",
+  date: "",
+  types: ["software", "simulation"],
+  shortDesc:
+    "VR-based total knee arthroplasty training simulation that lets surgeons practice the full procedure in a safe, repeatable environment.",
+  longDesc:
+    "Prosthetic Worlds is a VR surgical training experience focused on total knee arthroplasty (TKA). Trainees can walk through each surgical step at their own pace, repeat critical actions, and build confidence without risk to patients. In a controlled study with 20 doctors split into VR and traditional-training groups, the VR group achieved higher scores across four surgical skill parameters, especially in learning the overall procedure. The goal is to compress years of operating room learning into a structured, measurable VR training workflow.",
+  coverImage: "images/prosthetic-worlds-cover.jpg",
+  gallery: [
+    {
+      type: "image",
+      src: "images/prosthetic-worlds-cover.jpg",
+      alt: "Prosthetic Worlds VR total knee arthroplasty training"
+    },
+    {
+      type: "image",
+      src: "images/prosthetic-worlds-detail-1.jpg",
+      alt: "In-simulation view of the knee arthroplasty procedure"
+    }
+  ],
+  links: [
+    {
+      label: "YouTube Channel",
+      url: "https://www.youtube.com/@prostheticworlds1689"
+    }
+  ]
+},
+
 
   {
     id: "redline-motorcycle-sounds",
