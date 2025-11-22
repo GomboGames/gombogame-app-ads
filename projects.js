@@ -139,7 +139,6 @@ window.projects = [
       { label: "Google Play", url: "https://play.google.com/store/apps/details?id=com.okkagames.HyperFastDrag&hl=en" }
     ]
   },
-
   {
     id: "dragon-faya",
     name: "Dragon Faya",
@@ -150,12 +149,15 @@ window.projects = [
     shortDesc: "Casual mobile game featuring a fire-breathing dragon and arcade-style gameplay.",
     longDesc:
       "Dragon Faya is an iOS casual game built with Unity. I contributed to gameplay systems, effects and general polish.",
-    coverImage: "images/dragon-faya-cover.jpg",
+    coverImage: "DragonFaya_1",
     gallery: [
-      { type: "image", src: "images/dragon-faya-cover.jpg", alt: "Dragon Faya cover art" }
+      { type: "image", src: "DragonFaya_1", alt: "Dragon Faya cover art" },
+      { type: "image", src: "DragonFaya_2", alt: "Dragon Faya cover art" },
+      { type: "youtube", src: "https://www.youtube.com/watch?v=syhsci_zf4U&t=1s" }
+
     ],
     links: [
-      { label: "App Store", url: "https://appadvice.com/app/dragon-faya/1597632362" }
+      { label: "Download", url: "https://appadvice.com/app/dragon-faya/1597632362" }
     ]
   },
 
