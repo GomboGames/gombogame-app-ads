@@ -40,7 +40,7 @@
       align-items: flex-start;
     }
 
-    /* SIDEBAR */
+    /* LEFT SIDEBAR */
     .sidebar {
       position: sticky;
       top: 24px;
@@ -119,7 +119,7 @@
       align-self: stretch;
     }
 
-    /* SOCIAL ICONS */
+    /* SOCIAL BUTTONS */
     .profile-social {
       display: flex;
       gap: 8px;
@@ -373,31 +373,17 @@
       background: var(--accent);
     }
 
-   .project-tagline {
-  display: inline-flex;
-  align-items: center;
-  padding: 3px 9px;
-  border-radius: 999px;
-  background: #e0edff;
-  color: #1d4ed8;
-  font-size: 11px;
-  letter-spacing: 0.03em;
-  text-transform: none;
-  margin-bottom: 8px;
-}
-
-
     .project-title {
       font-size: 15px;
       font-weight: 600;
-      margin-bottom: 1px;
+      margin-bottom: 2px;
     }
 
     .project-role {
       font-size: 12px;
       font-weight: 500;
       color: var(--muted);
-      margin-bottom: 2px;
+      margin-bottom: 4px;
     }
 
     .project-date {
@@ -410,6 +396,13 @@
       font-size: 13px;
       color: var(--muted);
       margin-bottom: 4px;
+    }
+
+    /* technologies line (uses project.tagline) */
+    .project-tech {
+      font-size: 11px;
+      color: #6b7280;
+      margin-top: 6px;
     }
 
     .project-image {
@@ -537,17 +530,27 @@
 
     .modal-links {
       margin-top: 10px;
-      font-size: 13px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
     }
 
     .modal-link-item {
-      margin-top: 4px;
+      font-size: 13px;
+      color: #1d4ed8;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
 
-    .modal-link-item a {
-      color: #1d4ed8;
+    .modal-link-item::before {
+      content: "↗";
+      font-size: 11px;
+    }
+
+    .modal-link-item:hover {
       text-decoration: underline;
-      text-underline-offset: 2px;
     }
 
     .modal-gallery {
@@ -615,7 +618,7 @@
       border-color: var(--accent);
     }
 
-    /* RESPONSIVE */
+    /* MOBILE */
     @media (max-width: 900px) {
       .layout {
         grid-template-columns: 1fr;
@@ -659,11 +662,11 @@
 
 <div class="page">
   <div class="layout">
-    <!-- SIDEBAR -->
+    <!-- LEFT PROFILE -->
     <aside class="sidebar">
       <div class="profile-header">
         <div class="profile-photo">
-          <!-- profile photo: images/profile.jpg -->
+          <!-- Profile photo: images/profile.jpg -->
           <img src="images/profile.jpg" alt="Bahadır Kuş">
         </div>
         <div class="profile-name">Bahadır Kuş</div>
@@ -674,9 +677,11 @@
       </div>
 
       <p class="profile-bio">
-        Unity, VR/AR and real-time simulation developer.
+        Unity, VR/AR and real-time simulation developer combining mechanical design,
+        sensors and software to build training systems.
       </p>
 
+      <!-- Social icons -->
       <div class="profile-social">
         <a class="social-btn" href="#" target="_blank" title="Instagram">
           <img src="images/icon-instagram.svg" alt="Instagram">
@@ -689,14 +694,15 @@
         </a>
       </div>
 
+      <!-- Contact cards -->
       <div class="contact-list">
-        <a class="contact-card-link" href="mailto:example@mail.com">
+        <a class="contact-card-link" href="mailto:ornek@mail.com">
           <div class="contact-icon">
             <img src="images/icon-email.svg" alt="Email icon">
           </div>
           <div class="contact-text">
             <span class="contact-label">Email</span>
-            <span class="contact-value">example@mail.com</span>
+            <span class="contact-value">ornek@mail.com</span>
           </div>
         </a>
 
@@ -732,12 +738,12 @@
       </div>
     </aside>
 
-    <!-- MAIN -->
+    <!-- RIGHT MAIN CARD -->
     <main class="main-card">
       <div class="main-header">
         <div>
           <h1>Portfolio &amp; Resume</h1>
-          <p>Selected work in simulation, software and design.</p>
+          <p>Selected work in simulation, software and interactive design.</p>
         </div>
         <div class="top-tabs">
           <button class="tab-btn active" data-tab="portfolio">Portfolio</button>
@@ -745,26 +751,27 @@
         </div>
       </div>
 
-      <!-- PORTFOLIO TAB -->
+      <!-- PORTFOLIO -->
       <section id="portfolio-section" class="tab-section active">
         <h2>Portfolio</h2>
-        <p>Filter projects by category and click on a card to see detailed info, media and links.</p>
+        <p>Browse my projects and filter them by type.</p>
 
         <div class="project-filters">
           <button class="filter-btn active" data-filter="all">All</button>
           <button class="filter-btn" data-filter="software">Software</button>
           <button class="filter-btn" data-filter="design">Design</button>
           <button class="filter-btn" data-filter="hardware">Hardware</button>
-          <button class="filter-btn" data-filter="simulation">Simulation</button>
         </div>
 
-        <div class="projects-grid"><!-- cards from JS --></div>
+        <div class="projects-grid">
+          <!-- Cards are injected by JS -->
+        </div>
       </section>
 
-      <!-- RESUME TAB -->
+      <!-- RESUME -->
       <section id="resume-section" class="tab-section">
         <h2>Resume</h2>
-        <p>This section will summarize my skills and professional background.</p>
+        <p>A brief overview of my skills, background and experience.</p>
 
         <div class="resume-block" style="margin-top:10px;">
           <h3>My Skills</h3>
@@ -774,11 +781,10 @@
         <div class="resume-block">
           <h3>About Me</h3>
           <p>
-            Hi, I'm Bahadır. I started with IT education and over the years focused on
-            real-time applications and simulation. Since 2021 I have been working on VR/AR-based
-            medical simulations, combining custom-designed mechanical parts, sensors and software
-            infrastructure to build realistic surgical training systems. I enjoy turning complex
-            technical problems into functional, hands-on solutions.
+            I started with IT & software in high school and over the years focused on real-time
+            applications and simulations. Since 2021 I have been working on VR/AR-based medical
+            simulations, combining custom mechanical parts, sensors and software infrastructure
+            to create realistic surgical training systems.
           </p>
         </div>
 
@@ -810,7 +816,7 @@
       <div class="modal-text">
         <h4>Project Description</h4>
         <p id="modal-desc"></p>
-        <div class="modal-links" id="modal-links"></div>
+        <div id="modal-links" class="modal-links"></div>
       </div>
       <div class="modal-gallery">
         <div class="modal-main-media" id="modal-main-media">
@@ -822,14 +828,13 @@
   </div>
 </div>
 
-<!-- LOAD PROJECT DATA FROM projects.js -->
+<!-- projects.js MUST be loaded before our script -->
 <script src="projects.js"></script>
 
 <script>
-  // Year
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Tabs
+  // TAB SWITCHING
   const tabButtons = document.querySelectorAll('.tab-btn');
   const tabSections = document.querySelectorAll('.tab-section');
 
@@ -841,46 +846,47 @@
 
       tabSections.forEach(sec => {
         sec.classList.remove('active');
-        if (sec.id === tab + '-section') sec.classList.add('active');
+        if (sec.id === tab + '-section') {
+          sec.classList.add('active');
+        }
       });
     });
   });
 
-  // Projects data from global
+  // Use projects from projects.js
   const projects = (window.projects || []);
 
   const projectsGrid = document.querySelector('.projects-grid');
   const filterButtons = document.querySelectorAll('.filter-btn');
   let activeFilter = 'all';
 
-function createProjectCard(project) {
-  const card = document.createElement('article');
-  card.className = 'project-card';
-  card.dataset.id = project.id;
-  card.dataset.types = (project.types || []).join(',');
+  function createProjectCard(project) {
+    const card = document.createElement('article');
+    card.className = 'project-card';
+    card.dataset.id = project.id;
+    card.dataset.types = (project.types || []).join(',');
 
-  const hasCover = project.coverImage && project.coverImage.trim() !== '';
-  const dateText = project.date ? `Date: ${project.date}` : '';
+    const hasCover = project.coverImage && project.coverImage.trim() !== '';
+    const dateText = project.date ? `Date: ${project.date}` : '';
 
-  card.innerHTML = `
-    <div class="project-text">
-      ${project.tagline ? `<div class="project-tagline">${project.tagline}</div>` : ''}
-      <div class="project-title">${project.name}</div>
-      <div class="project-role">${project.role || ''}</div>
-      <div class="project-date">${dateText}</div>
-      <p class="project-desc">${project.shortDesc || ''}</p>
-    </div>
-    <div class="project-image">
-      ${
-        hasCover
-          ? `<img src="${project.coverImage}" alt="${project.name} cover">`
-          : `<span>No image</span>`
-      }
-    </div>
-  `;
-  return card;
-}
-
+    card.innerHTML = `
+      <div class="project-text">
+        <div class="project-title">${project.name}</div>
+        <div class="project-role">${project.role || ''}</div>
+        <div class="project-date">${dateText}</div>
+        <p class="project-desc">${project.shortDesc || ''}</p>
+        ${project.tagline ? `<div class="project-tech">${project.tagline}</div>` : ''}
+      </div>
+      <div class="project-image">
+        ${
+          hasCover
+            ? `<img src="${project.coverImage}" alt="${project.name} cover">`
+            : `<span>No image</span>`
+        }
+      </div>
+    `;
+    return card;
+  }
 
   function renderProjects() {
     projectsGrid.innerHTML = '';
@@ -893,19 +899,20 @@ function createProjectCard(project) {
     attachCardEvents();
   }
 
-  // Modal elements
+  // MODAL ELEMENTS
   const modal = document.getElementById('project-modal');
   const modalTitle = document.getElementById('modal-title');
   const modalSub = document.getElementById('modal-sub');
   const modalDesc = document.getElementById('modal-desc');
   const modalMainMedia = document.getElementById('modal-main-media');
   const modalThumbs = document.getElementById('modal-thumbs');
-  const modalLinks = document.getElementById('modal-links');
   const modalCloseBtn = document.getElementById('modal-close');
+  const modalLinks = document.getElementById('modal-links');
 
-  function getYouTubeId(url) {
-    const match = url.match(/(?:v=|youtu\.be\/|embed\/)([^&?/]+)/);
-    return match ? match[1] : null;
+  function youtubeIdFromUrl(url) {
+    if (!url) return null;
+    const m = url.match(/(?:v=|youtu\.be\/)([A-Za-z0-9_-]{6,})/);
+    return m ? m[1] : null;
   }
 
   function setMainMedia(item) {
@@ -926,15 +933,16 @@ function createProjectCard(project) {
       vid.controls = true;
       modalMainMedia.appendChild(vid);
     } else if (item.type === 'youtube') {
-      const id = getYouTubeId(item.src);
+      const id = youtubeIdFromUrl(item.src);
       if (id) {
         const iframe = document.createElement('iframe');
         iframe.src = `https://www.youtube.com/embed/${id}`;
-        iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+        iframe.allow =
+          "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
         iframe.allowFullscreen = true;
         modalMainMedia.appendChild(iframe);
       } else {
-        modalMainMedia.innerHTML = '<span>Invalid YouTube URL.</span>';
+        modalMainMedia.innerHTML = '<span>Invalid YouTube link.</span>';
       }
     } else {
       modalMainMedia.innerHTML = '<span>Unsupported media type.</span>';
@@ -949,7 +957,6 @@ function createProjectCard(project) {
 
     const subParts = [];
     if (project.role) subParts.push(project.role);
-    if (project.tagline) subParts.push(project.tagline);
     if (project.date) subParts.push(project.date);
     modalSub.textContent = subParts.join(' • ');
 
@@ -959,23 +966,24 @@ function createProjectCard(project) {
     modalLinks.innerHTML = '';
     if (Array.isArray(project.links) && project.links.length > 0) {
       project.links.forEach(link => {
-        if (!link.url) return;
-        const div = document.createElement('div');
-        div.className = 'modal-link-item';
-        div.innerHTML = `
-          <strong>${link.label || 'Link'}:</strong>
-          <a href="${link.url}" target="_blank" rel="noopener noreferrer">${link.url}</a>
-        `;
-        modalLinks.appendChild(div);
+        if (!link || !link.url) return;
+        const a = document.createElement('a');
+        a.href = link.url;
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+        a.className = "modal-link-item";
+        a.textContent = link.label || link.url;
+        modalLinks.appendChild(a);
       });
     }
 
-    // Media
+    // Gallery
     modalMainMedia.innerHTML = '';
     modalThumbs.innerHTML = '';
 
     let gallery = Array.isArray(project.gallery) ? [...project.gallery] : [];
 
+    // If gallery empty but coverImage exists, use it
     if (gallery.length === 0 && project.coverImage) {
       gallery = [{
         type: 'image',
@@ -994,15 +1002,18 @@ function createProjectCard(project) {
 
         if (item.type === 'image') {
           thumb.innerHTML = `<img src="${item.src}" alt="${item.alt || ''}">`;
+        } else if (item.type === 'video') {
+          thumb.textContent = 'Video';
         } else if (item.type === 'youtube') {
-          const id = getYouTubeId(item.src);
+          const id = youtubeIdFromUrl(item.src);
           if (id) {
-            thumb.innerHTML = `<img src="https://img.youtube.com/vi/${id}/hqdefault.jpg" alt="${item.alt || 'YouTube'}">`;
+            const thumbImg = document.createElement('img');
+            thumbImg.src = `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+            thumbImg.alt = item.alt || 'YouTube video';
+            thumb.appendChild(thumbImg);
           } else {
             thumb.textContent = 'YouTube';
           }
-        } else if (item.type === 'video') {
-          thumb.textContent = 'Video';
         } else {
           thumb.textContent = 'Media';
         }
@@ -1035,7 +1046,6 @@ function createProjectCard(project) {
     });
   }
 
-  // Filters
   filterButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       activeFilter = btn.dataset.filter;
@@ -1049,7 +1059,6 @@ function createProjectCard(project) {
   modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-  // Initial render
   renderProjects();
 </script>
 
