@@ -13,9 +13,7 @@ window.projects = [
       "Android engine sound simulator that recreates classic and supercar exhaust audio with manual gear and real-time chrono.",
     longDesc:
       "Redline Engine Sounds is a mobile car engine simulator developed for Android devices. I implemented manual shifting, throttle logic, FMOD-based sound layering, UI flows, and performance optimization for low-end devices. The app also includes a built-in stopwatch so users can race against their own best times.",
-    // Ana kartta görünen kapak görseli
     coverImage: "images/redlineengine_1.jpg",
-    // Modal içinde galeri
     gallery: [
       {
         type: "image",
@@ -57,11 +55,11 @@ window.projects = [
     longDesc:
       "This project is a fire evacuation training simulation built for a specific real-world space. The environment is scanned and modeled to create a location-specific experience. In the simulation, the user must locate and trigger the fire alarm, then follow dynamic guidance arrows and route indicators to reach the designated safe zone. The experience is designed to help people learn how to react under emergency conditions, understand escape paths, and practice quick decision-making in a realistic but controlled scenario.",
     coverImage: "images/fire-evac-sim-cover.jpg",
-     gallery: [
+    gallery: [
       {
         type: "image",
-        src: "images/redlineengine_1.jpg",
-        alt: "Redline Engine Sounds main dashboard"
+        src: "images/fire-evac-sim-cover.jpg",
+        alt: "Fire Evacuation Simulation environment"
       },
       {
         type: "youtube",
@@ -76,38 +74,38 @@ window.projects = [
       }
     ]
   },
-  {
-  id: "prosthetic-worlds-vr-training",
-  name: "Prosthetic Worlds – VR Surgical Training",
-  role: "Simulation Developer",
-  tagline: "VR • Surgical Training • Total Knee Arthroplasty",
-  date: "",
-  types: ["software", "simulation"],
-  shortDesc:
-    "VR-based total knee arthroplasty training simulation that lets surgeons practice the full procedure in a safe, repeatable environment.",
-  longDesc:
-    "Prosthetic Worlds is a VR surgical training experience focused on total knee arthroplasty (TKA). Trainees can walk through each surgical step at their own pace, repeat critical actions, and build confidence without risk to patients. In a controlled study with 20 doctors split into VR and traditional-training groups, the VR group achieved higher scores across four surgical skill parameters, especially in learning the overall procedure. The goal is to compress years of operating room learning into a structured, measurable VR training workflow.",
-  coverImage: "images/prosthetic-worlds-cover.jpg",
-  gallery: [
-    {
-      type: "image",
-      src: "images/prosthetic-worlds-cover.jpg",
-      alt: "Prosthetic Worlds VR total knee arthroplasty training"
-    },
-    {
-      type: "image",
-      src: "images/prosthetic-worlds-detail-1.jpg",
-      alt: "In-simulation view of the knee arthroplasty procedure"
-    }
-  ],
-  links: [
-    {
-      label: "YouTube Channel",
-      url: "https://www.youtube.com/@prostheticworlds1689"
-    }
-  ]
-},
 
+  {
+    id: "prosthetic-worlds-vr-training",
+    name: "Prosthetic Worlds – VR Surgical Training",
+    role: "Simulation Developer",
+    tagline: "VR • Surgical Training • Total Knee Arthroplasty",
+    date: "",
+    types: ["software", "simulation"],
+    shortDesc:
+      "VR-based total knee arthroplasty training simulation that lets surgeons practice the full procedure in a safe, repeatable environment.",
+    longDesc:
+      "Prosthetic Worlds is a VR surgical training experience focused on total knee arthroplasty (TKA). Trainees can walk through each surgical step at their own pace, repeat critical actions, and build confidence without risk to patients. In a controlled study with 20 doctors split into VR and traditional-training groups, the VR group achieved higher scores across four surgical skill parameters, especially in learning the overall procedure. The goal is to compress years of operating room learning into a structured, measurable VR training workflow.",
+    coverImage: "images/prosthetic-worlds-cover.jpg",
+    gallery: [
+      {
+        type: "image",
+        src: "images/prosthetic-worlds-cover.jpg",
+        alt: "Prosthetic Worlds VR training cover"
+      },
+      {
+        type: "image",
+        src: "images/prosthetic-worlds-detail-1.jpg",
+        alt: "In-simulation knee arthroplasty procedure"
+      }
+    ],
+    links: [
+      {
+        label: "YouTube Channel",
+        url: "https://www.youtube.com/@prostheticworlds1689"
+      }
+    ]
+  },
 
   {
     id: "redline-motorcycle-sounds",
