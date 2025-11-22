@@ -331,11 +331,11 @@
       box-shadow: 0 8px 20px rgba(129, 140, 248, 0.4);
     }
 
-    /* PROJECT GRID – SINGLE COLUMN */
+    /* PROJECT LIST (vertical) */
     .projects-grid {
-      display: grid;
-      grid-template-columns: 1fr; /* tek sütun */
-      gap: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
       margin-top: 4px;
     }
 
@@ -347,7 +347,8 @@
       overflow: hidden;
       cursor: pointer;
       transition: .15s;
-      min-height: 190px;
+      min-height: 210px;
+      max-height: 260px;
     }
 
     .project-card:hover {
@@ -358,8 +359,11 @@
 
     .project-text {
       padding: 18px 20px 18px 22px;
-      flex: 1;
+      flex: 1 1 auto;
       position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
 
     .project-text::before {
@@ -396,22 +400,30 @@
       font-size: 13px;
       color: var(--muted);
       margin-bottom: 4px;
+      flex: 1 1 auto;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
     }
 
-    /* technologies line (uses project.tagline) */
     .project-tech {
       font-size: 11px;
       color: #6b7280;
-      margin-top: 6px;
+      margin-top: 4px;
     }
 
     .project-image {
-      width: 38%;
+      flex: 0 0 38%;
+      max-width: 380px;
+      min-height: 210px;
+      max-height: 260px;
       background: #e5e7eb;
-      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
+      overflow: hidden;
     }
 
     .project-image img {
@@ -424,6 +436,18 @@
     .project-image span {
       font-size: 12px;
       color: var(--muted);
+    }
+
+    /* skeleton loading */
+    .project-image.loading {
+      background: linear-gradient(90deg, #e5e7eb 0%, #f3f4f6 50%, #e5e7eb 100%);
+      background-size: 200% 100%;
+      animation: skeleton 1.1s infinite;
+    }
+
+    @keyframes skeleton {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
     }
 
     /* RESUME BLOCKS */
@@ -439,24 +463,34 @@
 
     .resume-block h3 {
       font-size: 15px;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
       color: var(--text);
     }
 
-    /* SIMPLE SKILL TAGS */
-    .skills-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
+    /* Skills grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px 18px;
       margin-top: 6px;
     }
 
-    .skill-tag {
-      font-size: 12px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid #e5e7eb;
-      background: #f9fafb;
+    .skill-group h4 {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #111827;
+    }
+
+    .skill-group ul {
+      list-style: none;
+      padding-left: 0;
+      font-size: 13px;
+      color: #4b5563;
+    }
+
+    .skill-group li {
+      margin-bottom: 2px;
     }
 
     footer {
@@ -646,17 +680,18 @@
     }
 
     @media (max-width: 640px) {
-      .projects-grid {
-        grid-template-columns: 1fr;
-      }
-
       .project-card {
         flex-direction: column;
+        max-height: none;
+        min-height: 0;
       }
 
       .project-image {
         width: 100%;
-        min-height: 150px;
+        flex: 0 0 auto;
+        max-width: none;
+        min-height: 170px;
+        max-height: 220px;
       }
 
       .project-text {
@@ -692,7 +727,7 @@
         </div>
       </div>
 
-      <!--
+      <!-- (İstersen tekrar açarsın)
       <p class="profile-bio">
         Unity, VR/AR and real-time simulation developer combining mechanical design,
         sensors and software to build training systems.
@@ -793,22 +828,44 @@
 
         <div class="resume-block" style="margin-top:10px;">
           <h3>My Skills</h3>
-          <div class="skills-tags">
-            <!-- Şimdilik örnek, sonra beraber değiştiririz -->
-            <span class="skill-tag">Unity</span>
-            <span class="skill-tag">C#</span>
-            <span class="skill-tag">VR / AR</span>
-            <span class="skill-tag">Medical Simulation</span>
-            <span class="skill-tag">Fusion 360</span>
-            <span class="skill-tag">Blender</span>
-            <span class="skill-tag">Arduino</span>
+          <div class="skills-grid">
+            <div class="skill-group">
+              <h4>Simulation &amp; Games</h4>
+              <ul>
+                <li>Unity &amp; C# (Advanced)</li>
+                <li>VR / AR (Quest, PCVR)</li>
+                <li>Real-time medical simulation</li>
+              </ul>
+            </div>
+            <div class="skill-group">
+              <h4>3D &amp; CAD</h4>
+              <ul>
+                <li>Fusion 360</li>
+                <li>Blender</li>
+                <li>3D printing workflows</li>
+              </ul>
+            </div>
+            <div class="skill-group">
+              <h4>Electronics</h4>
+              <ul>
+                <li>Arduino &amp; embedded prototyping</li>
+                <li>Sensors &amp; custom mechanics</li>
+              </ul>
+            </div>
+            <div class="skill-group">
+              <h4>Other</h4>
+              <ul>
+                <li>Git / GitHub</li>
+                <li>Basic Photoshop &amp; UI design</li>
+              </ul>
+            </div>
           </div>
         </div>
 
         <div class="resume-block">
           <h3>About Me</h3>
           <p>
-            I started with IT & software in high school and over the years focused on real-time
+            I started with IT and software in high school and over the years focused on real-time
             applications and simulations. Since 2021 I have been working on VR/AR-based medical
             simulations, combining custom mechanical parts, sensors and software infrastructure
             to create realistic surgical training systems.
@@ -881,11 +938,29 @@
   });
 
   // Use projects from projects.js
-  const projects = window.projects || [];
+  const projects = (window.projects || []).slice();
 
-  const projectsGrid   = document.querySelector('.projects-grid');
-  const filterButtons  = document.querySelectorAll('.filter-btn');
-  let activeFilter     = 'all';
+  // Sort projects by date descending (newest first) if date exists
+  projects.sort((a, b) => {
+    if (!a.date && !b.date) return 0;
+    if (!a.date) return 1;
+    if (!b.date) return -1;
+    return b.date.localeCompare(a.date);
+  });
+
+  const projectsGrid = document.querySelector('.projects-grid');
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  let activeFilter = 'all';
+
+  function getCoverSrc(project) {
+    if (Array.isArray(project.gallery) && project.gallery.length > 0) {
+      const first = project.gallery[0];
+      if (first.type === 'image' && first.src) {
+        return first.src;
+      }
+    }
+    return project.coverImage || "";
+  }
 
   function createProjectCard(project) {
     const card = document.createElement('article');
@@ -893,63 +968,64 @@
     card.dataset.id = project.id;
     card.dataset.types = (project.types || []).join(',');
 
-    const hasCover = project.coverImage && project.coverImage.trim() !== '';
     const dateText = project.date ? `Date: ${project.date}` : '';
 
-    card.innerHTML = `
-      <div class="project-text">
-        <div class="project-title">${project.name}</div>
-        <div class="project-role">${project.role || ''}</div>
-        <div class="project-date">${dateText}</div>
-        <p class="project-desc">${project.shortDesc || ''}</p>
-        ${project.tagline ? `<div class="project-tech">${project.tagline}</div>` : ''}
-      </div>
-      <div class="project-image">
-        ${
-          hasCover
-            ? `<img src="${project.coverImage}" alt="${project.name} cover">`
-            : `<span>No image</span>`
-        }
-      </div>
+    const textDiv = document.createElement('div');
+    textDiv.className = 'project-text';
+    textDiv.innerHTML = `
+      <div class="project-title">${project.name}</div>
+      <div class="project-role">${project.role || ''}</div>
+      <div class="project-date">${dateText}</div>
+      <p class="project-desc">${project.shortDesc || ''}</p>
+      ${project.tagline ? `<div class="project-tech">${project.tagline}</div>` : ''}
     `;
+
+    const imageDiv = document.createElement('div');
+    imageDiv.className = 'project-image';
+
+    const coverSrc = getCoverSrc(project);
+    if (coverSrc) {
+      imageDiv.classList.add('loading');
+      const img = document.createElement('img');
+      img.src = coverSrc;
+      img.alt = (project.name || '') + ' cover';
+      img.addEventListener('load', () => {
+        imageDiv.classList.remove('loading');
+      });
+      img.addEventListener('error', () => {
+        imageDiv.classList.remove('loading');
+        imageDiv.innerHTML = '<span>No image</span>';
+      });
+      imageDiv.appendChild(img);
+    } else {
+      imageDiv.innerHTML = '<span>No image</span>';
+    }
+
+    card.appendChild(textDiv);
+    card.appendChild(imageDiv);
     return card;
   }
 
-  // SORT BY DATE (newest first) and render
   function renderProjects() {
     projectsGrid.innerHTML = '';
-
-    const sorted = [...projects].sort((a, b) => {
-      const da = a.date || '';
-      const db = b.date || '';
-
-      if (!da && !db) return 0;
-      if (!da) return 1;   // no date -> go lower
-      if (!db) return -1;
-
-      // dates are in YYYY-MM-DD so string compare is fine
-      return db.localeCompare(da); // newer (b) first
-    });
-
-    sorted.forEach(project => {
+    projects.forEach(project => {
       const types = project.types || [];
       if (activeFilter !== 'all' && !types.includes(activeFilter)) return;
       const card = createProjectCard(project);
       projectsGrid.appendChild(card);
     });
-
     attachCardEvents();
   }
 
   // MODAL ELEMENTS
-  const modal          = document.getElementById('project-modal');
-  const modalTitle     = document.getElementById('modal-title');
-  const modalSub       = document.getElementById('modal-sub');
-  const modalDesc      = document.getElementById('modal-desc');
+  const modal = document.getElementById('project-modal');
+  const modalTitle = document.getElementById('modal-title');
+  const modalSub = document.getElementById('modal-sub');
+  const modalDesc = document.getElementById('modal-desc');
   const modalMainMedia = document.getElementById('modal-main-media');
-  const modalThumbs    = document.getElementById('modal-thumbs');
-  const modalCloseBtn  = document.getElementById('modal-close');
-  const modalLinks     = document.getElementById('modal-links');
+  const modalThumbs = document.getElementById('modal-thumbs');
+  const modalCloseBtn = document.getElementById('modal-close');
+  const modalLinks = document.getElementById('modal-links');
 
   function youtubeIdFromUrl(url) {
     if (!url) return null;
@@ -1012,7 +1088,7 @@
         const a = document.createElement('a');
         a.href = link.url;
         a.target = "_blank";
-        a.rel   = "noopener noreferrer";
+        a.rel = "noopener noreferrer";
         a.className = "modal-link-item";
         a.textContent = link.label || link.url;
         modalLinks.appendChild(a);
@@ -1021,7 +1097,7 @@
 
     // Gallery
     modalMainMedia.innerHTML = '';
-    modalThumbs.innerHTML    = '';
+    modalThumbs.innerHTML = '';
 
     let gallery = Array.isArray(project.gallery) ? [...project.gallery] : [];
 
