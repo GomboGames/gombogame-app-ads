@@ -8,14 +8,13 @@ window.projects = [
     role: "Unity Developer (Freelance)",
     tagline: "Unity • C# • FMOD • Sound Engineering • Android",
     date: "2023-09-10",
-    types: ["software", "simulation"],
+    types: ["software"],
     shortDesc:
       "Android engine sound simulator that recreates classic and supercar exhaust audio with manual gear and real-time chrono.",
     longDesc:
       "Redline Engine Sounds is a mobile car engine simulator developed for Android devices. I implemented manual shifting, throttle logic, FMOD-based sound layering, UI flows, and performance optimization for low-end devices. The app also includes a built-in stopwatch so users can race against their own best times.",
     coverImage: "images/redlineengine_1.jpeg",
     gallery: [
-      { type: "image", src: "images/redlineengine_1.jpg", alt: "Redline Engine Sounds main dashboard" },
       { type: "youtube", src: "https://www.youtube.com/watch?v=Tp5mlPiPLVs", alt: "Redline Engine Sounds gameplay demo" }
     ],
     links: [
@@ -49,7 +48,7 @@ window.projects = [
   {
     id: "prosthetic-worlds-vr-training",
     name: "Prosthetic Worlds – VR Surgical Training",
-    role: "Simulation Developer",
+    role: "Simulation Developer (Freelance)",
     tagline: "VR • Surgical Training • Total Knee Arthroplasty",
     date: "",
     types: ["software", "simulation"],
@@ -87,7 +86,7 @@ window.projects = [
     role: "Unity Developer (Freelance)",
     tagline: "Unity • C# • Motorcycle Exhaust Simulation • Android",
     date: "2023-06-01",
-    types: ["software", "simulation"],
+    types: ["software"],
     shortDesc: "Mobile simulator featuring realistic motorcycle exhaust and engine sounds.",
     longDesc:
       "Redline Motorcycle Sounds is a focused engine sound simulator for motorcycle enthusiasts. I worked on the sound system, throttle response, looping, and performance optimization.",
@@ -106,14 +105,13 @@ window.projects = [
     role: "Unity Developer (Freelance)",
     tagline: "Unity • C# • Drag Racing Physics • Android",
     date: "2022-11-15",
-    types: ["software", "simulation"],
+    types: ["software"],
     shortDesc: "Drag racing simulator with manual shifting, reaction time and acceleration behavior.",
     longDesc:
       "Redline Drag Racing is a drag racing game where I implemented manual gear shifting, start-light timing, and car acceleration behavior.",
-    coverImage: "images/redline-drag-cover.jpg",
+    coverImage: "images/DragIcon.jpg",
     gallery: [
-      { type: "image", src: "images/redline-drag-cover.jpg", alt: "Redline Drag Racing main menu" },
-      { type: "youtube", src: "https://www.youtube.com/watch?v=Tp5mlPiPLVs", alt: "Redline Drag Racing gameplay" }
+      { type: "youtube", src: "https://www.youtube.com/watch?v=XFWho0Bv_xU", alt: "Redline Drag Racing gameplay" }
     ],
     links: [
       { label: "Google Play", url: "https://play.google.com/store/apps/details?id=com.okkagames.redlinedragracing&hl=en" }
