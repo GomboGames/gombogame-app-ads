@@ -406,9 +406,12 @@
     }
 
     .project-image {
-      width: 38%;
+      width: 100%;
+      max-width: 180px;
+      aspect-ratio: 1 / 1; /* KARE */
       background: #e5e7eb;
       overflow: hidden;
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -417,9 +420,9 @@
     .project-image img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      display: block;
+      object-fit: cover; /* Her resmi kırpıp kare yapar */
     }
+
 
     .project-image span {
       font-size: 12px;
