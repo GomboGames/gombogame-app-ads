@@ -60,7 +60,7 @@ window.projects = [
     gallery: [
       // Elinde görsel olduğunda burayı güncelleyebilirsin
       // Örnek:
-      // { type: "image", src: "images/fire-evac-sim-1.jpg", alt: "Main hall view of the fire evacuation simulation" },
+       { type: "image", src: "images/Fireimage.png", alt: "Main hall view of the fire evacuation simulation" },
       // { type: "image", src: "images/fire-evac-sim-2.jpg", alt: "Guidance arrows leading to the safe zone" },
       {
         type: "youtube",
