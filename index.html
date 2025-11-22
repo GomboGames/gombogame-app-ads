@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <title>Bahadır Kuş – Simulation Developer & Technical Designer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
   <style>
     :root {
       --bg: #f3f4f6;
@@ -398,18 +397,16 @@
       margin-bottom: 4px;
     }
 
-    /* technologies line (uses project.tagline) */
     .project-tech {
       font-size: 11px;
       color: #6b7280;
       margin-top: 6px;
     }
 
-    /* INSTAGRAM-LIKE COVER (SQUARE) */
     .project-image {
       width: 160px;
       flex-shrink: 0;
-      aspect-ratio: 1 / 1; /* Kare, Instagram grid gibi */
+      aspect-ratio: 1 / 1; /* square/Instagram style */
       background: #e5e7eb;
       overflow: hidden;
       border-radius: 12px;
@@ -421,13 +418,15 @@
     .project-image img {
       width: 100%;
       height: 100%;
-      object-fit: cover; /* Her şeyi kırpıp kare yap */
+      object-fit: cover; /* cover into the square */
       display: block;
     }
 
     .project-image span {
       font-size: 12px;
       color: var(--muted);
+      padding: 4px;
+      text-align: center;
     }
 
     /* RESUME BLOCKS */
@@ -443,50 +442,23 @@
 
     .resume-block h3 {
       font-size: 15px;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
       color: var(--text);
     }
 
-    /* SKILLS STYLING */
     .skill-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
-      margin-bottom: 10px;
+      margin-top: 6px;
     }
 
     .skill-tag {
       font-size: 12px;
-      padding: 4px 10px;
+      padding: 4px 9px;
       border-radius: 999px;
       background: #e5e7eb;
       color: #374151;
-    }
-
-    .skill-level {
-      margin-bottom: 8px;
-    }
-
-    .skill-level-label {
-      display: flex;
-      justify-content: space-between;
-      font-size: 12px;
-      margin-bottom: 3px;
-      color: #4b5563;
-    }
-
-    .skill-bar {
-      width: 100%;
-      height: 6px;
-      border-radius: 999px;
-      background: #e5e7eb;
-      overflow: hidden;
-    }
-
-    .skill-bar-fill {
-      height: 100%;
-      border-radius: 999px;
-      background: linear-gradient(90deg, #6366f1, #22c55e);
     }
 
     footer {
@@ -553,22 +525,23 @@
       padding: 4px 8px;
     }
 
-    /* SABİT BOYUTLU PANEL (YAZI SCROLL, GÖRSEL SABİT) */
     .project-modal-body {
       display: flex;
       gap: 24px;
       padding: 20px 24px 22px;
       flex-wrap: nowrap;
-      height: 520px;      /* Sabit panel yüksekliği */
-      overflow: hidden;   /* İçerik taşmasını gizle */
+      height: 520px;       /* sabit panel yüksekliği */
+      overflow: hidden;    /* içte ayrı scroll olacak */
     }
 
     .modal-text {
-      flex: 1 1 300px;
+      flex: 1 1 280px;
       font-size: 14px;
       color: var(--muted);
-      overflow-y: auto;   /* Yazı fazlaysa scroll */
-      padding-right: 8px;
+      display: flex;
+      flex-direction: column;
+      max-height: 100%;
+      overflow: hidden;
     }
 
     .modal-text h4 {
@@ -577,6 +550,13 @@
       letter-spacing: 0.16em;
       margin-bottom: 6px;
       opacity: 0.7;
+      flex-shrink: 0;
+    }
+
+    #modal-desc {
+      flex: 1 1 auto;
+      overflow-y: auto;     /* yazı uzun olursa burada scroll */
+      padding-right: 4px;
     }
 
     .modal-links {
@@ -584,6 +564,7 @@
       display: flex;
       flex-direction: column;
       gap: 6px;
+      flex-shrink: 0;
     }
 
     .modal-link-item {
@@ -609,25 +590,29 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
+      max-height: 100%;
     }
 
     .modal-main-media {
       width: 100%;
-      border-radius: 14px;
       background: #f3f4f6;
-      overflow: hidden;
-      flex: 1;
+      border-radius: 14px;
+      flex: 1 1 auto;
+      min-height: 220px;
       display: flex;
       align-items: center;
       justify-content: center;
+      overflow: hidden;
     }
 
     .modal-main-media img,
     .modal-main-media video,
     .modal-main-media iframe {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;   /* oranı koru, panel sabit */
       display: block;
       border: none;
     }
@@ -641,7 +626,8 @@
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-top: 8px;
+      margin-top: 6px;
+      flex-shrink: 0;
     }
 
     .modal-thumb {
@@ -682,11 +668,11 @@
 
       .project-modal-body {
         flex-direction: column;
-        height: auto;
+        height: 80vh;
       }
 
-      .modal-text {
-        max-height: 220px;
+      .modal-gallery {
+        max-height: 50%;
       }
     }
 
@@ -703,8 +689,13 @@
         width: 120px;
       }
 
-      .project-modal-body {
-        flex-direction: column;
+      .project-text {
+        padding: 14px 16px 14px 20px;
+      }
+
+      .project-text::before {
+        top: 12px;
+        bottom: 12px;
       }
     }
   </style>
@@ -718,7 +709,7 @@
       <div class="profile-header">
         <div class="profile-photo">
           <!-- Profile photo -->
-          <img src="images/bahadir.png" alt="Bahadır Kuş">
+          <img src="images/bahadir.png" alt="Bahadır Kuş" />
         </div>
         <div class="profile-name">Bahadır Kuş</div>
         <div class="profile-role-pill">
@@ -727,7 +718,7 @@
         </div>
       </div>
 
-      <!-- İstersen kısa bioyu sonra açarsın -->
+      <!-- Optional short bio (you can uncomment and edit if you want) -->
       <!--
       <p class="profile-bio">
         Unity, VR/AR and real-time simulation developer combining mechanical design,
@@ -738,13 +729,13 @@
       <!-- Social icons -->
       <div class="profile-social">
         <a class="social-btn" href="#" target="_blank" title="Instagram">
-          <img src="images/icon-instagram.svg" alt="Instagram">
+          <img src="images/icon-instagram.svg" alt="Instagram" />
         </a>
         <a class="social-btn" href="#" target="_blank" title="X / Twitter">
-          <img src="images/icon-x.svg" alt="X">
+          <img src="images/icon-x.svg" alt="X" />
         </a>
         <a class="social-btn" href="#" target="_blank" title="LinkedIn">
-          <img src="images/icon-linkedin.svg" alt="LinkedIn">
+          <img src="images/icon-linkedin.svg" alt="LinkedIn" />
         </a>
       </div>
 
@@ -752,7 +743,7 @@
       <div class="contact-list">
         <a class="contact-card-link" href="mailto:ornek@mail.com">
           <div class="contact-icon">
-            <img src="images/icon-email.svg" alt="Email icon">
+            <img src="images/icon-email.svg" alt="Email icon" />
           </div>
           <div class="contact-text">
             <span class="contact-label">Email</span>
@@ -762,7 +753,7 @@
 
         <a class="contact-card-link" href="#" target="_blank">
           <div class="contact-icon">
-            <img src="images/icon-game.svg" alt="Game demo icon">
+            <img src="images/icon-game.svg" alt="Game demo icon" />
           </div>
           <div class="contact-text">
             <span class="contact-label">Game Demo</span>
@@ -772,7 +763,7 @@
 
         <div class="contact-card">
           <div class="contact-icon">
-            <img src="images/icon-location.svg" alt="Location icon">
+            <img src="images/icon-location.svg" alt="Location icon" />
           </div>
           <div class="contact-text">
             <span class="contact-label">Location</span>
@@ -782,7 +773,7 @@
 
         <a class="contact-card-link" href="#" target="_blank">
           <div class="contact-icon">
-            <img src="images/icon-youtube.svg" alt="YouTube icon">
+            <img src="images/icon-youtube.svg" alt="YouTube icon" />
           </div>
           <div class="contact-text">
             <span class="contact-label">YouTube</span>
@@ -815,6 +806,7 @@
           <button class="filter-btn" data-filter="software">Software</button>
           <button class="filter-btn" data-filter="design">Design</button>
           <button class="filter-btn" data-filter="hardware">Hardware</button>
+          <button class="filter-btn" data-filter="simulation">Simulation</button>
         </div>
 
         <div class="projects-grid">
@@ -827,74 +819,34 @@
         <h2>Resume</h2>
         <p>A brief overview of my skills, background and experience.</p>
 
-        <!-- My Skills -->
         <div class="resume-block" style="margin-top:10px;">
           <h3>My Skills</h3>
-
           <div class="skill-tags">
             <span class="skill-tag">Unity</span>
             <span class="skill-tag">C#</span>
             <span class="skill-tag">VR / AR</span>
-            <span class="skill-tag">Medical Simulation</span>
+            <span class="skill-tag">Real-time Simulation</span>
             <span class="skill-tag">Blender</span>
             <span class="skill-tag">Fusion 360</span>
             <span class="skill-tag">Arduino</span>
-          </div>
-
-          <div class="skill-level">
-            <div class="skill-level-label">
-              <span>Unity / C#</span>
-              <span>Advanced</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-bar-fill" style="width: 85%;"></div>
-            </div>
-          </div>
-
-          <div class="skill-level">
-            <div class="skill-level-label">
-              <span>VR / AR Simulation</span>
-              <span>Advanced</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-bar-fill" style="width: 80%;"></div>
-            </div>
-          </div>
-
-          <div class="skill-level">
-            <div class="skill-level-label">
-              <span>3D Modeling (Blender / Fusion)</span>
-              <span>Intermediate</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-bar-fill" style="width: 70%;"></div>
-            </div>
-          </div>
-
-          <div class="skill-level">
-            <div class="skill-level-label">
-              <span>Embedded &amp; Sensors (Arduino)</span>
-              <span>Intermediate</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-bar-fill" style="width: 65%;"></div>
-            </div>
+            <span class="skill-tag">PCB Prototyping</span>
+            <span class="skill-tag">Git / GitHub</span>
           </div>
         </div>
 
         <div class="resume-block">
           <h3>About Me</h3>
           <p>
-            I started with IT & software in high school and over the years focused on
-            real-time applications and simulations. Since 2021 I have been working on
-            VR/AR-based medical simulations, combining custom mechanical parts, sensors
-            and software infrastructure to create realistic surgical training systems.
+            I started with IT & software in high school and over the years focused on real-time
+            applications and simulations. Since 2021 I have been working on VR/AR-based medical
+            simulations, combining custom mechanical parts, sensors and software infrastructure
+            to create realistic surgical training systems.
           </p>
         </div>
 
         <div class="resume-block">
           <h3>Professional Experience</h3>
-          <p><!-- Fill later --></p>
+          <p><!-- You can fill this later --></p>
         </div>
       </section>
     </main>
@@ -932,7 +884,7 @@
   </div>
 </div>
 
-<!-- projects.js MUST be loaded before our script -->
+<!-- Load projects -->
 <script src="projects.js"></script>
 
 <script>
@@ -957,12 +909,39 @@
     });
   });
 
-  // Use projects from projects.js
+  // Projects from projects.js
   const projects = window.projects || [];
 
   const projectsGrid = document.querySelector('.projects-grid');
   const filterButtons = document.querySelectorAll('.filter-btn');
   let activeFilter = 'all';
+
+  function youtubeIdFromUrl(url) {
+    if (!url) return null;
+    const m = url.match(/(?:v=|youtu\.be\/)([A-Za-z0-9_-]{6,})/);
+    return m ? m[1] : null;
+  }
+
+  function getProjectCover(project) {
+    // if coverImage is set, use it
+    if (project.coverImage && project.coverImage.trim() !== '') {
+      return { type: 'image', src: project.coverImage, alt: project.name + ' cover' };
+    }
+    // otherwise use first gallery item if exists
+    if (Array.isArray(project.gallery) && project.gallery.length > 0) {
+      const first = project.gallery[0];
+      if (first.type === 'image') {
+        return { type: 'image', src: first.src, alt: first.alt || project.name + ' cover' };
+      }
+      if (first.type === 'youtube') {
+        const id = youtubeIdFromUrl(first.src);
+        if (id) {
+          return { type: 'image', src: 'https://img.youtube.com/vi/' + id + '/hqdefault.jpg', alt: first.alt || project.name + ' video' };
+        }
+      }
+    }
+    return null;
+  }
 
   function createProjectCard(project) {
     const card = document.createElement('article');
@@ -970,8 +949,13 @@
     card.dataset.id = project.id;
     card.dataset.types = (project.types || []).join(',');
 
-    const hasCover = project.coverImage && project.coverImage.trim() !== '';
-    const dateText = project.date ? `Date: ${project.date}` : '';
+    const cover = getProjectCover(project);
+    const dateText = project.date ? 'Date: ' + project.date : '';
+
+    let coverHtml = '<span>No image</span>';
+    if (cover && cover.type === 'image') {
+      coverHtml = '<img src="' + cover.src + '" alt="' + (cover.alt || project.name + ' cover') + '">';
+    }
 
     card.innerHTML = `
       <div class="project-text">
@@ -982,11 +966,7 @@
         ${project.tagline ? `<div class="project-tech">${project.tagline}</div>` : ''}
       </div>
       <div class="project-image">
-        ${
-          hasCover
-            ? `<img src="${project.coverImage}" alt="${project.name} cover">`
-            : `<span>No image</span>`
-        }
+        ${coverHtml}
       </div>
     `;
     return card;
@@ -1013,12 +993,6 @@
   const modalCloseBtn = document.getElementById('modal-close');
   const modalLinks = document.getElementById('modal-links');
 
-  function youtubeIdFromUrl(url) {
-    if (!url) return null;
-    const m = url.match(/(?:v=|youtu\.be\/)([A-Za-z0-9_-]{6,})/);
-    return m ? m[1] : null;
-  }
-
   function setMainMedia(item) {
     modalMainMedia.innerHTML = '';
     if (!item) {
@@ -1040,9 +1014,8 @@
       const id = youtubeIdFromUrl(item.src);
       if (id) {
         const iframe = document.createElement('iframe');
-        iframe.src = `https://www.youtube.com/embed/${id}`;
-        iframe.allow =
-          "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+        iframe.src = 'https://www.youtube.com/embed/' + id;
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
         iframe.allowFullscreen = true;
         modalMainMedia.appendChild(iframe);
       } else {
@@ -1073,9 +1046,9 @@
         if (!link || !link.url) return;
         const a = document.createElement('a');
         a.href = link.url;
-        a.target = "_blank";
-        a.rel = "noopener noreferrer";
-        a.className = "modal-link-item";
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.className = 'modal-link-item';
         a.textContent = link.label || link.url;
         modalLinks.appendChild(a);
       });
@@ -1087,7 +1060,6 @@
 
     let gallery = Array.isArray(project.gallery) ? [...project.gallery] : [];
 
-    // If gallery empty but coverImage exists, use it
     if (gallery.length === 0 && project.coverImage) {
       gallery = [{
         type: 'image',
@@ -1105,14 +1077,14 @@
         thumb.dataset.index = index;
 
         if (item.type === 'image') {
-          thumb.innerHTML = `<img src="${item.src}" alt="${item.alt || ''}">`;
+          thumb.innerHTML = '<img src="' + item.src + '" alt="' + (item.alt || '') + '">';
         } else if (item.type === 'video') {
           thumb.textContent = 'Video';
         } else if (item.type === 'youtube') {
           const id = youtubeIdFromUrl(item.src);
           if (id) {
             const thumbImg = document.createElement('img');
-            thumbImg.src = `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+            thumbImg.src = 'https://img.youtube.com/vi/' + id + '/hqdefault.jpg';
             thumbImg.alt = item.alt || 'YouTube video';
             thumb.appendChild(thumbImg);
           } else {
