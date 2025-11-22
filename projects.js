@@ -1,6 +1,5 @@
 // projects.js
-// All portfolio projects live here.
-// index.html loads this file and reads window.projects
+// All portfolio projects live here. index.html reads window.projects.
 
 window.projects = [
   {
@@ -14,10 +13,15 @@ window.projects = [
       "Android engine sound simulator that recreates classic and supercar exhaust audio with manual gear and real-time chrono.",
     longDesc:
       "Redline Engine Sounds is a mobile car engine simulator developed for Android devices. I implemented manual shifting, throttle logic, FMOD-based sound layering, UI flows, and performance optimization for low-end devices. The app also includes a built-in stopwatch so users can race against their own best times.",
-    // ⚠️ Kapak görseli: kartta görünen ana görsel (ayrıca gallery'ye eklemiyoruz)
+    // Ana kartta görünen kapak görseli
     coverImage: "images/redlineengine_1.jpg",
+    // Modal içinde galeri
     gallery: [
-      // Kapak harici ekran görüntüleri
+      {
+        type: "image",
+        src: "images/redlineengine_1.jpg",
+        alt: "Redline Engine Sounds main dashboard"
+      },
       {
         type: "image",
         src: "images/redline-engine-sounds-screen-2.jpg",
@@ -40,28 +44,37 @@ window.projects = [
       }
     ]
   },
+
   {
-  id: "fire-evacuation-simulation",
-  name: "Fire Evacuation Training Simulation",
-  role: "Simulation Developer",
-  tagline: "Unity • C# • Environment Scanning • Fire Safety",
-  date: "",
-  types: ["software", "simulation"],
-  shortDesc:
-    "Custom fire evacuation simulation where the environment is scanned and recreated. The goal is to trigger the alarm and follow the guidance arrows to reach the safe zone.",
-  longDesc:
-    "This project is a fire evacuation training simulation built for a specific real-world space. The environment is first scanned and modeled to create a location-specific experience. In the simulation, the user must locate and trigger the fire alarm, then follow dynamic guidance arrows and route indicators to reach the designated safe zone. The experience is designed to help people learn how to react under emergency conditions, understand escape paths, and practice quick decision-making in a realistic but controlled scenario.",
-  coverImage: "images/fire-evac-sim-cover.jpg", // burayı kendi kapak görselinle değiştir
-  gallery: [
-    // Örnek, elinde görsel olunca bunları düzenle:
-    // { type: "image", src: "images/fire-evac-sim-1.jpg", alt: "Main hall view of the fire evacuation simulation" },
-    // { type: "image", src: "images/fire-evac-sim-2.jpg", alt: "Guidance arrows leading to the safe zone" }
-  ],
-  links: [
-    // Örnek:
-    // { label: "YouTube Demo", url: "https://www.youtube.com/..." }
-  ]
-},
+    id: "fire-evacuation-simulation",
+    name: "Fire Evacuation Training Simulation",
+    role: "Simulation Developer",
+    tagline: "Unity • C# • Environment Scanning • Fire Safety",
+    date: "",
+    types: ["software", "simulation"],
+    shortDesc:
+      "Custom fire evacuation simulation where the real environment is scanned and recreated. The goal is to trigger the alarm and follow arrows to reach the safe zone.",
+    longDesc:
+      "This project is a fire evacuation training simulation built for a specific real-world space. The environment is scanned and modeled to create a location-specific experience. In the simulation, the user must locate and trigger the fire alarm, then follow dynamic guidance arrows and route indicators to reach the designated safe zone. The experience is designed to help people learn how to react under emergency conditions, understand escape paths, and practice quick decision-making in a realistic but controlled scenario.",
+    coverImage: "images/fire-evac-sim-cover.jpg",
+    gallery: [
+      // Elinde görsel olduğunda burayı güncelleyebilirsin
+      // Örnek:
+      // { type: "image", src: "images/fire-evac-sim-1.jpg", alt: "Main hall view of the fire evacuation simulation" },
+      // { type: "image", src: "images/fire-evac-sim-2.jpg", alt: "Guidance arrows leading to the safe zone" },
+      {
+        type: "youtube",
+        src: "https://youtu.be/pptgV_zM5ts",
+        alt: "Fire evacuation training simulation demo"
+      }
+    ],
+    links: [
+      {
+        label: "YouTube Demo",
+        url: "https://youtu.be/pptgV_zM5ts"
+      }
+    ]
+  },
 
   {
     id: "redline-motorcycle-sounds",
@@ -74,8 +87,13 @@ window.projects = [
       "Mobile simulator featuring realistic motorcycle exhaust and engine sounds.",
     longDesc:
       "Redline Motorcycle Sounds is a focused engine sound simulator for motorcycle enthusiasts. I worked on the sound system, throttle response, looping, and performance optimization so the app runs smoothly across a wide range of Android devices.",
-    coverImage: "images/redline-motorcycle-cover.jpg", // istersen sonra ekle
+    coverImage: "images/redline-motorcycle-cover.jpg",
     gallery: [
+      {
+        type: "image",
+        src: "images/redline-motorcycle-cover.jpg",
+        alt: "Redline Motorcycle Sounds main screen"
+      },
       {
         type: "youtube",
         src: "https://www.youtube.com/watch?v=Tp5mlPiPLVs",
@@ -104,6 +122,11 @@ window.projects = [
     coverImage: "images/redline-drag-cover.jpg",
     gallery: [
       {
+        type: "image",
+        src: "images/redline-drag-cover.jpg",
+        alt: "Redline Drag Racing main menu"
+      },
+      {
         type: "youtube",
         src: "https://www.youtube.com/watch?v=Tp5mlPiPLVs",
         alt: "Redline Drag Racing gameplay"
@@ -127,9 +150,15 @@ window.projects = [
     shortDesc:
       "High-speed drag racing experience optimized for mobile devices.",
     longDesc:
-      "Hyper Fast Drag is a fast-paced drag racing game focused on quick sessions and responsive controls. I worked on car setup, progression flow and general gameplay implementation, keeping performance stable on lower-end devices.",
+      "Hyper Fast Drag is a fast-paced drag racing game focused on quick sessions and responsive controls. I worked on car setup, progression flow and gameplay implementation, keeping performance stable on lower-end devices.",
     coverImage: "images/hyper-fast-drag-cover.jpg",
-    gallery: [],
+    gallery: [
+      {
+        type: "image",
+        src: "images/hyper-fast-drag-cover.jpg",
+        alt: "Hyper Fast Drag cover screen"
+      }
+    ],
     links: [
       {
         label: "Google Play",
@@ -150,7 +179,13 @@ window.projects = [
     longDesc:
       "Dragon Faya is an iOS casual game built with Unity. I contributed to gameplay systems, effects and general polish, focusing on keeping controls simple and satisfying for short play sessions.",
     coverImage: "images/dragon-faya-cover.jpg",
-    gallery: [],
+    gallery: [
+      {
+        type: "image",
+        src: "images/dragon-faya-cover.jpg",
+        alt: "Dragon Faya cover art"
+      }
+    ],
     links: [
       {
         label: "App Store",
@@ -169,9 +204,15 @@ window.projects = [
     shortDesc:
       "Humorous mobile game about driving a Turkish dolmuş and managing passengers.",
     longDesc:
-      "Dolmuşçu Dayı is a fun 2D mobile game where players control a Turkish minibus driver. I worked on core gameplay, UI and moment-to-moment interactions, focusing on a light, humorous experience suited to mobile sessions.",
+      "Dolmuşçu Dayı is a 2D mobile game where players control a Turkish minibus driver. I worked on core gameplay, UI and moment-to-moment interactions, focusing on a light, humorous experience suited to mobile sessions.",
     coverImage: "images/dolmuscu-dayi-cover.jpg",
-    gallery: [],
+    gallery: [
+      {
+        type: "image",
+        src: "images/dolmuscu-dayi-cover.jpg",
+        alt: "Dolmuşçu Dayı cover art"
+      }
+    ],
     links: [
       {
         label: "App Store",
@@ -179,7 +220,4 @@ window.projects = [
       }
     ]
   }
-
-  // Yeni proje eklemek istersen:
-  // window.projects.push({ ... }); veya diziye yukarıdaki formatta yeni obje ekle.
 ];
