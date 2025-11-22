@@ -331,10 +331,10 @@
       box-shadow: 0 8px 20px rgba(129, 140, 248, 0.4);
     }
 
-    /* PROJECT GRID */
+    /* PROJECT GRID – SINGLE COLUMN */
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      grid-template-columns: 1fr; /* tek sütun */
       gap: 18px;
       margin-top: 4px;
     }
@@ -398,6 +398,7 @@
       margin-bottom: 4px;
     }
 
+    /* technologies line (uses project.tagline) */
     .project-tech {
       font-size: 11px;
       color: #6b7280;
@@ -440,6 +441,22 @@
       font-size: 15px;
       margin-bottom: 4px;
       color: var(--text);
+    }
+
+    /* SIMPLE SKILL TAGS */
+    .skills-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .skill-tag {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid #e5e7eb;
+      background: #f9fafb;
     }
 
     footer {
@@ -568,7 +585,6 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      aspect-ratio: 16 / 9;
     }
 
     .modal-main-media img,
@@ -590,7 +606,6 @@
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-top: 2px;
     }
 
     .modal-thumb {
@@ -656,10 +671,6 @@
       .project-modal-body {
         flex-direction: column;
       }
-
-      .modal-thumbs {
-        overflow-x: auto;
-      }
     }
   </style>
 </head>
@@ -671,6 +682,7 @@
     <aside class="sidebar">
       <div class="profile-header">
         <div class="profile-photo">
+          <!-- Profile photo -->
           <img src="images/bahadir.png" alt="Bahadır Kuş">
         </div>
         <div class="profile-name">Bahadır Kuş</div>
@@ -680,7 +692,6 @@
         </div>
       </div>
 
-      <!-- Kısa bio istersen açarsın -->
       <!--
       <p class="profile-bio">
         Unity, VR/AR and real-time simulation developer combining mechanical design,
@@ -782,7 +793,16 @@
 
         <div class="resume-block" style="margin-top:10px;">
           <h3>My Skills</h3>
-          <p><!-- Fill later --></p>
+          <div class="skills-tags">
+            <!-- Şimdilik örnek, sonra beraber değiştiririz -->
+            <span class="skill-tag">Unity</span>
+            <span class="skill-tag">C#</span>
+            <span class="skill-tag">VR / AR</span>
+            <span class="skill-tag">Medical Simulation</span>
+            <span class="skill-tag">Fusion 360</span>
+            <span class="skill-tag">Blender</span>
+            <span class="skill-tag">Arduino</span>
+          </div>
         </div>
 
         <div class="resume-block">
@@ -835,7 +855,7 @@
   </div>
 </div>
 
-<!-- Load projects from separate file -->
+<!-- projects.js MUST be loaded before our script -->
 <script src="projects.js"></script>
 
 <script>
@@ -860,24 +880,12 @@
     });
   });
 
-  // USE PROJECTS FROM projects.js
+  // Use projects from projects.js
   const projects = window.projects || [];
 
-  const projectsGrid = document.querySelector('.projects-grid');
-  const filterButtons = document.querySelectorAll('.filter-btn');
-  let activeFilter = 'all';
-
-  // Helper: decide cover image (coverImage OR first image in gallery)
-  function getCoverImage(project) {
-    if (project.coverImage && project.coverImage.trim() !== "") {
-      return project.coverImage.trim();
-    }
-    if (Array.isArray(project.gallery)) {
-      const firstImg = project.gallery.find(m => m.type === "image" && m.src);
-      if (firstImg) return firstImg.src;
-    }
-    return null;
-  }
+  const projectsGrid   = document.querySelector('.projects-grid');
+  const filterButtons  = document.querySelectorAll('.filter-btn');
+  let activeFilter     = 'all';
 
   function createProjectCard(project) {
     const card = document.createElement('article');
@@ -885,8 +893,7 @@
     card.dataset.id = project.id;
     card.dataset.types = (project.types || []).join(',');
 
-    const cover = getCoverImage(project);
-    const hasCover = !!cover;
+    const hasCover = project.coverImage && project.coverImage.trim() !== '';
     const dateText = project.date ? `Date: ${project.date}` : '';
 
     card.innerHTML = `
@@ -900,7 +907,7 @@
       <div class="project-image">
         ${
           hasCover
-            ? `<img src="${cover}" alt="${project.name} cover">`
+            ? `<img src="${project.coverImage}" alt="${project.name} cover">`
             : `<span>No image</span>`
         }
       </div>
@@ -908,26 +915,41 @@
     return card;
   }
 
+  // SORT BY DATE (newest first) and render
   function renderProjects() {
     projectsGrid.innerHTML = '';
-    projects.forEach(project => {
+
+    const sorted = [...projects].sort((a, b) => {
+      const da = a.date || '';
+      const db = b.date || '';
+
+      if (!da && !db) return 0;
+      if (!da) return 1;   // no date -> go lower
+      if (!db) return -1;
+
+      // dates are in YYYY-MM-DD so string compare is fine
+      return db.localeCompare(da); // newer (b) first
+    });
+
+    sorted.forEach(project => {
       const types = project.types || [];
       if (activeFilter !== 'all' && !types.includes(activeFilter)) return;
       const card = createProjectCard(project);
       projectsGrid.appendChild(card);
     });
+
     attachCardEvents();
   }
 
   // MODAL ELEMENTS
-  const modal = document.getElementById('project-modal');
-  const modalTitle = document.getElementById('modal-title');
-  const modalSub = document.getElementById('modal-sub');
-  const modalDesc = document.getElementById('modal-desc');
+  const modal          = document.getElementById('project-modal');
+  const modalTitle     = document.getElementById('modal-title');
+  const modalSub       = document.getElementById('modal-sub');
+  const modalDesc      = document.getElementById('modal-desc');
   const modalMainMedia = document.getElementById('modal-main-media');
-  const modalThumbs = document.getElementById('modal-thumbs');
-  const modalCloseBtn = document.getElementById('modal-close');
-  const modalLinks = document.getElementById('modal-links');
+  const modalThumbs    = document.getElementById('modal-thumbs');
+  const modalCloseBtn  = document.getElementById('modal-close');
+  const modalLinks     = document.getElementById('modal-links');
 
   function youtubeIdFromUrl(url) {
     if (!url) return null;
@@ -990,7 +1012,7 @@
         const a = document.createElement('a');
         a.href = link.url;
         a.target = "_blank";
-        a.rel = "noopener noreferrer";
+        a.rel   = "noopener noreferrer";
         a.className = "modal-link-item";
         a.textContent = link.label || link.url;
         modalLinks.appendChild(a);
@@ -999,24 +1021,20 @@
 
     // Gallery
     modalMainMedia.innerHTML = '';
-    modalThumbs.innerHTML = '';
+    modalThumbs.innerHTML    = '';
 
     let gallery = Array.isArray(project.gallery) ? [...project.gallery] : [];
 
-    // Eğer hiç galeri yok ama kapak varsa → kapak üzerinden galeri oluştur
-    if (gallery.length === 0) {
-      const cover = getCoverImage(project);
-      if (cover) {
-        gallery = [{
-          type: 'image',
-          src: cover,
-          alt: project.name + ' cover'
-        }];
-      }
+    // If gallery empty but coverImage exists, use it
+    if (gallery.length === 0 && project.coverImage) {
+      gallery = [{
+        type: 'image',
+        src: project.coverImage,
+        alt: project.name + ' cover'
+      }];
     }
 
     if (gallery.length > 0) {
-      // İlk öğe ana görsel
       setMainMedia(gallery[0]);
 
       gallery.forEach((item, index) => {
