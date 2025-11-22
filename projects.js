@@ -40,6 +40,28 @@ window.projects = [
       }
     ]
   },
+  {
+  id: "fire-evacuation-simulation",
+  name: "Fire Evacuation Training Simulation",
+  role: "Simulation Developer",
+  tagline: "Unity • C# • Environment Scanning • Fire Safety",
+  date: "",
+  types: ["software", "simulation"],
+  shortDesc:
+    "Custom fire evacuation simulation where the environment is scanned and recreated. The goal is to trigger the alarm and follow the guidance arrows to reach the safe zone.",
+  longDesc:
+    "This project is a fire evacuation training simulation built for a specific real-world space. The environment is first scanned and modeled to create a location-specific experience. In the simulation, the user must locate and trigger the fire alarm, then follow dynamic guidance arrows and route indicators to reach the designated safe zone. The experience is designed to help people learn how to react under emergency conditions, understand escape paths, and practice quick decision-making in a realistic but controlled scenario.",
+  coverImage: "images/fire-evac-sim-cover.jpg", // burayı kendi kapak görselinle değiştir
+  gallery: [
+    // Örnek, elinde görsel olunca bunları düzenle:
+    // { type: "image", src: "images/fire-evac-sim-1.jpg", alt: "Main hall view of the fire evacuation simulation" },
+    // { type: "image", src: "images/fire-evac-sim-2.jpg", alt: "Guidance arrows leading to the safe zone" }
+  ],
+  links: [
+    // Örnek:
+    // { label: "YouTube Demo", url: "https://www.youtube.com/..." }
+  ]
+},
 
   {
     id: "redline-motorcycle-sounds",
