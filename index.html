@@ -1,784 +1,365 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>GomboGames • Portfolio</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <style>
-      :root {
-        --bg: #050509;
-        --bg-alt: #101018;
-        --card: #151522;
-        --accent: #ffcc00;
-        --accent-soft: rgba(255, 204, 0, 0.15);
-        --text-main: #f5f5f7;
-        --text-muted: #a0a0b5;
-        --border-soft: rgba(255, 255, 255, 0.08);
-        --radius-xl: 18px;
-        --radius-lg: 12px;
-        --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.6);
-      }
-
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
-      body {
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-          "Segoe UI", sans-serif;
-        background: radial-gradient(circle at top, #191932 0, #050509 55%);
-        color: var(--text-main);
-        min-height: 100vh;
-      }
-
-      .page {
-        max-width: 1120px;
-        margin: 0 auto;
-        padding: 32px 16px 64px;
-      }
-
-      header {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        margin-bottom: 32px;
-      }
-
-      header h1 {
-        font-size: 1.6rem;
-        letter-spacing: 0.03em;
-        text-transform: uppercase;
-        color: var(--accent);
-      }
-
-      header p {
-        font-size: 0.95rem;
-        color: var(--text-muted);
-        max-width: 540px;
-      }
-
-      .pill-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-top: 8px;
-      }
-
-      .pill {
-        font-size: 0.8rem;
-        padding: 4px 10px;
-        border-radius: 999px;
-        border: 1px solid var(--border-soft);
-        background: rgba(255, 255, 255, 0.02);
-        color: var(--text-muted);
-      }
-
-      /* Projects list – TEKLİ LİSTE  */
-      .projects-section {
-        margin-top: 16px;
-      }
-
-      .projects-grid {
-        /* ÖNCE grid ile 2liydi, şimdi tekli */
-        display: flex;
-        flex-direction: column;
-        gap: 18px;
-      }
-
-      .project-card {
-        display: flex;
-        flex-direction: row;
-        gap: 16px;
-        padding: 14px;
-        border-radius: var(--radius-xl);
-        background: radial-gradient(circle at top left, #262645 0, #151522 45%);
-        border: 1px solid var(--border-soft);
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
-        cursor: pointer;
-        transition: transform 0.18s ease, box-shadow 0.18s ease,
-          border-color 0.18s ease, background 0.18s ease;
-      }
-
-      .project-card:hover {
-        transform: translateY(-3px);
-        border-color: rgba(255, 204, 0, 0.7);
-        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
-        background: radial-gradient(circle at top left, #34345c 0, #181828 52%);
-      }
-
-      .project-thumb {
-        flex: 0 0 160px;
-        border-radius: var(--radius-lg);
-        overflow: hidden;
-        position: relative;
-        background: #090911;
-      }
-
-      .project-thumb img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-      }
-
-      .project-thumb::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
-        pointer-events: none;
-      }
-
-      .project-body {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-        min-width: 0;
-      }
-
-      .project-title-row {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        flex-wrap: wrap;
-      }
-
-      .project-name {
-        font-size: 1.05rem;
-        font-weight: 600;
-      }
-
-      .project-role {
-        font-size: 0.8rem;
-        padding: 2px 8px;
-        border-radius: 999px;
-        background: var(--accent-soft);
-        color: var(--accent);
-        border: 1px solid rgba(255, 204, 0, 0.4);
-      }
-
-      .project-meta {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        font-size: 0.75rem;
-        color: var(--text-muted);
-      }
-
-      .dot {
-        width: 3px;
-        height: 3px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.45);
-        align-self: center;
-      }
-
-      .type-chip {
-        padding: 2px 8px;
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.04);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-      }
-
-      .project-short {
-        font-size: 0.85rem;
-        color: var(--text-muted);
-        margin-top: 4px;
-      }
-
-      .project-cta-row {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-top: 8px;
-        gap: 8px;
-      }
-
-      .project-cta {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        font-size: 0.8rem;
-        padding: 6px 10px;
-        border-radius: 999px;
-        border: 1px solid rgba(255, 204, 0, 0.4);
-        background: linear-gradient(
-          120deg,
-          rgba(255, 204, 0, 0.15),
-          rgba(255, 204, 0, 0.03)
-        );
-        color: var(--accent);
-      }
-
-      .project-cta span {
-        font-size: 0.85rem;
-      }
-
-      .project-date {
-        font-size: 0.75rem;
-        color: var(--text-muted);
-      }
-
-      /* MODAL (panel) */
-      .modal-backdrop {
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.75);
-        display: none;
-        align-items: center;
-        justify-content: center;
-        padding: 16px;
-        z-index: 9999;
-      }
-
-      .modal-backdrop.is-open {
-        display: flex;
-      }
-
-      .project-modal {
-        background: radial-gradient(circle at top, #262645 0, #050509 60%);
-        border-radius: 22px;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        width: 100%;
-        max-width: 960px;
-        max-height: 90vh;
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
-        box-shadow: var(--shadow-soft);
-      }
-
-      .modal-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 14px 18px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        backdrop-filter: blur(18px);
-        background: linear-gradient(
-          to right,
-          rgba(5, 5, 14, 0.9),
-          rgba(20, 20, 35, 0.9)
-        );
-      }
-
-      .modal-title-block {
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-      }
-
-      .modal-title {
-        font-size: 1.05rem;
-        font-weight: 600;
-      }
-
-      .modal-subtitle {
-        font-size: 0.8rem;
-        color: var(--text-muted);
-      }
-
-      .modal-close-btn {
-        border-radius: 999px;
-        width: 28px;
-        height: 28px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        background: rgba(0, 0, 0, 0.65);
-        color: var(--text-main);
-        font-size: 0.9rem;
-        cursor: pointer;
-      }
-
-      .modal-content {
-        padding: 16px 18px 18px;
-        overflow-y: auto;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-      }
-
-      .modal-columns {
-        display: grid;
-        grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-        gap: 14px;
-      }
-
-      /* Video alanı – responsive 16:9 */
-      .video-block {
-        border-radius: var(--radius-lg);
-        border: 1px solid var(--border-soft);
-        background: radial-gradient(circle at top, #20203c 0, #090912 60%);
-        padding: 10px;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
-
-      .video-label {
-        font-size: 0.8rem;
-        color: var(--text-muted);
-      }
-
-      .video-frame-wrapper {
-        position: relative;
-        width: 100%;
-        padding-bottom: 56.25%; /* 16:9 */
-        border-radius: 12px;
-        overflow: hidden;
-        background: #000;
-      }
-
-      .video-frame-wrapper iframe {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        border: 0;
-      }
-
-      /* GALERİ / ALBÜM – daha profesyonel */
-      .gallery-block {
-        border-radius: var(--radius-lg);
-        border: 1px solid var(--border-soft);
-        background: radial-gradient(circle at bottom, #1a1a2f 0, #080812 55%);
-        padding: 10px;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
-
-      .gallery-header-row {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 8px;
-      }
-
-      .gallery-title {
-        font-size: 0.8rem;
-        color: var(--text-muted);
-      }
-
-      .gallery-counter {
-        font-size: 0.75rem;
-        color: var(--text-muted);
-      }
-
-      .gallery-grid {
-        margin-top: 4px;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-        gap: 8px;
-      }
-
-      .gallery-item {
-        position: relative;
-        border-radius: 10px;
-        overflow: hidden;
-        background: #050508;
-      }
-
-      .gallery-item::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
-        pointer-events: none;
-      }
-
-      .gallery-item img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-      }
-
-      .gallery-empty {
-        font-size: 0.8rem;
-        color: var(--text-muted);
-        opacity: 0.7;
-      }
-
-      .modal-details-block {
-        border-radius: var(--radius-lg);
-        border: 1px solid var(--border-soft);
-        background: rgba(4, 4, 10, 0.9);
-        padding: 10px 12px;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
-
-      .modal-long-desc {
-        font-size: 0.85rem;
-        color: var(--text-main);
-        opacity: 0.88;
-      }
-
-      .modal-tags-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px;
-        font-size: 0.78rem;
-      }
-
-      .modal-tag {
-        padding: 3px 9px;
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.04);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        color: var(--text-muted);
-      }
-
-      .modal-footer {
-        margin-top: 6px;
-        display: flex;
-        justify-content: flex-end;
-        font-size: 0.75rem;
-        color: var(--text-muted);
-      }
-
-      .modal-footer span {
-        opacity: 0.8;
-      }
-
-      /* Mobile */
-      @media (max-width: 768px) {
-        header {
-          margin-bottom: 24px;
-        }
-
-        .project-card {
-          flex-direction: column;
-        }
-
-        .project-thumb {
-          flex-basis: auto;
-          height: 180px;
-        }
-
-        .modal-columns {
-          grid-template-columns: minmax(0, 1fr);
-        }
-      }
-
-      @media (max-width: 480px) {
-        .page {
-          padding-inline: 12px;
-        }
-
-        header h1 {
-          font-size: 1.4rem;
-        }
-
-        .project-card {
-          padding: 12px;
-        }
-
-        .modal-header {
-          padding: 10px 12px;
-        }
-
-        .modal-content {
-          padding-inline: 12px;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="page">
-      <header>
-        <h1>GomboGames • Portfolio</h1>
-        <p>
-          Unity, VR simülasyon, mobil oyun ve teknik tasarım projelerimden seçili
-          işler. Her karta tıklayınca detay panelinde video + görsel albümü
-          açılıyor.
-        </p>
-        <div class="pill-row">
-          <div class="pill">Unity • C# • VR / AR</div>
-          <div class="pill">Simulation &amp; Technical Design</div>
-          <div class="pill">Mobile &amp; PC</div>
-        </div>
-      </header>
-
-      <section class="projects-section">
-        <div id="projects-list" class="projects-grid"></div>
-      </section>
-    </div>
-
-    <!-- MODAL -->
-    <div id="project-modal-backdrop" class="modal-backdrop" aria-hidden="true">
-      <div class="project-modal" role="dialog" aria-modal="true">
-        <div class="modal-header">
-          <div class="modal-title-block">
-            <div id="modal-title" class="modal-title">Project title</div>
-            <div id="modal-subtitle" class="modal-subtitle"></div>
-          </div>
-          <button id="modal-close" class="modal-close-btn" aria-label="Close">
-            ✕
-          </button>
-        </div>
-        <div class="modal-content">
-          <div class="modal-columns">
-            <!-- Sol taraf: video + detay açıklama -->
-            <div class="left-column">
-              <div id="video-block" class="video-block" style="display: none">
-                <div class="video-label">Gameplay / Trailer</div>
-                <div class="video-frame-wrapper">
-                  <iframe
-                    id="modal-video-frame"
-                    src=""
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                  ></iframe>
-                </div>
-              </div>
-
-              <div class="modal-details-block">
-                <div id="modal-long-desc" class="modal-long-desc"></div>
-                <div id="modal-tags-row" class="modal-tags-row"></div>
-              </div>
-            </div>
-
-            <!-- Sağ taraf: görsel GALERİ / ALBÜM -->
-            <div class="right-column">
-              <div id="gallery-block" class="gallery-block" style="display: none">
-                <div class="gallery-header-row">
-                  <div class="gallery-title">Project gallery</div>
-                  <div id="gallery-counter" class="gallery-counter"></div>
-                </div>
-                <div id="gallery-grid" class="gallery-grid"></div>
-              </div>
-
-              <div id="gallery-empty" class="gallery-block" style="display:none">
-                <div class="gallery-title">Project gallery</div>
-                <div class="gallery-empty">
-                  Bu proje için henüz eklenmiş bir görsel albümü yok.
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="modal-footer">
-            <span id="modal-footer-meta"></span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Projeleri yükleyen JS -->
-    <script src="projects.js"></script>
-    <script>
-      (function () {
-        const listEl = document.getElementById("projects-list");
-        const projects = (window.projects || []).slice().sort((a, b) => {
-          if (!a.date || !b.date) return 0;
-          return a.date < b.date ? 1 : -1;
-        });
-
-        function createProjectCard(project) {
-          const card = document.createElement("article");
-          card.className = "project-card";
-          card.dataset.projectId = project.id;
-
-          const thumb = document.createElement("div");
-          thumb.className = "project-thumb";
-          const img = document.createElement("img");
-          img.src =
-            project.cover ||
-            "https://images.pexels.com/photos/1293261/pexels-photo-1293261.jpeg";
-          img.alt = project.name || "Project cover";
-          thumb.appendChild(img);
-
-          const body = document.createElement("div");
-          body.className = "project-body";
-
-          const titleRow = document.createElement("div");
-          titleRow.className = "project-title-row";
-
-          const nameEl = document.createElement("div");
-          nameEl.className = "project-name";
-          nameEl.textContent = project.name || "Untitled Project";
-
-          const roleEl = document.createElement("div");
-          roleEl.className = "project-role";
-          roleEl.textContent = project.role || "Unity Developer";
-
-          titleRow.appendChild(nameEl);
-          titleRow.appendChild(roleEl);
-
-          const metaRow = document.createElement("div");
-          metaRow.className = "project-meta";
-
-          if (project.types && project.types.length) {
-            project.types.forEach((t) => {
-              const chip = document.createElement("span");
-              chip.className = "type-chip";
-              chip.textContent = t;
-              metaRow.appendChild(chip);
-            });
-          }
-
-          if (project.date) {
-            if (metaRow.childNodes.length) {
-              const dot = document.createElement("span");
-              dot.className = "dot";
-              metaRow.appendChild(dot);
-            }
-            const dateEl = document.createElement("span");
-            dateEl.textContent = project.date;
-            metaRow.appendChild(dateEl);
-          }
-
-          const shortEl = document.createElement("p");
-          shortEl.className = "project-short";
-          shortEl.textContent =
-            project.shortDesc ||
-            "Short description of the project will appear here.";
-
-          const ctaRow = document.createElement("div");
-          ctaRow.className = "project-cta-row";
-
-          const cta = document.createElement("div");
-          cta.className = "project-cta";
-          const ctaText = document.createElement("span");
-          ctaText.textContent = "View details & media";
-          cta.appendChild(ctaText);
-
-          const dateLabel = document.createElement("div");
-          dateLabel.className = "project-date";
-          dateLabel.textContent = project.date || "";
-
-          ctaRow.appendChild(cta);
-          ctaRow.appendChild(dateLabel);
-
-          body.appendChild(titleRow);
-          body.appendChild(metaRow);
-          body.appendChild(shortEl);
-          body.appendChild(ctaRow);
-
-          card.appendChild(thumb);
-          card.appendChild(body);
-
-          card.addEventListener("click", () => openModal(project));
-          return card;
-        }
-
-        projects.forEach((p) => {
-          listEl.appendChild(createProjectCard(p));
-        });
-
-        /* MODAL LOGIC */
-
-        const backdrop = document.getElementById("project-modal-backdrop");
-        const closeBtn = document.getElementById("modal-close");
-        const modalTitle = document.getElementById("modal-title");
-        const modalSubtitle = document.getElementById("modal-subtitle");
-        const modalLongDesc = document.getElementById("modal-long-desc");
-        const modalTagsRow = document.getElementById("modal-tags-row");
-        const modalFooterMeta = document.getElementById("modal-footer-meta");
-        const videoBlock = document.getElementById("video-block");
-        const videoFrame = document.getElementById("modal-video-frame");
-        const galleryBlock = document.getElementById("gallery-block");
-        const galleryEmpty = document.getElementById("gallery-empty");
-        const galleryGrid = document.getElementById("gallery-grid");
-        const galleryCounter = document.getElementById("gallery-counter");
-
-        function openModal(project) {
-          modalTitle.textContent = project.name || "Untitled Project";
-          modalSubtitle.textContent =
-            (project.role ? project.role + " • " : "") +
-            (project.tagline || "");
-
-          modalLongDesc.textContent =
-            project.longDesc || project.shortDesc || "";
-
-          // Tags
-          modalTagsRow.innerHTML = "";
-          if (project.types && project.types.length) {
-            project.types.forEach((t) => {
-              const tag = document.createElement("span");
-              tag.className = "modal-tag";
-              tag.textContent = t;
-              modalTagsRow.appendChild(tag);
-            });
-          }
-
-          // Footer meta
-          modalFooterMeta.textContent = project.date
-            ? `Delivered: ${project.date}`
-            : "";
-
-          // Video
-          if (project.videoUrl) {
-            videoBlock.style.display = "flex";
-            // YouTube kısa linkleri vs. hepsini direkt iframe src yapıyoruz
-            videoFrame.src = project.videoUrl;
-          } else {
-            videoBlock.style.display = "none";
-            videoFrame.src = "";
-          }
-
-          // Gallery
-          galleryGrid.innerHTML = "";
-          let imgs = Array.isArray(project.gallery)
-            ? project.gallery
-            : project.images || [];
-
-          imgs = imgs.filter(Boolean);
-
-          if (imgs.length) {
-            galleryBlock.style.display = "flex";
-            galleryEmpty.style.display = "none";
-            galleryCounter.textContent = `${imgs.length} image${
-              imgs.length > 1 ? "s" : ""
-            }`;
-
-            imgs.forEach((url, index) => {
-              const item = document.createElement("div");
-              item.className = "gallery-item";
-              const img = document.createElement("img");
-              img.src = url;
-              img.alt = `${project.name || "Project"} – image ${index + 1}`;
-              item.appendChild(img);
-              galleryGrid.appendChild(item);
-            });
-          } else {
-            galleryBlock.style.display = "none";
-            galleryEmpty.style.display = "block";
-            galleryCounter.textContent = "";
-          }
-
-          backdrop.classList.add("is-open");
-          backdrop.setAttribute("aria-hidden", "false");
-        }
-
-        function closeModal() {
-          backdrop.classList.remove("is-open");
-          backdrop.setAttribute("aria-hidden", "true");
-          if (videoFrame) {
-            videoFrame.src = ""; // video durdur
-          }
-        }
-
-        closeBtn.addEventListener("click", closeModal);
-        backdrop.addEventListener("click", (e) => {
-          if (e.target === backdrop) {
-            closeModal();
-          }
-        });
-        document.addEventListener("keydown", (e) => {
-          if (e.key === "Escape" && backdrop.classList.contains("is-open")) {
-            closeModal();
-          }
-        });
-      })();
-    </script>
-  </body>
-</html>
+/* === PROJECTS – TEKLİ LİSTE === */
+
+.section-projects {
+  margin-top: 4rem;
+}
+
+.section-projects .section-header h2 {
+  margin-bottom: 0.25rem;
+}
+
+.section-projects .section-header p {
+  color: #a0a0b5;
+  font-size: 0.95rem;
+}
+
+/* Tekli liste: alt alta kartlar */
+.projects-list {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* Kart */
+.project-card {
+  display: flex;
+  gap: 1rem;
+  padding: 0.9rem;
+  border-radius: 16px;
+  background: radial-gradient(circle at top left, #262645 0, #151522 45%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 204, 0, 0.7);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.75);
+}
+
+.project-card-thumb {
+  flex: 0 0 170px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #050508;
+  position: relative;
+}
+
+.project-card-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.project-card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.project-card-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.project-card-title {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.project-card-role {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(255,204,0,0.18);
+  color: #ffcc00;
+  border: 1px solid rgba(255,204,0,0.5);
+}
+
+.project-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  color: #a0a0b5;
+}
+
+.project-card-type {
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.project-card-date-chip {
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  border: 1px dashed rgba(255,255,255,0.18);
+  font-size: 0.75rem;
+}
+
+.project-card-short {
+  font-size: 0.85rem;
+  color: #a0a0b5;
+}
+
+.project-card-footer {
+  margin-top: 0.3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.project-card-cta {
+  font-size: 0.8rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,204,0,0.4);
+  color: #ffcc00;
+  background: linear-gradient(120deg, rgba(255,204,0,0.18), rgba(255,204,0,0.04));
+}
+
+.project-card-cta span {
+  font-size: 0.82rem;
+}
+
+.project-card-footer-date {
+  font-size: 0.75rem;
+  color: #a0a0b5;
+}
+
+/* === MODAL / PANEL === */
+
+.project-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 9999;
+}
+
+.project-modal-backdrop.is-open {
+  display: flex;
+}
+
+.project-modal {
+  width: 100%;
+  max-width: 980px;
+  max-height: 90vh;
+  background: radial-gradient(circle at top, #262645 0, #050509 60%);
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,0.12);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.8);
+}
+
+.project-modal-header {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(18px);
+  background: linear-gradient(to right, rgba(5,5,14,0.9), rgba(20,20,35,0.9));
+}
+
+.project-modal-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+#project-modal-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+#project-modal-subtitle {
+  font-size: 0.8rem;
+  color: #a0a0b5;
+}
+
+.project-modal-close {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(0,0,0,0.75);
+  color: #f5f5f7;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.project-modal-body {
+  padding: 0.9rem 1rem 1rem;
+  overflow-y: auto;
+}
+
+.project-modal-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 0.8rem;
+}
+
+/* Video */
+.project-modal-video-block {
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 0.6rem;
+  background: radial-gradient(circle at top, #20203c 0, #090912 60%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.project-modal-label {
+  font-size: 0.78rem;
+  color: #a0a0b5;
+}
+
+.project-modal-video-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 */
+  border-radius: 10px;
+  overflow: hidden;
+  background: #000;
+}
+
+.project-modal-video-wrapper iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Uzun açıklama */
+.project-modal-desc-block {
+  margin-top: 0.6rem;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(4,4,10,0.9);
+  padding: 0.6rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+#project-modal-longdesc {
+  font-size: 0.86rem;
+  color: #f5f5f7;
+  opacity: 0.9;
+}
+
+.project-modal-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+}
+
+.project-modal-tag {
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #a0a0b5;
+}
+
+/* Gallery */
+.project-modal-gallery-block {
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 0.6rem;
+  background: radial-gradient(circle at bottom, #1a1a2f 0, #080812 55%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.project-modal-gallery-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+}
+
+.project-modal-gallery-count {
+  font-size: 0.75rem;
+  color: #a0a0b5;
+}
+
+.project-modal-gallery-grid {
+  margin-top: 0.25rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 0.4rem;
+}
+
+.project-modal-gallery-item {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #050508;
+}
+
+.project-modal-gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.project-modal-gallery-empty-text {
+  font-size: 0.8rem;
+  color: #a0a0b5;
+  opacity: 0.8;
+}
+
+/* Footer meta */
+.project-modal-footer {
+  margin-top: 0.6rem;
+  font-size: 0.75rem;
+  color: #a0a0b5;
+  text-align: right;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .project-card {
+    flex-direction: column;
+  }
+
+  .project-card-thumb {
+    height: 180px;
+  }
+
+  .project-modal-columns {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .project-modal-body {
+    padding-inline: 0.75rem;
+  }
+
+  .project-modal-header {
+    padding-inline: 0.75rem;
+  }
+}
