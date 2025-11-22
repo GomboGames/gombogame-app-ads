@@ -38,9 +38,6 @@ window.projects = [
     gallery: [
       { type: "youtube", src: "https://youtu.be/pptgV_zM5ts", alt: "Fire evacuation training simulation demo" }
     ],
-    links: [
-      { label: "YouTube Demo", url: "https://youtu.be/pptgV_zM5ts" }
-    ]
   },
 
   /* -------------- NEW PROJECT ADDED HERE -------------- */
@@ -66,11 +63,6 @@ window.projects = [
             {
         type: "image",
         src: "images/Pw_3.jpg",
-        alt: "Prosthetic Worlds VR total knee arthroplasty training"
-      },
-            {
-        type: "image",
-        src: "images/Pw_4.jpg",
         alt: "Prosthetic Worlds VR total knee arthroplasty training"
       },
       { type: "youtube", src: "https://www.youtube.com/watch?v=sWOdGYnegjY", alt: "Motorcycle sound demo" }
@@ -142,7 +134,6 @@ window.projects = [
       "Dragon Faya is an iOS casual game built with Unity. I contributed to gameplay systems, effects and general polish.",
     coverImage: "images/DragonFaya_1.jpg",
     gallery: [
-      { type: "image", src: "images/DragonFaya_1.jpg", alt: "Dragon Faya cover art" },
       { type: "image", src: "images/DragonFaya_2.jpeg", alt: "Dragon Faya cover art" },
       { type: "youtube", src: "https://www.youtube.com/watch?v=syhsci_zf4U&t=1s" }
 
