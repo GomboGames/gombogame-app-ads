@@ -58,11 +58,6 @@ window.projects = [
       "Prosthetic Worlds is a VR surgical training experience focused on total knee arthroplasty (TKA). Trainees can walk through each surgical step at their own pace, repeat critical actions, and build confidence without risk to patients. In a controlled study with 20 doctors split into VR and traditional-training groups, the VR group achieved higher scores across four surgical skill parameters, especially in learning the overall procedure. The goal is to compress years of operating room learning into a structured, measurable VR training workflow.",
     coverImage: "images/Pw_2.jpg",
     gallery: [
-      {
-        type: "image",
-        src: "images/Pw_2.jpg",
-        alt: "Prosthetic Worlds VR total knee arthroplasty training"
-      },
             {
         type: "image",
         src: "images/Pw_1.jpg",
