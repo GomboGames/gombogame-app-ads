@@ -123,7 +123,7 @@ window.projects = [
     name: "Dragon Faya",
     role: "Unity Developer",
     tagline: "Unity • Mobile Game • iOS",
-    date: "2021-10",
+    date: "2021-11",
     types: ["software", "design"],
     shortDesc: "Casual mobile game featuring a fire-breathing dragon and arcade-style gameplay.",
     longDesc:
