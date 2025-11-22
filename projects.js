@@ -36,9 +36,8 @@ window.projects = [
       "Custom fire evacuation simulation where the real environment is scanned and recreated. The goal is to trigger the alarm and follow arrows to reach the safe zone.",
     longDesc:
       "This project is a fire evacuation training simulation built for a specific real-world space. The environment is scanned and modeled to create a location-specific experience. In the simulation, the user must locate and trigger the fire alarm, then follow dynamic guidance arrows and route indicators to reach the designated safe zone.",
-    coverImage: "images/fire-evac-sim-cover.jpg",
+    coverImage: "images/Fireimage.png",
     gallery: [
-      { type: "image", src: "images/fire-evac-sim-cover.jpg", alt: "Fire Evacuation Simulation environment" },
       { type: "youtube", src: "https://youtu.be/pptgV_zM5ts", alt: "Fire evacuation training simulation demo" }
     ],
     links: [
@@ -59,7 +58,7 @@ window.projects = [
       "VR-based total knee arthroplasty training simulation that lets surgeons practice the full procedure in a safe, repeatable environment.",
     longDesc:
       "Prosthetic Worlds is a VR surgical training experience focused on total knee arthroplasty (TKA). Trainees can walk through each surgical step at their own pace, repeat critical actions, and build confidence without risk to patients. In a controlled study with 20 doctors split into VR and traditional-training groups, the VR group achieved higher scores across four surgical skill parameters, especially in learning the overall procedure. The goal is to compress years of operating room learning into a structured, measurable VR training workflow.",
-    coverImage: "images/prosthetic-worlds-cover.jpg",
+    coverImage: "images/Prosthetic_1.png",
     gallery: [
       {
         type: "image",
@@ -95,7 +94,6 @@ window.projects = [
       "Redline Motorcycle Sounds is a focused engine sound simulator for motorcycle enthusiasts. I worked on the sound system, throttle response, looping, and performance optimization.",
     coverImage: "images/redline-motorcycle-cover.jpg",
     gallery: [
-      { type: "image", src: "images/Fireimage.png", alt: "Redline Motorcycle Sounds main screen" },
       { type: "youtube", src: "https://www.youtube.com/watch?v=Tp5mlPiPLVs", alt: "Motorcycle sound demo" }
     ],
     links: [
