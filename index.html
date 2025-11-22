@@ -405,10 +405,11 @@
       margin-top: 6px;
     }
 
+    /* INSTAGRAM-LIKE COVER (SQUARE) */
     .project-image {
-      width: 100%;
-      max-width: 180px;
-      aspect-ratio: 1 / 1; /* KARE */
+      width: 160px;
+      flex-shrink: 0;
+      aspect-ratio: 1 / 1; /* Kare, Instagram grid gibi */
       background: #e5e7eb;
       overflow: hidden;
       border-radius: 12px;
@@ -420,9 +421,9 @@
     .project-image img {
       width: 100%;
       height: 100%;
-      object-fit: cover; /* Her resmi kırpıp kare yapar */
+      object-fit: cover; /* Her şeyi kırpıp kare yap */
+      display: block;
     }
-
 
     .project-image span {
       font-size: 12px;
@@ -442,37 +443,50 @@
 
     .resume-block h3 {
       font-size: 15px;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
       color: var(--text);
     }
 
-    /* simple skill pills */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 10px;
-      margin-top: 6px;
-    }
-
-    .skill-group-title {
-      font-size: 13px;
-      font-weight: 600;
-      margin-bottom: 4px;
-      color: #374151;
-    }
-
-    .skill-pills {
+    /* SKILLS STYLING */
+    .skill-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
+      margin-bottom: 10px;
     }
 
-    .skill-pill {
-      font-size: 11px;
+    .skill-tag {
+      font-size: 12px;
       padding: 4px 10px;
       border-radius: 999px;
       background: #e5e7eb;
       color: #374151;
+    }
+
+    .skill-level {
+      margin-bottom: 8px;
+    }
+
+    .skill-level-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      margin-bottom: 3px;
+      color: #4b5563;
+    }
+
+    .skill-bar {
+      width: 100%;
+      height: 6px;
+      border-radius: 999px;
+      background: #e5e7eb;
+      overflow: hidden;
+    }
+
+    .skill-bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #6366f1, #22c55e);
     }
 
     footer {
@@ -539,17 +553,22 @@
       padding: 4px 8px;
     }
 
+    /* SABİT BOYUTLU PANEL (YAZI SCROLL, GÖRSEL SABİT) */
     .project-modal-body {
       display: flex;
       gap: 24px;
       padding: 20px 24px 22px;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
+      height: 520px;      /* Sabit panel yüksekliği */
+      overflow: hidden;   /* İçerik taşmasını gizle */
     }
 
     .modal-text {
-      flex: 1 1 280px;
+      flex: 1 1 300px;
       font-size: 14px;
       color: var(--muted);
+      overflow-y: auto;   /* Yazı fazlaysa scroll */
+      padding-right: 8px;
     }
 
     .modal-text h4 {
@@ -594,13 +613,13 @@
 
     .modal-main-media {
       width: 100%;
-      background: #f3f4f6;
       border-radius: 14px;
-      min-height: 220px;
+      background: #f3f4f6;
+      overflow: hidden;
+      flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
     }
 
     .modal-main-media img,
@@ -622,6 +641,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
+      margin-top: 8px;
     }
 
     .modal-thumb {
@@ -659,6 +679,15 @@
       .sidebar {
         position: static;
       }
+
+      .project-modal-body {
+        flex-direction: column;
+        height: auto;
+      }
+
+      .modal-text {
+        max-height: 220px;
+      }
     }
 
     @media (max-width: 640px) {
@@ -667,21 +696,11 @@
       }
 
       .project-card {
-        flex-direction: column;
+        flex-direction: row;
       }
 
       .project-image {
-        width: 100%;
-        min-height: 150px;
-      }
-
-      .project-text {
-        padding: 14px 16px 14px 20px;
-      }
-
-      .project-text::before {
-        top: 12px;
-        bottom: 12px;
+        width: 120px;
       }
 
       .project-modal-body {
@@ -698,6 +717,7 @@
     <aside class="sidebar">
       <div class="profile-header">
         <div class="profile-photo">
+          <!-- Profile photo -->
           <img src="images/bahadir.png" alt="Bahadır Kuş">
         </div>
         <div class="profile-name">Bahadır Kuş</div>
@@ -707,7 +727,8 @@
         </div>
       </div>
 
-      <!-- (İstersen tekrar açarsın)
+      <!-- İstersen kısa bioyu sonra açarsın -->
+      <!--
       <p class="profile-bio">
         Unity, VR/AR and real-time simulation developer combining mechanical design,
         sensors and software to build training systems.
@@ -797,7 +818,7 @@
         </div>
 
         <div class="projects-grid">
-          <!-- Cards injected by JS -->
+          <!-- Cards are injected by JS -->
         </div>
       </section>
 
@@ -806,27 +827,57 @@
         <h2>Resume</h2>
         <p>A brief overview of my skills, background and experience.</p>
 
+        <!-- My Skills -->
         <div class="resume-block" style="margin-top:10px;">
           <h3>My Skills</h3>
-          <div class="skills-grid">
-            <div>
-              <div class="skill-group-title">Tools & Engines</div>
-              <div class="skill-pills">
-                <span class="skill-pill">Unity</span>
-                <span class="skill-pill">Unreal (basic)</span>
-                <span class="skill-pill">Blender</span>
-                <span class="skill-pill">Fusion 360</span>
-                <span class="skill-pill">FMOD</span>
-              </div>
+
+          <div class="skill-tags">
+            <span class="skill-tag">Unity</span>
+            <span class="skill-tag">C#</span>
+            <span class="skill-tag">VR / AR</span>
+            <span class="skill-tag">Medical Simulation</span>
+            <span class="skill-tag">Blender</span>
+            <span class="skill-tag">Fusion 360</span>
+            <span class="skill-tag">Arduino</span>
+          </div>
+
+          <div class="skill-level">
+            <div class="skill-level-label">
+              <span>Unity / C#</span>
+              <span>Advanced</span>
             </div>
-            <div>
-              <div class="skill-group-title">Languages</div>
-              <div class="skill-pills">
-                <span class="skill-pill">C#</span>
-                <span class="skill-pill">C++ (basic)</span>
-                <span class="skill-pill">Python</span>
-                <span class="skill-pill">JavaScript</span>
-              </div>
+            <div class="skill-bar">
+              <div class="skill-bar-fill" style="width: 85%;"></div>
+            </div>
+          </div>
+
+          <div class="skill-level">
+            <div class="skill-level-label">
+              <span>VR / AR Simulation</span>
+              <span>Advanced</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-bar-fill" style="width: 80%;"></div>
+            </div>
+          </div>
+
+          <div class="skill-level">
+            <div class="skill-level-label">
+              <span>3D Modeling (Blender / Fusion)</span>
+              <span>Intermediate</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-bar-fill" style="width: 70%;"></div>
+            </div>
+          </div>
+
+          <div class="skill-level">
+            <div class="skill-level-label">
+              <span>Embedded &amp; Sensors (Arduino)</span>
+              <span>Intermediate</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-bar-fill" style="width: 65%;"></div>
             </div>
           </div>
         </div>
@@ -834,10 +885,10 @@
         <div class="resume-block">
           <h3>About Me</h3>
           <p>
-            I started with IT & software in high school and over the years focused on real-time
-            applications and simulations. Since 2021 I have been working on VR/AR-based medical
-            simulations, combining custom mechanical parts, sensors and software infrastructure
-            to create realistic surgical training systems.
+            I started with IT & software in high school and over the years focused on
+            real-time applications and simulations. Since 2021 I have been working on
+            VR/AR-based medical simulations, combining custom mechanical parts, sensors
+            and software infrastructure to create realistic surgical training systems.
           </p>
         </div>
 
@@ -881,7 +932,7 @@
   </div>
 </div>
 
-<!-- projects.js MUST be loaded before main script -->
+<!-- projects.js MUST be loaded before our script -->
 <script src="projects.js"></script>
 
 <script>
@@ -906,7 +957,7 @@
     });
   });
 
-  // projects from projects.js
+  // Use projects from projects.js
   const projects = window.projects || [];
 
   const projectsGrid = document.querySelector('.projects-grid');
@@ -1015,7 +1066,7 @@
 
     modalDesc.textContent = project.longDesc || project.shortDesc || '';
 
-    // links
+    // Links
     modalLinks.innerHTML = '';
     if (Array.isArray(project.links) && project.links.length > 0) {
       project.links.forEach(link => {
@@ -1030,12 +1081,13 @@
       });
     }
 
-    // gallery
+    // Gallery
     modalMainMedia.innerHTML = '';
     modalThumbs.innerHTML = '';
 
     let gallery = Array.isArray(project.gallery) ? [...project.gallery] : [];
 
+    // If gallery empty but coverImage exists, use it
     if (gallery.length === 0 && project.coverImage) {
       gallery = [{
         type: 'image',
