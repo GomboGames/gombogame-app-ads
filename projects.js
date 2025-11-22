@@ -1,5 +1,6 @@
 // projects.js
-// All portfolio projects used by index.html
+// All portfolio projects live here.
+// index.html loads this file and reads window.projects
 
 window.projects = [
   {
@@ -12,16 +13,31 @@ window.projects = [
     shortDesc:
       "Android engine sound simulator that recreates classic and supercar exhaust audio with manual gear and real-time chrono.",
     longDesc:
-      "Redline Engine Sounds is a mobile car engine simulator developed for Android devices. I implemented manual shifting, throttle logic, FMOD-based sound layering, UI flows, and heavy performance optimization for low-end devices. Includes a built-in stopwatch for racing time trials.",
+      "Redline Engine Sounds is a mobile car engine simulator developed for Android devices. I implemented manual shifting, throttle logic, FMOD-based sound layering, UI flows, and performance optimization for low-end devices. The app also includes a built-in stopwatch so users can race against their own best times.",
+    // ⚠️ Kapak görseli: kartta görünen ana görsel (ayrıca gallery'ye eklemiyoruz)
     coverImage: "images/redlineengine_1.jpg",
     gallery: [
-      { type: "image", src: "images/redlineengine_1.jpg", alt: "Main dashboard" },
-      { type: "image", src: "images/redline-engine-sounds-screen-2.jpg", alt: "Gear & pedal controls" },
-      { type: "youtube", src: "https://www.youtube.com/watch?v=Tp5mlPiPLVs", alt: "Gameplay demo" }
+      // Kapak harici ekran görüntüleri
+      {
+        type: "image",
+        src: "images/redline-engine-sounds-screen-2.jpg",
+        alt: "Gear and pedal controls in Redline Engine Sounds"
+      },
+      {
+        type: "youtube",
+        src: "https://www.youtube.com/watch?v=Tp5mlPiPLVs",
+        alt: "Redline Engine Sounds gameplay demo"
+      }
     ],
     links: [
-      { label: "Google Play", url: "https://play.google.com/store/apps/details?id=com.Okkagames.RedlineEngineSounds&hl=en" },
-      { label: "YouTube Demo", url: "https://www.youtube.com/watch?v=Tp5mlPiPLVs" }
+      {
+        label: "Google Play",
+        url: "https://play.google.com/store/apps/details?id=com.Okkagames.RedlineEngineSounds&hl=en"
+      },
+      {
+        label: "YouTube Demo",
+        url: "https://www.youtube.com/watch?v=Tp5mlPiPLVs"
+      }
     ]
   },
 
@@ -29,19 +45,26 @@ window.projects = [
     id: "redline-motorcycle-sounds",
     name: "Redline Motorcycle Sounds",
     role: "Unity Developer (Freelance)",
-    tagline: "Unity • C# • FMOD • Audio Engineering • Android",
-    date: "2022-11-05",
+    tagline: "Unity • C# • Motorcycle Exhaust Simulation • Android",
+    date: "2023-06-01",
     types: ["software", "simulation"],
     shortDesc:
-      "Motorcycle engine sound simulator focusing on authentic exhaust, rev and throttle behaviour.",
+      "Mobile simulator featuring realistic motorcycle exhaust and engine sounds.",
     longDesc:
-      "Redline Motorcycle Sounds focuses on realistic motorcycle exhaust modeling. I worked on multi-layered FMOD sound design, acceleration curve logic, smooth throttle interpolation, and UI transitions.",
-    coverImage: "images/redline-moto-cover.jpg",
+      "Redline Motorcycle Sounds is a focused engine sound simulator for motorcycle enthusiasts. I worked on the sound system, throttle response, looping, and performance optimization so the app runs smoothly across a wide range of Android devices.",
+    coverImage: "images/redline-motorcycle-cover.jpg", // istersen sonra ekle
     gallery: [
-      { type: "image", src: "images/redline-moto-screen-1.jpg", alt: "Motorcycle UI" }
+      {
+        type: "youtube",
+        src: "https://www.youtube.com/watch?v=Tp5mlPiPLVs",
+        alt: "Motorcycle sound demo"
+      }
     ],
     links: [
-      { label: "Google Play", url: "https://play.google.com/store/apps/details?id=com.Okka.RedlineMotorcycleSounds&hl=en" }
+      {
+        label: "Google Play",
+        url: "https://play.google.com/store/apps/details?id=com.Okka.RedlineMotorcycleSounds&hl=en"
+      }
     ]
   },
 
@@ -49,19 +72,26 @@ window.projects = [
     id: "redline-drag-racing",
     name: "Redline Drag Racing",
     role: "Unity Developer (Freelance)",
-    tagline: "Unity • C# • 2D Physics • Timing System",
-    date: "2021-06-20",
+    tagline: "Unity • C# • Drag Racing Physics • Android",
+    date: "2022-11-15",
     types: ["software", "simulation"],
     shortDesc:
-      "Drag racing simulator designed around manual shifting, timing and acceleration behaviour.",
+      "Drag racing simulator with manual shifting, reaction time and acceleration behavior.",
     longDesc:
-      "Implemented reaction timing system, shifting window mechanics, acceleration curves, and lightweight physics to keep the game responsive even on very low-end phones.",
+      "Redline Drag Racing is a drag racing game where I implemented manual gear shifting, start-light timing, and car acceleration behavior. I handled core gameplay logic, UI flows and tuning of the driving feel.",
     coverImage: "images/redline-drag-cover.jpg",
     gallery: [
-      { type: "image", src: "images/redline-drag-screen-1.jpg", alt: "Drag Racing UI" }
+      {
+        type: "youtube",
+        src: "https://www.youtube.com/watch?v=Tp5mlPiPLVs",
+        alt: "Redline Drag Racing gameplay"
+      }
     ],
     links: [
-      { label: "Google Play", url: "https://play.google.com/store/apps/details?id=com.okkagames.redlinedragracing&hl=en" }
+      {
+        label: "Google Play",
+        url: "https://play.google.com/store/apps/details?id=com.okkagames.redlinedragracing&hl=en"
+      }
     ]
   },
 
@@ -69,19 +99,20 @@ window.projects = [
     id: "hyper-fast-drag",
     name: "Hyper Fast Drag",
     role: "Unity Developer (Freelance)",
-    tagline: "Unity • C# • Mobile Optimization",
-    date: "2020-12-15",
+    tagline: "Unity • C# • Mobile Racing • Android",
+    date: "2022-03-20",
     types: ["software"],
     shortDesc:
       "High-speed drag racing experience optimized for mobile devices.",
     longDesc:
-      "Hyper Fast Drag is a stylized drag racing game that focuses on fast sessions, simple mechanics, and smooth user experience.",
+      "Hyper Fast Drag is a fast-paced drag racing game focused on quick sessions and responsive controls. I worked on car setup, progression flow and general gameplay implementation, keeping performance stable on lower-end devices.",
     coverImage: "images/hyper-fast-drag-cover.jpg",
-    gallery: [
-      { type: "image", src: "images/hyper-fast-drag-screen-1.jpg", alt: "Hyper Fast Drag" }
-    ],
+    gallery: [],
     links: [
-      { label: "Google Play", url: "https://play.google.com/store/apps/details?id=com.okkagames.HyperFastDrag&hl=en" }
+      {
+        label: "Google Play",
+        url: "https://play.google.com/store/apps/details?id=com.okkagames.HyperFastDrag&hl=en"
+      }
     ]
   },
 
@@ -89,19 +120,20 @@ window.projects = [
     id: "dragon-faya",
     name: "Dragon Faya",
     role: "Unity Developer",
-    tagline: "Unity • C# • 2D Game Design • iOS",
+    tagline: "Unity • Mobile Game • iOS",
     date: "2021-10-01",
     types: ["software", "design"],
     shortDesc:
-      "Casual mobile game featuring an arcade-style dragon flight system.",
+      "Casual mobile game featuring a fire-breathing dragon and arcade-style gameplay.",
     longDesc:
-      "Contributed to gameplay logic, VFX, polishing UI and optimizing animation cycles.",
+      "Dragon Faya is an iOS casual game built with Unity. I contributed to gameplay systems, effects and general polish, focusing on keeping controls simple and satisfying for short play sessions.",
     coverImage: "images/dragon-faya-cover.jpg",
-    gallery: [
-      { type: "image", src: "images/dragon-faya-screen-1.jpg", alt: "Dragon Faya gameplay" }
-    ],
+    gallery: [],
     links: [
-      { label: "App Store", url: "https://appadvice.com/app/dragon-faya/1597632362" }
+      {
+        label: "App Store",
+        url: "https://appadvice.com/app/dragon-faya/1597632362"
+      }
     ]
   },
 
@@ -109,19 +141,23 @@ window.projects = [
     id: "dolmuscu-dayi",
     name: "Dolmuşçu Dayı",
     role: "Unity Developer",
-    tagline: "Unity • C# • 2D Art • iOS • Mobile",
+    tagline: "Unity • C# • 2D Mobile Game • iOS",
     date: "2022-07-20",
     types: ["software", "design"],
     shortDesc:
-      "Humorous mobile game inspired by Turkish dolmuş culture with stylized visuals.",
+      "Humorous mobile game about driving a Turkish dolmuş and managing passengers.",
     longDesc:
-      "Developed core mechanics, UI flows, level logic and animation cycles using Unity 2D.",
+      "Dolmuşçu Dayı is a fun 2D mobile game where players control a Turkish minibus driver. I worked on core gameplay, UI and moment-to-moment interactions, focusing on a light, humorous experience suited to mobile sessions.",
     coverImage: "images/dolmuscu-dayi-cover.jpg",
-    gallery: [
-      { type: "image", src: "images/dolmuscu-dayi-screen-1.jpg", alt: "Dolmuşçu Dayı screenshot" }
-    ],
+    gallery: [],
     links: [
-      { label: "App Store", url: "https://apps.apple.com/us/app/dolmu%C5%9F%C3%A7u-day%C4%B1/id1636141841" }
+      {
+        label: "App Store",
+        url: "https://apps.apple.com/us/app/dolmu%C5%9F%C3%A7u-day%C4%B1/id1636141841"
+      }
     ]
   }
+
+  // Yeni proje eklemek istersen:
+  // window.projects.push({ ... }); veya diziye yukarıdaki formatta yeni obje ekle.
 ];
