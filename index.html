@@ -112,6 +112,13 @@
       background: #22c55e;
     }
 
+    .profile-bio {
+      font-size: 13px;
+      color: #e5e7eb;
+      text-align: left;
+      align-self: stretch;
+    }
+
     /* SOCIAL BUTTONS */
     .profile-social {
       display: flex;
@@ -324,37 +331,39 @@
       box-shadow: 0 8px 20px rgba(129, 140, 248, 0.4);
     }
 
-    /* PROJECT LIST – SINGLE COLUMN */
+    /* PROJECT LIST – ALWAYS ONE COLUMN */
     .projects-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 26px;               /* kartlar arası net boşluk */
-      margin-top: 8px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 20px;
+      margin-top: 4px;
     }
 
     .project-card {
       display: flex;
       flex-direction: row;
       background: #f9fafb;
-      border-radius: 22px;
-      box-shadow: 0 14px 32px rgba(15,23,42,0.12);
+      border-radius: 18px;
+      box-shadow: 0 14px 34px rgba(15,23,42,0.14);
       overflow: hidden;
       cursor: pointer;
       transition: .15s;
-      min-height: 210px;
-      border: 1px solid rgba(209,213,219,0.8);
+      min-height: 220px;
     }
 
     .project-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 24px 50px rgba(15,23,42,0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 20px 40px rgba(15,23,42,0.2);
       background: #ffffff;
     }
 
     .project-text {
-      padding: 18px 20px 18px 24px;
+      padding: 18px 20px 18px 22px;
       flex: 1;
       position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
     }
 
     .project-text::before {
@@ -371,71 +380,47 @@
     .project-title {
       font-size: 16px;
       font-weight: 600;
-      margin-bottom: 4px;
+      margin-bottom: 2px;
     }
 
     .project-role {
       font-size: 12px;
       font-weight: 500;
       color: var(--muted);
-      margin-bottom: 6px;
     }
 
     .project-date {
       font-size: 11px;
       color: var(--muted);
-      margin-bottom: 8px;
     }
 
     .project-desc {
       font-size: 13px;
       color: var(--muted);
-      margin-bottom: 6px;
+      margin-top: 4px;
     }
 
     .project-tech {
       font-size: 11px;
       color: #6b7280;
-      margin-top: 4px;
+      margin-top: 8px;
     }
 
     .project-image {
-      flex: 0 0 230px;         /* sabit genişlik */
-      height: 230px;           /* sabit yükseklik → hepsi eşit */
+      width: 38%;
+      min-width: 38%;
+      max-width: 38%;
       background: #e5e7eb;
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-left: 1px solid rgba(209,213,219,0.9);
     }
-  width: 100%;
-  height: 240px;         /* Sabit yükseklik – tüm kartlarda eşit */
-  background: #e5e7eb;
-  border-radius: 16px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-@media (max-width: 600px) {
-  .project-image {
-    height: 200px;      /* Mobilde daha küçük ama yine sabit */
-  }
-}
-
-.project-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;     /* GÖRSEL ASLA BOZULMAZ */
-  object-position: center;
-}
 
     .project-image img {
       width: 100%;
       height: 100%;
-      object-fit: cover;       /* kırparak düzgün görünüm */
+      object-fit: cover; /* kırpabilir ama bozmuyor */
       display: block;
     }
 
@@ -461,21 +446,19 @@
       color: var(--text);
     }
 
-    .skills-tags {
+    .skill-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 6px;
       margin-top: 6px;
     }
 
-    .skill-pill {
-      padding: 4px 10px;
+    .skill-tag {
+      font-size: 11px;
       border-radius: 999px;
-      background: #e5f0ff;
-      border: 1px solid #c7d2fe;
-      font-size: 12px;
-      color: #1d4ed8;
-      white-space: nowrap;
+      padding: 4px 10px;
+      background: #e5e7eb;
+      color: #374151;
     }
 
     footer {
@@ -508,18 +491,18 @@
       border-radius: 20px;
       max-width: 980px;
       width: 100%;
-      max-height: 86vh;          /* sabit yükseklik */
       overflow: hidden;
       display: flex;
       flex-direction: column;
       box-shadow: 0 30px 70px rgba(15,23,42,0.4);
+      max-height: 90vh;
     }
 
     .project-modal-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 18px 24px 10px;
+      padding: 14px 20px 8px;
       border-bottom: 1px solid var(--border);
     }
 
@@ -545,14 +528,14 @@
 
     .project-modal-body {
       display: flex;
-      gap: 24px;
-      padding: 18px 24px 18px;
+      gap: 20px;
+      padding: 16px 20px 18px;
       flex-wrap: wrap;
-      overflow-y: auto;           /* içerik taşarsa dikey scroll */
+      overflow-y: auto;
     }
 
     .modal-text {
-      flex: 1 1 280px;
+      flex: 1 1 260px;
       font-size: 14px;
       color: var(--muted);
     }
@@ -597,31 +580,35 @@
       gap: 10px;
     }
 
-  .modal-main-media {
-    width: 100%;
-    background: #fff;
-    border-radius: 14px;
-    min-height: 380px;     /* sabit yükseklik */
-    max-height: 70vh;      /* ekrana göre ölçeklenir */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
+    .modal-main-media {
+      width: 100%;
+      background: #000;
+      border-radius: 14px;
+      min-height: 220px;
+      max-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
 
-.modal-main-media img,
-.modal-main-media video,
-.modal-main-media iframe {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;  /* Tüm görsel tamamen görünür */
-    background: #fff;
-}
-
+    .modal-main-media img,
+    .modal-main-media video,
+    .modal-main-media iframe {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* TÜM görsel/video görünsün */
+      display: block;
+      border: none;
+    }
 
     .modal-main-media span {
       font-size: 12px;
       color: var(--muted);
+      background: #f3f4f6;
+      width: 100%;
+      text-align: center;
+      padding: 16px 0;
     }
 
     .modal-thumbs {
@@ -631,8 +618,8 @@
     }
 
     .modal-thumb {
-      width: 72px;
-      height: 72px;
+      width: 70px;
+      height: 70px;
       border-radius: 10px;
       overflow: hidden;
       background: #e5e7eb;
@@ -668,20 +655,23 @@
     }
 
     @media (max-width: 640px) {
+      .main-card {
+        padding: 14px 14px 18px;
+      }
+
+      .projects-grid {
+        gap: 16px;
+      }
+
       .project-card {
         flex-direction: column;
       }
 
       .project-image {
         width: 100%;
-        flex: 0 0 200px;
+        min-width: 100%;
+        max-width: 100%;
         height: 200px;
-        border-left: none;
-        border-top: 1px solid rgba(209,213,219,0.9);
-      }
-
-      .project-text {
-        padding: 16px 16px 14px 20px;
       }
 
       .project-text::before {
@@ -711,6 +701,13 @@
           <span>Simulation Developer &amp; Technical Designer</span>
         </div>
       </div>
+
+      <!-- Kısa bio (istersen tekrar açarsın)
+      <p class="profile-bio">
+        Unity, VR/AR and real-time simulation developer combining mechanical design,
+        sensors and software to build training systems.
+      </p>
+      -->
 
       <!-- Social icons -->
       <div class="profile-social">
@@ -795,7 +792,7 @@
         </div>
 
         <div class="projects-grid">
-          <!-- Cards created in JS -->
+          <!-- Cards are injected by JS -->
         </div>
       </section>
 
@@ -806,24 +803,25 @@
 
         <div class="resume-block" style="margin-top:10px;">
           <h3>My Skills</h3>
-          <div class="skills-tags">
-            <!-- Sadece örnek, sonra birlikte doldururuz -->
-            <span class="skill-pill">Unity</span>
-            <span class="skill-pill">C#</span>
-            <span class="skill-pill">VR / AR</span>
-            <span class="skill-pill">Blender</span>
-            <span class="skill-pill">Fusion 360</span>
-            <span class="skill-pill">Arduino</span>
+          <div class="skill-tags">
+            <span class="skill-tag">Unity</span>
+            <span class="skill-tag">C#</span>
+            <span class="skill-tag">VR / AR</span>
+            <span class="skill-tag">Medical Simulation</span>
+            <span class="skill-tag">3D Modeling</span>
+            <span class="skill-tag">Fusion 360</span>
+            <span class="skill-tag">Blender</span>
+            <span class="skill-tag">Arduino</span>
           </div>
         </div>
 
         <div class="resume-block">
           <h3>About Me</h3>
           <p>
-            I started with IT & software in high school and over the years focused on real-time
-            applications and simulations. Since 2021 I have been working on VR/AR-based medical
-            simulations, combining custom mechanical parts, sensors and software infrastructure
-            to create realistic surgical training systems.
+            I started with IT &amp; software in high school and over the years focused on
+            real-time applications and simulations. Since 2021 I have been working on
+            VR/AR-based medical simulations, combining custom mechanical parts, sensors
+            and software infrastructure to create realistic surgical training systems.
           </p>
         </div>
 
@@ -867,13 +865,13 @@
   </div>
 </div>
 
-<!-- projects.js MUST be loaded before our script -->
+<!-- projects.js must define window.projects -->
 <script src="projects.js"></script>
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // ----- Tabs -----
+  // TAB SWITCHING
   const tabButtons = document.querySelectorAll('.tab-btn');
   const tabSections = document.querySelectorAll('.tab-section');
 
@@ -885,42 +883,42 @@
 
       tabSections.forEach(sec => {
         sec.classList.remove('active');
-        if (sec.id === tab + '-section') sec.classList.add('active');
+        if (sec.id === tab + '-section') {
+          sec.classList.add('active');
+        }
       });
     });
   });
 
-  // ----- Projects -----
-  const projects = (window.projects || []).slice();
+  // PROJECT DATA FROM projects.js
+  const projects = Array.isArray(window.projects) ? [...window.projects] : [];
 
-  // Tarihi "2022-07" veya "2022-07-10" → "July 2022" / "10 July 2022"
-  function formatDate(dateStr) {
-    if (!dateStr) return "";
-    const parts = dateStr.split("-");
+  // Helpers: parse and format date
+  function parseProjectDate(value) {
+    if (!value) return null;
+    // supports "YYYY-MM" or "YYYY-MM-DD"
+    const parts = value.split('-').map(p => parseInt(p, 10));
+    if (!parts[0] || !parts[1]) return null;
     const year = parts[0];
-    const monthIndex = parseInt(parts[1], 10) - 1;
-    const monthNames = [
-      "January","February","March","April","May","June",
-      "July","August","September","October","November","December"
-    ];
-    const monthName = monthNames[monthIndex] || "";
-
-    if (parts.length === 2) {
-      return `${monthName} ${year}`;
-    }
-    if (parts.length === 3) {
-      const day = parseInt(parts[2], 10);
-      return `${day} ${monthName} ${year}`;
-    }
-    return dateStr;
+    const month = parts[1] - 1;
+    const day = parts[2] || 1;
+    return new Date(year, month, day);
   }
 
-  // Tarihe göre sıralama (yeni → eski)
+  function formatMonthYear(value) {
+    const d = parseProjectDate(value);
+    if (!d || isNaN(d.getTime())) return '';
+    return d.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+  }
+
+  // Sort projects by date (newest first)
   projects.sort((a, b) => {
-    if (!a.date && !b.date) return 0;
-    if (!a.date) return 1;
-    if (!b.date) return -1;
-    return new Date(b.date) - new Date(a.date);
+    const da = parseProjectDate(a.date);
+    const db = parseProjectDate(b.date);
+    if (!da && !db) return 0;
+    if (!da) return 1;
+    if (!db) return -1;
+    return db - da;
   });
 
   const projectsGrid = document.querySelector('.projects-grid');
@@ -934,7 +932,7 @@
     card.dataset.types = (project.types || []).join(',');
 
     const hasCover = project.coverImage && project.coverImage.trim() !== '';
-    const dateText = project.date ? `Date: ${formatDate(project.date)}` : '';
+    const dateText = project.date ? `Date: ${formatMonthYear(project.date)}` : '';
 
     card.innerHTML = `
       <div class="project-text">
@@ -966,7 +964,7 @@
     attachCardEvents();
   }
 
-  // ----- Modal -----
+  // MODAL ELEMENTS
   const modal = document.getElementById('project-modal');
   const modalTitle = document.getElementById('modal-title');
   const modalSub = document.getElementById('modal-sub');
@@ -1024,7 +1022,7 @@
 
     const subParts = [];
     if (project.role) subParts.push(project.role);
-    if (project.date) subParts.push(formatDate(project.date));
+    if (project.date) subParts.push(formatMonthYear(project.date));
     modalSub.textContent = subParts.join(' • ');
 
     modalDesc.textContent = project.longDesc || project.shortDesc || '';
@@ -1044,13 +1042,19 @@
       });
     }
 
-    // Gallery (first item = cover)
+    // Gallery
     modalMainMedia.innerHTML = '';
     modalThumbs.innerHTML = '';
 
     let gallery = Array.isArray(project.gallery) ? [...project.gallery] : [];
-    if (project.coverImage) {
-      gallery = [{ type: "image", src: project.coverImage, alt: project.name + " cover" }, ...gallery];
+
+    // If gallery empty but coverImage exists, use it
+    if (gallery.length === 0 && project.coverImage) {
+      gallery = [{
+        type: 'image',
+        src: project.coverImage,
+        alt: project.name + ' cover'
+      }];
     }
 
     if (gallery.length > 0) {
