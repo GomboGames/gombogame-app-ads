@@ -34,7 +34,7 @@ window.projects = [
       "Custom fire evacuation simulation where the real environment is scanned and recreated. The goal is to trigger the alarm and follow arrows to reach the safe zone.",
     longDesc:
       "This project is a fire evacuation training simulation built for a specific real-world space. The environment is scanned and modeled to create a location-specific experience. In the simulation, the user must locate and trigger the fire alarm, then follow dynamic guidance arrows and route indicators to reach the designated safe zone.",
-    coverImage: "images/Fireimage.png",
+    coverImage: "images/fireIcon.jpg",
     gallery: [
       { type: "youtube", src: "https://youtu.be/pptgV_zM5ts", alt: "Fire evacuation training simulation demo" }
     ],
