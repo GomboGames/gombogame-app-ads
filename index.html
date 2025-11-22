@@ -349,12 +349,14 @@
       transition: .15s;
       min-height: 210px;
       max-height: 260px;
+      border: 1px solid rgba(148,163,184,0.25);
     }
 
     .project-card:hover {
       transform: translateY(-3px);
       box-shadow: 0 22px 45px rgba(15,23,42,0.22);
       background: #ffffff;
+      border-color: var(--accent-soft);
     }
 
     .project-text {
@@ -364,6 +366,7 @@
       display: flex;
       flex-direction: column;
       height: 100%;
+      background: #ffffff;
     }
 
     .project-text::before {
@@ -424,6 +427,7 @@
       justify-content: center;
       position: relative;
       overflow: hidden;
+      border-left: 1px solid rgba(148,163,184,0.25);
     }
 
     .project-image img {
@@ -523,6 +527,7 @@
       border-radius: 20px;
       max-width: 980px;
       width: 100%;
+      max-height: 80vh;
       overflow: hidden;
       display: flex;
       flex-direction: column;
@@ -562,12 +567,14 @@
       gap: 24px;
       padding: 20px 24px 22px;
       flex-wrap: wrap;
+      overflow-y: auto;
     }
 
     .modal-text {
       flex: 1 1 280px;
       font-size: 14px;
       color: var(--muted);
+      min-width: 0;
     }
 
     .modal-text h4 {
@@ -608,13 +615,14 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
+      min-width: 0;
     }
 
     .modal-main-media {
       width: 100%;
       background: #f3f4f6;
       border-radius: 14px;
-      min-height: 220px;
+      height: 320px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -626,7 +634,7 @@
     .modal-main-media iframe {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       display: block;
       border: none;
     }
@@ -692,10 +700,12 @@
         max-width: none;
         min-height: 170px;
         max-height: 220px;
+        border-left: none;
+        border-top: 1px solid rgba(148,163,184,0.25);
       }
 
       .project-text {
-        padding: 14px 16px 14px 20px;
+        padding: 16px 16px 14px 20px;
       }
 
       .project-text::before {
@@ -717,8 +727,7 @@
     <aside class="sidebar">
       <div class="profile-header">
         <div class="profile-photo">
-          <!-- Profile photo -->
-          <img src="images/bahadir.jpeg" alt="Bahadır Kuş">
+          <img src="images/bahadir.png" alt="Bahadır Kuş">
         </div>
         <div class="profile-name">Bahadır Kuş</div>
         <div class="profile-role-pill">
@@ -727,7 +736,7 @@
         </div>
       </div>
 
-      <!-- (İstersen tekrar açarsın)
+      <!-- İstersen tekrar açarsın
       <p class="profile-bio">
         Unity, VR/AR and real-time simulation developer combining mechanical design,
         sensors and software to build training systems.
@@ -817,7 +826,7 @@
         </div>
 
         <div class="projects-grid">
-          <!-- Cards are injected by JS -->
+          <!-- Cards injected by JS -->
         </div>
       </section>
 
