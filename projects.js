@@ -13,7 +13,7 @@ window.projects = [
       "Android engine sound simulator that recreates classic and supercar exhaust audio with manual gear and real-time chrono.",
     longDesc:
       "Redline Engine Sounds is a mobile car engine simulator developed for Android devices. I implemented manual shifting, throttle logic, FMOD-based sound layering, UI flows, and heavy performance optimization for low-end devices. Includes a built-in stopwatch for racing time trials.",
-    coverImage: "images/images/redlineengine_1.jpg",
+    coverImage: "images/redlineengine_1.jpg",
     gallery: [
       { type: "image", src: "images/redlineengine_1.jpg", alt: "Main dashboard" },
       { type: "image", src: "images/redline-engine-sounds-screen-2.jpg", alt: "Gear & pedal controls" },
