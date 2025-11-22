@@ -1,1146 +1,784 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Bahadır Kuş – Simulation Developer & Technical Designer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    :root {
-      --bg: #f3f4f6;
-      --card-bg: #ffffff;
-      --text: #111827;
-      --muted: #6b7280;
-      --border: #e5e7eb;
-      --accent: #2563eb;
-      --accent-soft: #eff6ff;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #e5f0ff 0, #f3f4f6 40%, #f3f4f6 100%);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    .page {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 32px 16px 64px;
-    }
-
-    .layout {
-      display: grid;
-      grid-template-columns: 290px minmax(0, 1fr);
-      gap: 24px;
-      align-items: flex-start;
-    }
-
-    /* LEFT SIDEBAR */
-    .sidebar {
-      position: sticky;
-      top: 24px;
-      align-self: flex-start;
-      background: #111827;
-      border-radius: 24px;
-      padding: 26px 22px 22px;
-      box-shadow: 0 26px 60px rgba(15, 23, 42, 0.45);
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      color: #f9fafb;
-      align-items: center;
-    }
-
-    .profile-header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .profile-photo {
-      width: 140px;
-      height: 140px;
-      border-radius: 32px;
-      background: #020617;
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      color: #9ca3af;
-    }
-
-    .profile-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .profile-name {
-      font-size: 22px;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-    }
-
-    .profile-role-pill {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      padding: 6px 18px;
-      background: #27272f;
-      border-radius: 999px;
-      font-size: 12px;
-      color: #e5e7eb;
-      letter-spacing: 0.06em;
-      text-transform: none;
-      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.7);
-    }
-
-    .profile-role-pill-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: #22c55e;
-    }
-
-    .profile-bio {
-      font-size: 13px;
-      color: #e5e7eb;
-      text-align: left;
-      align-self: stretch;
-    }
-
-    /* SOCIAL BUTTONS */
-    .profile-social {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 2px;
-    }
-
-    .social-btn {
-      width: 32px;
-      height: 32px;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.6);
-      background: rgba(255,255,255,0.06);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      transition: .2s;
-    }
-
-    .social-btn img {
-      width: 16px;
-      height: 16px;
-      display: block;
-    }
-
-    .social-btn:hover {
-      background: #fff;
-      border-color: var(--accent);
-      transform: translateY(-1px);
-      box-shadow: 0 10px 20px rgba(15,23,42,0.4);
-    }
-
-    /* CONTACT CARDS */
-    .contact-list {
-      align-self: stretch;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-top: 8px;
-      font-size: 13px;
-    }
-
-    .contact-card,
-    .contact-card-link {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 11px;
-      border-radius: 16px;
-      background: #15151f;
-      box-shadow: 0 12px 24px rgba(0,0,0,0.45);
-    }
-
-    .contact-card-link {
-      text-decoration: none;
-      color: #e5e7eb;
-      transition: .15s;
-    }
-
-    .contact-card-link:hover {
-      background: #1e1e29;
-      transform: translateY(-1px);
-      box-shadow: 0 16px 30px rgba(0,0,0,0.6);
-    }
-
-    .contact-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 14px;
-      background: #0f172a;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 10px 26px rgba(0,0,0,0.7);
-      flex-shrink: 0;
-    }
-
-    .contact-icon img {
-      width: 18px;
-      height: 18px;
-      display: block;
-    }
-
-    .contact-text {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .contact-label {
-      font-size: 11px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: #9ca3af;
-    }
-
-    .contact-value {
-      font-size: 13px;
-      color: #e5e7eb;
-      word-break: break-all;
-    }
-
-    /* MAIN CARD */
-    .main-card {
-      background: #fff;
-      border-radius: 24px;
-      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18);
-      padding: 18px 20px 22px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .main-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 8px;
-      gap: 12px;
-    }
-
-    .main-header h1 {
-      font-size: 19px;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-    }
-
-    .main-header p {
-      font-size: 13px;
-      color: var(--muted);
-      margin-top: 2px;
-    }
-
-    .top-tabs {
-      display: flex;
-      background: #f3f4f6;
-      padding: 3px;
-      border-radius: 999px;
-      gap: 3px;
-    }
-
-    .tab-btn {
-      padding: 6px 16px;
-      border-radius: 999px;
-      font-size: 13px;
-      border: none;
-      background: none;
-      cursor: pointer;
-      color: var(--muted);
-      white-space: nowrap;
-      transition: 0.15s;
-    }
-
-    .tab-btn.active {
-      background: #fff;
-      color: var(--text);
-      font-weight: 500;
-      box-shadow: 0 6px 18px rgba(148,163,184,0.5);
-    }
-
-    .tab-section { display: none; }
-    .tab-section.active { display: block; }
-
-    section h2 {
-      font-size: 16px;
-      margin-bottom: 4px;
-    }
-
-    section p {
-      font-size: 14px;
-      color: var(--muted);
-    }
-
-    /* FILTERS */
-    .project-filters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 12px 0 16px;
-    }
-
-    .filter-btn {
-      border-radius: 999px;
-      padding: 6px 13px;
-      font-size: 12px;
-      border: 1px solid var(--border);
-      background: #f9fafb;
-      cursor: pointer;
-      opacity: 0.9;
-      transition: background 0.15s ease, opacity 0.1s ease,
-                  transform 0.1s ease, box-shadow 0.1s ease, border-color 0.1s ease;
-    }
-
-    .filter-btn:hover {
-      background: #e5e7eb;
-      opacity: 1;
-      transform: translateY(-1px);
-      box-shadow: 0 6px 16px rgba(148, 163, 184, 0.6);
-    }
-
-    .filter-btn.active {
-      border-color: var(--accent);
-      background: var(--accent-soft);
-      color: #1d4ed8;
-      opacity: 1;
-      box-shadow: 0 8px 20px rgba(129, 140, 248, 0.4);
-    }
-
-    /* PROJECT GRID */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-      gap: 18px;
-      margin-top: 4px;
-    }
-
-    .project-card {
-      display: flex;
-      background: #f9fafb;
-      border-radius: 18px;
-      box-shadow: 0 12px 30px rgba(15,23,42,0.12);
-      overflow: hidden;
-      cursor: pointer;
-      transition: .15s;
-      min-height: 190px;
-    }
-
-    .project-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 22px 45px rgba(15,23,42,0.22);
-      background: #ffffff;
-    }
-
-    .project-text {
-      padding: 18px 20px 18px 22px;
-      flex: 1;
-      position: relative;
-    }
-
-    .project-text::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 16px;
-      bottom: 16px;
-      width: 4px;
-      border-radius: 999px;
-      background: var(--accent);
-    }
-
-    .project-title {
-      font-size: 15px;
-      font-weight: 600;
-      margin-bottom: 2px;
-    }
-
-    .project-role {
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--muted);
-      margin-bottom: 4px;
-    }
-
-    .project-date {
-      font-size: 11px;
-      color: var(--muted);
-      margin-bottom: 6px;
-    }
-
-    .project-desc {
-      font-size: 13px;
-      color: var(--muted);
-      margin-bottom: 4px;
-    }
-
-    .project-tech {
-      font-size: 11px;
-      color: #6b7280;
-      margin-top: 6px;
-    }
-
-    .project-image {
-      width: 160px;
-      flex-shrink: 0;
-      aspect-ratio: 1 / 1; /* square/Instagram style */
-      background: #e5e7eb;
-      overflow: hidden;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .project-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover; /* cover into the square */
-      display: block;
-    }
-
-    .project-image span {
-      font-size: 12px;
-      color: var(--muted);
-      padding: 4px;
-      text-align: center;
-    }
-
-    /* RESUME BLOCKS */
-    .resume-block {
-      background: #f9fafb;
-      border-radius: 16px;
-      padding: 14px 16px 14px;
-      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.12);
-      margin-top: 12px;
-      font-size: 14px;
-      color: var(--muted);
-    }
-
-    .resume-block h3 {
-      font-size: 15px;
-      margin-bottom: 4px;
-      color: var(--text);
-    }
-
-    .skill-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 6px;
-    }
-
-    .skill-tag {
-      font-size: 12px;
-      padding: 4px 9px;
-      border-radius: 999px;
-      background: #e5e7eb;
-      color: #374151;
-    }
-
-    footer {
-      margin-top: 28px;
-      font-size: 12px;
-      color: var(--muted);
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 8px;
-      opacity: 0.85;
-    }
-
-    /* MODAL */
-    .project-modal {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.55);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      padding: 16px;
-      z-index: 100;
-    }
-
-    .project-modal.open { display: flex; }
-
-    .project-modal-content {
-      background: #fff;
-      border-radius: 20px;
-      max-width: 980px;
-      width: 100%;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      box-shadow: 0 30px 70px rgba(15,23,42,0.4);
-    }
-
-    .project-modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 24px 10px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .project-modal-title {
-      font-size: 18px;
-      font-weight: 600;
-    }
-
-    .project-modal-sub {
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 2px;
-    }
-
-    .project-modal-close {
-      border: none;
-      background: transparent;
-      font-size: 22px;
-      cursor: pointer;
-      line-height: 1;
-      padding: 4px 8px;
-    }
-
-    .project-modal-body {
-      display: flex;
-      gap: 24px;
-      padding: 20px 24px 22px;
-      flex-wrap: nowrap;
-      height: 520px;       /* sabit panel yüksekliği */
-      overflow: hidden;    /* içte ayrı scroll olacak */
-    }
-
-    .modal-text {
-      flex: 1 1 280px;
-      font-size: 14px;
-      color: var(--muted);
-      display: flex;
-      flex-direction: column;
-      max-height: 100%;
-      overflow: hidden;
-    }
-
-    .modal-text h4 {
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      margin-bottom: 6px;
-      opacity: 0.7;
-      flex-shrink: 0;
-    }
-
-    #modal-desc {
-      flex: 1 1 auto;
-      overflow-y: auto;     /* yazı uzun olursa burada scroll */
-      padding-right: 4px;
-    }
-
-    .modal-links {
-      margin-top: 10px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      flex-shrink: 0;
-    }
-
-    .modal-link-item {
-      font-size: 13px;
-      color: #1d4ed8;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .modal-link-item::before {
-      content: "↗";
-      font-size: 11px;
-    }
-
-    .modal-link-item:hover {
-      text-decoration: underline;
-    }
-
-    .modal-gallery {
-      flex: 1 1 320px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      max-height: 100%;
-    }
-
-    .modal-main-media {
-      width: 100%;
-      background: #f3f4f6;
-      border-radius: 14px;
-      flex: 1 1 auto;
-      min-height: 220px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .modal-main-media img,
-    .modal-main-media video,
-    .modal-main-media iframe {
-      max-width: 100%;
-      max-height: 100%;
-      width: auto;
-      height: auto;
-      object-fit: contain;   /* oranı koru, panel sabit */
-      display: block;
-      border: none;
-    }
-
-    .modal-main-media span {
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .modal-thumbs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 6px;
-      flex-shrink: 0;
-    }
-
-    .modal-thumb {
-      width: 70px;
-      height: 70px;
-      border-radius: 10px;
-      overflow: hidden;
-      background: #e5e7eb;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      border: 2px solid transparent;
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .modal-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .modal-thumb.active {
-      border-color: var(--accent);
-    }
-
-    /* MOBILE */
-    @media (max-width: 900px) {
-      .layout {
-        grid-template-columns: 1fr;
+  <head>
+    <meta charset="UTF-8" />
+    <title>GomboGames • Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      :root {
+        --bg: #050509;
+        --bg-alt: #101018;
+        --card: #151522;
+        --accent: #ffcc00;
+        --accent-soft: rgba(255, 204, 0, 0.15);
+        --text-main: #f5f5f7;
+        --text-muted: #a0a0b5;
+        --border-soft: rgba(255, 255, 255, 0.08);
+        --radius-xl: 18px;
+        --radius-lg: 12px;
+        --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.6);
       }
 
-      .sidebar {
-        position: static;
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
       }
 
-      .project-modal-body {
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+          "Segoe UI", sans-serif;
+        background: radial-gradient(circle at top, #191932 0, #050509 55%);
+        color: var(--text-main);
+        min-height: 100vh;
+      }
+
+      .page {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 32px 16px 64px;
+      }
+
+      header {
+        display: flex;
         flex-direction: column;
-        height: 80vh;
+        gap: 8px;
+        margin-bottom: 32px;
       }
 
-      .modal-gallery {
-        max-height: 50%;
+      header h1 {
+        font-size: 1.6rem;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        color: var(--accent);
       }
-    }
 
-    @media (max-width: 640px) {
+      header p {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+        max-width: 540px;
+      }
+
+      .pill-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 8px;
+      }
+
+      .pill {
+        font-size: 0.8rem;
+        padding: 4px 10px;
+        border-radius: 999px;
+        border: 1px solid var(--border-soft);
+        background: rgba(255, 255, 255, 0.02);
+        color: var(--text-muted);
+      }
+
+      /* Projects list – TEKLİ LİSTE  */
+      .projects-section {
+        margin-top: 16px;
+      }
+
       .projects-grid {
-        grid-template-columns: 1fr;
+        /* ÖNCE grid ile 2liydi, şimdi tekli */
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
       }
 
       .project-card {
+        display: flex;
         flex-direction: row;
+        gap: 16px;
+        padding: 14px;
+        border-radius: var(--radius-xl);
+        background: radial-gradient(circle at top left, #262645 0, #151522 45%);
+        border: 1px solid var(--border-soft);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+        cursor: pointer;
+        transition: transform 0.18s ease, box-shadow 0.18s ease,
+          border-color 0.18s ease, background 0.18s ease;
       }
 
-      .project-image {
-        width: 120px;
+      .project-card:hover {
+        transform: translateY(-3px);
+        border-color: rgba(255, 204, 0, 0.7);
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
+        background: radial-gradient(circle at top left, #34345c 0, #181828 52%);
       }
 
-      .project-text {
-        padding: 14px 16px 14px 20px;
+      .project-thumb {
+        flex: 0 0 160px;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        position: relative;
+        background: #090911;
       }
 
-      .project-text::before {
-        top: 12px;
-        bottom: 12px;
+      .project-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
       }
-    }
-  </style>
-</head>
-<body>
 
-<div class="page">
-  <div class="layout">
-    <!-- LEFT PROFILE -->
-    <aside class="sidebar">
-      <div class="profile-header">
-        <div class="profile-photo">
-          <!-- Profile photo -->
-          <img src="images/bahadir.png" alt="Bahadır Kuş" />
+      .project-thumb::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+        pointer-events: none;
+      }
+
+      .project-body {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        min-width: 0;
+      }
+
+      .project-title-row {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        flex-wrap: wrap;
+      }
+
+      .project-name {
+        font-size: 1.05rem;
+        font-weight: 600;
+      }
+
+      .project-role {
+        font-size: 0.8rem;
+        padding: 2px 8px;
+        border-radius: 999px;
+        background: var(--accent-soft);
+        color: var(--accent);
+        border: 1px solid rgba(255, 204, 0, 0.4);
+      }
+
+      .project-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        font-size: 0.75rem;
+        color: var(--text-muted);
+      }
+
+      .dot {
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.45);
+        align-self: center;
+      }
+
+      .type-chip {
+        padding: 2px 8px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .project-short {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        margin-top: 4px;
+      }
+
+      .project-cta-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 8px;
+        gap: 8px;
+      }
+
+      .project-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.8rem;
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 204, 0, 0.4);
+        background: linear-gradient(
+          120deg,
+          rgba(255, 204, 0, 0.15),
+          rgba(255, 204, 0, 0.03)
+        );
+        color: var(--accent);
+      }
+
+      .project-cta span {
+        font-size: 0.85rem;
+      }
+
+      .project-date {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+      }
+
+      /* MODAL (panel) */
+      .modal-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.75);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 16px;
+        z-index: 9999;
+      }
+
+      .modal-backdrop.is-open {
+        display: flex;
+      }
+
+      .project-modal {
+        background: radial-gradient(circle at top, #262645 0, #050509 60%);
+        border-radius: 22px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        width: 100%;
+        max-width: 960px;
+        max-height: 90vh;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .modal-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 18px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(18px);
+        background: linear-gradient(
+          to right,
+          rgba(5, 5, 14, 0.9),
+          rgba(20, 20, 35, 0.9)
+        );
+      }
+
+      .modal-title-block {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .modal-title {
+        font-size: 1.05rem;
+        font-weight: 600;
+      }
+
+      .modal-subtitle {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+      }
+
+      .modal-close-btn {
+        border-radius: 999px;
+        width: 28px;
+        height: 28px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        background: rgba(0, 0, 0, 0.65);
+        color: var(--text-main);
+        font-size: 0.9rem;
+        cursor: pointer;
+      }
+
+      .modal-content {
+        padding: 16px 18px 18px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .modal-columns {
+        display: grid;
+        grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+        gap: 14px;
+      }
+
+      /* Video alanı – responsive 16:9 */
+      .video-block {
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--border-soft);
+        background: radial-gradient(circle at top, #20203c 0, #090912 60%);
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .video-label {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+      }
+
+      .video-frame-wrapper {
+        position: relative;
+        width: 100%;
+        padding-bottom: 56.25%; /* 16:9 */
+        border-radius: 12px;
+        overflow: hidden;
+        background: #000;
+      }
+
+      .video-frame-wrapper iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+
+      /* GALERİ / ALBÜM – daha profesyonel */
+      .gallery-block {
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--border-soft);
+        background: radial-gradient(circle at bottom, #1a1a2f 0, #080812 55%);
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .gallery-header-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+      }
+
+      .gallery-title {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+      }
+
+      .gallery-counter {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+      }
+
+      .gallery-grid {
+        margin-top: 4px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+        gap: 8px;
+      }
+
+      .gallery-item {
+        position: relative;
+        border-radius: 10px;
+        overflow: hidden;
+        background: #050508;
+      }
+
+      .gallery-item::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+        pointer-events: none;
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .gallery-empty {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        opacity: 0.7;
+      }
+
+      .modal-details-block {
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--border-soft);
+        background: rgba(4, 4, 10, 0.9);
+        padding: 10px 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .modal-long-desc {
+        font-size: 0.85rem;
+        color: var(--text-main);
+        opacity: 0.88;
+      }
+
+      .modal-tags-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        font-size: 0.78rem;
+      }
+
+      .modal-tag {
+        padding: 3px 9px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        color: var(--text-muted);
+      }
+
+      .modal-footer {
+        margin-top: 6px;
+        display: flex;
+        justify-content: flex-end;
+        font-size: 0.75rem;
+        color: var(--text-muted);
+      }
+
+      .modal-footer span {
+        opacity: 0.8;
+      }
+
+      /* Mobile */
+      @media (max-width: 768px) {
+        header {
+          margin-bottom: 24px;
+        }
+
+        .project-card {
+          flex-direction: column;
+        }
+
+        .project-thumb {
+          flex-basis: auto;
+          height: 180px;
+        }
+
+        .modal-columns {
+          grid-template-columns: minmax(0, 1fr);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .page {
+          padding-inline: 12px;
+        }
+
+        header h1 {
+          font-size: 1.4rem;
+        }
+
+        .project-card {
+          padding: 12px;
+        }
+
+        .modal-header {
+          padding: 10px 12px;
+        }
+
+        .modal-content {
+          padding-inline: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <h1>GomboGames • Portfolio</h1>
+        <p>
+          Unity, VR simülasyon, mobil oyun ve teknik tasarım projelerimden seçili
+          işler. Her karta tıklayınca detay panelinde video + görsel albümü
+          açılıyor.
+        </p>
+        <div class="pill-row">
+          <div class="pill">Unity • C# • VR / AR</div>
+          <div class="pill">Simulation &amp; Technical Design</div>
+          <div class="pill">Mobile &amp; PC</div>
         </div>
-        <div class="profile-name">Bahadır Kuş</div>
-        <div class="profile-role-pill">
-          <span class="profile-role-pill-dot"></span>
-          <span>Simulation Developer &amp; Technical Designer</span>
-        </div>
-      </div>
+      </header>
 
-      <!-- Optional short bio (you can uncomment and edit if you want) -->
-      <!--
-      <p class="profile-bio">
-        Unity, VR/AR and real-time simulation developer combining mechanical design,
-        sensors and software to build training systems.
-      </p>
-      -->
-
-      <!-- Social icons -->
-      <div class="profile-social">
-        <a class="social-btn" href="#" target="_blank" title="Instagram">
-          <img src="images/icon-instagram.svg" alt="Instagram" />
-        </a>
-        <a class="social-btn" href="#" target="_blank" title="X / Twitter">
-          <img src="images/icon-x.svg" alt="X" />
-        </a>
-        <a class="social-btn" href="#" target="_blank" title="LinkedIn">
-          <img src="images/icon-linkedin.svg" alt="LinkedIn" />
-        </a>
-      </div>
-
-      <!-- Contact cards -->
-      <div class="contact-list">
-        <a class="contact-card-link" href="mailto:ornek@mail.com">
-          <div class="contact-icon">
-            <img src="images/icon-email.svg" alt="Email icon" />
-          </div>
-          <div class="contact-text">
-            <span class="contact-label">Email</span>
-            <span class="contact-value">ornek@mail.com</span>
-          </div>
-        </a>
-
-        <a class="contact-card-link" href="#" target="_blank">
-          <div class="contact-icon">
-            <img src="images/icon-game.svg" alt="Game demo icon" />
-          </div>
-          <div class="contact-text">
-            <span class="contact-label">Game Demo</span>
-            <span class="contact-value">GitHub / Itch.io link</span>
-          </div>
-        </a>
-
-        <div class="contact-card">
-          <div class="contact-icon">
-            <img src="images/icon-location.svg" alt="Location icon" />
-          </div>
-          <div class="contact-text">
-            <span class="contact-label">Location</span>
-            <span class="contact-value">Toronto, Canada</span>
-          </div>
-        </div>
-
-        <a class="contact-card-link" href="#" target="_blank">
-          <div class="contact-icon">
-            <img src="images/icon-youtube.svg" alt="YouTube icon" />
-          </div>
-          <div class="contact-text">
-            <span class="contact-label">YouTube</span>
-            <span class="contact-value">YouTube Channel</span>
-          </div>
-        </a>
-      </div>
-    </aside>
-
-    <!-- RIGHT MAIN CARD -->
-    <main class="main-card">
-      <div class="main-header">
-        <div>
-          <h1>Portfolio &amp; Resume</h1>
-          <p>Selected work in simulation, software and interactive design.</p>
-        </div>
-        <div class="top-tabs">
-          <button class="tab-btn active" data-tab="portfolio">Portfolio</button>
-          <button class="tab-btn" data-tab="resume">Resume</button>
-        </div>
-      </div>
-
-      <!-- PORTFOLIO -->
-      <section id="portfolio-section" class="tab-section active">
-        <h2>Portfolio</h2>
-        <p>Browse my projects and filter them by type.</p>
-
-        <div class="project-filters">
-          <button class="filter-btn active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="software">Software</button>
-          <button class="filter-btn" data-filter="design">Design</button>
-          <button class="filter-btn" data-filter="hardware">Hardware</button>
-          <button class="filter-btn" data-filter="simulation">Simulation</button>
-        </div>
-
-        <div class="projects-grid">
-          <!-- Cards are injected by JS -->
-        </div>
+      <section class="projects-section">
+        <div id="projects-list" class="projects-grid"></div>
       </section>
+    </div>
 
-      <!-- RESUME -->
-      <section id="resume-section" class="tab-section">
-        <h2>Resume</h2>
-        <p>A brief overview of my skills, background and experience.</p>
+    <!-- MODAL -->
+    <div id="project-modal-backdrop" class="modal-backdrop" aria-hidden="true">
+      <div class="project-modal" role="dialog" aria-modal="true">
+        <div class="modal-header">
+          <div class="modal-title-block">
+            <div id="modal-title" class="modal-title">Project title</div>
+            <div id="modal-subtitle" class="modal-subtitle"></div>
+          </div>
+          <button id="modal-close" class="modal-close-btn" aria-label="Close">
+            ✕
+          </button>
+        </div>
+        <div class="modal-content">
+          <div class="modal-columns">
+            <!-- Sol taraf: video + detay açıklama -->
+            <div class="left-column">
+              <div id="video-block" class="video-block" style="display: none">
+                <div class="video-label">Gameplay / Trailer</div>
+                <div class="video-frame-wrapper">
+                  <iframe
+                    id="modal-video-frame"
+                    src=""
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+              </div>
 
-        <div class="resume-block" style="margin-top:10px;">
-          <h3>My Skills</h3>
-          <div class="skill-tags">
-            <span class="skill-tag">Unity</span>
-            <span class="skill-tag">C#</span>
-            <span class="skill-tag">VR / AR</span>
-            <span class="skill-tag">Real-time Simulation</span>
-            <span class="skill-tag">Blender</span>
-            <span class="skill-tag">Fusion 360</span>
-            <span class="skill-tag">Arduino</span>
-            <span class="skill-tag">PCB Prototyping</span>
-            <span class="skill-tag">Git / GitHub</span>
+              <div class="modal-details-block">
+                <div id="modal-long-desc" class="modal-long-desc"></div>
+                <div id="modal-tags-row" class="modal-tags-row"></div>
+              </div>
+            </div>
+
+            <!-- Sağ taraf: görsel GALERİ / ALBÜM -->
+            <div class="right-column">
+              <div id="gallery-block" class="gallery-block" style="display: none">
+                <div class="gallery-header-row">
+                  <div class="gallery-title">Project gallery</div>
+                  <div id="gallery-counter" class="gallery-counter"></div>
+                </div>
+                <div id="gallery-grid" class="gallery-grid"></div>
+              </div>
+
+              <div id="gallery-empty" class="gallery-block" style="display:none">
+                <div class="gallery-title">Project gallery</div>
+                <div class="gallery-empty">
+                  Bu proje için henüz eklenmiş bir görsel albümü yok.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <span id="modal-footer-meta"></span>
           </div>
         </div>
-
-        <div class="resume-block">
-          <h3>About Me</h3>
-          <p>
-            I started with IT & software in high school and over the years focused on real-time
-            applications and simulations. Since 2021 I have been working on VR/AR-based medical
-            simulations, combining custom mechanical parts, sensors and software infrastructure
-            to create realistic surgical training systems.
-          </p>
-        </div>
-
-        <div class="resume-block">
-          <h3>Professional Experience</h3>
-          <p><!-- You can fill this later --></p>
-        </div>
-      </section>
-    </main>
-  </div>
-
-  <footer>
-    <span>© <span id="year"></span> Bahadır Kuş</span>
-    <span>Simulation Developer &amp; Technical Designer</span>
-  </footer>
-</div>
-
-<!-- PROJECT MODAL -->
-<div class="project-modal" id="project-modal">
-  <div class="project-modal-content">
-    <div class="project-modal-header">
-      <div>
-        <div class="project-modal-title" id="modal-title"></div>
-        <div class="project-modal-sub" id="modal-sub"></div>
-      </div>
-      <button class="project-modal-close" id="modal-close" aria-label="Close">×</button>
-    </div>
-    <div class="project-modal-body">
-      <div class="modal-text">
-        <h4>Project Description</h4>
-        <p id="modal-desc"></p>
-        <div id="modal-links" class="modal-links"></div>
-      </div>
-      <div class="modal-gallery">
-        <div class="modal-main-media" id="modal-main-media">
-          <span>No media added yet.</span>
-        </div>
-        <div class="modal-thumbs" id="modal-thumbs"></div>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- Load projects -->
-<script src="projects.js"></script>
-
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  // TAB SWITCHING
-  const tabButtons = document.querySelectorAll('.tab-btn');
-  const tabSections = document.querySelectorAll('.tab-section');
-
-  tabButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const tab = btn.dataset.tab;
-      tabButtons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      tabSections.forEach(sec => {
-        sec.classList.remove('active');
-        if (sec.id === tab + '-section') {
-          sec.classList.add('active');
-        }
-      });
-    });
-  });
-
-<script src="projects.js"></script>
-<script>
-  const projects = window.projects || [];
-  ...
-</script>
-
-
-  const projectsGrid = document.querySelector('.projects-grid');
-  const filterButtons = document.querySelectorAll('.filter-btn');
-  let activeFilter = 'all';
-
-  function youtubeIdFromUrl(url) {
-    if (!url) return null;
-    const m = url.match(/(?:v=|youtu\.be\/)([A-Za-z0-9_-]{6,})/);
-    return m ? m[1] : null;
-  }
-
-  function getProjectCover(project) {
-    // if coverImage is set, use it
-    if (project.coverImage && project.coverImage.trim() !== '') {
-      return { type: 'image', src: project.coverImage, alt: project.name + ' cover' };
-    }
-    // otherwise use first gallery item if exists
-    if (Array.isArray(project.gallery) && project.gallery.length > 0) {
-      const first = project.gallery[0];
-      if (first.type === 'image') {
-        return { type: 'image', src: first.src, alt: first.alt || project.name + ' cover' };
-      }
-      if (first.type === 'youtube') {
-        const id = youtubeIdFromUrl(first.src);
-        if (id) {
-          return { type: 'image', src: 'https://img.youtube.com/vi/' + id + '/hqdefault.jpg', alt: first.alt || project.name + ' video' };
-        }
-      }
-    }
-    return null;
-  }
-
-  function createProjectCard(project) {
-    const card = document.createElement('article');
-    card.className = 'project-card';
-    card.dataset.id = project.id;
-    card.dataset.types = (project.types || []).join(',');
-
-    const cover = getProjectCover(project);
-    const dateText = project.date ? 'Date: ' + project.date : '';
-
-    let coverHtml = '<span>No image</span>';
-    if (cover && cover.type === 'image') {
-      coverHtml = '<img src="' + cover.src + '" alt="' + (cover.alt || project.name + ' cover') + '">';
-    }
-
-    card.innerHTML = `
-      <div class="project-text">
-        <div class="project-title">${project.name}</div>
-        <div class="project-role">${project.role || ''}</div>
-        <div class="project-date">${dateText}</div>
-        <p class="project-desc">${project.shortDesc || ''}</p>
-        ${project.tagline ? `<div class="project-tech">${project.tagline}</div>` : ''}
-      </div>
-      <div class="project-image">
-        ${coverHtml}
-      </div>
-    `;
-    return card;
-  }
-
-  function renderProjects() {
-    projectsGrid.innerHTML = '';
-    projects.forEach(project => {
-      const types = project.types || [];
-      if (activeFilter !== 'all' && !types.includes(activeFilter)) return;
-      const card = createProjectCard(project);
-      projectsGrid.appendChild(card);
-    });
-    attachCardEvents();
-  }
-
-  // MODAL ELEMENTS
-  const modal = document.getElementById('project-modal');
-  const modalTitle = document.getElementById('modal-title');
-  const modalSub = document.getElementById('modal-sub');
-  const modalDesc = document.getElementById('modal-desc');
-  const modalMainMedia = document.getElementById('modal-main-media');
-  const modalThumbs = document.getElementById('modal-thumbs');
-  const modalCloseBtn = document.getElementById('modal-close');
-  const modalLinks = document.getElementById('modal-links');
-
-  function setMainMedia(item) {
-    modalMainMedia.innerHTML = '';
-    if (!item) {
-      modalMainMedia.innerHTML = '<span>No media added yet.</span>';
-      return;
-    }
-
-    if (item.type === 'image') {
-      const img = document.createElement('img');
-      img.src = item.src;
-      img.alt = item.alt || '';
-      modalMainMedia.appendChild(img);
-    } else if (item.type === 'video') {
-      const vid = document.createElement('video');
-      vid.src = item.src;
-      vid.controls = true;
-      modalMainMedia.appendChild(vid);
-    } else if (item.type === 'youtube') {
-      const id = youtubeIdFromUrl(item.src);
-      if (id) {
-        const iframe = document.createElement('iframe');
-        iframe.src = 'https://www.youtube.com/embed/' + id;
-        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
-        iframe.allowFullscreen = true;
-        modalMainMedia.appendChild(iframe);
-      } else {
-        modalMainMedia.innerHTML = '<span>Invalid YouTube link.</span>';
-      }
-    } else {
-      modalMainMedia.innerHTML = '<span>Unsupported media type.</span>';
-    }
-  }
-
-  function openModal(projectId) {
-    const project = projects.find(p => p.id === projectId);
-    if (!project) return;
-
-    modalTitle.textContent = project.name;
-
-    const subParts = [];
-    if (project.role) subParts.push(project.role);
-    if (project.date) subParts.push(project.date);
-    modalSub.textContent = subParts.join(' • ');
-
-    modalDesc.textContent = project.longDesc || project.shortDesc || '';
-
-    // Links
-    modalLinks.innerHTML = '';
-    if (Array.isArray(project.links) && project.links.length > 0) {
-      project.links.forEach(link => {
-        if (!link || !link.url) return;
-        const a = document.createElement('a');
-        a.href = link.url;
-        a.target = '_blank';
-        a.rel = 'noopener noreferrer';
-        a.className = 'modal-link-item';
-        a.textContent = link.label || link.url;
-        modalLinks.appendChild(a);
-      });
-    }
-
-    // Gallery
-    modalMainMedia.innerHTML = '';
-    modalThumbs.innerHTML = '';
-
-    let gallery = Array.isArray(project.gallery) ? [...project.gallery] : [];
-
-    if (gallery.length === 0 && project.coverImage) {
-      gallery = [{
-        type: 'image',
-        src: project.coverImage,
-        alt: project.name + ' cover'
-      }];
-    }
-
-    if (gallery.length > 0) {
-      setMainMedia(gallery[0]);
-
-      gallery.forEach((item, index) => {
-        const thumb = document.createElement('div');
-        thumb.className = 'modal-thumb' + (index === 0 ? ' active' : '');
-        thumb.dataset.index = index;
-
-        if (item.type === 'image') {
-          thumb.innerHTML = '<img src="' + item.src + '" alt="' + (item.alt || '') + '">';
-        } else if (item.type === 'video') {
-          thumb.textContent = 'Video';
-        } else if (item.type === 'youtube') {
-          const id = youtubeIdFromUrl(item.src);
-          if (id) {
-            const thumbImg = document.createElement('img');
-            thumbImg.src = 'https://img.youtube.com/vi/' + id + '/hqdefault.jpg';
-            thumbImg.alt = item.alt || 'YouTube video';
-            thumb.appendChild(thumbImg);
-          } else {
-            thumb.textContent = 'YouTube';
-          }
-        } else {
-          thumb.textContent = 'Media';
-        }
-
-        thumb.addEventListener('click', () => {
-          document.querySelectorAll('.modal-thumb').forEach(t => t.classList.remove('active'));
-          thumb.classList.add('active');
-          setMainMedia(item);
+    <!-- Projeleri yükleyen JS -->
+    <script src="projects.js"></script>
+    <script>
+      (function () {
+        const listEl = document.getElementById("projects-list");
+        const projects = (window.projects || []).slice().sort((a, b) => {
+          if (!a.date || !b.date) return 0;
+          return a.date < b.date ? 1 : -1;
         });
 
-        modalThumbs.appendChild(thumb);
-      });
-    } else {
-      modalMainMedia.innerHTML = '<span>No media added yet.</span>';
-    }
+        function createProjectCard(project) {
+          const card = document.createElement("article");
+          card.className = "project-card";
+          card.dataset.projectId = project.id;
 
-    modal.classList.add('open');
-  }
+          const thumb = document.createElement("div");
+          thumb.className = "project-thumb";
+          const img = document.createElement("img");
+          img.src =
+            project.cover ||
+            "https://images.pexels.com/photos/1293261/pexels-photo-1293261.jpeg";
+          img.alt = project.name || "Project cover";
+          thumb.appendChild(img);
 
-  function closeModal() {
-    modal.classList.remove('open');
-  }
+          const body = document.createElement("div");
+          body.className = "project-body";
 
-  function attachCardEvents() {
-    document.querySelectorAll('.project-card').forEach(card => {
-      card.addEventListener('click', () => {
-        const id = card.dataset.id;
-        openModal(id);
-      });
-    });
-  }
+          const titleRow = document.createElement("div");
+          titleRow.className = "project-title-row";
 
-  filterButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      activeFilter = btn.dataset.filter;
-      filterButtons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      renderProjects();
-    });
-  });
+          const nameEl = document.createElement("div");
+          nameEl.className = "project-name";
+          nameEl.textContent = project.name || "Untitled Project";
 
-  modalCloseBtn.addEventListener('click', closeModal);
-  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+          const roleEl = document.createElement("div");
+          roleEl.className = "project-role";
+          roleEl.textContent = project.role || "Unity Developer";
 
-  renderProjects();
-</script>
+          titleRow.appendChild(nameEl);
+          titleRow.appendChild(roleEl);
 
-</body>
+          const metaRow = document.createElement("div");
+          metaRow.className = "project-meta";
+
+          if (project.types && project.types.length) {
+            project.types.forEach((t) => {
+              const chip = document.createElement("span");
+              chip.className = "type-chip";
+              chip.textContent = t;
+              metaRow.appendChild(chip);
+            });
+          }
+
+          if (project.date) {
+            if (metaRow.childNodes.length) {
+              const dot = document.createElement("span");
+              dot.className = "dot";
+              metaRow.appendChild(dot);
+            }
+            const dateEl = document.createElement("span");
+            dateEl.textContent = project.date;
+            metaRow.appendChild(dateEl);
+          }
+
+          const shortEl = document.createElement("p");
+          shortEl.className = "project-short";
+          shortEl.textContent =
+            project.shortDesc ||
+            "Short description of the project will appear here.";
+
+          const ctaRow = document.createElement("div");
+          ctaRow.className = "project-cta-row";
+
+          const cta = document.createElement("div");
+          cta.className = "project-cta";
+          const ctaText = document.createElement("span");
+          ctaText.textContent = "View details & media";
+          cta.appendChild(ctaText);
+
+          const dateLabel = document.createElement("div");
+          dateLabel.className = "project-date";
+          dateLabel.textContent = project.date || "";
+
+          ctaRow.appendChild(cta);
+          ctaRow.appendChild(dateLabel);
+
+          body.appendChild(titleRow);
+          body.appendChild(metaRow);
+          body.appendChild(shortEl);
+          body.appendChild(ctaRow);
+
+          card.appendChild(thumb);
+          card.appendChild(body);
+
+          card.addEventListener("click", () => openModal(project));
+          return card;
+        }
+
+        projects.forEach((p) => {
+          listEl.appendChild(createProjectCard(p));
+        });
+
+        /* MODAL LOGIC */
+
+        const backdrop = document.getElementById("project-modal-backdrop");
+        const closeBtn = document.getElementById("modal-close");
+        const modalTitle = document.getElementById("modal-title");
+        const modalSubtitle = document.getElementById("modal-subtitle");
+        const modalLongDesc = document.getElementById("modal-long-desc");
+        const modalTagsRow = document.getElementById("modal-tags-row");
+        const modalFooterMeta = document.getElementById("modal-footer-meta");
+        const videoBlock = document.getElementById("video-block");
+        const videoFrame = document.getElementById("modal-video-frame");
+        const galleryBlock = document.getElementById("gallery-block");
+        const galleryEmpty = document.getElementById("gallery-empty");
+        const galleryGrid = document.getElementById("gallery-grid");
+        const galleryCounter = document.getElementById("gallery-counter");
+
+        function openModal(project) {
+          modalTitle.textContent = project.name || "Untitled Project";
+          modalSubtitle.textContent =
+            (project.role ? project.role + " • " : "") +
+            (project.tagline || "");
+
+          modalLongDesc.textContent =
+            project.longDesc || project.shortDesc || "";
+
+          // Tags
+          modalTagsRow.innerHTML = "";
+          if (project.types && project.types.length) {
+            project.types.forEach((t) => {
+              const tag = document.createElement("span");
+              tag.className = "modal-tag";
+              tag.textContent = t;
+              modalTagsRow.appendChild(tag);
+            });
+          }
+
+          // Footer meta
+          modalFooterMeta.textContent = project.date
+            ? `Delivered: ${project.date}`
+            : "";
+
+          // Video
+          if (project.videoUrl) {
+            videoBlock.style.display = "flex";
+            // YouTube kısa linkleri vs. hepsini direkt iframe src yapıyoruz
+            videoFrame.src = project.videoUrl;
+          } else {
+            videoBlock.style.display = "none";
+            videoFrame.src = "";
+          }
+
+          // Gallery
+          galleryGrid.innerHTML = "";
+          let imgs = Array.isArray(project.gallery)
+            ? project.gallery
+            : project.images || [];
+
+          imgs = imgs.filter(Boolean);
+
+          if (imgs.length) {
+            galleryBlock.style.display = "flex";
+            galleryEmpty.style.display = "none";
+            galleryCounter.textContent = `${imgs.length} image${
+              imgs.length > 1 ? "s" : ""
+            }`;
+
+            imgs.forEach((url, index) => {
+              const item = document.createElement("div");
+              item.className = "gallery-item";
+              const img = document.createElement("img");
+              img.src = url;
+              img.alt = `${project.name || "Project"} – image ${index + 1}`;
+              item.appendChild(img);
+              galleryGrid.appendChild(item);
+            });
+          } else {
+            galleryBlock.style.display = "none";
+            galleryEmpty.style.display = "block";
+            galleryCounter.textContent = "";
+          }
+
+          backdrop.classList.add("is-open");
+          backdrop.setAttribute("aria-hidden", "false");
+        }
+
+        function closeModal() {
+          backdrop.classList.remove("is-open");
+          backdrop.setAttribute("aria-hidden", "true");
+          if (videoFrame) {
+            videoFrame.src = ""; // video durdur
+          }
+        }
+
+        closeBtn.addEventListener("click", closeModal);
+        backdrop.addEventListener("click", (e) => {
+          if (e.target === backdrop) {
+            closeModal();
+          }
+        });
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape" && backdrop.classList.contains("is-open")) {
+            closeModal();
+          }
+        });
+      })();
+    </script>
+  </body>
 </html>
