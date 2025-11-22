@@ -56,21 +56,38 @@ window.projects = [
       "VR-based total knee arthroplasty training simulation that lets surgeons practice the full procedure in a safe, repeatable environment.",
     longDesc:
       "Prosthetic Worlds is a VR surgical training experience focused on total knee arthroplasty (TKA). Trainees can walk through each surgical step at their own pace, repeat critical actions, and build confidence without risk to patients. In a controlled study with 20 doctors split into VR and traditional-training groups, the VR group achieved higher scores across four surgical skill parameters, especially in learning the overall procedure. The goal is to compress years of operating room learning into a structured, measurable VR training workflow.",
-    coverImage: "images/Prosthetic_1.png",
+    coverImage: "images/Pw_2.jpg",
     gallery: [
       {
         type: "image",
-        src: "images/Prosthetic_1.png",
+        src: "images/Pw_2.jpg",
         alt: "Prosthetic Worlds VR total knee arthroplasty training"
       },
-      {
+            {
         type: "image",
-        src: "images/Prosthetic_1.png",
-        alt: "In-simulation view of the knee arthroplasty procedure"
+        src: "images/Pw_1.jpg",
+        alt: "Prosthetic Worlds VR total knee arthroplasty training"
+      },
+            {
+        type: "image",
+        src: "images/Pw_3.jpg",
+        alt: "Prosthetic Worlds VR total knee arthroplasty training"
+      },
+            {
+        type: "image",
+        src: "images/Pw_4.jpg",
+        alt: "Prosthetic Worlds VR total knee arthroplasty training"
       },
       { type: "youtube", src: "https://www.youtube.com/watch?v=sWOdGYnegjY", alt: "Motorcycle sound demo" }
     ],
+    
+
+    
     links: [
+      {
+        label: "Scientific Research Article",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11596432/pdf/medi-103-e40615.pdf"
+      },
       {
         label: "Instagram",
         url: "https://www.instagram.com/prostheticworlds?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
@@ -124,7 +141,7 @@ window.projects = [
     role: "Unity Developer",
     tagline: "Unity • Mobile Game • iOS",
     date: "2021-11",
-    types: ["software", "design"],
+    types: ["software"],
     shortDesc: "Casual mobile game featuring a fire-breathing dragon and arcade-style gameplay.",
     longDesc:
       "Dragon Faya is an iOS casual game built with Unity. I contributed to gameplay systems, effects and general polish.",
@@ -146,7 +163,7 @@ window.projects = [
     role: "Unity Developer",
     tagline: "Unity • C# • 2D Mobile Game • iOS",
     date: "2022-07",
-    types: ["software", "design"],
+    types: ["software"],
     shortDesc: "Humorous mobile game about driving a Turkish dolmuş and managing passengers.",
     longDesc:
       "Dolmuşçu Dayı is a 2D mobile game where players control a Turkish minibus driver.",
